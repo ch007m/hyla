@@ -1,6 +1,5 @@
-module Hyla
-  module Commands
-    class Watch
+module Guard
+    class Watch < Guard
 
       DEFAULT_OPTIONS = {
           :watch_dir => '.',
@@ -13,6 +12,11 @@ module Hyla
           :attributes => {},
           :always_build_all => false
       }
+
+      def initialize(watchers = [], options = {})
+        init(watchers = [], options = {})
+        super watchers, merged_opts
+      end
 
       def init(watchers = [], options = {})
         watchers = [] if !watchers
@@ -47,29 +51,42 @@ module Hyla
         merged_opts[:attributes]['guard'] = ''
       end
 
-      def listen(args, options = {})
-
-        # opts = DEFAULT_OPTIONS.clone
-
-        listener = Listen.to('../data/generated', force_polling: true) do |modified, added, removed|
-          puts "modified absolute path: #{modified}"
-          puts "added absolute path: #{added}"
-          puts "removed absolute path: #{removed}"
-
-          puts "File changed: #{modified.first}"
-
-          #if !modified.nil? or !added.nil?
-          html = Asciidoctor.render_file(modified.first, :backend => 'html5')
-          puts html
-          #end
-        end
-        # ISSUE -  Thread pool is not running (Celluloid::Error)
-        # Workaround is to use --> Celluloid.boot
-        Celluloid.boot
-        listener.start # not blocking
-        sleep
+      def start
+        UI.info 'Guard::AsciiDoc has started watching your files'
+        require @options[:eruby]
+        run_all if @options[:run_on_start]
       end
 
+      def run_all
+        # TODO is this too eager?
+        # TODO does this honor the input path?
+        run Watcher.match_files(self, Dir['*.{ad,asc,adoc,asciidoc}'])
+      end
+
+      def run_on_changes(paths)
+        opts = @options
+
+        if opts[:always_build_all]
+          run_all
+        else
+          run paths
+        end
+      end
+
+      def run(paths)
+        paths.each do |file_path|
+          UI.info "Change detected: #{file_path}"
+          opts = @options
+          if opts.has_key? :to_dir
+            opts[:to_dir] = File.join(Dir.pwd, opts[:to_dir])
+          else
+            opts[:in_place] = true
+          end
+          opts[:safe] = Asciidoctor::SafeMode::SAFE
+          # TODO if first file fails, still process remaining
+          Asciidoctor.render_file(file_path, opts)
+        end
+        true
+      end
     end # Class Watch
-  end # Module Commands
- end # Module Hyla
+end

@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
 
   #  Ruby command-line executables
   s.add_runtime_dependency 'commander', '~> 4.1.3'
+  s.add_runtime_dependency 'listen', '~> 1.3'
 
   # Colorize Text Terminal
   s.add_runtime_dependency 'colorator', '~> 0.1'

@@ -21,6 +21,7 @@ require 'guard'
 require 'guard/guard'
 require 'guard/watcher'
 require 'asciidoctor'
+#require 'celluloid/autostart'
 
 
 # internal requires
@@ -41,8 +42,8 @@ module Hyla
     @generate ||= Hyla::Commands::Generate.new
   end
 
-  #def self.watch
-  #  @watch ||= Hyla::Commands::Watch.new
-  #end
+  def self.watch
+    @watch ||= Hyla::Commands::Watch.new
+  end
 
 end

@@ -1,0 +1,188 @@
+= Getting Started with deck.js
+Caleb Troughton
+:description: A jQuery library for modern HTML presentations
+:viewport: width=1024, user-scalable=no
+:backend: deckjs
+:deckjs_transition: horizontal-slide
+:goto:
+:menu:
+:navigation:
+:status:
+:docs-link: http://imakewebthings.github.com/deck.js/docs[documentation]
+:download-link: https://github.com/imakewebthings/deck.js/archive/latest.zip[download]
+:sectids!:
+:icons: font
+:last-update-label!:
+
+//
+
+[#how-to-overview]
+== How to Make a Deck
+
+[steps.headings]
+Write Slides::
+Slide content is simple HTML.
+
+Choose Themes::
+One for slide styles and one for deck transitions.
+
+Include Extensions::
+Add extra functionality to your deck, or leave it stripped down.
+
+//
+
+[#quick-start]
+== Quick Start
+
+When you {download-link} deck.js, it will include a file named +boilerplate.html+.
+You can immediately start editing slides in this page and viewing them in your web browser.
+Later on, when you are comfortable customizing the deck, you can edit the various pieces of the boilerplate or make your own to suit your needs.
+
+//
+
+[#markup]
+== The Markup
+
+Slides are just HTML elements with a slide of +slide+.
+
+----
+<section class="slide">
+  <h2>How to Make a Deck</h2>
+  <ol>
+    <li>
+      <h3>Write Slides</h3>
+      <p>Slide content is simple HTML.</p>
+    </li>
+    <li>
+      <h3>Choose Themes</h3>
+      <p>One for slide styles and one for deck transitions.</p>
+    </li>
+  </ol>
+</section>
+----
+
+//
+
+[#themes]
+== Style Themes
+
+Customizes the colors, typography, and layout of slide content.
+
+----
+<link rel="stylesheet" href="/path/to/css/style-theme.css">
+----
+
+[float]
+== Transition Themes
+
+Defines transitions between slides using CSS3 transitions.
+Less capable browsers fall back to cutaways.
+But *you* aren't using _those_ browsers to give your presentations, are you...
+
+----
+<link rel="stylesheet" href="/path/to/css/transition-theme.css">
+----
+
+//
+
+[#extensions]
+== Extensions
+
+Core gives you basic slide functionality with left and right arrow navigation, but you may want more.
+Here are the ones included in this deck:
+
+[%step]
+- *deck.goto*:
+  Adds a shortcut key to jump to any slide number.
+  Hit g, type in the slide number, and hit enter.
+
+- *deck.hash*:
+  Enables internal linking within slides, deep linking to individual slides, and updates the address bar & a permalink anchor with each slide change.
+
+- *deck.menu*:
+  Adds a menu view, letting you see all slides in a grid.
+  Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal view.
+  Touch devices can double-tap the deck to switch between views.
+
+- *deck.navigation*:
+  Adds clickable left and right buttons for the less keyboard inclined.
+
+- *deck.status*:
+  Adds a page number indicator. (current/total)
+
+- *deck.scale*:
+  Scales each slide to fit within the deck container using CSS Transforms for those browsers that support them.
+
+[#extension-folders.slide]
+Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML files.
+For a complete list of extension modules included in deck.js, check out the {docs-link}.
+
+//
+
+[#nested]
+== Nested Slides
+
+That last slide had a few steps.
+To create substeps in slides, just nest them:
+
+----
+<section class="slide">
+  <h2>Extensions</h2>
+  <p>Core gives you basic slide functionality...</p>
+  <ul>
+    <li class="slide">
+      <h3>deck.goto</h3>
+      <p>Adds a shortcut key to jump to any slide number...</p>
+    </li>
+    <li class="slide">...</li>
+    <li class="slide">...</li>
+    <li class="slide">...</li>
+  </ul>
+</section>
+----
+
+//
+
+[#elements-images]
+== Other Elements: Images
+
+image::http://placekitten.com/600/375[Kitties]
+
+----
+<img src="http://placekitten.com/600/375" alt="Kitties">
+----
+
+//
+
+[#elements-blockquotes]
+== Other Elements: Blockquotes
+
+[quote,Fran Lebowitz]
+Food is an important part of a balanced diet.
+
+----
+<blockquote cite="http://example.org">
+  <p>Food is an important part of a balanced diet.</p>
+  <p><cite>Fran Lebowitz</cite></p>
+</blockquote>
+----
+
+//
+
+[#elements-videos]
+== Other Elements: Video Embeds
+
+Embed videos from your favorite online video service or with an HTML5 video element.
+
+video::1063136[vimeo,400,225]
+
+----
+<iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
+----
+
+//
+
+[#digging-deeper]
+== Digging Deeper
+
+If you want to learn about making your own themes, extending deck.js, and more, check out the {docs-link}.

@@ -1,0 +1,10 @@
+:data-uri:
+:icons: font
+:last-update-label!:
+:source-highlighter: coderay
+:toc: left
+
+== 1. Chapter
+
+This is a chapter about ...
+

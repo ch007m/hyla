@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>${groupId}</groupId>
+    <artifactId>${training-code}</artifactId>
+    <version>${version}</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>${groupId}.${training-code}</groupId>
+  <artifactId>modules</artifactId>
+  <packaging>pom</packaging>
+
+  <name>GPE :: ${training-name} Training :: Modules</name>
+
+  <modules>
+    <module>A</module>
+  </modules>
+
+  <profiles>
+    <!-- Generate zip file of the content of all the modules -->
+    <profile>
+      <id>content-distro</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <descriptor>src/main/assembly/content.xml</descriptor>
+              <skipAssembly>false</skipAssembly>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <!-- Generate zip file of the code source / exercises of all the modules -->
+    <profile>
+      <id>code-distro</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+              <descriptor>src/main/assembly/code.xml</descriptor>
+              <skipAssembly>false</skipAssembly>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+</project>

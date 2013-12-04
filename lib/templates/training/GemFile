@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+require 'guard'
+require 'guard/guard'
+require 'guard/watcher'
+require 'asciidoctor'

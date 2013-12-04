@@ -1,0 +1,113 @@
+#!/usr/bin/env ruby
+
+STDOUT.sync = true
+
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+if RUBY_VERSION < '1.9'
+  require 'rubygems'
+end
+
+require 'commander/import'
+require 'hyla'
+
+program :version, '0.0.1'
+program :description, 'Asciidoctor builder/generator of HTML5, slideshow. Watch modifications, generate content, publish or consult it live !'
+
+global_option '-s', '--source [DIR]', 'Source directory (defaults to ./)'
+global_option '-d', '--destination [DIR]', 'Destination directory (defaults to ./_content)'
+
+default_command :default
+
+def add_build_options(c)
+  c.option '--config CONFIG_FILE[,CONFIG_FILE2,...]', Array, 'Custom configuration file'
+  c.option '-V', '--verbose', 'Print verbose output.'
+end
+
+
+command :default do |c|
+  c.action do |args, options|
+    if args.empty?
+      command(:help).run
+    else
+      Hyla::logger.abort_with "Invalid command. Use --help for more information"
+    end
+  end
+end
+
+#
+# Creates a new Hyla project using a template or blank to the PATH specified
+#
+command :new do |c|
+  c.syntax = 'Hyla new PATH'
+  c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
+  c.option '--force', 'Force creation even if PATH already exists'
+  c.option '--blank', 'Creates project but with empty files'
+  c.option '--template_type TYPE_TEMPLATE', String, 'Template Type to be used (training, training-exercises, blog, web'
+
+  c.action do |args, options|
+    Hyla::Commands::New.process(args, options.__hash__)
+  end
+end
+
+#
+# Generate modules and asciidoc files from an asciidoc Table Of Content file
+#
+command :generate do |c|
+  c.syntax = 'Hyla generate FILE_PATH'
+  c.description = 'Generate modules and asciidoc files from an asciidoc Table Of Content file'
+  c.option '--toc FILE_PATH', String, 'File Path of the asciidoc file containing the Table of Content'
+  c.option '--target_dir DIR_PATH', String, 'Target directory where content must be generated'
+  c.option '--project_name PROJECT_NAME', String, 'Project Name'
+
+  c.action do |args, options|
+
+    if options.toc.nil?
+      exit(1)
+    end
+
+    toc_file = options.toc
+    out_dir = options.target_dir
+    project_name = options.project_name
+
+    Hyla.logger.info '>> TOC file to be processed : ' + toc_file
+    Hyla.logger.info '>> Target directory for the content generated : ' + out_dir
+
+    #Hyla::Commands::Generate.parse_file(toc_file, out_dir, project_name)
+    Hyla.generate.parse_file(toc_file, out_dir, project_name)
+  end
+end
+
+# Watch
+command :watch do |c|
+  c.syntax = 'Hyla watch [options]'
+  c.description = 'Watch directories for any change, add or file deleted and render document (HTML5)'
+
+  c.action do |args, options|
+    Hyla::Commands::Watch.initialize(args,options)
+  end
+end
+
+# NOT YET AVAILABLE
+
+# Command generating output format from asciidoc files
+command :build do |c|
+  c.syntax = 'hyla build [options]'
+  c.description = 'Generating output content (HTML, PDF, ManPages, ...) from asciidoc(tor) files'
+  c.option '--some-switch', 'Some switch that does something'
+
+  c.action do |args, options|
+    Hyla::Commands::Build.process(args, options.__hash__)
+  end
+end
+
+command :publish do |c|
+  c.syntax = 'Hyla publish [options]'
+  c.description = ''
+  c.example 'description', 'command example'
+  c.option '--some-switch', 'Some switch that does something'
+  c.action do |args, options|
+    # Do something or c.when_called Hyla::Commands::Publish
+  end
+end
+

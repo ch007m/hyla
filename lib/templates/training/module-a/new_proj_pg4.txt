@@ -1,0 +1,12 @@
+:data-uri:
+:icons: font
+:last-update-label!:
+
+== Video
+
+video::video/small.ogv[options=autoplay]
+
+ifdef::showScript[]
+
+endif::showScript[]
+

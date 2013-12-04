@@ -1,0 +1,139 @@
+:data-uri:
+:icons: font
+:last-update-label!:
+:toc: left
+
+:numbered!:
+== Preparing the environment
+
+:numbered:
+
+On your lab machine, we've already installed BRMS6 in the directory `~/lab-brms/jboss-eap-6.1`. We'll refer to that directory as `$JBOSS_HOME`.
+
+=== Start the server.
+
+. To do so, open a terminal, and execute the following commands:
+
+-----------------------------
+$ cd ~/lab-brms/jboss-eap-6.1
+$ ./bin/standalone.sh
+-----------------------------
+
+
+[options="split"]
+After a couple of seconds, you'll see a similar statement on the console:
+
+-----------------------------------------------------------------------------------------------------------------
+ JBAS018559: Deployed "business-central.war" (runtime-name : "business-central.war")
+ JBAS015961: Http management interface listening on http://127.0.0.1:9990/management
+ JBAS015951: Admin console listening on http://127.0.0.1:9990
+ JBAS015874: JBoss EAP 6.1.0.GA (AS 7.2.0.Final-redhat-8) started in 64005ms
+	- Started 632 of 704 services (71 services are passive or on-demand)
+-----------------------------------------------------------------------------------------------------------------
+
+[options="split"]
+Now you can log in into the BRMS application.
+
+[start=2]
+. Open a browser, and go to the address http://localhost:8080/business-central. A login screen appears.
+. Log in with the user/password combination `admin/admin`. You're redirected to the home page of BRMS.
+
+.BRMS Business Central Home Page
+image::images/lab-brms-1.png[width="100%", height="100%"]
+
+[options="step"]
+=== Add a New Organizational Unit
+In BRMS, assets are organized in organizational units, repositories and projects. So first of all, we need to create an organizational unit.
+
+. Click on the `Administration` link on the home page (or on the menu, select `Authoring -> Administration`).
+. Next, click on the `Organizational Units` link, and than on `Manage Organizational Units`.
+. On the Organizational Unit Manager window, click on the blue `Add Organizational Unit` button.
+. In the popup window, type `demo` as Name, and `admin` as owner.
+. Click `OK`.
+
+.Add New Organizational Unit Dialog
+image::images/lab-brms-2.png[width="100%", height="100%"]
+
+=== Create a new repository
+Next, we need to create or clone a repository. BRMS uses git as repository structure, so we can clone existing git repositories or create a new one.
+For this lab, we'll create a new repository.
+
+. Click on the `Repositories` link (next to `Organizational Units` on the administration page) and select `New Repository`.
+. In the popup window, enter the following:
+* Repository name: *insurancepolicy*
+* Organizational Unit: *select demo*
+* User Name: *leave blank*
+* Password: *leave blank*
+. Click `create`, and on the next window,
+. Click on `OK`.
+
+=== Create a new Project
+Now we can create a project, which is the main organizational and deployment unit for our business rules assets. A project is modeled like a maven project,
+and when deployed, will be deployed as a maven artifact (jar and pom) in a maven repo (by default the internal repo from BRMS), ready to be incorporated and consumed by applications.
+
+. To create a project, select `Authoring -> Project Authoring` from the main menu.
+
+A project explorer windows appear, which shows the organizational structure. make sure that the `demo` domain and the `insurancepolicy` repository are selected.
+
+.Domain and Repository Selection
+image::images/lab-brms-3.png[]
+
+[start=2]
+. Select `New Item -> Project` on the menu.
+
+NOTE: It could be that the `Project` item in the menu is blanked out. In that case, navigate to another window - for example `Deployment -> Asset repository` and come back to `Authoring -> Projects`. You should be able to select `Project` in the `new Item` menu now.)
+
+[start=3]
+. In the popup window, type `policyquote` as Resource name, and make sure that `Project` is selected in the radio button list.
+. Click `OK`.
+
+A new popup appears. As a project is like maven project, we need to provide a Group ID, Artifact ID and Version ID for the project artifact.
+The Artifact ID should already be filled in.
+
+[start=5]
+. Use `org.acme.insurance` as Group ID, and `1.0.0` as version.
+. Click `Finish`
+
+.New Project Maven Identity
+image::images/lab-brms-4.png[width="100%", height="100%"]
+
+=== Add the Domain Model
+Business rules consists of rules, and facts (or data), on which the rules will act. In JBoss BRMS, facts are modeled as Java objects.
+
+For our lab, we'll use a simple data model, with three Java objects that represent
+
+* *Driver* - the person who applies for a policy,
+* *Policy*  - the policy itself and
+* *Rejection* - which represents the fact that under certain conditions a person is not eligible for a car policy.
+
+These objects have been packaged into a jar. In order to be able to express rules against these object types, we need to import this model jar as a dependency.
+
+First we need to make the jar available in our internal maven repo.
+
+. On the main menu, select `Authoring -> Asset repository`.
+. On the `Guvnor M2 Repository` pane, click on `Choose File`, and browse to `~/lab-brms/labs/`.
+. Select the `insurancepolicy-model-1.0.0.jar` file.
+. Back on the `Guvnor M2 Repository` window, click on `upload`.
+. Go back to `Authoring -> Project Authoring`.
+. On the `Project Screen` window, select `Dependencies` from the drop down list.
+. Click the `Add from repository` button, and select the `insurancepolicy-model-1.0.0.jar`.
+. Now save the project, by selecting `save` from the `File` drop down in the upper right corner of the Project screen.
+
+.Domain model added
+image::images/lab-brms-5.png[width="100%", height="100%"]
+
+Now we're ready to start writing some rules.
+
+[TIP]
+==========
+In case you're stuck (or want to fast-forward), we provided a git repo for every lab in the `~/lab-brms/labs` directory.
+So the git repo for lab1 would take you the end of lab 1. To start working from one of these repo's, you need to clone the appropriate repository.
+
+In the main menu, select `Authoring -> Administration`, then select `Repositories -> Clone repository`. In the popup window, provide the following data:
+
+ - Repository name: *insurancepolicy-lab1*
+ - Organizational unit: *demo*
+ - Git URL: `file://` followed by the absolute to the git repo you want to clone, e.g. file:///home/jboss/lab-brms/labs/insurancepolicy-lab1.git
+ - User name : *admin* (The user name and password are not really used, but if left blank, the cloning fails)
+ - Password : *admin*
+==========

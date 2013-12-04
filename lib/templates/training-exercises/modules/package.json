@@ -1,0 +1,18 @@
+{
+    "name": "gpe-asciidoc-training-tool",
+    "version": "0.1.0",
+    "description": "GPE Asciidoc & LiveReload Tool for Training",
+    "author": "GPE Team",
+    "licenses": [
+        {
+            "type": "Apache 2.0 License",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+    ],
+    "dependencies" : {
+        "grunt-contrib-shell": "~0.4.0","grunt-contrib-watch": "~0.4.4"
+    },
+    "engines": {
+        "node": ">=0.9"
+    }
+}

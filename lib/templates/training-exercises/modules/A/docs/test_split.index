@@ -1,0 +1,19 @@
+= Presentation Title
+Presenter Name
+:data-uri:
+:navigation:
+:menu:
+:status:
+:split:
+
+== This Slide is Split
+
+This Slide will act like
+
+<<<
+
+three individual slides with the same title
+
+<<<
+
+once the document is rendered.

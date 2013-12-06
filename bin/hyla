@@ -36,6 +36,20 @@ command :default do |c|
 end
 
 #
+# Creates an artefact
+#
+command :create do |c|
+  c.syntax = 'Hyla create ARTEFACT TYPE'
+  c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
+  c.option '--artefact ARTEFACT', String, 'Template Type to be used (training, training-exercises, blog, web'
+  c.option '--type TYPE', String, 'Template Type to be used (training, training-exercises, blog, web'
+
+  c.action do |args, options|
+    Hyla::Commands::New.process(args, options.__hash__)
+  end
+end
+
+#
 # Creates a new Hyla project using a template or blank to the PATH specified
 #
 command :new do |c|
@@ -74,7 +88,7 @@ command :generate do |c|
     Hyla.logger.info '>> Target directory for the content generated : ' + out_dir
 
     #Hyla::Commands::Generate.parse_file(toc_file, out_dir, project_name)
-    Hyla.generate.parse_file(toc_file, out_dir, project_name)
+    Hyla.generate.table_of_content_to_asiidoc(toc_file, out_dir, project_name)
   end
 end
 
@@ -85,8 +99,17 @@ command :watch do |c|
 
   c.action do |args, options|
     #Hyla::Commands::Watch.initialize(args,options)
-    # Guard::Watch.initialize(args,options)
     Hyla.watch.listen(args,options)
+  end
+end
+
+# Reload
+command :reload do |c|
+  c.syntax = 'Hyla reload [options]'
+  c.description = 'Reload browser whenever files have been updated'
+
+  c.action do |args, options|
+    Hyla.reload.start(args,options.__hash__)
   end
 end
 

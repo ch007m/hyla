@@ -1,6 +1,16 @@
+#require 'celluloid/autostart'
+
 module Hyla
   module Commands
     class Watch
+
+      #include Celluloid
+
+      def initialize
+        #@cellulloid = Celluloid::Celluloid.new
+        #@cellulloid.boot
+        #Celluloid.logger.level = Logger::INFO
+      end
 
       DEFAULT_OPTIONS = {
           :watch_dir => '.',
@@ -11,7 +21,8 @@ module Hyla
           :doctype => 'article',
           :compact => false,
           :attributes => {},
-          :always_build_all => false
+          :always_build_all => false,
+          :to_dir => '.'
       }
 
       def init(watchers = [], options = {})
@@ -49,27 +60,46 @@ module Hyla
 
       def listen(args, options = {})
 
+        puts "Listen called !"
+
         # opts = DEFAULT_OPTIONS.clone
 
-        listener = Listen.to('../data/generated', force_polling: true) do |modified, added, removed|
+        listener = Listen.to('../data/generated') do |modified, added, removed|
+
+          puts "Listen started !"
           puts "modified absolute path: #{modified}"
           puts "added absolute path: #{added}"
           puts "removed absolute path: #{removed}"
 
           puts "File changed: #{modified.first}"
 
-          #if !modified.nil? or !added.nil?
-          html = Asciidoctor.render_file(modified.first, :backend => 'html5')
-          puts html
-          #end
-        end
-        # ISSUE -  Thread pool is not running (Celluloid::Error)
-        # Workaround is to use --> Celluloid.boot
-        Celluloid.boot
-        listener.start # not blocking
-        sleep
+          to_dir = File.dirname(modified.first)
+          to_file = Pathname.new(modified.first).basename.to_s.gsub('adoc', 'html')
+          # to_file = to_file.gsub('.adoc','.html')
+          puts "Output Directory: #{to_dir}"
+          puts "To File : #{to_file}"
+
+          if !modified.nil? or !added.nil?
+            Asciidoctor.render_file(modified.first, :backend => 'html5', :to_dir => to_dir, :to_file => to_file, :safe => :unsafe)
+            #Hyla::Commands::Watch.reload_browser([to_dir])
+            #f = File.new(to_dir, 'w')
+            #f.puts html
+            #f.close
+          end
+
+          listener.start # not blocking
+          sleep
+
+          trap("INT") do
+            listener.stop
+            puts "     Halting auto-regeneration."
+            exit 0
+          end
+
+        end # listen
+
       end
 
     end # Class Watch
   end # Module Commands
- end # Module Hyla
+end # Module Hyla

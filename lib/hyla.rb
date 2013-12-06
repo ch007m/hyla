@@ -17,11 +17,12 @@ require 'rubygems'
 
 # 3rd party
 require 'colorator'
+require 'listen'
 require 'guard'
-require 'guard/guard'
-require 'guard/watcher'
 require 'asciidoctor'
-#require 'celluloid/autostart'
+require 'eventmachine'
+require 'em-websocket'
+require 'http/parser'
 
 
 # internal requires
@@ -44,6 +45,10 @@ module Hyla
 
   def self.watch
     @watch ||= Hyla::Commands::Watch.new
+  end
+
+  def self.reload
+    @reload ||= Hyla::Commands::Reload.new
   end
 
 end

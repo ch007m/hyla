@@ -1,0 +1,4 @@
+== Video
+
+video::video/small.ogv[options=autoplay]
+

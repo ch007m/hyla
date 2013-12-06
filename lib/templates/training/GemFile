@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-require 'guard'
-require 'guard/guard'
-require 'guard/watcher'
-require 'asciidoctor'
+gem 'guard'
+gem 'guard-livereload'
+gem 'asciidoctor'

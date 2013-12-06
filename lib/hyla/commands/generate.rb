@@ -16,7 +16,7 @@ module Hyla
       # @param [File Containing the Table of Content] toc_file
       # @param [Directory where asciidoc files will be generated] out_dir
       # @param [Project name used to create parent of index files] project_name
-      def parse_file(toc_file, out_dir, project_name)
+      def table_of_content_to_asiidoc(toc_file, out_dir, project_name)
 
         Hyla.logger.info '>> Project Name : ' + project_name + ' <<'
 

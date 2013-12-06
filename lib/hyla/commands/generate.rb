@@ -142,6 +142,6 @@ module Hyla
         index_file
       end
 
-    end # Class Generate
+    end # class
   end # module Commands
 end # module Hyla

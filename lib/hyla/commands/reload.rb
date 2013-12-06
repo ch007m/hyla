@@ -92,6 +92,6 @@ module Hyla
         Hyla.logger.info "Browser URL: #{message['url']}" if message['command'] == 'url'
       end
 
-    end # end class
-  end # end module Commands
-end # end module Hyla
+    end # class
+  end # module Commands
+end # module Hyla

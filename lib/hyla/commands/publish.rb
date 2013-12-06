@@ -3,6 +3,6 @@ module Hyla
     class Publish < Command
 
 
-    end # Class Publish
-  end # Module Commands
-end # Module Hyla
+    end # class
+  end # module Commands
+end # module Hyla

@@ -51,8 +51,9 @@ end
 command :create do |c|
   c.syntax = 'hyla create ARTEFACT TYPE'
   c.description = 'Creates a new file from asciidoc artefacts for an existing project'
-  c.option '--artefact_type ARTEFACT_TYPE', String, 'Artefact Type : article, audio, video, blog entry ...'
-  add_common_options(c)
+  c.option '--a', '--artefact_type [ARTEFACT_TYPE]', String, 'Artefact Type : article, audio, video, blog entry ...'
+  c.option '--d', '--destination [DIR]', String, 'Destination directory'
+  c.option '--t', '--type [TYPE]', String, 'Type : asciidoc, slideshow'
 
   c.action do |args, options|
     Hyla::Commands::Create.process(args, options.__hash__)

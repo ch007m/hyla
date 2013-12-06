@@ -1,5 +1,6 @@
 module Hyla
   class Command
+
     def self.globs(source, destination)
       Dir.chdir(source) do
         dirs = Dir['*'].select { |x| File.directory?(x) }
@@ -8,5 +9,14 @@ module Hyla
         dirs += ['*']
       end
     end
+
+    program :int_block do
+      # kill threads etc
+      # make sure to exit or abort, otherwise your program keeps running
+
+      Hyla::logger.info "WE EXIT"
+      exit 1
+    end
+
   end
 end

@@ -38,3 +38,17 @@ Here are some examples of commands to create a new project, add artefacts (ascii
 - Sample Project (training-exercises)
 
     hyla new --template_type training-exercises ~/Temp/MyTrainingProject
+
+### Add artefact to a project
+
+Asciidoc(tor) documents
+
+    hyla create --t asciidoc --a article --d ~/Temp/MyBlankProject
+    hyla create --t asciidoc  --a audio --d ~/Temp/MyBlankProject
+    hyla create --t asciidoc  --a video --d ~/Temp/MyBlankProject
+    hyla create --t asciidoc  --a source_highlight --d ~/Temp/MyBlankProject
+
+Slideshow
+
+    hyla create --t slideshow  --a deckjs --d ~/Temp/MyBlankProject
+

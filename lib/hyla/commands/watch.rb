@@ -159,6 +159,6 @@ module Hyla
         s
       end
 
-    end # Class Watch
-  end # Module Commands
-end # Module Hyla
+    end # class
+  end # module Commands
+end # module Hyla

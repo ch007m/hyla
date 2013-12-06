@@ -1,7 +1,8 @@
 module Hyla
   class Configuration
 
-    attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS
+    attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS,
+                :ADOC_EXT, :PREFIX_ARTEFACT, :LOC_ARTEFACT
 
     def initialize()
 
@@ -28,6 +29,12 @@ module Hyla
       @LEVEL_2 = '== '
 
       @SKIP_CHARACTERS = '>>'
+
+      @ADOC_EXT = '.adoc'
+
+      @PREFIX_ARTEFACT  = 'asciidoc_'
+
+      @LOC_ARTEFACT = '../lib/templates/sample'
 
     end
 

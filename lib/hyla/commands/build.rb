@@ -34,6 +34,7 @@ module Hyla
         Hyla.logger.error "", e.message
         exit(1)
       end
-    end
-  end
-end
+
+    end # class
+  end # module Commands
+end # module Hyla

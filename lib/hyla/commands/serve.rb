@@ -53,6 +53,7 @@ module Hyla
         mime_types_file = File.expand_path('../../../data/mime.types', File.dirname(__FILE__))
         WEBrick::HTTPUtils::load_mime_types(mime_types_file)
       end
-    end
-  end
-end
+
+    end # class
+  end # module Commands
+end # module Hyla

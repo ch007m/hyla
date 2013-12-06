@@ -33,7 +33,7 @@ module Hyla
       # with just a readme.adoc file
       def self.create_blank_project(path)
         Dir.chdir(path) do
-          f = File.open("sample.adoc")
+          f = File.open('sample.adoc', 'w')
           f.puts "= Sample Asciidoctor Project"
           f.puts "This is an empty AsciidocTor file."
           f.puts "To create **asciidoc(tor)** content, more info are available http://asciidoctor.org/docs/user-manual[here]"
@@ -57,6 +57,6 @@ module Hyla
         File.expand_path("../../templates", File.dirname(__FILE__))
       end
 
-    end
-  end
-end
+    end # class
+  end # module Commands
+end # module Hyla

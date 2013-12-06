@@ -31,13 +31,15 @@ Here are some examples of commands to create a new project, add artefacts (ascii
 
 ### New project
 
-- Blank project
+A Blank project
 
     hyla new --blank ~/Temp/MyBlankProject
 
-- Sample Project (training-exercises)
+
+A  Sample Project (training-exercises)
 
     hyla new --template_type training-exercises ~/Temp/MyTrainingProject
+
 
 ### Add artefact to a project
 

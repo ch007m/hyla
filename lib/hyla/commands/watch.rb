@@ -1,11 +1,6 @@
-#require 'celluloid/autostart'
-require 'Hyla/WebSocket'
-
 module Hyla
   module Commands
-    class Watch
-
-      #include Celluloid
+    class Watch < Command
 
       DEFAULT_OPTIONS = {
           :watch_dir => '.',
@@ -28,10 +23,6 @@ module Hyla
       }
 
       def initialize
-        #@cellulloid = Celluloid::Celluloid.new
-        #@cellulloid.boot
-        #Celluloid.logger.level = Logger::INFO
-
         # We will start the WS Server used by LiveReload
         @reload = Hyla::Commands::Reload.new
       end
@@ -74,52 +65,10 @@ module Hyla
         Hyla.logger.debug "WS Server Started"
       end
 
-      def listen(args, options = {})
-
-=begin
-        # opts = DEFAULT_OPTIONS.clone
-
-        puts "Listen called !"
-
-        # Create a callback
-        callback = Proc.new do |modified, added, removed|
-          puts "Listen started !"
-          puts "modified absolute path: #{modified}"
-          puts "added absolute path: #{added}"
-          puts "removed absolute path: #{removed}"
-
-          puts "File changed: #{modified.first}"
-
-          to_dir = File.dirname(modified.first)
-          to_file = Pathname.new(modified.first).basename.to_s.gsub('adoc', 'html')
-          # to_file = to_file.gsub('.adoc','.html')
-          puts "Output Directory: #{to_dir}"
-          puts "To File : #{to_file}"
-
-          if !modified.nil? or !added.nil?
-            Asciidoctor.render_file(modified.first, :backend => 'html5', :to_dir => to_dir, :to_file => to_file, :safe => :unsafe)
-            #Hyla::Commands::Watch.reload_browser([to_dir])
-            #f = File.new(to_dir, 'w')
-            #f.puts html
-            #f.close
-          end
-        end
-        # force_polling: true
-        # &callback
-        listener = Listen.to('../data/generated', debug: true, wait_for_delay: 2)
-        listener.start # not blocking
-        puts "This is a test"
-        puts listener.listen?
-
-        trap("INT") do
-          listener.stop
-          puts "     Halting watching."
-          exit 0
-        end
-=end
+      def self.process(args, options = {})
 
         # Start WS Server used by Livereload
-        start_ws_server()
+        # start_ws_server()
 
         @opts = DEFAULT_OPTIONS.clone
         @received_opts = options
@@ -156,6 +105,11 @@ module Hyla
         Hyla.logger.info ">> Hyla has started to watch files in this output dir :  #{@opts[:watch_dir]}"
         Hyla.logger.info ">> Results of Asciidoctor generation will be available here : #{@opts[:to_dir]}"
         listener = Listen.to!('../data/generated', &callback)
+
+        trap(:INT){
+          Hyla.logger.info "Interrupt intercepted"
+          Thread.kill
+        }
 
 
       end # listen

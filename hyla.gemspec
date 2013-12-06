@@ -1,15 +1,15 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'hyla/version'
+require 'hyla/project'
 
 Gem::Specification.new do |s|
   s.name          = 'hyla'
   s.version       = Hyla::VERSION
   s.authors       = ["Charles Mouliard"]
   s.email         = ["ch007m@gmail.com"]
-  s.description   = 'Hyla is an Asciidoctor command line client.'
-  s.summary       = 'Hyla is an Asciidoctor command line client.'
+  s.description   = Hyla::DESCRIPTION
+  s.summary       = Hyla::SUMMARY
   s.homepage      = ""
   s.license       = "MIT"
 

@@ -1,8 +1,6 @@
-require 'Hyla/WebSocket'
-
 module Hyla
   module Commands
-    class Reload
+    class Reload < Command
 
       attr_reader :web_sockets, :thread, :options
 
@@ -22,7 +20,7 @@ module Hyla
         @Websocket ||= Hyla::WebSocket
       end
 
-      def start(options)
+      def process(options)
         @options.merge(options)
         @thread = thread.new _start_reactor
       end

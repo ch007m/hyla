@@ -1,11 +1,21 @@
 module Hyla
   module Commands
-    class Generate
+    class Generate < Command
 
       attr_reader :artefact
 
       def initialize()
         @config = Hyla::Configuration.new
+      end
+
+      def process(args, options = {})
+
+        @toc_file = options[:toc]
+        @out_dir = options[:target_dir]
+        @project_name = ptions[:project_name]
+
+        # From Table of Content File to Asciidoc directories and Files
+        table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
       end
 
       #
@@ -16,7 +26,7 @@ module Hyla
       # @param [File Containing the Table of Content] toc_file
       # @param [Directory where asciidoc files will be generated] out_dir
       # @param [Project name used to create parent of index files] project_name
-      def table_of_content_to_asiidoc(toc_file, out_dir, project_name)
+      def table_of_content_to_acsiidoc(toc_file, out_dir, project_name)
 
         Hyla.logger.info '>> Project Name : ' + project_name + ' <<'
 

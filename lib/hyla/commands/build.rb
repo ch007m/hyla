@@ -1,20 +1,16 @@
 module Hyla
   module Commands
-    class Build
+    class Build < Command
 
-
-      def self.process(options)
+      def process(options)
         training = Hyla::Training.new(options)
-        self.build(training, options)
+        build(training, options)
       end
 
-      # Private: Build the asciidoc(tor) files from source into destination.
       #
-      # training - A Hyla::Training instance
-      # options - A Hash of options passed to the command
       #
-      # Returns nothing.
-      def self.build(training, options)
+      #
+      def build(training, options)
         source = options['source']
         destination = options['destination']
         Hyla.logger.info "Source: ", source

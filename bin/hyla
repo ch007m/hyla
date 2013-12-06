@@ -10,12 +10,13 @@ end
 
 require 'commander/import'
 require 'hyla'
+require 'hyla/project'
 
-program :version, '0.0.1'
-program :description, 'Asciidoctor builder/generator of HTML5, slideshow. Watch modifications, generate content, publish or consult it live !'
+program :version, Hyla::VERSION
+program :description, Hyla::DESCRIPTION
 
-global_option '-s', '--source [DIR]', 'Source directory (defaults to ./)'
-global_option '-d', '--destination [DIR]', 'Destination directory (defaults to ./_content)'
+# global_option '-s', '--source [DIR]', 'Source directory (defaults to ./)'
+# global_option '-d', '--destination [DIR]', 'Destination directory (defaults to .)'
 
 default_command :default
 
@@ -24,43 +25,37 @@ def add_build_options(c)
   c.option '-V', '--verbose', 'Print verbose output.'
 end
 
-
-command :default do |c|
-  c.action do |args, options|
-    if args.empty?
-      command(:help).run
-    else
-      Hyla::logger.abort_with "Invalid command. Use --help for more information"
-    end
-  end
-end
-
-#
-# Creates an artefact
-#
-command :create do |c|
-  c.syntax = 'Hyla create ARTEFACT TYPE'
-  c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
-  c.option '--artefact ARTEFACT', String, 'Template Type to be used (training, training-exercises, blog, web'
-  c.option '--type TYPE', String, 'Template Type to be used (training, training-exercises, blog, web'
-
-  c.action do |args, options|
-    Hyla::Commands::New.process(args, options.__hash__)
-  end
+def add_common_options(c)
+  c.option '-s', '--source [DIR]', 'Source directory (defaults to ./)'
+  c.option '-d', '--destination [DIR]', 'Destination directory (defaults to ./generated_content)'
 end
 
 #
 # Creates a new Hyla project using a template or blank to the PATH specified
 #
 command :new do |c|
-  c.syntax = 'Hyla new PATH'
+  c.syntax = 'hyla new PATH'
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
   c.option '--force', 'Force creation even if PATH already exists'
   c.option '--blank', 'Creates project but with empty files'
-  c.option '--template_type TYPE_TEMPLATE', String, 'Template Type to be used (training, training-exercises, blog, web'
+  c.option '--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, training, training-exercises, blog, web, ...)'
 
   c.action do |args, options|
     Hyla::Commands::New.process(args, options.__hash__)
+  end
+end
+
+#
+# Creates a new file from an artefact within an existing project
+#
+command :create do |c|
+  c.syntax = 'hyla create ARTEFACT TYPE'
+  c.description = 'Creates a new file from asciidoc artefacts for an existing project'
+  c.option '--artefact_type ARTEFACT_TYPE', String, 'Artefact Type : article, audio, video, blog entry ...'
+  add_common_options(c)
+
+  c.action do |args, options|
+    Hyla::Commands::Create.process(args, options.__hash__)
   end
 end
 
@@ -68,7 +63,7 @@ end
 # Generate modules and asciidoc files from an asciidoc Table Of Content file
 #
 command :generate do |c|
-  c.syntax = 'Hyla generate FILE_PATH'
+  c.syntax = 'hyla generate FILE_PATH'
   c.description = 'Generate modules and asciidoc files from an asciidoc Table Of Content file'
   c.option '--toc FILE_PATH', String, 'File Path of the asciidoc file containing the Table of Content'
   c.option '--target_dir DIR_PATH', String, 'Target directory where content must be generated'
@@ -80,41 +75,62 @@ command :generate do |c|
       exit(1)
     end
 
-    toc_file = options.toc
-    out_dir = options.target_dir
-    project_name = options.project_name
-
-    Hyla.logger.info '>> TOC file to be processed : ' + toc_file
-    Hyla.logger.info '>> Target directory for the content generated : ' + out_dir
-
-    #Hyla::Commands::Generate.parse_file(toc_file, out_dir, project_name)
-    Hyla.generate.table_of_content_to_asiidoc(toc_file, out_dir, project_name)
+    Hyla::Commands::Generate.process(args, options__hash__)
   end
 end
 
 # Watch
 command :watch do |c|
-  c.syntax = 'Hyla watch [options]'
+  c.syntax = 'hyla watch [options]'
   c.description = 'Watch directories for any change, add or file deleted and render document (HTML5)'
   c.option '--out_dir DIR', String, 'Output directory where content must be generated'
   c.option '--watch_dir DIR', String, 'Directory to be watched'
+  add_common_options(c)
 
   c.action do |args, options|
-    Hyla.watch.listen(args,options.__hash__)
+
+    options.default :serving => true
+
+    # TODO Find if it is possible to watch files, generate HTML content - asciidoctor, expose content using HTTPServe and expose WebSocket - LiveReload
+    # as they are started in 2 different threads, this is not possible with existing code
+    # Hyla::Commands::Serve.process(args,options.__hash__)
+    Hyla::Commands::Watch.process(args,options.__hash__)
   end
 end
 
-# Reload
-command :reload do |c|
-  c.syntax = 'Hyla reload [options]'
-  c.description = 'Reload browser whenever files have been updated'
+
+# Serve
+command :serve do |c|
+  c.syntax = 'hyla serve [options]'
+  c.description = 'Serve locally your site'
+  c.option '--out_dir DIR', String, 'Output directory where content must be generated'
+  c.option '-B', '--detach', 'Run the server in the background (detach)'
+  c.option '-P', '--port [PORT]', 'Port to listen on'
+  c.option '-H', '--host [HOST]', 'Host to bind to'
+  c.option '-b', '--baseurl [URL]', 'Base URL'
+  add_common_options(c)
 
   c.action do |args, options|
-    Hyla.reload.start(options.__hash__)
+    options.default :serving => true
+    Hyla::Commands::Serve.process(args, options.__hash__)
   end
 end
+alias_command :server, :serve
 
 # NOT YET AVAILABLE
+
+=begin
+# TODO NOT FINALISED
+# Reload
+command :reload do |c|
+  c.syntax = 'hyla reload [options]'
+  c.description = 'Reload HTML files generated within the browser - Livereload using WebSocket Server'
+  c.option '--watch_dir DIR', String, 'Directory to be watched'
+
+  c.action do |args, options|
+    Hyla::Commands::Reload.process(args,options.__hash__)
+  end
+end
 
 # Command generating output format from asciidoc files
 command :build do |c|
@@ -128,12 +144,13 @@ command :build do |c|
 end
 
 command :publish do |c|
-  c.syntax = 'Hyla publish [options]'
+  c.syntax = 'hyla publish [options]'
   c.description = ''
   c.example 'description', 'command example'
   c.option '--some-switch', 'Some switch that does something'
   c.action do |args, options|
-    # Do something or c.when_called Hyla::Commands::Publish
+      Hyla::Commands::Publish.process(args, options.__hash__)
   end
 end
 
+=end

@@ -24,13 +24,15 @@ require 'eventmachine'
 require 'em-websocket'
 require 'http/parser'
 require 'multi_json'
-
+require 'webrick'
 
 # internal requires
 require 'hyla/logger'
 require 'hyla/training'
+require 'hyla/command'
 require 'hyla/configuration'
 require 'Hyla/WebSocket'
+require 'hyla/logger'
 
 # extensions
 require_all 'hyla/commands'
@@ -39,18 +41,6 @@ module Hyla
 
   def self.logger
     @logger ||= Logger.new
-  end
-
-  def self.generate
-    @generate ||= Hyla::Commands::Generate.new
-  end
-
-  def self.watch
-    @watch ||= Hyla::Commands::Watch.new
-  end
-
-  def self.reload
-    @reload ||= Hyla::Commands::Reload.new
   end
 
 end

@@ -1,9 +1,8 @@
 module Hyla
   module Commands
-    class New < Command
-
+    class Create < Command
       def self.process(args, options = {})
-        raise ArgumentError.new('You must specify a destination.') if args.empty?
+        raise ArgumentError.new('You must specify a path.') if args.empty?
 
         #
         # Create Directory for the Project
@@ -30,13 +29,11 @@ module Hyla
 
       #
       # Create Blank Project
-      # with just a readme.adoc file
+      # with just a readme.adoc file and 2 directories
       def self.create_blank_project(path)
         Dir.chdir(path) do
-          f = File.open("sample.adoc")
-          f.puts "= Sample Asciidoctor Project"
-          f.puts "This is an empty AsciidocTor file."
-          f.puts "To create **asciidoc(tor)** content, more info are available http://asciidoctor.org/docs/user-manual[here]"
+          FileUtils.mkdir(%w(module-a module-b))
+          FileUtils.touch("readme.adoc")
         end
       end
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hyla (0.0.1)
+    hyla (0.1.0)
       asciidoctor
       colorator (~> 0.1)
       commander (~> 4.1.3)

@@ -4,18 +4,16 @@ module Hyla
 
       attr_reader :artefact
 
-      def initialize()
-        @config = Hyla::Configuration.new
-      end
+      def self.process(args, options = {})
 
-      def process(args, options = {})
+        @config = Hyla::Configuration.new
 
         @toc_file = options[:toc]
-        @out_dir = options[:target_dir]
-        @project_name = ptions[:project_name]
+        @out_dir = options[:destination]
+        @project_name = options[:project_name]
 
         # From Table of Content File to Asciidoc directories and Files
-        table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
+        self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
       end
 
       #
@@ -26,7 +24,8 @@ module Hyla
       # @param [File Containing the Table of Content] toc_file
       # @param [Directory where asciidoc files will be generated] out_dir
       # @param [Project name used to create parent of index files] project_name
-      def table_of_content_to_acsiidoc(toc_file, out_dir, project_name)
+      #
+      def self.table_of_content_to_asciidoc(toc_file, out_dir, project_name)
 
         Hyla.logger.info '>> Project Name : ' + project_name + ' <<'
 
@@ -37,22 +36,26 @@ module Hyla
         FileUtils.rm_rf out_dir if Dir.exist? out_dir
         FileUtils.makedirs(out_dir)
 
+        #
         # Move to 'generated' directory as we will
         # create content relative to this directory
+        #
         Dir.chdir out_dir
         out_dir = Pathname.pwd
 
         # Create index file of all index files
-        @project_index_file = create_index_file(project_name, @config.LEVEL_1)
+        @project_index_file = self.create_index_file(project_name, @config.LEVEL_1)
 
 
         # File iteration
         f.each do |line|
 
+          #
           # Check level 1
           # Create a directory where its name corresponds to 'Title Level 1' &
           # where we have removed the leading '=' symbol and '.' and
           # replaced ' ' by '_'
+          #
           if line[/^=\s/]
 
             # Create File
@@ -65,9 +68,11 @@ module Hyla
             # Add images directory
             Dir.mkdir('images')
 
+            #
             # Create an index file
             # It is used to include files belonging to a module and will be used for SlideShows
             # The file created contains a title (= Dir Name) and header with attributes
+            #
             @index_file = create_index_file(dir_name, @config.LEVEL_2)
 
             # Include index file created to parent index file
@@ -77,9 +82,11 @@ module Hyla
             next
           end
 
+          #
           # Check Level 2
           # Create a file for each Title Level 2 where name corresponds to title (without '==' symbol) &
           # where we have removed the leading '==' symbol  and '.' and replace ' ' by '_'
+          #
           if line[/^==\s/]
 
             # Close File created previously if it exists
@@ -100,7 +107,9 @@ module Hyla
             @index_file.puts @config.INCLUDE_PREFIX + f_name + @config.INCLUDE_SUFFIX
           end
 
+          #
           # Add Content to file if it exists and line does not start with characters to be skipped
+          #
           if !@new_f.nil? and !line.start_with?(@config.SKIP_CHARACTERS)
               @new_f.puts line
           end
@@ -114,13 +123,15 @@ module Hyla
       #
       # Remove space, dot from a String
       #
-      def remove_special_chars(pos, text)
+      def self.remove_special_chars(pos, text)
         return text[pos, text.length].strip.gsub(/\s/, '_').gsub('.', '')
       end
 
+      #
       # Add '/' at the end of the target path
       # if the target path provided doesn't contain it
-      def check_slash_end(out_dir)
+      #
+      def self.check_slash_end(out_dir)
         last_char = out_dir.to_s[-1, 1]
         Hyla.logger.info '>> Last char : ' + last_char
         if !last_char.equal? '/\//'
@@ -133,7 +144,8 @@ module Hyla
       #
       # Create ascidoc index file
       # containing references to asciidoc files part of a module
-      def create_index_file(file_name, level)
+      #
+      def self.create_index_file(file_name, level)
         n_file_name = file_name + @config.INDEX_SUFFIX
         index_file = File.new(n_file_name, 'w')
         index_file.puts level + file_name

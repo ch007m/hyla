@@ -54,3 +54,59 @@ Slideshow
 
     hyla create --t slideshow  --a deckjs --d ~/Temp/MyBlankProject
 
+### Generate Asciidoctor project from a Table of Content
+
+The entry point of a Documention site, Training, Publication or Book will consist most of the time to create
+a Table Of Content which is a collection of modules with chapters that we will develop. As this process to elaborate
+the structure of the project will consume lot of time/effort, Hyla will simplify your life as it allows from a TOC file
+
+
+    = A. Introduction module
+
+    >> This is the module 'A. Introduction'
+
+    == 1. Chapter
+
+    This is a chapter about ...
+
+    == 2. Chapter
+
+    This is a Chapter about ...
+
+    === 2.1. Section
+
+    ...
+
+    = B. Instruction module
+
+    >> This is the module 'B. Instruction module'
+
+    == 1. Chapter
+
+    This is a Chapter about ...`
+
+
+to generate a collection of folders (= modules) containing files which represent the chapters (== Titles of the TOC ).
+For each module (= Module), an index file is also created including the files listed in a module. That can be serve to generate a
+slideshow presentation using as backend (DeckJS, DZSlides, ...) later on
+
+
+    hyla generate --p my-project --d ~/Temp/MyBookProject/ --toc ~/MyProjects/asciidoctor-hyla/data/toc.adoc
+
+    >> Project Name : my-project <<
+    >> Directory created : ~/Temp/MyBookProject/A_Introduction_module <<
+       # File created : 1_Chapter
+       # File created : 2_Chapter
+       # File created : 3_Chapter
+    >> Directory created : ~/Temp/MyBookProject/B_Instruction_module <<
+       # File created : 1_Chapter
+    >> Directory created : /Users/chmoulli/Temp/MyBookProject/C_Installation_module <<
+       # File created : 1_Chapter
+       # File created : 2_Chapter
+
+
+
+
+
+
+

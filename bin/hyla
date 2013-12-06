@@ -64,11 +64,11 @@ end
 # Generate modules and asciidoc files from an asciidoc Table Of Content file
 #
 command :generate do |c|
-  c.syntax = 'hyla generate FILE_PATH'
+  c.syntax = 'hyla generate PATH'
   c.description = 'Generate modules and asciidoc files from an asciidoc Table Of Content file'
-  c.option '--toc FILE_PATH', String, 'File Path of the asciidoc file containing the Table of Content'
-  c.option '--target_dir DIR_PATH', String, 'Target directory where content must be generated'
-  c.option '--project_name PROJECT_NAME', String, 'Project Name'
+  c.option '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
+  c.option '--d', '--destination [DIR]', String, 'Destination directory'
+  c.option '--p', '--project_name [PROJECT_NAME]', String, 'Project Name'
 
   c.action do |args, options|
 
@@ -76,7 +76,7 @@ command :generate do |c|
       exit(1)
     end
 
-    Hyla::Commands::Generate.process(args, options__hash__)
+    Hyla::Commands::Generate.process(args, options.__hash__)
   end
 end
 

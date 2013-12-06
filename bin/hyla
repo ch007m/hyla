@@ -110,7 +110,7 @@ command :reload do |c|
   c.description = 'Reload browser whenever files have been updated'
 
   c.action do |args, options|
-    Hyla.reload.start(args,options.__hash__)
+    Hyla.reload.start(options.__hash__)
   end
 end
 

@@ -6,26 +6,25 @@ module Hyla
 
       attr_reader :web_sockets, :thread, :options
 
+      DEFAULT_OPTIONS =   {
+          host:           '0.0.0.0',
+          port:           '35729',
+          apply_css_live: true,
+          override_url:   false,
+          grace_period:   0
+      }
+
+      @@web_sockets = []
+
       def initialize()
-        # puts "We have been called"
+        # puts "Reload Class initialized !"
+        @options = DEFAULT_OPTIONS.clone
+        @Websocket ||= Hyla::WebSocket
       end
 
-      def start(args, options)
-
-        @options = {
-            host:           '0.0.0.0',
-            port:           '35729',
-            apply_css_live: true,
-            override_url:   false,
-            grace_period:   0
-        }.merge(options)
-
-        @web_sockets = []
-
-        @Websocket ||= Hyla::WebSocket
-
+      def start(options)
+        @options.merge(options)
         @thread = thread.new _start_reactor
-
       end
 
       def stop
@@ -35,18 +34,23 @@ module Hyla
       def reload_browser(paths = [])
         Hyla.logger.info "Reloading browser: #{paths.join(' ')}"
         paths.each do |path|
+          Hyla.logger.info(path)
           data = _data(path)
-          Hyla.logger.debug(data)
-          web_sockets.each { |ws| ws.send(MultiJson.encode(data)) }
+          Hyla.logger.info(data)
+          @@web_sockets.each { |ws| ws.send(MultiJson.encode(data)) }
         end
       end
 
       private
 
       def _data(path)
+
+        # TODO Improve that
+        # path:    "#{Dir.pwd}/#{path}",
+
         data = {
             command: 'reload',
-            path:    "#{Dir.pwd}/#{path}",
+            path:    "#{path}",
             liveCSS: options[:apply_css_live]
         }
         if options[:override_url] && File.exist?(path)
@@ -74,7 +78,7 @@ module Hyla
                     protocols:  ['http://livereload.com/protocols/official-7'],
                     serverName: 'guard-livereload'
                 )
-        @web_sockets << ws
+        @@web_sockets << ws
       rescue
         Hyla.logger.error $!
         Hyla.logger.error $!.backtrace
@@ -82,7 +86,7 @@ module Hyla
 
       def _disconnect(ws)
         Hyla.logger.info "Browser disconnected."
-        @web_sockets.delete(ws)
+        @@web_sockets.delete(ws)
       end
 
       def _print_message(message)

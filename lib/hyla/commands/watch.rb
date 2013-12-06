@@ -1,16 +1,11 @@
 #require 'celluloid/autostart'
+require 'Hyla/WebSocket'
 
 module Hyla
   module Commands
     class Watch
 
       #include Celluloid
-
-      def initialize
-        #@cellulloid = Celluloid::Celluloid.new
-        #@cellulloid.boot
-        #Celluloid.logger.level = Logger::INFO
-      end
 
       DEFAULT_OPTIONS = {
           :watch_dir => '.',
@@ -27,6 +22,19 @@ module Hyla
           :safe => :unsafe,
           :header_footer => true
       }
+
+      WS_OPTIONS = {
+          :host => '0.0.0.0'
+      }
+
+      def initialize
+        #@cellulloid = Celluloid::Celluloid.new
+        #@cellulloid.boot
+        #Celluloid.logger.level = Logger::INFO
+
+        # We will start the WS Server used by LiveReload
+        @reload = Hyla::Commands::Reload.new
+      end
 
       def init(watchers = [], options = {})
         watchers = [] if !watchers
@@ -59,6 +67,11 @@ module Hyla
         merged_opts[:attributes] = {} unless merged_opts[:attributes]
         # set a flag to indicate running environment
         merged_opts[:attributes]['guard'] = ''
+      end
+
+      def start_ws_server()
+        @thread = Thread.new { @reload.start(WS_OPTIONS) }
+        Hyla.logger.debug "WS Server Started"
       end
 
       def listen(args, options = {})
@@ -104,6 +117,9 @@ module Hyla
           exit 0
         end
 =end
+
+        # Start WS Server used by Livereload
+        start_ws_server()
 
         @opts = DEFAULT_OPTIONS.clone
         @received_opts = options
@@ -166,14 +182,20 @@ module Hyla
           # and create dir in watched dir
           rel_dir = substract_watch_dir(dir_file, @opts[:watch_dir])
           calc_dir = @opts[:to_dir] + rel_dir
-          Hyla.logger.info ">> Directory of the file to be generated : #{calc_dir}"
           FileUtils.makedirs calc_dir
 
           @opts[:to_dir] = calc_dir
 
-          Hyla.logger.info ">> Asciidoctor options : #{@opts}"
+          Hyla.logger.info ">> Directory of the file to be generated : #{calc_dir}"
+          Hyla.logger.debug ">> Asciidoctor options : #{@opts}"
 
+          # Render Asciidoc document
           Asciidoctor.render_file(f, @opts)
+
+          # Refresh browser
+          path = []
+          path.push(calc_dir)
+          @reload.reload_browser(path)
         end
       end
 

@@ -23,12 +23,14 @@ require 'asciidoctor'
 require 'eventmachine'
 require 'em-websocket'
 require 'http/parser'
+require 'multi_json'
 
 
 # internal requires
 require 'hyla/logger'
 require 'hyla/training'
 require 'hyla/configuration'
+require 'Hyla/WebSocket'
 
 # extensions
 require_all 'hyla/commands'

@@ -2,12 +2,12 @@
 
 Hyla is a command line tool to create a new documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow using asciidoc(tro) as markup language. It also support to watch files and render them on the fly for browser configured with Livereload. The content generated is served by a HTTP server.
 
-The ![hyla](hyla_frog.jpg) project name comes from an arborical [frog](http://en.wikipedia.org/wiki/Hyla) living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
+The image::hyla_frog.jpg[Hyla Frog, 100, 100] project name comes from an arborical http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
 == Prerequisites
 
-- [Ruby](https://www.ruby-lang.org/en/) > 1.9.3
-- [RubyGems](http://guides.rubygems.org/) to install Ruby Applications
+- https://www.ruby-lang.org/en/[Ruby] > 1.9.3
+- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
 
 == Installation
 

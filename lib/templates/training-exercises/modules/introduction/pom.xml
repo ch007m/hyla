@@ -9,10 +9,10 @@
   </parent>
 
   <groupId>${groupId}.${training-code}</groupId>
-  <artifactId>A</artifactId>
+  <artifactId>introduction</artifactId>
   <packaging>jar</packaging>
 
-  <name>GPE :: ${training-name} Training :: Module A</name>
+  <name>Hyla :: ${training-name} Training :: Module A</name>
 
   <dependencies>
     <dependency>
@@ -33,7 +33,7 @@
         </configuration>
       </plugin>
 
-      <!-- Copy GPE Training Resources - Asciidoc conf file, stylesheets, javascript required to generate pages
+      <!-- Copy Hyla Training Resources - Asciidoc conf file, stylesheets, javascript required to generate pages
            using Hy common Dependency -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

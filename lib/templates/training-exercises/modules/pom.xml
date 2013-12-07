@@ -11,10 +11,10 @@
   <artifactId>modules</artifactId>
   <packaging>pom</packaging>
 
-  <name>GPE :: ${training-name} Training :: Modules</name>
+  <name>Hyla :: ${training-name} Training :: Modules</name>
 
   <modules>
-    <module>A</module>
+    <module>introduction</module>
   </modules>
 
   <profiles>

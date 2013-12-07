@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * GPE Training :Unit test
+ * Simple Hello World Unit test
  */
 public class HelloWorldTest {
 

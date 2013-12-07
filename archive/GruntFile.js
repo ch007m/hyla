@@ -8,7 +8,7 @@ module.exports = function (grunt) {
     // Retrieve Module & Mode from command line options
     var MODULE = grunt.option('module') || 'A';
     var MODE = grunt.option('mode') || 'LMSClass';
-    var THEME = grunt.option('css') || 'gpe_theme.css';
+    var THEME = grunt.option('css') || 'my_theme.css';
     var BACKEND = grunt.option('backend') || 'html5';
     var BACKEND_DIR;
 

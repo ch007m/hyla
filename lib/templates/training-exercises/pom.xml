@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>com.redhat.gpe.hyla</groupId>
+    <groupId>org.apache.hyla</groupId>
     <artifactId>parent</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
@@ -13,12 +13,12 @@
   <version>${version}</version>
   <packaging>pom</packaging>
 
-  <name>GPE :: ${training-name} Training Project</name>
-  <description>${training-name} GPE Training Project</description>
+  <name>Hyla :: ${training-name} Training Project</name>
+  <description>${training-name} Hyla Training Project</description>
 
   <properties>
     <!-- Project -->
-    <resources.location>com.redhat.gpe.hyla:common:1.0-SNAPSHOT</resources.location>
+    <resources.location>org.apache.hyla:common:1.0-SNAPSHOT</resources.location>
     <generated.doc>${project.build.directory}/generated-docs</generated.doc>
     <theme>my_theme.css</theme>
     <stylesheet.location>${project.build.directory}/maven-shared-archive-resources/css</stylesheet.location>

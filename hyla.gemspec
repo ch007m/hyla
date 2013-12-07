@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.email         = ["ch007m@gmail.com"]
   s.description   = Hyla::DESCRIPTION
   s.summary       = Hyla::SUMMARY
-  s.homepage      = ""
-  s.license       = "MIT"
+  s.homepage      = "https://github.com/cmoulliard/asciidoctor-hyla"
+  s.license       = "Apache License 2.0"
 
   s.files         = `git ls-files`.split($/)
   s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }

@@ -2,7 +2,7 @@
 
 Hyla is a command line tool to create a new documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow using asciidoc(tro) as markup language. It also support to watch files and render them on the fly for browser configured with Livereload. The content generated is served by a HTTP server.
 
-The [hyla](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Hyla_arborea01.jpg/290px-Hyla_arborea01.jpg) project name comes from an arborical frog living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
+The ![hyla](hyla_frog.jpg) project name comes from an arborical [frog](http://en.wikipedia.org/wiki/Hyla) living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
 ## Prerequisites
 

@@ -1,6 +1,13 @@
-# Asciidoctor::Hyla
+# Hyla
 
-TODO: Write a gem description
+Hyla is a command line tool to create a new documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow using asciidoc(tro) as markup language. It also support to watch files and render them on the fly for browser configured with Livereload. The content generated is served by a HTTP server.
+
+The [hyla](http://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Hyla_arborea01.jpg/290px-Hyla_arborea01.jpg) project name comes from an arborical frog living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
+
+## Prerequisites
+
+- [Ruby](https://www.ruby-lang.org/en/) > 1.9.3
+- [RubyGems](http://guides.rubygems.org/) to install Ruby Applications
 
 ## Installation
 
@@ -16,12 +23,21 @@ Or install it yourself as:
 
     $ gem install hyla
 
+## For Developer's only
+
+    gem build hyla.gemspec
+    sudo gem install hyla-0.1.0.gem
+
 ## Usage
 
-gem build hyla.gemspec
-sudo gem install hyla-0.1.0.gem
+Open a terminal and move to the folder where you would like to crreate a new project or develop an existing. As Hyla is command line tool, it will be used with one of the following commands :
 
-## Commands
+    create               Creates a new file from asciidoc artefacts for an existing project
+    generate             Generate modules and asciidoc files from an asciidoc Table Of Content file
+    help                 Display global or [command] help documentation.
+    new                  Creates a new Hyla project using a template or blank to the PATH specified
+    serve                Serve locally your site
+    watch                Watch directories for any change, add or file deleted and render document (HTML5)
 
 More info about options and commands available can be find by running the `command line tool`
 

@@ -1,15 +1,15 @@
-# Hyla
+= Hyla
 
 Hyla is a command line tool to create a new documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow using asciidoc(tro) as markup language. It also support to watch files and render them on the fly for browser configured with Livereload. The content generated is served by a HTTP server.
 
 The ![hyla](hyla_frog.jpg) project name comes from an arborical [frog](http://en.wikipedia.org/wiki/Hyla) living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
-## Prerequisites
+== Prerequisites
 
 - [Ruby](https://www.ruby-lang.org/en/) > 1.9.3
 - [RubyGems](http://guides.rubygems.org/) to install Ruby Applications
 
-## Installation
+== Installation
 
 Add this line to your application's Gemfile:
 
@@ -23,12 +23,12 @@ Or install it yourself as:
 
     $ gem install hyla
 
-## For Developer's only
+== For Developer's only
 
     gem build hyla.gemspec
     sudo gem install hyla-0.1.0.gem
 
-## Usage
+== Usage
 
 Open a terminal and move to the folder where you would like to crreate a new project or develop an existing. As Hyla is command line tool, it will be used with one of the following commands :
 
@@ -45,7 +45,7 @@ More info about options and commands available can be find by running the `comma
 
 Here are some examples of commands to create a new project, add artefacts (asciidoc files) watch resources and serve it using HTTP Server
 
-### New project
+=== New project
 
 A Blank project
 
@@ -57,7 +57,7 @@ A  Sample Project (training-exercises)
     hyla new --template_type training-exercises ~/Temp/MyTrainingProject
 
 
-### Add artefact to a project
+=== Add artefact to a project
 
 Asciidoc(tor) documents
 
@@ -70,7 +70,7 @@ Slideshow
 
     hyla create --t slideshow  --a deckjs --d ~/Temp/MyBlankProject
 
-### Generate Asciidoctor project from a Table of Content
+=== Generate Asciidoctor project from a Table of Content
 
 The entry point of a Documention site, Training, Publication or Book will consist most of the time to create
 a Table Of Content which is a collection of modules with chapters that we will develop. As this process to elaborate
@@ -111,14 +111,14 @@ slideshow presentation using as backend (DeckJS, DZSlides, ...) later on
 
     >> Project Name : my-project <<
     >> Directory created : ~/Temp/MyBookProject/A_Introduction_module <<
-       # File created : 1_Chapter
-       # File created : 2_Chapter
-       # File created : 3_Chapter
+       = File created : 1_Chapter
+       = File created : 2_Chapter
+       = File created : 3_Chapter
     >> Directory created : ~/Temp/MyBookProject/B_Instruction_module <<
-       # File created : 1_Chapter
+       = File created : 1_Chapter
     >> Directory created : /Users/chmoulli/Temp/MyBookProject/C_Installation_module <<
-       # File created : 1_Chapter
-       # File created : 2_Chapter
+       = File created : 1_Chapter
+       = File created : 2_Chapter
 
 
 

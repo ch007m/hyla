@@ -9,14 +9,35 @@ module Hyla
         # Create Directory for the Project
         #
         new_project_path = File.expand_path(args.join(" "), Dir.pwd)
-        FileUtils.mkdir_p new_project_path
-        if preserve_source_location?(new_project_path, options)
-          Hyla.logger.error "Conflict: ", "#{new_project_path} exists and is not empty."
-          exit(1)
+
+        if Dir.exist? new_project_path
+
+          Hyla.logger.debug("Dir exists: #{new_project_path}")
+
+          # If force is selected, then we delete & recreate it to clen content
+          if options[:force]
+            Hyla.logger.debug("Force option selected")
+            # DOES NOT WORK ON Mac OS X
+            # FileUtils.rmdir(new_project_path)
+            FileUtils.rm_rf new_project_path
+            # Create Directory
+            FileUtils.mkdir_p new_project_path
+            Hyla.logger.debug("Dir recreated it")
+          end
+
+          # Preserve content if it exists
+          if preserve_content?(new_project_path)
+            Hyla.logger.error "Conflict: ", "#{new_project_path} exists and is not empty."
+            exit(1)
+          end
+
+        else
+          # Create Directory
+          FileUtils.mkdir_p new_project_path
         end
 
         #
-        # Create blank poject with 2 directories and readme file
+        # Create blank project
         # or copy sample project from template directory
         #
         if options[:blank]
@@ -47,9 +68,9 @@ module Hyla
       end
 
       #
-      # Preserve source location is folder is not empty and option force is not anable
-      def self.preserve_source_location?(path, options)
-        !options[:force] && !Dir["#{path}/**/*"].empty?
+      # Preserve source location is folder is not empty
+      def self.preserve_content?(path)
+        !Dir["#{path}/**/*"].empty?
       end
 
       # Template Location

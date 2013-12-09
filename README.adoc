@@ -52,7 +52,7 @@ A Blank project
 
 A  Sample Project (training-exercises)
 
-    hyla new --template_type training-exercises ~/Temp/MyTrainingProject
+    hyla new --template_type training ~/Temp/MyTrainingProject
 
 
 === Add artefact to a project

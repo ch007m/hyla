@@ -19,12 +19,10 @@ module Hyla
       }
 
       WS_OPTIONS = {
-          :host => '0.0.0.0'
+          :base_url => '/modules'
       }
 
       def initialize
-        # We will start the WS Server used by LiveReload
-        @reload = Hyla::Commands::Reload.new
       end
 
       def init(watchers = [], options = {})
@@ -60,26 +58,35 @@ module Hyla
         merged_opts[:attributes]['guard'] = ''
       end
 
-      def start_ws_server()
-        @thread = Thread.new { @reload.start(WS_OPTIONS) }
-        Hyla.logger.debug "WS Server Started"
+      def self.start_ws_server()
+        Thread.new { @reload.process(WS_OPTIONS) }
+
+        # DOES NOT WORK - WE MUST HAVE A SEPARATE THREAD TO
+        # # WATCH FILE
+        # @reload.process(options = {})
       end
 
       def self.process(args, options = {})
 
         # Start WS Server used by Livereload
-        # start_ws_server()
+        # self.start_ws_server()
+
+        @reload = Hyla::Commands::Reload.new
+        @t1 = Thread.new {
+          @reload.process(WS_OPTIONS)
+        }
 
         @opts = DEFAULT_OPTIONS.clone
+
+        if options.has_key? :destination
+          @opts[:to_dir] = File.expand_path options[:destination]
+        end
+
+        if options.has_key? :source
+          @opts[:watch_dir] = File.expand_path options[:source]
+        end
+
         @received_opts = options
-
-        if options.has_key? :out_dir
-          @opts[:to_dir] = options[:out_dir]
-        end
-
-        if options.has_key? :watch_dir
-          @opts[:watch_dir] = options[:watch_dir]
-        end
 
         #
         # Guard Listen Callback
@@ -104,17 +111,18 @@ module Hyla
 
         Hyla.logger.info ">> Hyla has started to watch files in this output dir :  #{@opts[:watch_dir]}"
         Hyla.logger.info ">> Results of Asciidoctor generation will be available here : #{@opts[:to_dir]}"
-        listener = Listen.to!('../data/generated', &callback)
+        listener = Listen.to!(@opts[:watch_dir], &callback)
 
-        trap(:INT){
+        trap(:INT) {
           Hyla.logger.info "Interrupt intercepted"
+          @t1.kill
           Thread.kill
         }
+      end
 
+      # listen
 
-      end # listen
-
-      def call_asciidoctor(f)
+      def self.call_asciidoctor(f)
         dir_file = File.dirname(f)
         file_to_process = Pathname.new(f).basename
         @ext_name = File.extname(file_to_process)
@@ -130,13 +138,17 @@ module Hyla
           # TODO when it is called a second time
           # Workaround - reset list, add again :out_dir
           @opts[:attributes] = {}
-          @opts[:to_dir] = @received_opts[:out_dir]
+          @opts[:to_dir] = @received_opts[:destination]
 
           # Calculate Asciidoc to_dir relative to the dir of the file to be processed
           # and create dir in watched dir
           rel_dir = substract_watch_dir(dir_file, @opts[:watch_dir])
-          calc_dir = @opts[:to_dir] + rel_dir
-          FileUtils.makedirs calc_dir
+          if !rel_dir.empty?
+            calc_dir = File.expand_path @opts[:to_dir] + rel_dir
+            FileUtils.makedirs calc_dir
+          else
+            calc_dir = File.expand_path @opts[:to_dir]
+          end
 
           @opts[:to_dir] = calc_dir
 
@@ -146,15 +158,16 @@ module Hyla
           # Render Asciidoc document
           Asciidoctor.render_file(f, @opts)
 
-          # Refresh browser
+          # Refresh browser connected using LiveReload
           path = []
           path.push(calc_dir)
+          # TODO
           @reload.reload_browser(path)
         end
       end
 
-      def substract_watch_dir(file_dir, watched_dir)
-        s = file_dir.sub(watched_dir,'')
+      def self.substract_watch_dir(file_dir, watched_dir)
+        s = file_dir.sub(watched_dir, '')
         Hyla.logger.info ">> Relative directory : #{s}"
         s
       end

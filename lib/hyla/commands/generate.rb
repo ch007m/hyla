@@ -65,8 +65,8 @@ module Hyla
             FileUtils.mkdir_p new_dir
             Dir.chdir(new_dir)
 
-            # Add images directory
-            Dir.mkdir('images')
+            # Add image directory
+            Dir.mkdir('image')
 
             #
             # Create an index file

@@ -67,7 +67,7 @@
             <configuration>
               <outputDirectory>${project.build.directory}/generated-docs/${mode}/${project.artifactId}</outputDirectory>
               <resources>
-                <!-- Copy local resources images, audio and video -->
+                <!-- Copy local resources image, audio and video -->
                 <resource>
                   <directory>${project.basedir}/docs</directory>
                   <includes>

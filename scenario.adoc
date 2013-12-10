@@ -32,6 +32,7 @@
 === 1. Create a project using a template (training)
 
     ./hyla new --force --t training ~/hyla/MyTrainingProject
+    ./hyla new --force --t training-exercises ~/hyla/MyTrainingExercisesProject
 
 === 2. Generate content and watch it
 
@@ -52,9 +53,9 @@
 == 4. Server content locally - HTTP Server
 
     ./hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
-    
-== 5. Testwith Camel ToC
-    
+
+== 5. Test with Camel ToC
+
     ./hyla generate --r toc2html --p gpe-camel-training --d ~/hyla/gpe-camel-training --toc ~/hyla/camel.adoc
 
 

@@ -38,7 +38,9 @@ module Hyla
 
     end
 
+    # 
     # Templates Location
+    #
     def templates
       File.expand_path(@TEMPLATES, File.dirname(__FILE__))
     end

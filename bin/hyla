@@ -36,9 +36,9 @@ end
 command :new do |c|
   c.syntax = 'hyla new PATH'
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
-  c.option '--force', 'Force creation even if PATH already exists'
-  c.option '--blank', 'Creates project but with empty files'
-  c.option '--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, training, training-exercises, blog, web, ...)'
+  c.option '--f','--force', 'Force creation even if PATH already exists'
+  c.option '--b','--blank', 'Creates project but with empty files'
+  c.option '--t','--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, training, training-exercises, blog, web, ...)'
 
   c.action do |args, options|
     Hyla::Commands::New.process(args, options.__hash__)
@@ -116,15 +116,6 @@ command :serve do |c|
 end
 alias_command :server, :serve
 
-# Reload
-command :reload do |c|
-  c.syntax = 'hyla reload [options]'
-  c.description = 'Reload HTML files generated within the browser - Livereload using WebSocket Server'
-
-  c.action do |args, options|
-    Hyla::Commands::Reload.process(options.__hash__)
-  end
-end
 
 # NOT YET AVAILABLE
 
@@ -134,10 +125,9 @@ end
 command :reload do |c|
   c.syntax = 'hyla reload [options]'
   c.description = 'Reload HTML files generated within the browser - Livereload using WebSocket Server'
-  c.option '--watch_dir DIR', String, 'Directory to be watched'
 
   c.action do |args, options|
-    Hyla::Commands::Reload.process(args,options.__hash__)
+    Hyla::Commands::Reload.process(options.__hash__)
   end
 end
 

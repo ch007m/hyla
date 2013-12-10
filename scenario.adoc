@@ -54,10 +54,6 @@
 
     ./hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
 
-== 5. Test with Camel ToC
-
-    ./hyla generate --r toc2html --p gpe-camel-training --d ~/hyla/gpe-camel-training --toc ~/hyla/camel.adoc
-
 
 
 

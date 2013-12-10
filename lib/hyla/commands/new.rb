@@ -5,6 +5,8 @@ module Hyla
       def self.process(args, options = {})
         raise ArgumentError.new('You must specify a destination.') if args.empty?
 
+        @config = Hyla::Configuration.new
+
         #
         # Create Directory for the Project
         #
@@ -64,18 +66,15 @@ module Hyla
       # Create a Sample Project
       # from a Template
       def self.create_sample_project(path, type)
-        FileUtils.cp_r templates + '/' + type + '/.', path
+        # TODO Test with ['',''] * '/'
+        source = @config.templates + '/' + type + '/.'
+        FileUtils.cp_r source, path
       end
 
       #
       # Preserve source location is folder is not empty
       def self.preserve_content?(path)
         !Dir["#{path}/**/*"].empty?
-      end
-
-      # Template Location
-      def self.templates
-        File.expand_path("../../templates", File.dirname(__FILE__))
       end
 
     end # class

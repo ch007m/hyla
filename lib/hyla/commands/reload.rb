@@ -15,14 +15,10 @@ module Hyla
       @@web_sockets = []
 
       def initialize()
-        # puts "Reload Class initialized !"
-        @options = DEFAULT_OPTIONS.clone
-        @Websocket ||= Hyla::WebSocket
       end
 
       def process(options)
-        @options = DEFAULT_OPTIONS.clone
-        @options.merge(options)
+        @options = DEFAULT_OPTIONS.clone.merge(options)
         @Websocket ||= Hyla::WebSocket
         _start
       end
@@ -50,12 +46,11 @@ module Hyla
       private
 
       def _start
-        # Thread.new _start_reactor
         _start_reactor
       end
 
       def _stop
-        #thread.kill
+        thread.kill
       end
 
       def _data(path)

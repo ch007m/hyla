@@ -4,16 +4,30 @@ module Hyla
 
       attr_reader :artefact
 
+      DEFAULT_OPTIONS = {
+          :watch_dir => '.',
+          :watch_ext => %w(ad adoc asc asciidoc txt index),
+          :run_on_start => false,
+          :backend => 'html5',
+          :eruby => 'erb',
+          :doctype => 'article',
+          :compact => false,
+          :attributes => {},
+          :always_build_all => false,
+          :safe => :unsafe,
+          :header_footer => true
+      }
+
       def self.process(args, options = {})
 
         @config = Hyla::Configuration.new
 
-        rendering = options[:rendering] if self.check_mandatory_option?('--r / --rendering',options[:rendering])
+        rendering = options[:rendering] if self.check_mandatory_option?('--r / --rendering', options[:rendering])
 
         case rendering
           when 'toc2html'
 
-            Hyla.logger.warn "Rendering : Table of Content to HTML"
+            Hyla.logger.info "Rendering : Table of Content to HTML"
             self.check_mandatory_option?('--t / --toc', options[:toc])
             @toc_file = options[:toc]
             @out_dir = options[:destination]
@@ -24,7 +38,7 @@ module Hyla
 
           when 'adoc2html'
 
-            Hyla.logger.warn "Rendering : Asciidoc to HTML"
+            Hyla.logger.info "Rendering : Asciidoc to HTML"
             self.check_mandatory_option?('--s / --source', options[:source])
             self.check_mandatory_option?('--d / --destination', options[:destination])
             @destination = options[:destination]
@@ -33,7 +47,7 @@ module Hyla
             self.asciidoc_to_html(@source, @destination)
 
           when 'adoc2slides'
-            Hyla.logger.warn "Rendering : Asciidoc to SlideShow - NOT YET AVAILABLE"
+            Hyla.logger.info "Rendering : Asciidoc to SlideShow - NOT YET AVAILABLE"
           else
             Hyla.logger.error ">> Unknow rendering"
             exit(1)
@@ -44,8 +58,51 @@ module Hyla
       end
 
       def self.asciidoc_to_html(source, destination)
-        Hyla.logger.info ">>      Source dir: #{source}"
-        Hyla.logger.info ">> Destination dir: #{destination}"
+
+        options = DEFAULT_OPTIONS.clone
+
+        # Move to Source directory & Retrieve Asciidoctor files to be processed
+        source = File.expand_path source
+        @destination = File.expand_path destination
+        Hyla.logger.info ">>       Source dir: #{source}"
+        Hyla.logger.info ">>  Destination dir: #{@destination}"
+
+        Dir.chdir(source)
+        current_dir = Dir.pwd
+        Hyla.logger.info ">>       Current dir: #{current_dir}"
+
+        # Delete destination directory
+        FileUtils.rm_rf(Dir.glob(@destination))
+
+        # Search for Asciidoc files and do the rendering
+        adoc_file_paths = []
+        Find.find(current_dir) do |path|
+           if path =~ /.*\.(?:adoc|txt|index)$/
+             path1 = Pathname.new(source)
+             path2 = Pathname.new(path)
+             relative_path = path2.relative_path_from(path1).to_s
+             Hyla.logger.debug ">>       Relative path: #{relative_path}"
+             adoc_file_paths << relative_path
+
+             # Create directory in the destination directory
+             html_dir = @destination + '/' + File.dirname(relative_path)
+             Hyla.logger.info ">>        Dir of html: #{html_dir}"
+             FileUtils.mkdir_p html_dir
+
+             # Render asciidoc to HTML
+             Hyla.logger.info ">> File to be rendered : #{path}"
+             options[:to_dir] = html_dir
+             Asciidoctor.render_file(path, options)
+
+           end
+        end
+
+        # No asciidoc files retrieved
+        if adoc_file_paths.empty?
+          Hyla.logger.info "     >>   No asciidoc files retrieved."
+          exit(1)
+        end
+
       end
 
       #
@@ -147,7 +204,7 @@ module Hyla
           # Add Content to file if it exists and line does not start with characters to be skipped
           #
           if !@new_f.nil? and !line.start_with?(@config.SKIP_CHARACTERS)
-              @new_f.puts line
+            @new_f.puts line
           end
 
         end

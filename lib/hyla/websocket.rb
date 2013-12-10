@@ -1,3 +1,7 @@
+require 'eventmachine'
+require 'em-websocket'
+require 'http/parser'
+
 module Hyla
   class WebSocket < EventMachine::WebSocket::Connection
 

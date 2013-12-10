@@ -50,7 +50,7 @@ A Blank project
     hyla new --blank ~/Temp/MyBlankProject
 
 
-A  Sample Project (training-exercises)
+A  Sample Project using as template --> training
 
     hyla new --template_type training ~/Temp/MyTrainingProject
 
@@ -92,7 +92,7 @@ to generate a collection of folders (= modules) containing files which represent
 For each module (= Module), an index file is also created including the files listed in a module. That can be serve to generate a
 slideshow presentation using as backend (DeckJS, DZSlides, ...) later on
 
-    hyla generate --p my-project --d ~/Temp/MyBlankProject/  --r toc2html --toc ~/MyProjects/asciidoctor-hyla/data/toc.adoc
+    hyla generate --p my-project --d ~/Temp/TocProject/  --r toc2html --toc ~/MyProjects/hyla/data/toc.adoc
 
     >> Project Name : my-project <<
     >> Directory created : ~/Temp/MyBookProject/A_Introduction_module <<
@@ -107,7 +107,7 @@ slideshow presentation using as backend (DeckJS, DZSlides, ...) later on
 
 === Generate HTML pages from Asciidoc
 
-    hyla generate --s ~/Temp/MyTrainingProject/ --d ~/Temp/MyTrainingProject/generated_content/ --r adoc2html
+    hyla generate --s ~/Temp/MyTocProject/ --d ~/Temp/MyToCProject/generated_content/ --r adoc2html
 
 === Watch content Live
 
@@ -115,10 +115,11 @@ While you develop asciidoc(tor) documents, it is interesting to consult the file
 as a WebSocket server is exposed for the browser. To watch files and let's asciidoctor to render them, simply open a terminal and provide as
  parameter the source directory containing the files to be watched.
 
-    hyla watch --watch_dir ~/Temp/MyTrainingProject/ --out_dir ~/Temp/MyTrainingProject/generated_content/
+    hyla watch --s ~/Temp/MyTocProject/ --d ~/Temp/MyTocProject/generated_content/
 
+=== Serve your content locally
 
-To simplify your life, a simple HTTP Server can be started by Hyla and will allow to consult/browse HTML files. In this case, start this
+To simplify your life, a simple HTTP Server can be started by Hyla and will allow to consult/browse HTML files generated. In this case, start this
 Hyla command in another Terminal
 
     hyla serve -P 4000 -H localhost --out_dir ~/Temp/MyTrainingProject/generated_content/ -b /hyla/

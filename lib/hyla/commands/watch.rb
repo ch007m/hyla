@@ -58,25 +58,15 @@ module Hyla
         merged_opts[:attributes]['guard'] = ''
       end
 
-      def self.start_ws_server()
+      def self.start_livereload
+        @reload = Hyla::Commands::Reload.new
         Thread.new { @reload.process(WS_OPTIONS) }
-
-        # DOES NOT WORK - WE MUST HAVE A SEPARATE THREAD TO
-        # # WATCH FILE
-        # @reload.process(options = {})
       end
 
       def self.process(args, options = {})
 
-        # Start WS Server used by Livereload
-        # self.start_ws_server()
-
-=begin
-        @reload = Hyla::Commands::Reload.new
-        @t1 = Thread.new {
-          @reload.process(WS_OPTIONS)
-        }
-=end
+        # Start LiveReload
+        self.start_livereload
 
         @opts = DEFAULT_OPTIONS.clone
 
@@ -111,13 +101,16 @@ module Hyla
           end
         end # callback
 
+        Hyla.logger.info ">> ... Starting"
         Hyla.logger.info ">> Hyla has started to watch files in this output dir :  #{@opts[:watch_dir]}"
         Hyla.logger.info ">> Results of Asciidoctor generation will be available here : #{@opts[:to_dir]}"
+
+        # TODO : Investigate issue with Thread pool is not running (Celluloid::Error)
+        # when using a more recent version of guard listen
         listener = Listen.to!(@opts[:watch_dir], &callback)
 
         trap(:INT) {
           Hyla.logger.info "Interrupt intercepted"
-          @t1.kill
           Thread.kill
         }
       end
@@ -164,7 +157,7 @@ module Hyla
           path = []
           path.push(calc_dir)
           # TODO
-         # @reload.reload_browser(path)
+          @reload.reload_browser(path)
         end
       end
 

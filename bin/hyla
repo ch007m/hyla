@@ -98,10 +98,10 @@ command :watch do |c|
 end
 
 
-# Serve
+# Serve your content locally
 command :serve do |c|
   c.syntax = 'hyla serve [options]'
-  c.description = 'Serve locally your site'
+  c.description = 'Serve your content locally'
   c.option '--out_dir DIR', String, 'Output directory where content must be generated'
   c.option '-B', '--detach', 'Run the server in the background (detach)'
   c.option '-P', '--port [PORT]', 'Port to listen on'

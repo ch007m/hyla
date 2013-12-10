@@ -1,47 +1,47 @@
-= Prerequisites
+== Prerequisites
 
-== 1. Delete Temp directory
+==== 1. Delete Temp directory
 
     rm -rf ~/hyla/MyBlankProject/
     rm -rf ~/hyla/MyTocProject/
     rm -rf ~/hyla/MyTrainingProject/
 
-= 1.Create a Blank Project
+== 1.Create a Blank Project
 
-== 1. Create a new project
+=== 1. Create a new project
 
     ./hyla new --blank ~/hyla/MyBlankProject
 
-== 2. Idem but with force option
+=== 2. Idem but with force option
 
     ./hyla new --blank ~/hyla/MyBlankProject --force
 
-== 3. Add an artefact (article, audio, video)
+=== 3. Add an artefact (article, audio, video)
 
     ./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
     ./hyla create --t asciidoc  --a audio --d ~/hyla/MyBlankProject
     ./hyla create --t asciidoc  --a video --d ~/hyla/MyBlankProject
     ./hyla create --t asciidoc  --a source_highlight --d ~/hyla/MyBlankProject
 
-== 4. Generate HTML Content of an existing project (asciidoc 2 html)
+=== 4. Generate HTML Content of an existing project (asciidoc 2 html)
 
     ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content
 
-= 2. Project from Template
+== 2. Project from Template
 
-== 1. Create a project using a template (training)
+=== 1. Create a project using a template (training)
 
     ./hyla new --force --t training ~/hyla/MyTrainingProject
 
-== 2. Generate content and watch it
+=== 2. Generate content and watch it
 
     ./hyla generate --r adoc2html --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
 
     ./hyla watch --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
 
-= 3. Table Of Content To asciidoc
+== 3. Table Of Content To asciidoc
 
-== 1. Generate an asciidoctor project from a Table of Content
+=== 1. Generate an asciidoctor project from a Table of Content
 
     ./hyla generate --r toc2html --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
 
@@ -49,13 +49,13 @@
 
     ./hyla watch --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
-= 4. TEST WITH CAMEL TOC
-
-    ./hyla generate --r toc2html --p gpe-camel-training --d ~/hyla/gpe-camel-training --toc ~/hyla/camel.adoc
-
-= 5. Server content locally - HTTP Server
+== 4. Server content locally - HTTP Server
 
     ./hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
+    
+== 5. Testwith Camel ToC
+    
+    ./hyla generate --r toc2html --p gpe-camel-training --d ~/hyla/gpe-camel-training --toc ~/hyla/camel.adoc
 
 
 

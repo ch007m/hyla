@@ -1,8 +1,10 @@
-== Delete Temp directory
+= Prerequisites
 
-rm -rf ~/hyla/MyBlankProject/
-rm -rf ~/hyla/MyTocProject/
-rm -rf ~/hyla/MyTrainingProject/
+== 1. Delete Temp directory
+
+    rm -rf ~/hyla/MyBlankProject/
+    rm -rf ~/hyla/MyTocProject/
+    rm -rf ~/hyla/MyTrainingProject/
 
 = 1.Create a Blank Project
 

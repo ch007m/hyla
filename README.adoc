@@ -92,8 +92,7 @@ to generate a collection of folders (= modules) containing files which represent
 For each module (= Module), an index file is also created including the files listed in a module. That can be serve to generate a
 slideshow presentation using as backend (DeckJS, DZSlides, ...) later on
 
-
-    hyla generate --p my-project --d ~/Temp/MyBookProject/ --toc ~/MyProjects/asciidoctor-hyla/data/toc.adoc
+    hyla generate --p my-project --d ~/Temp/MyBlankProject/  --r toc2html --toc ~/MyProjects/asciidoctor-hyla/data/toc.adoc
 
     >> Project Name : my-project <<
     >> Directory created : ~/Temp/MyBookProject/A_Introduction_module <<
@@ -106,6 +105,9 @@ slideshow presentation using as backend (DeckJS, DZSlides, ...) later on
        = File created : 1_Chapter
        = File created : 2_Chapter
 
+=== Generate HTML pages from Asciidoc
+
+    hyla generate --s ~/Temp/MyTrainingProject/ --d ~/Temp/MyTrainingProject/generated_content/ --r adoc2html
 
 === Watch content Live
 

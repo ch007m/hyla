@@ -8,12 +8,44 @@ module Hyla
 
         @config = Hyla::Configuration.new
 
-        @toc_file = options[:toc]
-        @out_dir = options[:destination]
-        @project_name = options[:project_name]
+        rendering = options[:rendering] if self.check_mandatory_option?('--r / --rendering',options[:rendering])
+
+        case rendering
+          when 'toc2html'
+
+            Hyla.logger.warn "Rendering : Table of Content to HTML"
+            self.check_mandatory_option?('--t / --toc', options[:toc])
+            @toc_file = options[:toc]
+            @out_dir = options[:destination]
+            @project_name = options[:project_name]
+
+
+            self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
+
+          when 'adoc2html'
+
+            Hyla.logger.warn "Rendering : Asciidoc to HTML"
+            self.check_mandatory_option?('--s / --source', options[:source])
+            self.check_mandatory_option?('--d / --destination', options[:destination])
+            @destination = options[:destination]
+            @source = options[:source]
+
+            self.asciidoc_to_html(@source, @destination)
+
+          when 'adoc2slides'
+            Hyla.logger.warn "Rendering : Asciidoc to SlideShow - NOT YET AVAILABLE"
+          else
+            Hyla.logger.error ">> Unknow rendering"
+            exit(1)
+        end
 
         # From Table of Content File to Asciidoc directories and Files
-        self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
+        # self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
+      end
+
+      def self.asciidoc_to_html(source, destination)
+        Hyla.logger.info ">>      Source dir: #{source}"
+        Hyla.logger.info ">> Destination dir: #{destination}"
       end
 
       #
@@ -33,8 +65,12 @@ module Hyla
         f = File.open(toc_file, 'r')
 
         # Re Create Directory of generated content
-        FileUtils.rm_rf out_dir if Dir.exist? out_dir
-        FileUtils.makedirs(out_dir)
+        if Dir.exist? out_dir
+          FileUtils.rm_rf out_dir
+          FileUtils.mkdir_p out_dir
+        else
+          FileUtils.mkdir_p out_dir
+        end
 
         #
         # Move to 'generated' directory as we will
@@ -152,6 +188,18 @@ module Hyla
         index_file.puts @config.HEADER_INDEX
 
         index_file
+      end
+
+      #
+      # Check mandatory options
+      #
+      def self.check_mandatory_option?(key, value)
+        if value.nil? or value.empty?
+          Hyla.logger.warn "Mandatory option missing: #{key}"
+          exit(1)
+        else
+          true
+        end
       end
 
     end # class

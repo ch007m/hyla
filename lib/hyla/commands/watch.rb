@@ -71,10 +71,12 @@ module Hyla
         # Start WS Server used by Livereload
         # self.start_ws_server()
 
+=begin
         @reload = Hyla::Commands::Reload.new
         @t1 = Thread.new {
           @reload.process(WS_OPTIONS)
         }
+=end
 
         @opts = DEFAULT_OPTIONS.clone
 
@@ -162,7 +164,7 @@ module Hyla
           path = []
           path.push(calc_dir)
           # TODO
-          @reload.reload_browser(path)
+         # @reload.reload_browser(path)
         end
       end
 

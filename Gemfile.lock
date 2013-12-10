@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     hyla (1.0)
-      asciidoctor
+      asciidoctor (~> 0.1.4)
       colorator (~> 0.1)
       commander (~> 4.1.3)
       em-websocket (~> 0.5)

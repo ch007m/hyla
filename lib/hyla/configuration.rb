@@ -22,6 +22,7 @@ module Hyla
                       ":navigation:\n" +
                       ":menu:\n" +
                       ":status:\n" +
+
                       "\n"
 
       @LEVEL_1 = '= '
@@ -38,7 +39,7 @@ module Hyla
 
     end
 
-    # 
+    #
     # Templates Location
     #
     def templates

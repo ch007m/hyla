@@ -6,6 +6,7 @@ The Hyla project name comes from an arborical http://en.wikipedia.org/wiki/Hyla[
 
 - https://www.ruby-lang.org/en/[Ruby] > 1.9.3
 - http://guides.rubygems.org/[RubyGems] to install Ruby Applications
+- ps://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby
 
 == Installation
 

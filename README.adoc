@@ -10,7 +10,14 @@ The Hyla project name comes from an arborical http://en.wikipedia.org/wiki/Hyla[
 
 == Installation
 
-Add this line to your application's Gemfile:
+Use `gem install` command to deploy Hyla :
+
+    $ gem install hyla -y
+    
+NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required 
+    
+
+An alternative is to create a Gemfile and add this line :
 
     gem 'hyla'
 
@@ -18,9 +25,7 @@ And then execute:
 
     $ bundle
 
-**Or** install it yourself as:
-
-    $ gem install hyla
+**Or** 
 
 == For Developer's only
 

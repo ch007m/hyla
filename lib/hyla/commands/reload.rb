@@ -4,29 +4,23 @@ module Hyla
 
       attr_reader :web_sockets, :thread, :options
 
-      DEFAULT_OPTIONS =   {
-          host:           '0.0.0.0',
-          port:           '35729',
+      DEFAULT_OPTIONS = {
+          host: '0.0.0.0',
+          port: '35729',
           apply_css_live: true,
-          override_url:   false,
-          grace_period:   0
+          override_url: false,
+          grace_period: 0
       }
 
       @@web_sockets = []
 
       def initialize()
-        # puts "Reload Class initialized !"
-        @options = DEFAULT_OPTIONS.clone
-        @Websocket ||= Hyla::WebSocket
       end
 
       def process(options)
-        @options.merge(options)
-        @thread = thread.new _start_reactor
-      end
-
-      def stop
-        # thread.kill
+        @options = DEFAULT_OPTIONS.clone.merge(options)
+        @Websocket ||= Hyla::WebSocket
+        _start
       end
 
       def reload_browser(paths = [])
@@ -34,12 +28,30 @@ module Hyla
         paths.each do |path|
           Hyla.logger.info(path)
           data = _data(path)
-          Hyla.logger.info(data)
+          Hyla.logger.info(">> Data received : #{data}")
+          @@web_sockets.each { |ws| ws.send(MultiJson.encode(data)) }
+        end
+      end
+
+      def reload_browser2(paths = [])
+        Hyla.logger.info "Reloading browser: #{paths.join(' ')}"
+        paths.each do |path|
+          Hyla.logger.info(path)
+          data = 'hyla/development/'
+          Hyla.logger.info(">> Data received : #{data}")
           @@web_sockets.each { |ws| ws.send(MultiJson.encode(data)) }
         end
       end
 
       private
+
+      def _start
+        _start_reactor
+      end
+
+      def _stop
+        thread.kill
+      end
 
       def _data(path)
 
@@ -48,8 +60,8 @@ module Hyla
 
         data = {
             command: 'reload',
-            path:    "#{path}",
-            liveCSS: options[:apply_css_live]
+            path: "#{path}",
+            liveCSS: @options[:apply_css_live]
         }
         if options[:override_url] && File.exist?(path)
           data[:overrideURL] = '/' + path
@@ -58,22 +70,22 @@ module Hyla
       end
 
       def _start_reactor
+        Hyla.logger.info "LiveReload is waiting for a browser to connect."
         EventMachine.epoll
         EventMachine.run do
-          EventMachine.start_server(options[:host], options[:port], @Websocket, {}) do |ws|
-            ws.onopen    { _connect(ws) }
-            ws.onclose   { _disconnect(ws) }
+          EventMachine.start_server(@options[:host], @options[:port], @Websocket, {}) do |ws|
+            ws.onopen { _connect(ws) }
+            ws.onclose { _disconnect(ws) }
             ws.onmessage { |msg| _print_message(msg) }
           end
-          Hyla.logger.info "LiveReload is waiting for a browser to connect."
         end
       end
 
       def _connect(ws)
         Hyla.logger.info "Browser connected."
         ws.send MultiJson.encode(
-                    command:    'hello',
-                    protocols:  ['http://livereload.com/protocols/official-7'],
+                    command: 'hello',
+                    protocols: ['http://livereload.com/protocols/official-7'],
                     serverName: 'guard-livereload'
                 )
         @@web_sockets << ws

@@ -15,7 +15,7 @@ module Hyla
 
       def self.copy_artefact(type, artefact_type, destination)
         artefact_name = type + '_' + artefact_type + @config.ADOC_EXT
-        source = [@config.LOC_ARTEFACT, artefact_name] * '/'
+        source = [@config.templates, 'sample', artefact_name] * '/'
         destination = [destination] * '/'
         FileUtils.cp(source, destination)
       end

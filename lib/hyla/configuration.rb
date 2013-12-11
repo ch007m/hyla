@@ -2,7 +2,7 @@ module Hyla
   class Configuration
 
     attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS,
-                :ADOC_EXT, :PREFIX_ARTEFACT, :LOC_ARTEFACT
+                :ADOC_EXT, :PREFIX_ARTEFACT, :TEMPLATES
 
     def initialize()
 
@@ -22,6 +22,7 @@ module Hyla
                       ":navigation:\n" +
                       ":menu:\n" +
                       ":status:\n" +
+
                       "\n"
 
       @LEVEL_1 = '= '
@@ -34,8 +35,15 @@ module Hyla
 
       @PREFIX_ARTEFACT  = 'asciidoc_'
 
-      @LOC_ARTEFACT = '../lib/templates/sample'
+      @TEMPLATES = '../../lib/templates'
 
+    end
+
+    #
+    # Templates Location
+    #
+    def templates
+      File.expand_path(@TEMPLATES, File.dirname(__FILE__))
     end
 
   end # Class Artefact

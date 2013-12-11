@@ -25,6 +25,7 @@ require 'em-websocket'
 require 'http/parser'
 require 'multi_json'
 require 'webrick'
+require 'find'
 
 # internal requires
 require 'hyla/logger'

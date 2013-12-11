@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email         = ["ch007m@gmail.com"]
   s.description   = Hyla::DESCRIPTION
   s.summary       = Hyla::SUMMARY
-  s.homepage      = "https://github.com/cmoulliard/asciidoctor-hyla"
+  s.homepage      = "https://github.com/cmoulliard/hyla"
   s.license       = "Apache License 2.0"
 
   s.files         = `git ls-files`.split($/)
@@ -21,12 +21,13 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'bundler', '~> 1.3'
   s.add_development_dependency 'rake', '~> 10.1'
   s.add_development_dependency 'rdoc', '~> 3.11'
+  # TODO - Review if guard / listen are mandatory deps
   # s.add_development_dependency 'guard', '~> 1.8.3'
   s.add_development_dependency 'listen', '~> 2.0'
 
   #  Ruby command-line executables
   s.add_runtime_dependency 'commander', '~> 4.1.3'
-  s.add_runtime_dependency 'asciidoctor'
+  s.add_runtime_dependency 'asciidoctor', '~> 0.1.4'
   s.add_runtime_dependency 'em-websocket', '~> 0.5'
   s.add_runtime_dependency 'multi_json',   '~> 1.8'
 

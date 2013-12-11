@@ -13,8 +13,7 @@ module Hyla
     program :int_block do
       # kill threads etc
       # make sure to exit or abort, otherwise your program keeps running
-
-      Hyla::logger.info "WE EXIT"
+      Hyla::logger.warn "CTRL-C / Shutdown command received"
       exit 1
     end
 

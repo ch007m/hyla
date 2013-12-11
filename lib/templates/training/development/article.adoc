@@ -1,4 +1,5 @@
 :icons: font
+:data-uri:
 
 == Links
 
@@ -40,15 +41,15 @@ Nullam tristique mauris vitae feugiat consectetur. Ut pellentesque turpis faucib
 
 == Image
 .Text of the picture
-image::images/hyla_frog.jpg[width="100%"]
+image::image/hyla_frog.jpg[width="40%"]
 
 == Admonition
 
-NOTE: This is an example of Note.
+NOTE: This is an example of NOTE.
 
-TIP:
+TIP: This is an example of TIP.
 
-WARNING:
+WARNING: This is an example of WARNING.
 
 == Table
 

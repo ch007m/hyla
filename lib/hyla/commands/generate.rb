@@ -6,13 +6,21 @@ module Hyla
 
       DEFAULT_OPTIONS = {
           :watch_dir => '.',
-          :watch_ext => %w(ad adoc asc asciidoc txt index),
+          :watch_ext => %w(ad adoc asciidoc txt index),
           :run_on_start => false,
           :backend => 'html5',
           :eruby => 'erb',
           :doctype => 'article',
           :compact => false,
-          :attributes => {},
+          :attributes => {
+              'source-highlighter' => 'coderay',
+              'linkcss!' => 'true',
+              'data-uri' => 'true',
+              #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
+              'deckjs_theme' => 'beamer',
+              # 'deckjs_transition'  => 'horizontal-slide' or 'beamer' or 'fade' or 'vertical-slide' or 'horizontal-slide'
+              'deckjs_transition' => 'fade'
+          },
           :always_build_all => false,
           :safe => :unsafe,
           :header_footer => true
@@ -20,19 +28,16 @@ module Hyla
 
       def self.process(args, options = {})
 
-        @config = Hyla::Configuration.new
-
         rendering = options[:rendering] if self.check_mandatory_option?('--r / --rendering', options[:rendering])
 
         case rendering
-          when 'toc2html'
+          when 'toc2adoc'
 
-            Hyla.logger.info "Rendering : Table of Content to HTML"
+            Hyla.logger.info "Rendering : Table of Content to Asciidoc"
             self.check_mandatory_option?('--t / --toc', options[:toc])
             @toc_file = options[:toc]
             @out_dir = options[:destination]
             @project_name = options[:project_name]
-
 
             self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
 
@@ -44,10 +49,38 @@ module Hyla
             @destination = options[:destination]
             @source = options[:source]
 
-            self.asciidoc_to_html(@source, @destination)
+            options = {
+                :watch_ext => %w(ad adoc asc asciidoc txt),
+            }
 
-          when 'adoc2slides'
-            Hyla.logger.info "Rendering : Asciidoc to SlideShow - NOT YET AVAILABLE"
+            extensions = 'adoc|ad|txt'
+
+            self.asciidoc_to_html(@source, @destination, extensions, options)
+
+          when 'adoc2slide'
+            Hyla.logger.info "Rendering : Asciidoc to SlideShow"
+            self.check_mandatory_option?('--s / --source', options[:source])
+            self.check_mandatory_option?('--d / --destination', options[:destination])
+            @destination = options[:destination]
+            @source = options[:source]
+            options = {
+                :backend => 'deckjs',
+                :menu => 'true',
+                :navigation => 'true',
+                :status => 'true',
+                :goto => 'true',
+                :toc => 'true',
+                :template_dirs => [
+                    # TODO NOT COMPLETED COMPARED TO MINE
+                    # '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends/haml/deckjs'
+                    '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends-forked/haml/deckjs'
+                ],
+                :watch_ext => %w(index)
+            }
+
+            extensions = 'index'
+
+            self.asciidoc_to_html(@source, @destination, extensions, options)
           else
             Hyla.logger.error ">> Unknow rendering"
             exit(1)
@@ -57,15 +90,22 @@ module Hyla
         # self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
       end
 
-      def self.asciidoc_to_html(source, destination)
+      def self.asciidoc_to_html(source, destination, extensions, options)
 
-        options = DEFAULT_OPTIONS.clone
+        @options = DEFAULT_OPTIONS.clone.merge(options)
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
         source = File.expand_path source
         @destination = File.expand_path destination
+
         Hyla.logger.info ">>       Source dir: #{source}"
         Hyla.logger.info ">>  Destination dir: #{@destination}"
+
+        # Exit if source directory does not exist
+        if !Dir.exist? source
+          Hyla.logger.error ">> Source directory does not exist"
+          exit(1)
+        end
 
         Dir.chdir(source)
         current_dir = Dir.pwd
@@ -74,27 +114,34 @@ module Hyla
         # Delete destination directory
         FileUtils.rm_rf(Dir.glob(@destination))
 
-        # Search for Asciidoc files and do the rendering
+        # Search for files using extensions parameter and do the rendering
         adoc_file_paths = []
         Find.find(current_dir) do |path|
-           if path =~ /.*\.(?:adoc|txt|index)$/
-             path1 = Pathname.new(source)
-             path2 = Pathname.new(path)
-             relative_path = path2.relative_path_from(path1).to_s
-             Hyla.logger.debug ">>       Relative path: #{relative_path}"
-             adoc_file_paths << relative_path
+          if path =~ /.*\.(?:#{extensions})$/
+            path1 = Pathname.new(source)
+            path2 = Pathname.new(path)
+            relative_path = path2.relative_path_from(path1).to_s
+            Hyla.logger.debug ">>       Relative path: #{relative_path}"
+            adoc_file_paths << relative_path
 
-             # Create directory in the destination directory
-             html_dir = @destination + '/' + File.dirname(relative_path)
-             Hyla.logger.info ">>        Dir of html: #{html_dir}"
-             FileUtils.mkdir_p html_dir
+            # Create dir
+            html_dir = @destination + '/' + File.dirname(relative_path)
+            Hyla.logger.info ">>        Dir of html: #{html_dir}"
+            FileUtils.mkdir_p html_dir
 
-             # Render asciidoc to HTML
-             Hyla.logger.info ">> File to be rendered : #{path}"
-             options[:to_dir] = html_dir
-             Asciidoctor.render_file(path, options)
+            # Copy Resources for Slideshow
+            case options[:backend]
+              when 'deckjs'
+                # Copy css, js files to destination directory
+                self.cp_resources_to_dir(File.dirname(html_dir), 'deck.js')
+            end
 
-           end
+            # Render asciidoc to HTML
+            Hyla.logger.info ">> File to be rendered : #{path}"
+            @options[:to_dir] = html_dir
+            Asciidoctor.render_file(path, @options)
+
+          end
         end
 
         # No asciidoc files retrieved
@@ -103,6 +150,14 @@ module Hyla
           exit(1)
         end
 
+      end
+
+      #
+      # Copy resources to target dir
+      def self.cp_resources_to_dir(path, resource)
+        source = [Configuration::resources, resource] * '/'
+        destination = [path, 'deck.js'] * '/'
+        FileUtils.cp_r source, destination
       end
 
       #
@@ -121,23 +176,26 @@ module Hyla
         # Open file & parse it
         f = File.open(toc_file, 'r')
 
+        # Expand File Path
+        @out_dir = File.expand_path out_dir
+
         # Re Create Directory of generated content
-        if Dir.exist? out_dir
-          FileUtils.rm_rf out_dir
-          FileUtils.mkdir_p out_dir
+        if Dir.exist? @out_dir
+          FileUtils.rm_rf @out_dir
+          FileUtils.mkdir_p @out_dir
         else
-          FileUtils.mkdir_p out_dir
+          FileUtils.mkdir_p @out_dir
         end
 
         #
         # Move to 'generated' directory as we will
         # create content relative to this directory
         #
-        Dir.chdir out_dir
-        out_dir = Pathname.pwd
+        Dir.chdir @out_dir
+        @out_dir = Pathname.pwd
 
         # Create index file of all index files
-        @project_index_file = self.create_index_file(project_name, @config.LEVEL_1)
+        @project_index_file = self.create_index_file(project_name, Configuration::LEVEL_1)
 
 
         # File iteration
@@ -153,7 +211,7 @@ module Hyla
 
             # Create File
             dir_name = remove_special_chars(2, line)
-            new_dir = [out_dir, dir_name].join('/')
+            new_dir = [@out_dir, dir_name].join('/')
             Hyla.logger.info '>> Directory created : ' + new_dir + ' <<'
             FileUtils.mkdir_p new_dir
             Dir.chdir(new_dir)
@@ -166,10 +224,10 @@ module Hyla
             # It is used to include files belonging to a module and will be used for SlideShows
             # The file created contains a title (= Dir Name) and header with attributes
             #
-            @index_file = create_index_file(dir_name, @config.LEVEL_2)
+            @index_file = create_index_file(dir_name, Configuration::LEVEL_1)
 
             # Include index file created to parent index file
-            @project_index_file.puts @config.INCLUDE_PREFIX + dir_name + '/' + dir_name + @config.INDEX_SUFFIX + @config.INCLUDE_SUFFIX
+            @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + dir_name + Configuration::INDEX_SUFFIX + Configuration::INCLUDE_SUFFIX
 
             # Move to next line record
             next
@@ -192,18 +250,18 @@ module Hyla
             Hyla.logger.info '   # File created : ' + f_name.to_s
             f_name += '.adoc'
             @new_f = File.new(f_name, 'w')
-            @new_f.puts @config.HEADER
+            @new_f.puts Configuration::HEADER
 
             @previous_f = @new_f
 
             # Include file to index
-            @index_file.puts @config.INCLUDE_PREFIX + f_name + @config.INCLUDE_SUFFIX
+            @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
           end
 
           #
           # Add Content to file if it exists and line does not start with characters to be skipped
           #
-          if !@new_f.nil? and !line.start_with?(@config.SKIP_CHARACTERS)
+          if !@new_f.nil? and !line.start_with?(Configuration::SKIP_CHARACTERS)
             @new_f.puts line
           end
 
@@ -239,10 +297,10 @@ module Hyla
       # containing references to asciidoc files part of a module
       #
       def self.create_index_file(file_name, level)
-        n_file_name = file_name + @config.INDEX_SUFFIX
+        n_file_name = file_name + Configuration::INDEX_SUFFIX
         index_file = File.new(n_file_name, 'w')
         index_file.puts level + file_name
-        index_file.puts @config.HEADER_INDEX
+        index_file.puts Configuration::HEADER_INDEX
 
         index_file
       end

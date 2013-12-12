@@ -24,7 +24,7 @@ And then execute:
 == For Developer's only
 
     gem build hyla.gemspec
-    sudo gem install hyla-1.0.gem
+    sudo gem install hyla-1.0.x.gem
 
 == Usage
 

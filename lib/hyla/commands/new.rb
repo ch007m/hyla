@@ -67,7 +67,7 @@ module Hyla
       # from a Template
       def self.create_sample_project(path, type)
         # TODO Test with ['',''] * '/'
-        source = @config.templates + '/' + type + '/.'
+        source = Configuration::templates + '/' + type + '/.'
         FileUtils.cp_r source, path
       end
 

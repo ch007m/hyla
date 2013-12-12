@@ -19,9 +19,9 @@
 === 3. Add an artefact (article, audio, video)
 
     ./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc  --a audio --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc  --a video --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc  --a source_highlight --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a source_highlight --d ~/hyla/MyBlankProject
 
 === 4. Generate HTML Content of an existing project (asciidoc 2 html)
 
@@ -44,7 +44,7 @@
 
 === 1. Generate an asciidoctor project from a Table of Content
 
-    ./hyla generate --r toc2html --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
+    ./hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
 
     ./hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
@@ -53,6 +53,10 @@
 == 4. Server content locally - HTTP Server
 
     ./hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
+
+== 5. Generate a DeckJS Slideshow
+
+    ./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide --trace
 
 
 

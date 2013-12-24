@@ -4,6 +4,7 @@
 - Check why backend of deck.js != forked
 - Use git to retrieve DeckJS resources
 - Check why regular expression does not work with #{extensions}
+- Find issue with include::file.index != file.Adoc
 
 TODO
 - Check versions required of haml, tilt, slim (used by asciidoctor)

@@ -9,7 +9,6 @@ module Hyla
           type = options[:type]
 
           copy_artefact(type, artefact_type, destination)
-
       end
 
       def self.copy_artefact(type, artefact_type, destination)

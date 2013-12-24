@@ -19,7 +19,7 @@ module Hyla
               'stylesheet' => 'asciidoctor',
               'stylesdir' => Configuration::styles,
               #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
-              'deckjs_theme' => 'beamer',
+              'deckjs_theme' => 'swiss',
               # 'deckjs_transition'  => 'horizontal-slide' or 'beamer' or 'fade' or 'vertical-slide' or 'horizontal-slide'
               'deckjs_transition' => 'fade'
           },
@@ -67,6 +67,14 @@ module Hyla
             Hyla.logger.info "Rendering : Asciidoc to SlideShow"
             self.check_mandatory_option?('--s / --source', options[:source])
             self.check_mandatory_option?('--d / --destination', options[:destination])
+
+            entries = options[:attributes].split(',') if options[:attributes]
+            attributes = Hash.new
+            entries.each do | entry |
+                 words = entry.split('=')
+                 attributes[words[0]] = words[1]
+            end
+
             @destination = options[:destination]
             @source = options[:source]
             options = {
@@ -79,12 +87,13 @@ module Hyla
                 :template_dirs => [
                     # TODO NOT COMPLETE COMPARED TO MINE
                     # '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends/haml/deckjs'
-                    '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends-forked/haml/deckjs'
+                    '/Users/chmoulli/Repos/github/asciidoctor/asciidoctor-backends-forked//haml/deckjs'
                 ],
-                :watch_ext => %w(index)
+                :watch_ext => %w(index),
+                :attributes => attributes
             }
 
-            extensions = 'index'
+            extensions = 'index|adoc'
 
             self.asciidoc_to_html(@source, @destination, extensions, options)
           else

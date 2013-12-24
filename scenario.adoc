@@ -65,6 +65,18 @@
 
     ./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide --trace
 
+== 6. Generate a Slideshow DeckJS presentation from a template/sample
+
+   ./hyla new --blank ~/hyla/MyDeckSlideShow
+   ./hyla create --t slideshow --a deckjs --d ~/hyla/MyDeckSlideShow
+   ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide
+
+   Different DeckJS Style
+   ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
+   ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
+
+
+
 
 
 

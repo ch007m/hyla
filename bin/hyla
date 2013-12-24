@@ -72,9 +72,9 @@ command :generate do |c|
   c.option '--r', '--rendering [RENDERING]', String, 'Code of the rendering : toc2html, adoc2html'
   c.option '--t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
   c.option '--st', '--style [STYLE]', String, 'Stylesheet theme to be applied : asciidoctor, redhat, github, colony, foundation, ...'
+  c.option '--a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'
 
   c.action do |args, options|
-
     Hyla::Commands::Generate.process(args, options.__hash__)
   end
 end

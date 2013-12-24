@@ -16,16 +16,23 @@
 
     ./hyla new --blank ~/hyla/MyBlankProject --force
 
-=== 3. Add an artefact (article, audio, video)
+=== 3. Add an artefact (article, book, audio, video, source)
 
     ./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
     ./hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
     ./hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc --a source_highlight --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
 
 === 4. Generate HTML Content of an existing project (asciidoc 2 html)
 
     ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content
+
+=== 5. Generate HTML Content of an existing project (asciidoc 2 html) with a different style
+
+    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style redhat
+    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style github
+    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style foundation
 
 == 2. Project from Template
 

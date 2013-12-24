@@ -16,6 +16,8 @@ module Hyla
               'source-highlighter' => 'coderay',
               'linkcss!' => 'true',
               'data-uri' => 'true',
+              'stylesheet' => 'asciidoctor',
+              'stylesdir' => Configuration::styles,
               #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
               'deckjs_theme' => 'beamer',
               # 'deckjs_transition'  => 'horizontal-slide' or 'beamer' or 'fade' or 'vertical-slide' or 'horizontal-slide'
@@ -48,9 +50,13 @@ module Hyla
             self.check_mandatory_option?('--d / --destination', options[:destination])
             @destination = options[:destination]
             @source = options[:source]
+            style = [options[:style], '.css'].join() if options[:style]
 
             options = {
                 :watch_ext => %w(ad adoc asc asciidoc txt),
+                :attributes => {
+                   'stylesheet' => style
+                }
             }
 
             extensions = 'adoc|ad|txt'
@@ -71,7 +77,7 @@ module Hyla
                 :goto => 'true',
                 :toc => 'true',
                 :template_dirs => [
-                    # TODO NOT COMPLETED COMPARED TO MINE
+                    # TODO NOT COMPLETE COMPARED TO MINE
                     # '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends/haml/deckjs'
                     '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends-forked/haml/deckjs'
                 ],
@@ -92,7 +98,7 @@ module Hyla
 
       def self.asciidoc_to_html(source, destination, extensions, options)
 
-        @options = DEFAULT_OPTIONS.clone.merge(options)
+        @options = DEFAULT_OPTIONS.deep_merge(options)
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
         source = File.expand_path source

@@ -1,0 +1,37 @@
+:source-highlighter: coderay
+
+== Syntax HighLighter
+
+=== Java
+[source,java]
+----
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println(">> Hello Hyla Students");
+    }
+
+}
+----
+
+=== XML
+[source,xml]
+----
+<note>
+<to>Tove</to>
+<from>Jani</from>
+<heading>Reminder</heading>
+<body>Don't forget me this weekend!</body>
+</note>
+----
+
+=== Ruby
+
+[source,ruby]
+----
+require 'asciidoctor'
+
+puts Asciidoctor.render_file('sample.adoc', :header_footer => true)
+----
+
+

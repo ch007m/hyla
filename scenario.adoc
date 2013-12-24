@@ -16,16 +16,23 @@
 
     ./hyla new --blank ~/hyla/MyBlankProject --force
 
-=== 3. Add an artefact (article, audio, video)
+=== 3. Add an artefact (article, book, audio, video, source)
 
     ./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc  --a audio --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc  --a video --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc  --a source_highlight --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
+    ./hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
 
 === 4. Generate HTML Content of an existing project (asciidoc 2 html)
 
     ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content
+
+=== 5. Generate HTML Content of an existing project (asciidoc 2 html) with a different style
+
+    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style redhat
+    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style github
+    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style foundation
 
 == 2. Project from Template
 
@@ -44,7 +51,7 @@
 
 === 1. Generate an asciidoctor project from a Table of Content
 
-    ./hyla generate --r toc2html --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
+    ./hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
 
     ./hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
@@ -53,6 +60,22 @@
 == 4. Server content locally - HTTP Server
 
     ./hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
+
+== 5. Generate a DeckJS Slideshow
+
+    ./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide --trace
+
+== 6. Generate a Slideshow DeckJS presentation from a template/sample
+
+   ./hyla new --blank ~/hyla/MyDeckSlideShow
+   ./hyla create --t slideshow --a deckjs --d ~/hyla/MyDeckSlideShow
+   ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide
+
+   Different DeckJS Style
+   ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
+   ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
+
+
 
 
 

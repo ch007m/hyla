@@ -20,6 +20,10 @@ require 'colorator'
 require 'listen'
 require 'guard'
 require 'asciidoctor'
+require 'asciidoctor/backends/html5'
+
+# TODO Is it required
+# require 'asciidoctor/backends/_stylesheets'
 require 'eventmachine'
 require 'em-websocket'
 require 'http/parser'
@@ -29,6 +33,7 @@ require 'find'
 
 # internal requires
 require 'hyla/logger'
+require 'hyla/core_ext'
 require 'hyla/training'
 require 'hyla/command'
 require 'hyla/configuration'

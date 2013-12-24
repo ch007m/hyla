@@ -4,8 +4,6 @@ module Hyla
 
       def self.process(args, options = {})
 
-          @config = Hyla::Configuration.new
-
           destination = options[:destination]
           artefact_type = options[:artefact_type]
           type = options[:type]
@@ -14,10 +12,11 @@ module Hyla
       end
 
       def self.copy_artefact(type, artefact_type, destination)
-        artefact_name = type + '_' + artefact_type + @config.ADOC_EXT
-        source = [@config.templates, 'sample', artefact_name] * '/'
-        destination = [destination] * '/'
+        artefact_name = type + '_' + artefact_type + Configuration::ADOC_EXT
+        source = [Configuration::templates, 'sample', artefact_name] * '/'
+        destination = File.expand_path(destination)
         FileUtils.cp(source, destination)
+        Hyla::logger.info ">>   Artefact #{artefact_name} added to project #{destination}"
       end
 
     end # class

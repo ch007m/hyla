@@ -1,0 +1,123 @@
+= SCENARIO - Hyla 1.0.x - 11/12
+
+rm -rf ~/hyla/MyBlankProject/
+rm -rf ~/hyla/MyTocProject/
+rm -rf ~/hyla/MyTrainingProject/
+
+./hyla new --blank ~/hyla/MyBlankProject
+./hyla new --blank ~/hyla/MyBlankProject --force
+
+./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
+./hyla create --t asciidoc  --a audio --d ~/hyla/MyBlankProject
+./hyla create --t asciidoc  --a video --d ~/hyla/MyBlankProject
+./hyla create --t asciidoc  --a source_highlight --d ~/hyla/MyBlankProject
+
+./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content
+
+./hyla new --force --t training ~/hyla/MyTrainingProject
+./hyla new --force --t training-exercises ~/hyla/MyTrainingExercisesProject
+
+./hyla generate --r adoc2html --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
+./hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
+./hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
+
+./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
+
+TESTS SUCCEEDED
+
+***** OUTPUT *****
+
+RedHat-MacBook:bin chmoulli$ clear
+RedHat-MacBook:bin chmoulli$ rm -rf ~/hyla/MyBlankProject/
+RedHat-MacBook:bin chmoulli$ rm -rf ~/hyla/MyTocProject/
+RedHat-MacBook:bin chmoulli$ rm -rf ~/hyla/MyTrainingProject/
+RedHat-MacBook:bin chmoulli$ ./hyla new --blank ~/hyla/MyBlankProject
+RedHat-MacBook:bin chmoulli$ ./hyla new --blank ~/hyla/MyBlankProject --force
+RedHat-MacBook:bin chmoulli$ ./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
+>>   Artefact asciidoc_article.adoc added to project /Users/chmoulli/hyla/MyBlankProject
+RedHat-MacBook:bin chmoulli$ ./hyla create --t asciidoc  --a audio --d ~/hyla/MyBlankProject
+>>   Artefact asciidoc_audio.adoc added to project /Users/chmoulli/hyla/MyBlankProject
+RedHat-MacBook:bin chmoulli$ ./hyla create --t asciidoc  --a video --d ~/hyla/MyBlankProject
+>>   Artefact asciidoc_video.adoc added to project /Users/chmoulli/hyla/MyBlankProject
+RedHat-MacBook:bin chmoulli$ ./hyla create --t asciidoc  --a source_highlight --d ~/hyla/MyBlankProject
+>>   Artefact asciidoc_source_highlight.adoc added to project /Users/chmoulli/hyla/MyBlankProject
+RedHat-MacBook:bin chmoulli$ ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content
+
+Rendering : Asciidoc to HTML
+>>       Source dir: /Users/chmoulli/hyla/MyBlankProject
+>>  Destination dir: /Users/chmoulli/hyla/MyBlankProject/generated_content
+>>       Current dir: /Users/chmoulli/hyla/MyBlankProject
+>>        Dir of html: /Users/chmoulli/hyla/MyBlankProject/generated_content/.
+>> File to be rendered : /Users/chmoulli/hyla/MyBlankProject/asciidoc_article.adoc
+asciidoctor: WARNING: image to embed not found or not readable: /Users/chmoulli/hyla/MyBlankProject/image/hyla_frog.jpg
+>>        Dir of html: /Users/chmoulli/hyla/MyBlankProject/generated_content/.
+>> File to be rendered : /Users/chmoulli/hyla/MyBlankProject/asciidoc_audio.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyBlankProject/generated_content/.
+>> File to be rendered : /Users/chmoulli/hyla/MyBlankProject/asciidoc_source_highlight.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyBlankProject/generated_content/.
+>> File to be rendered : /Users/chmoulli/hyla/MyBlankProject/asciidoc_video.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyBlankProject/generated_content/.
+>> File to be rendered : /Users/chmoulli/hyla/MyBlankProject/sample.adoc
+RedHat-MacBook:bin chmoulli$
+RedHat-MacBook:bin chmoulli$ ./hyla new --force --t training ~/hyla/MyTrainingProject
+RedHat-MacBook:bin chmoulli$ ./hyla new --force --t training-exercises ~/hyla/MyTrainingExercisesProject
+RedHat-MacBook:bin chmoulli$ ./hyla generate --r adoc2html --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
+Rendering : Asciidoc to HTML
+>>       Source dir: /Users/chmoulli/hyla/MyTrainingProject
+>>  Destination dir: /Users/chmoulli/hyla/MyTrainingProject/generated_content
+>>       Current dir: /Users/chmoulli/hyla/MyTrainingProject
+>>        Dir of html: /Users/chmoulli/hyla/MyTrainingProject/generated_content/development
+>> File to be rendered : /Users/chmoulli/hyla/MyTrainingProject/development/article.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyTrainingProject/generated_content/introduction
+>> File to be rendered : /Users/chmoulli/hyla/MyTrainingProject/introduction/article.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyTrainingProject/generated_content/.
+>> File to be rendered : /Users/chmoulli/hyla/MyTrainingProject/readme.adoc
+RedHat-MacBook:bin chmoulli$ ./hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
+Rendering : Table of Content to Asciidoc
+>> Project Name : my-project <<
+>> Directory created : /Users/chmoulli/hyla/MyTocProject/A_Introduction_module <<
+   # File created : 1_Chapter
+   # File created : 2_Chapter
+   # File created : 3_Chapter
+>> Directory created : /Users/chmoulli/hyla/MyTocProject/B_Instruction_module <<
+   # File created : 1_Chapter
+>> Directory created : /Users/chmoulli/hyla/MyTocProject/C_Installation_module <<
+   # File created : 1_Chapter
+   # File created : 2_Chapter
+RedHat-MacBook:bin chmoulli$ ./hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
+Rendering : Asciidoc to HTML
+>>       Source dir: /Users/chmoulli/hyla/MyTocProject
+>>  Destination dir: /Users/chmoulli/hyla/MyTocProject/generated_content
+>>       Current dir: /Users/chmoulli/hyla/MyTocProject
+>>        Dir of html: /Users/chmoulli/hyla/MyTocProject/generated_content/A_Introduction_module
+>> File to be rendered : /Users/chmoulli/hyla/MyTocProject/A_Introduction_module/1_Chapter.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyTocProject/generated_content/A_Introduction_module
+>> File to be rendered : /Users/chmoulli/hyla/MyTocProject/A_Introduction_module/2_Chapter.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyTocProject/generated_content/A_Introduction_module
+>> File to be rendered : /Users/chmoulli/hyla/MyTocProject/A_Introduction_module/3_Chapter.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyTocProject/generated_content/B_Instruction_module
+>> File to be rendered : /Users/chmoulli/hyla/MyTocProject/B_Instruction_module/1_Chapter.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyTocProject/generated_content/C_Installation_module
+>> File to be rendered : /Users/chmoulli/hyla/MyTocProject/C_Installation_module/1_Chapter.adoc
+>>        Dir of html: /Users/chmoulli/hyla/MyTocProject/generated_content/C_Installation_module
+>> File to be rendered : /Users/chmoulli/hyla/MyTocProject/C_Installation_module/2_Chapter.adoc
+RedHat-MacBook:bin chmoulli$ ./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
+Rendering : Asciidoc to SlideShow
+>>       Source dir: /Users/chmoulli/hyla/MyTocProject/A_Introduction_module
+>>  Destination dir: /Users/chmoulli/hyla/MyTocProject/A_Introduction_module/generated_content
+>>       Current dir: /Users/chmoulli/hyla/MyTocProject/A_Introduction_module
+>>        Dir of html: /Users/chmoulli/hyla/MyTocProject/A_Introduction_module/generated_content/.
+>> File to be rendered : /Users/chmoulli/hyla/MyTocProject/A_Introduction_module/A_Introduction_module_AllSlides.index
+
+****** NO EXECUTED *****
+
+    ./hyla watch --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
+
+./hyla watch --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
+
+./hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
+
+
+
+
+

@@ -34,7 +34,6 @@ require 'find'
 # internal requires
 require 'hyla/logger'
 require 'hyla/core_ext'
-require 'hyla/training'
 require 'hyla/command'
 require 'hyla/configuration'
 require 'Hyla/WebSocket'

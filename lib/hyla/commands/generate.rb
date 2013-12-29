@@ -50,12 +50,18 @@ module Hyla
             self.check_mandatory_option?('--d / --destination', options[:destination])
             @destination = options[:destination]
             @source = options[:source]
-            style = [options[:style], '.css'].join() if options[:style]
+
+            if options[:style]
+              style = [options[:style], '.css'].join()
+            else
+              style = 'asciidoctor.css'
+            end
 
             options = {
                 :watch_ext => %w(ad adoc asc asciidoc txt),
                 :attributes => {
-                   'stylesheet' => style
+                   'stylesheet' => style,
+                   'stylesdir' => Configuration::styles
                 }
             }
 

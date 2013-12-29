@@ -56,10 +56,13 @@ module Hyla
       # with just a readme.adoc file
       def self.create_blank_project(path)
         Dir.chdir(path) do
-          f = File.open('sample.adoc', 'w')
-          f.puts "= Sample Asciidoctor Project"
-          f.puts "This is an empty AsciidocTor file."
+          f = File.open('readme.adoc', 'w')
+          f.puts "= Readme Asciidoctor Project"
+          f.puts "This is an empty Asciidoctor readme file."
           f.puts "To create **asciidoc(tor)** content, more info are available http://asciidoctor.org/docs/user-manual[here]"
+          f.puts "otherwise, you can add content to this newly project created using this hyla command :"
+          f.puts "./hyla create --t asciidoc --a xxxxx  --d pathToProjectCreated"
+          f.puts "where xxxxx can be article, book, source, audio, video"
         end
       end
 

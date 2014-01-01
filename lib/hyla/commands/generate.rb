@@ -99,7 +99,8 @@ module Hyla
                 :template_dirs => [
                     # TODO NOT COMPLETE COMPARED TO MINE
                     # '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends/haml/deckjs'
-                    '/Users/chmoulli/Repos/github/asciidoctor/asciidoctor-backends-forked//haml/deckjs'
+                    # '/Users/chmoulli/Repos/github/asciidoctor/asciidoctor-backends-forked/haml/deckjs'
+                    '/Users/chmoulli/Repos/github/asciidoctor/asciidoctor-backends-forked/slim/revealjs'
                 ],
                 :watch_ext => %w(index),
                 :attributes => attributes

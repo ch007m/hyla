@@ -17,11 +17,7 @@ module Hyla
               'linkcss!' => 'true',
               'data-uri' => 'true',
               'stylesheet' => 'asciidoctor',
-              'stylesdir' => Configuration::styles,
-              #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
-              'deckjs_theme' => 'swiss',
-              # 'deckjs_transition'  => 'horizontal-slide' or 'beamer' or 'fade' or 'vertical-slide' or 'horizontal-slide'
-              'deckjs_transition' => 'fade'
+              'stylesdir' => Configuration::styles
           },
           :always_build_all => false,
           :safe => :unsafe,
@@ -60,8 +56,8 @@ module Hyla
             options = {
                 :watch_ext => %w(ad adoc asc asciidoc txt),
                 :attributes => {
-                   'stylesheet' => style,
-                   'stylesdir' => Configuration::styles
+                    'stylesheet' => style,
+                    'stylesdir' => Configuration::styles
                 }
             }
 
@@ -75,10 +71,19 @@ module Hyla
             self.check_mandatory_option?('--d / --destination', options[:destination])
 
             entries = options[:attributes].split(',') if options[:attributes]
-            attributes = Hash.new
-            entries.each do | entry |
-                 words = entry.split('=')
-                 attributes[words[0]] = words[1]
+            if entries
+              attributes = Hash.new
+              entries.each do |entry|
+                words = entry.split('=')
+                attributes[words[0]] = words[1]
+              end
+            else
+              attributes = {
+              #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
+              'deckjs_theme' => 'swiss',
+                  # 'deckjs_transition'  => 'horizontal-slide' or 'beamer' or 'fade' or 'vertical-slide' or 'horizontal-slide'
+                  'deckjs_transition' => 'fade'
+              }
             end
 
             @destination = options[:destination]

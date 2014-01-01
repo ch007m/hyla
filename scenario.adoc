@@ -75,7 +75,11 @@
    ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
    ./hyla generate --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
 
+== 7. Create a RevealJS project
 
+   ./hyla new --blank ~/hyla/MyRevealSlideShow
+   ./hyla create --t slideshow --a revealjs --d ~/hyla/MyRevealSlideShow
+   ./hyla generate --s  ~/hyla/MyRevealSlideShow --d ~/hyla/MyRevealSlideShow/generated_content --r adoc2slide
 
 
 

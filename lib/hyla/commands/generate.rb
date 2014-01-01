@@ -79,8 +79,8 @@ module Hyla
               end
             else
               attributes = {
-              #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
-              'deckjs_theme' => 'swiss',
+                  #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
+                  'deckjs_theme' => 'swiss',
                   # 'deckjs_transition'  => 'horizontal-slide' or 'beamer' or 'fade' or 'vertical-slide' or 'horizontal-slide'
                   'deckjs_transition' => 'fade'
               }
@@ -89,7 +89,8 @@ module Hyla
             @destination = options[:destination]
             @source = options[:source]
             options = {
-                :backend => 'deckjs',
+                #:backend => 'deckjs',
+                :backend => 'revealjs',
                 :menu => 'true',
                 :navigation => 'true',
                 :status => 'true',
@@ -160,6 +161,8 @@ module Hyla
               when 'deckjs'
                 # Copy css, js files to destination directory
                 self.cp_resources_to_dir(File.dirname(html_dir), 'deck.js')
+              when 'revealjs'
+                self.cp_resources_to_dir(File.dirname(html_dir), 'revealjs')
             end
 
             # Render asciidoc to HTML
@@ -182,7 +185,7 @@ module Hyla
       # Copy resources to target dir
       def self.cp_resources_to_dir(path, resource)
         source = [Configuration::resources, resource] * '/'
-        destination = [path, 'deck.js'] * '/'
+        destination = [path, resource] * '/'
         FileUtils.cp_r source, destination
       end
 

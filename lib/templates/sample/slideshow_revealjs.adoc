@@ -1,14 +1,18 @@
-= Getting Started with deck.js
-Caleb Troughton
-:description: A jQuery library for modern HTML presentations
-:viewport: width=1024, user-scalable=no
-:backend: deckjs
-:deckjs_transition: horizontal-slide
-:goto:
-:menu:
-:navigation:
-:status:
-:docs-link: http://imakewebthings.github.com/deck.js/docs[documentation]
-:download-link: https://github.com/imakewebthings/deck.js/archive/latest.zip[download]
-:sectids!:
+= Getting Started with Reveal.js
+:description: RevealJS Template to create a beautiful HTML Slideshow
+:backend: revealjs
+// Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
+:revealjs_theme: solarized
+
+== Slide 1
+
+HTML Presentations Made Easy
+
+
+== Slide 2
+
+- Intro 2
+- Development 2
+- Discussion 2
+
 

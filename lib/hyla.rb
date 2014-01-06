@@ -19,10 +19,10 @@ require 'rubygems'
 require 'colorator'
 require 'listen'
 require 'guard'
+require 'safe_yaml'
 require 'asciidoctor'
 require 'asciidoctor/backends/html5'
 
-# TODO Is it required
 # require 'asciidoctor/backends/_stylesheets'
 require 'eventmachine'
 require 'em-websocket'

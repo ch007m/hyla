@@ -2,10 +2,10 @@ module Hyla
   module Commands
     class Create < Command
 
-      def self.process(args, options = {})
-        destination = options[:destination] if check_mandatory_option?('--d / --destination', options[:destination])
-        artefact_type = options[:artefact_type] if check_mandatory_option?('--a / --artefact_type', options[:artefact_type])
-        type = options[:type] if check_mandatory_option?('--t', '--type', options[:type])
+      def self.process(args, options)
+        destination = options['destination'] if check_mandatory_option?('--d / --destination', options['destination'])
+        artefact_type = options['artefact_type'] if check_mandatory_option?('--a / --artefact_type', options['artefact_type'])
+        type = options['type'] if check_mandatory_option?('--t / --type', options['type'])
 
         copy_artefact(type, artefact_type, destination)
       end
@@ -20,7 +20,7 @@ module Hyla
 
         FileUtils.cp(source, destination)
 
-        Hyla::logger.info ">>   Artefact #{artefact_name} added to project #{destination}"
+        Hyla::logger.info ">>   Artefact #{artefact_file_name} added to project #{destination}"
       end
 
     end # class Create

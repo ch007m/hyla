@@ -1,15 +1,15 @@
 module Hyla
-  class Configuration
+  class Configuration < Hash
 
     attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS,
                 :ADOC_EXT, :PREFIX_ARTEFACT, :YAML_CONFIG_FILE_NAME, :DEFAULTS,
                 :templates, :samples, :resources, :styles, :backends
 
     DEFAULTS = {
-        'source'        => Dir.pwd,
-        'destination'   => File.join(Dir.pwd, 'generated_content'),
+        'source' => Dir.pwd,
+        'destination' => File.join(Dir.pwd, 'generated_content'),
 
-        'backend'       => 'HTML5'
+        'backend' => 'HTML5'
     }
 
     INCLUDE_PREFIX = 'include::'
@@ -40,7 +40,7 @@ module Hyla
 
     ADOC_EXT = '.adoc'
 
-    PREFIX_ARTEFACT  = 'asciidoc_'
+    PREFIX_ARTEFACT = 'asciidoc_'
 
     TEMPLATES = '../../lib/templates'
 
@@ -87,6 +87,53 @@ module Hyla
     #
     def self.samples
       File.expand_path(SAMPLES, File.dirname(__FILE__))
+    end
+
+    # Public: Generate a Hyla configuration Hash by merging the default
+    # options with anything in _config.yml, and adding the given options on top.
+    #
+    # override - A Hash of config directives that override any options in both
+    #            the defaults and the config file. See Hyla::Configuration::DEFAULTS for a
+    #            list of option names and their defaults.
+    #
+    # Returns the final configuration Hash.
+    def self.parse(override)
+      config = DEFAULTS
+      override = Configuration[override].stringify_keys
+      new_config = read_config_file(YAML_CONFIG_FILE_NAME)
+      config = config.deep_merge(new_config)
+
+      # Merge DEFAULTS < _config.yml < override
+      config = config.deep_merge(override)
+      config = Configuration[config].stringify_keys
+
+      return config
+    end
+
+    #
+    # Read YAML Config file
+    #
+    def self.read_config_file(filename)
+      f = File.expand_path(filename)
+      Hyla::logger.info("Config file to be parsed : #{f}")
+      config = safe_load_file(f)
+      config
+    rescue SystemCallError
+      Hyla::logger.warn "No _config.yaml file retrieved"
+    end
+
+    #
+    # Load Safely YAML File
+    #
+    def self.safe_load_file(filename)
+      YAML.safe_load_file(filename)
+    end
+
+    # Public: Turn all keys into string
+    #
+    # Return a copy of the hash where all its keys are strings
+    def stringify_keys
+      reduce({}) { |hsh,(k,v)| hsh.merge(k.to_s => v) }
     end
 
   end # Class Configuration

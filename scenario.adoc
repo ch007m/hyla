@@ -47,6 +47,7 @@
 
     ./hyla new --force --t training ~/hyla/MyTrainingProject
     ./hyla new --force --t training-exercises ~/hyla/MyTrainingExercisesProject
+    ./hyla new --t  book --force ~/hyla/MyBookProject
 
 === 2. Generate content and watch it
 

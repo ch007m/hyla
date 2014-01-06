@@ -5,17 +5,22 @@
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :revealjs_theme: solarized
 
-== Slide 1
+== Reveal.js
 
 HTML Presentations Made Easy
 
 [small]#Created by
 http://cmoulliard.github.io[Charles Moulliard] / http://twitter.com/cmoulliard[@cmoulliard]#
 
-== Slide 2
+== Heads Up
 
-- Intro 2
-- Development 2
-- Discussion 2
+reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
+support for CSS 3D transforms to see it in its full glory.
+
+[sidebar]
+Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+
+== Another Slide
+
 
 

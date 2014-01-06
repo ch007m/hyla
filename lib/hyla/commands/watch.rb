@@ -129,8 +129,8 @@ module Hyla
 
         if @ext_name != '.html'
           # Generate File name
-          # Rename xxx.adoc, xxx.asciidoc, xxx.ad to xxx.html
-          to_file = file_to_process.to_s.gsub(/.adoc|.ad|.asciidoc/, '.html')
+          # Rename xxx.adoc, xxx.asciidoc, xxx.ad, xxx.index to xxx.html
+          to_file = file_to_process.to_s.gsub(/.adoc|.ad|.asciidoc|.index/, '.html')
           @opts[:to_file] = to_file
 
           # TODO Check why asciidoctor populates new attributes and removes to_dir

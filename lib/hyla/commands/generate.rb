@@ -70,6 +70,10 @@ module Hyla
             self.check_mandatory_option?('--s / --source', options[:source])
             self.check_mandatory_option?('--d / --destination', options[:destination])
 
+            # Assign by default backend as HTML5 if not provided by command line
+            backend = options[:backend]? options[:backend] : 'html5'
+
+            # Retrieve asciidoctor attributes
             entries = options[:attributes].split(',') if options[:attributes]
             if entries
               attributes = Hash.new
@@ -77,36 +81,20 @@ module Hyla
                 words = entry.split('=')
                 attributes[words[0]] = words[1]
               end
-            else
-              attributes = {
-                  #:deckjs_theme => 'web-2.0' or 'beamer' or 'neon' or 'swiss'
-                  'deckjs_theme' => 'swiss',
-                  # 'deckjs_transition'  => 'horizontal-slide' or 'beamer' or 'fade' or 'vertical-slide' or 'horizontal-slide'
-                  'deckjs_transition' => 'fade'
-              }
             end
 
             @destination = options[:destination]
             @source = options[:source]
             options = {
-                #:backend => 'deckjs',
-                :backend => 'revealjs',
-                :menu => 'true',
-                :navigation => 'true',
-                :status => 'true',
-                :goto => 'true',
-                :toc => 'true',
+                :backend => backend,
                 :template_dirs => [
-                    # TODO NOT COMPLETE COMPARED TO MINE
-                    # '/Users/chmoulli/JBoss/Code/asciidoctor/asciidoctor-backends/haml/deckjs'
-                    # '/Users/chmoulli/Repos/github/asciidoctor/asciidoctor-backends-forked/haml/deckjs'
-                    '/Users/chmoulli/Repos/github/asciidoctor/asciidoctor-backends-forked/slim/revealjs'
+                    self.backend_dir(options[:backend])
                 ],
                 :watch_ext => %w(index),
                 :attributes => attributes
             }
 
-            extensions = 'index|adoc'
+            extensions = 'index|adoc|ad|asciidoc'
 
             self.asciidoc_to_html(@source, @destination, extensions, options)
           else
@@ -116,6 +104,17 @@ module Hyla
 
         # From Table of Content File to Asciidoc directories and Files
         # self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
+      end
+
+      # Return backend directory
+      # containing templates (haml, slim)
+      def self.backend_dir(backend)
+        case backend
+          when 'deckjs'
+            return [Configuration::backends, 'haml', 'deckjs'] * '/'
+          when 'revealjs'
+            return [Configuration::backends, 'slim', 'revealjs'] * '/'
+        end
       end
 
       def self.asciidoc_to_html(source, destination, extensions, options)

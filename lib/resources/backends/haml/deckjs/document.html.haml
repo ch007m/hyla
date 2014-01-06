@@ -1,0 +1,182 @@
+!!! 5
+%html{:lang=>(attr :lang, 'en')}
+  %head
+    %meta(http-equiv='Content-Type' content="text/html; charset=#{attr :encoding}")
+    %meta(name='generator' content="Asciidoctor #{attr 'asciidoctor-version'}")
+    - [:description, :keywords, :author, :copyright].each do |key|
+      - if attr? key
+        %meta{:name=>key, :content=>(attr key)}
+    %title=((doctitle :sanitize => true) || (attr 'untitled-label'))
+    - unless (attr :stylesheet, '').empty?
+      %link(rel='stylesheet'){:href=>normalize_web_path((attr :stylesheet), (attr :stylesdir, ''))}
+    - if attr? :icons, 'font'
+      %link(rel='stylesheet'){:href=>(attr 'iconfont-cdn', 'http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css')}
+    - case attr 'source-highlighter'
+    - when 'coderay'
+      - if (attr 'coderay-css', 'class') == 'class'
+        - if @safe >= Asciidoctor::SafeMode::SECURE || (attr? :linkcss)
+          %link(rel='stylesheet'){:href=>normalize_web_path('asciidoctor-coderay.css', (attr :stylesdir, ''))}
+        - else
+          %style=Asciidoctor::HTML5.default_coderay_stylesheet
+    - when 'pygments'
+      - if (attr 'pygments-css', 'class') == 'class'
+        - if @safe >= Asciidoctor::SafeMode::SECURE || (attr? :linkcss)
+          %link(rel='stylesheet'){:href=>normalize_web_path('asciidoctor-pygments.css', (attr :stylesdir, ''))}
+        - else
+          %style=Asciidoctor::HTML5.pygments_stylesheet(attr 'pygments-style')
+    - when 'highlightjs'
+      %link(rel='stylesheet' href="#{attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3'}/styles/#{attr 'highlightjs-theme', 'default'}.min.css")
+      %script(src="#{attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3'}/highlight.min.js")
+      %script hljs.initHighlightingOnLoad()
+    - when 'prettify'
+      %link(rel='stylesheet' href="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/#{attr 'prettify-theme', 'prettify'}.min.css")
+      %script(src="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/prettify.min.js")
+      %script document.addEventListener('DOMContentLoaded', prettyPrint)
+    %link(rel='stylesheet' href='deck.js/core/deck.core.css')
+    %link(rel='stylesheet' href='deck.js/extensions/goto/deck.goto.css')
+    %link(rel='stylesheet' href='deck.js/extensions/hash/deck.hash.css')
+    %link(rel='stylesheet' href='deck.js/extensions/menu/deck.menu.css')
+    %link(rel='stylesheet' href='deck.js/extensions/navigation/deck.navigation.css')
+    %link(rel='stylesheet' href='deck.js/extensions/scale/deck.scale.css')
+    %link(rel='stylesheet' href='deck.js/extensions/status/deck.status.css')
+    %link(rel='stylesheet' href='deck.js/extensions/toc/deck.toc.css')
+    %link(rel="stylesheet" href="deck.js/themes/style/#{attr :deckjs_theme}.css")
+    %link(rel='stylesheet' id='transition-theme-link' href="deck.js/themes/transition/#{attr :deckjs_transition}.css")
+    - if attr? :customjs
+      %script(src="#{:customjs}.js")
+    - if attr? :customcss
+      %link(rel='stylesheet' href="#{:customcss}.css")
+    %script(src='deck.js/modernizr.custom.js')
+  %body{:id=>@id, :class=>['deck-container', doctype], :style=>("max-width: #{attr 'max-width'};" if (attr? 'max-width'))}
+    - unless noheader
+      %section(class='slide' id='title-slide')
+        - unless notitle
+          %h1=@header.title
+        - if attr? :author
+          %span#author=attr :author
+          %br
+          - if attr? :email
+            %span#email=sub_macros(attr :email)
+            %br
+          - if (authorcount = (attr :authorcount).to_i) > 1
+            - (2..authorcount).each do |idx|
+              %span{:id=>"author#{idx}", :class=>"author"}=(attr "author_#{idx}")
+              %br
+              - if attr? "email_#{idx}"
+                %span{:id=>"email#{idx}", :class=>"email"}=sub_macros(attr "email_#{idx}")
+        - if attr? :revnumber
+          %span#revnumber #{((attr 'version-label') || '').downcase} #{attr :revnumber}#{',' if (attr? :revdate)}
+        - if attr? :revdate
+          %span#revdate=attr :revdate
+        - if attr? :revremark
+          %br
+          %span#revremark=attr :revremark
+      =content
+    - if attr? :navigation
+      %a(href='#' class='deck-prev-link' title='Previous') &#8592;
+      %a(href='#' class='deck-next-link' title='Next') &#8594;
+    - if attr? :status
+      %p.deck-status
+        %span.deck-status-current
+        \/
+        %span.deck-status-total
+    %a(href='.' title='Permalink to this slide' class='deck-permalink') #
+    %script(src='deck.js/jquery-1.7.2.min.js')
+    %script(src='deck.js/core/deck.core.js')
+    %script(src='deck.js/extensions/deck.js-blank/deck.blank.js')
+    %script(src='deck.js/extensions/goto/deck.goto.js')
+    %script(src='deck.js/extensions/hash/deck.hash.js')
+    %script(src='deck.js/extensions/menu/deck.menu.js')
+    %script(src='deck.js/extensions/navigation/deck.navigation.js')
+    %script(src='deck.js/extensions/scale/deck.scale.js')
+    %script(src='deck.js/extensions/status/deck.status.js')
+    %script(src='deck.js/extensions/toc/deck.toc.js')
+    - if attr? :menu
+      %div{:class=>['deck-toc']}
+      %form{:action => ".", :method => "get", :class => "goto-form"}
+        %label{:for => "goto-slide"} Go to Slide:
+        %input{:type => "text", :name => "slidenum", :id => "goto-slide", :list => "goto-datalist"}
+        %datalist{:id => "goto-data-list"}
+        %input{:type => "submit", :value => "Go"}
+    - if attr? :split
+      %script(src='deck.js/extensions/deck.split.js')
+    :javascript
+      (function($, deck, undefined) {
+
+        $.deck.defaults.keys["previous"] = [8, 33, 37, 39];
+        $.deck.defaults.keys["next"] = [13, 32, 34, 39];
+
+        $.extend(true, $[deck].defaults, {
+                countNested: false
+        });
+
+        $.deck('.slide');
+
+      })(jQuery, 'deck');
+    :css
+      .slide.canvas-image {
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      display: -moz-box;
+      display: -webkit-box;
+      display: -ms-box;
+      display: box;
+      -moz-box-orient: vertical;
+      -webkit-box-orient: vertical;
+      -ms-box-orient: vertical;
+      box-orient: vertical;
+      -moz-box-align: start;
+      -webkit-box-align: start;
+      -ms-box-align: start;
+      box-align: start;
+      -moz-box-pack: start;
+      -webkit-box-pack: start;
+      -ms-box-pack: start;
+      box-pack: start;}
+
+      .bottom-left {
+        left: 1%;
+        bottom: 20%; }
+
+      .top-left {
+        left: 1%;
+        top: 20%; }
+
+      .bottom-right {
+        right: 1%;
+        bottom: 20%; }
+
+      .top-right {
+        right: 1%;
+        top: 20%; }
+
+      .center-up {
+        right: 50%;
+        top: 1%;
+      }
+
+      .center-down {
+        right: 50%;
+        bottom: 1%;
+      }
+      .canvas-image .canvas-caption p {
+        text-align: center;
+        padding-top: 0;
+        padding: 0;
+        -moz-transform: none;
+        -webkit-transform: none;
+        -o-transform: none;
+        -ms-transform: none;
+        transform: none;
+        display: inline;
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.7);
+        font-weight: bold;
+        font-size: 58px;
+        -webkit-box-shadow: 2px 2px 2px #000;
+        -moz-box-shadow: 2px 2px 2px #000;
+        box-shadow: 2px 2px 2px #000;
+        padding: 1rem;
+        color: white; }

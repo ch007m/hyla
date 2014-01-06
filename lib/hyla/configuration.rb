@@ -2,7 +2,7 @@ module Hyla
   class Configuration
 
     attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS,
-                :ADOC_EXT, :PREFIX_ARTEFACT, :TEMPLATES, :templates, :resources, :styles
+                :ADOC_EXT, :PREFIX_ARTEFACT, :templates, :resources, :styles, :backends
 
     INCLUDE_PREFIX = 'include::'
 
@@ -40,6 +40,8 @@ module Hyla
 
     STYLES = '../../lib/resources/styles'
 
+    BACKENDS = '../../lib/resources/backends'
+
     #
     # Templates Location
     #
@@ -59,6 +61,13 @@ module Hyla
     #
     def self.styles
       File.expand_path(STYLES, File.dirname(__FILE__))
+    end
+
+    #
+    # Backends Location
+    #
+    def self.backends
+      File.expand_path(BACKENDS, File.dirname(__FILE__))
     end
 
   end # Class Artefact

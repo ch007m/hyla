@@ -33,7 +33,7 @@ http://cmoulliard.github.io[Charles Moulliard] / http://twitter.com/cmoulliard[@
 
 == About the Author
 
-You can contact {author} at {email}.
+You can contact [big]#{author} at {email}#.
 {firstname} loves to hear from other chroniclers.
 
 P.S. And yes, my middle name really is {middlename}.

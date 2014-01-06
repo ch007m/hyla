@@ -1,6 +1,7 @@
 = Getting Started with Reveal.js
 :description: RevealJS Template to create a beautiful HTML Slideshow
 :backend: revealjs
+:author: Charles Moulliard
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
 :revealjs_theme: solarized
 
@@ -8,6 +9,8 @@
 
 HTML Presentations Made Easy
 
+[small]#Created by
+http://cmoulliard.github.io[Charles Moulliard] / http://twitter.com/cmoulliard[@cmoulliard]#
 
 == Slide 2
 

@@ -27,12 +27,11 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'asciidoctor', '~> 0.1.4'
   s.add_runtime_dependency 'em-websocket', '~> 0.5'
   s.add_runtime_dependency 'multi_json',   '~> 1.8'
-  # TODO - Check versions required of haml, tilt, slim (used by asciidoctor)
   s.add_runtime_dependency 'tilt'
   s.add_runtime_dependency 'haml'
   s.add_runtime_dependency 'slim'
   s.add_runtime_dependency 'guard', '~> 1.8.3'
-  s.add_runtime_dependency 'listen', '~> 2.0'
+  s.add_runtime_dependency 'listen', '~> 1.3.1'
 
   # Colorize Text Terminal
   s.add_runtime_dependency 'colorator', '~> 0.1'

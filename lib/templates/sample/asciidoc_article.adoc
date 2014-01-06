@@ -28,6 +28,9 @@ The security wolves were at a trust building retreat in Katchanga, and no one in
 
 Version: {revnumber}, Date: {revdate} & Notes: {revremark}
 
+[small]#Created by
+http://cmoulliard.github.io[Charles Moulliard] / http://twitter.com/cmoulliard[@cmoulliard]#
+
 == About the Author
 
 You can contact {author} at {email}.
@@ -70,8 +73,6 @@ Discrete titles are useful for labeling large sidebar and admonition blocks. not
 
 [quote]
 sudo yum install asciidoc
-
-
 
 == Links
 

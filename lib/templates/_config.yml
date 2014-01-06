@@ -1,3 +1,18 @@
-source:
+# Common options
+source: .
 destination: generated_content
+
+# Asciidoc and attributes options
 backend: HTML5
+attributes:
+
+# Hyla options
+rendering: adoc2html
+
+# Styles supported : asciidoc, redhat,
+style: redhat
+project_name: demo
+
+# Location of the Table of Content to be processed
+# as a collection of asciidoc files
+toc:

@@ -3,8 +3,8 @@
 ==== 1. Delete Temp directory
 
     rm -rf ~/hyla/MyBlankProject/
-    rm -rf ~/hyla/MyTocProject/
     rm -rf ~/hyla/MyBookProject
+    rm -rf ~/hyla/MyTocProject/
     rm -rf ~/hyla/MyTrainingProject/
     rm -rf ~/hyla/MyDeckSlideShow/
     rm -rf ~/hyla/MyRevealSlideShow/

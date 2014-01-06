@@ -77,6 +77,9 @@ module Hyla
       def self.create_sample_project(path, type)
         source = [Configuration::templates, type] * '/' + '/.'
         FileUtils.cp_r source, path
+
+        # Add yaml config file
+        FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', path
       end
 
       #

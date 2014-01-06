@@ -94,10 +94,12 @@ module Hyla
               Hyla.logger.info "File modified : #{modify}"
               call_asciidoctor(modify)
             end
+
             added.each do |add|
               Hyla.logger.info "File added : #{add}"
               call_asciidoctor(add)
             end
+
           end
         end # callback
 
@@ -126,10 +128,12 @@ module Hyla
         Hyla.logger.info ">> Extension of the file : #{@ext_name}"
 
         if @ext_name != '.html'
-          to_file = file_to_process.to_s.gsub('adoc', 'html')
+          # Generate File name
+          # Rename xxx.adoc, xxx.asciidoc, xxx.ad to xxx.html
+          to_file = file_to_process.to_s.gsub(/.adoc|.ad|.asciidoc/, '.html')
           @opts[:to_file] = to_file
 
-          # TODO Check why asciidoctor populates new attributes and remove to_dir
+          # TODO Check why asciidoctor populates new attributes and removes to_dir
           # TODO when it is called a second time
           # Workaround - reset list, add again :out_dir
           @opts[:attributes] = {}

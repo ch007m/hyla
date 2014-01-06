@@ -1,0 +1,64 @@
+:icons: font
+:data-uri:
+
+== Links
+
+Asciidoctor will automatically turn the url scheme:/// into a hyperlink when it is processed : http://asciidoctor.org/docs/user-manual/
+The schemes HTTP, HTTPS, FTP, IRC, mailto, email@email.com are recognize
+
+To attach a URL to text, enclose the text in square brackets at the end of the URL : http://asciidoctor.org/docs/user-manual/[Asciidoctor - Manual]
+
+== Paragraph
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed iaculis, justo non scelerisque varius, metus lorem feugiat metus, eget hendrerit lorem nulla eu velit.
+Proin vehicula gravida orci eu hendrerit. Ut ornare aliquam imperdiet. Sed et pulvinar dui, eu facilisis lorem. Duis molestie nunc dolor, ut pharetra dolor eleifend et.
+Duis adipiscing sed est consectetur euismod. Sed sed velit sit amet justo elementum malesuada ac quis nulla. Nam varius posuere est, sit amet vestibulum neque vulputate id.
+Fusce sem turpis, congue non dapibus ut, cursus in nisi. Sed non massa varius, rutrum augue vel, rutrum turpis. Pellentesque iaculis gravida malesuada.
+Nullam tristique mauris vitae feugiat consectetur. Ut pellentesque turpis faucibus leo convallis, in convallis neque blandit.
+
+:numbered!:
+== Unordered bullet List without numbers
+* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+* Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+:numbered!:
+
+== Unordered bullet List without numbers (including title)
+.Title of a unordered list
+* Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem.
+* Sed at ante. Mauris eleifend, quam a vulputate dictum, massa quam dapibus leo, eget vulputate orci purus ut lorem.
+
+:numbered:
+== Numbered
+=== Numbered con't
+. Lorem *ipsum* dolor sit amet, consectetur adipiscing elit
+. Lorem **ipsum** dolor sit amet, consectetur adipiscing elit
+
+:numbered!:
+== Nested unordered list
+* West wood maze
+** Maze heart
+*** Reflection pool
+
+== Image
+.Text of the picture
+image::image/hyla_frog.jpg[width="40%"]
+
+== Admonition
+
+NOTE: This is an example of NOTE.
+
+TIP: This is an example of TIP.
+
+WARNING: This is an example of WARNING.
+
+== Table
+
+.An example table
+[width="60%",options="header"]
+|==============================================
+| Option          | Description
+| -a 'USER GROUP' | Add 'USER' to 'GROUP'.
+| -R 'GROUP'      | Disables access to 'GROUP'.
+|==============================================
+
+

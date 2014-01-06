@@ -4,7 +4,10 @@
 
     rm -rf ~/hyla/MyBlankProject/
     rm -rf ~/hyla/MyTocProject/
+    rm -rf ~/hyla/MyBookProject
     rm -rf ~/hyla/MyTrainingProject/
+    rm -rf ~/hyla/MyDeckSlideShow/
+    rm -rf ~/hyla/MyRevealSlideShow/
 
 == 1.Create a Blank Project
 
@@ -16,7 +19,11 @@
 
     ./hyla new --blank ~/hyla/MyBlankProject --force
 
-=== 3. Add an artefact (article, book, audio, video, source)
+=== 3. Create a project localy
+
+    ./hyla new --blank MyBlankProject --force
+
+=== 4. Add an artefact (article, book, audio, video, source)
 
     ./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
     ./hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject

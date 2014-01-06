@@ -2,7 +2,15 @@ module Hyla
   class Configuration
 
     attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS,
-                :ADOC_EXT, :PREFIX_ARTEFACT, :templates, :resources, :styles, :backends
+                :ADOC_EXT, :PREFIX_ARTEFACT, :YAML_CONFIG_FILE_NAME, :DEFAULTS,
+                :templates, :samples, :resources, :styles, :backends
+
+    DEFAULTS = {
+        'source'        => Dir.pwd,
+        'destination'   => File.join(Dir.pwd, 'generated_content'),
+
+        'backend'       => 'HTML5'
+    }
 
     INCLUDE_PREFIX = 'include::'
 
@@ -38,9 +46,13 @@ module Hyla
 
     RESOURCES = '../../lib/resources'
 
+    SAMPLES = '../../lib/templates/sample'
+
     STYLES = '../../lib/resources/styles'
 
     BACKENDS = '../../lib/resources/backends'
+
+    YAML_CONFIG_FILE_NAME = '_config.yml'
 
     #
     # Templates Location
@@ -70,5 +82,12 @@ module Hyla
       File.expand_path(BACKENDS, File.dirname(__FILE__))
     end
 
-  end # Class Artefact
+    #
+    # Samples Location
+    #
+    def self.samples
+      File.expand_path(SAMPLES, File.dirname(__FILE__))
+    end
+
+  end # Class Configuration
 end # module Hyla

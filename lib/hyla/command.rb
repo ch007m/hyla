@@ -7,5 +7,17 @@ module Hyla
       exit 1
     end
 
+    #
+    # Check mandatory options
+    #
+    def self.check_mandatory_option?(key, value)
+      if value.nil? or value.empty?
+        Hyla.logger.warn "Mandatory option missing: #{key}"
+        exit(1)
+      else
+        true
+      end
+    end
+
   end
 end

@@ -38,7 +38,7 @@ command :new do |c|
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
   c.option '--f','--force', 'Force creation even if PATH already exists'
   c.option '--b','--blank', 'Creates project but with empty files'
-  c.option '--t','--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, training, training-exercises, blog, web, ...)'
+  c.option '--t','--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
 
   c.action do |args, options|
     Hyla::Commands::New.process(args, options.__hash__)

@@ -3,20 +3,18 @@ module Hyla
     class New < Command
 
       def self.process(args, options = {})
-        raise ArgumentError.new('You must specify a destination.') if args.empty?
-
-        @config = Hyla::Configuration.new
+        raise ArgumentError.new('You must specify a project name to be created.') if args.empty?
 
         #
-        # Create Directory for the Project
+        # Calculate project path (rel/absolute)
         #
-        new_project_path = File.expand_path(args.join(" "), Dir.pwd)
+        new_project_path = File.expand_path(args[0], Dir.pwd)
 
         if Dir.exist? new_project_path
 
           Hyla.logger.debug("Dir exists: #{new_project_path}")
 
-          # If force is selected, then we delete & recreate it to clen content
+          # If force is selected, then we delete & recreate it to clean content
           if options[:force]
             Hyla.logger.debug("Force option selected")
             # DOES NOT WORK ON Mac OS X
@@ -24,7 +22,7 @@ module Hyla
             FileUtils.rm_rf new_project_path
             # Create Directory
             FileUtils.mkdir_p new_project_path
-            Hyla.logger.debug("Dir recreated it")
+            Hyla.logger.debug("Dir recreated")
           end
 
           # Preserve content if it exists
@@ -34,7 +32,7 @@ module Hyla
           end
 
         else
-          # Create Directory
+          # Create Directory when it does not exist
           FileUtils.mkdir_p new_project_path
         end
 
@@ -44,33 +42,40 @@ module Hyla
         #
         if options[:blank]
           create_blank_project new_project_path
+          # Add yaml config file
+          FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', new_project_path
+          Hyla.logger.info("Blank project created")
         else
+
           raise ArgumentError.new('You must specifiy a template type.') if options[:template_type].nil?
+
           create_sample_project(new_project_path, options[:template_type])
+          Hyla.logger.info("Sample project created")
         end
 
       end
 
       #
       # Create Blank Project
-      # with just a readme.adoc file
+      # with just a readme.adoc file and yaml config file
       def self.create_blank_project(path)
         Dir.chdir(path) do
-          f = File.open('readme.adoc', 'w')
+          f = File.open('readme.ad', 'w')
           f.puts "= Readme Asciidoctor Project"
           f.puts "This is an empty Asciidoctor readme file."
           f.puts "To create **asciidoc(tor)** content, more info are available http://asciidoctor.org/docs/user-manual[here]"
           f.puts "otherwise, you can add content to this newly project created using this hyla command :"
-          f.puts "./hyla create --t asciidoc --a xxxxx  --d pathToProjectCreated"
-          f.puts "where xxxxx can be article, book, source, audio, video"
+          f.puts "hyla create --t asciidoc --a xxx  --d pathToProjectCreated"
+          f.puts "where xxx can be article, book, source, audio, video, ..."
         end
       end
 
+      #
       # Create a Sample Project
-      # from a Template
+      # from a Template (asciidoc, slideshow)
+      #
       def self.create_sample_project(path, type)
-        # TODO Test with ['',''] * '/'
-        source = Configuration::templates + '/' + type + '/.'
+        source = [Configuration::templates, type] * '/' + '/.'
         FileUtils.cp_r source, path
       end
 

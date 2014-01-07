@@ -101,7 +101,7 @@ module Hyla
       config = DEFAULTS
       override = Configuration[override].stringify_keys
       new_config = read_config_file(YAML_CONFIG_FILE_NAME)
-      config = config.deep_merge(new_config)
+      config = config.deep_merge(new_config) if ! new_config.nil?
 
       # Merge DEFAULTS < _config.yml < override
       config = config.deep_merge(override)

@@ -1,6 +1,6 @@
 # Common options
 source: .
-destination: generated_content
+destination: generated_content # or . or ~/MyProject
 
 # Asciidoc and attributes options
 backend: HTML5
@@ -8,6 +8,8 @@ attributes:
 
 # Hyla options
 rendering: adoc2html
+artefact_type: article
+type: asciidoc
 
 # Styles supported : asciidoc, redhat,
 style: redhat

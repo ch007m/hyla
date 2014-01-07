@@ -9,85 +9,99 @@
     rm -rf ~/hyla/MyDeckSlideShow/
     rm -rf ~/hyla/MyRevealSlideShow/
 
+==== 2. Install Gem Hyla 1.0.x
+
+    gem install hyla -v 1.0.x
+
 == 1.Create a Blank Project
 
 === 1. Create a new project
 
-    ./hyla new --blank ~/hyla/MyBlankProject
+    hyla new --blank ~/hyla/MyBlankProject
 
 === 2. Idem but with force option
 
-    ./hyla new --blank ~/hyla/MyBlankProject --force
+    hyla new --blank ~/hyla/MyBlankProject --force
 
 === 3. Create a project localy
 
-    ./hyla new --blank MyBlankProject --force
+    hyla new --blank MyBlankProject --force
 
 === 4. Add an artefact (article, book, audio, video, source)
 
-    ./hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
-    ./hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
+
+    and using _config.yaml file.
+
+    rm -rf MyBlankProject/
+    hyla new --blank MyBlankProject --force
+    hyla create --a article
+    hyla create --a book
+    hyla create --a audio
+    hyla create --a video
+    hyla create --a source
 
 === 4. Generate HTML Content of an existing project (asciidoc 2 html)
 
-    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content
+    hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content
 
 === 5. Generate HTML Content of an existing project (asciidoc 2 html) with a different style
 
-    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style redhat
-    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style github
-    ./hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style foundation
+    hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style redhat
+    hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style github
+    hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style foundation
 
 == 2. Project from Template
 
 === 1. Create a project using a template (training)
 
-    ./hyla new --force --t training ~/hyla/MyTrainingProject
-    ./hyla new --force --t training-exercises ~/hyla/MyTrainingExercisesProject
-    ./hyla new --t  book --force ~/hyla/MyBookProject
+    hyla new --force --t training ~/hyla/MyTrainingProject
+    hyla new --force --t training-exercises ~/hyla/MyTrainingExercisesProject
+    hyla new --t  book --force ~/hyla/MyBookProject
 
 === 2. Generate content and watch it
 
-    ./hyla generate --r adoc2html --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
+    hyla generate --r adoc2html --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
 
-    ./hyla watch --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
+    hyla watch --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
 
 == 3. Table Of Content To asciidoc
 
 === 1. Generate an asciidoctor project from a Table of Content
 
-    ./hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
+    hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
 
-    ./hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
+    hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
-    ./hyla watch --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
+    hyla watch --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
 == 4. Server content locally - HTTP Server
 
-    ./hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
+    hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
 
 == 5. Generate a DeckJS Slideshow
 
-    ./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide --trace
+    hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide --trace
 
 == 6. Generate a Slideshow DeckJS presentation from a template/sample
 
-   ./hyla new --blank ~/hyla/MyDeckSlideShow
-   ./hyla create --t slideshow --a deckjs --d ~/hyla/MyDeckSlideShow
-   ./hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide
+   hyla new --blank ~/hyla/MyDeckSlideShow
+   hyla create --t slideshow --a deckjs --d ~/hyla/MyDeckSlideShow
+   hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide
 
    Different DeckJS Style
-   ./hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
-   ./hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
+   hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
+   hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
 
 == 7. Create a RevealJS project
 
-   ./hyla new --blank ~/hyla/MyRevealSlideShow
-   ./hyla create --t slideshow --a revealjs --d ~/hyla/MyRevealSlideShow
-   ./hyla generate --backend revealjs --s  ~/hyla/MyRevealSlideShow --d ~/hyla/MyRevealSlideShow/generated_content --r adoc2slide
+   hyla new --blank ~/hyla/MyRevealSlideShow
+   hyla create --t slideshow --a revealjs --d ~/hyla/MyRevealSlideShow
+   hyla generate --backend revealjs --s  ~/hyla/MyRevealSlideShow --d ~/hyla/MyRevealSlideShow/generated_content --r adoc2slide
 
 
 

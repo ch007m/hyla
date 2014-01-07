@@ -1,5 +1,7 @@
 :icons: font
 :data-uri:
+:sectlink: true                      // to turn section titles into links
+:sectanchors: true                   // An anchor (empty link) is added before the section title
 
 == Links
 
@@ -40,10 +42,11 @@ Nullam tristique mauris vitae feugiat consectetur. Ut pellentesque turpis faucib
 *** Reflection pool
 
 == Image
-== Image
 [[id_of_hyla_picture]]
 .Title of the picture displayed under the picture
 image::image/hyla_arborea.jpg[width="40%"]
+
+Link to Figure Image : <<id_of_hyla_picture,A beautiful Hyla Arborea Picture>>
 
 == Admonition
 

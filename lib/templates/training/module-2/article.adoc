@@ -40,8 +40,9 @@ Nullam tristique mauris vitae feugiat consectetur. Ut pellentesque turpis faucib
 *** Reflection pool
 
 == Image
-.Text of the picture
-image::image/hyla_frog.jpg[width="40%"]
+[[id_of_hyla_picture]]
+.Title of the picture displayed under the picture
+image::image/hyla_arborea.jpg[width="40%"]
 
 == Admonition
 

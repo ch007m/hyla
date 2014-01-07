@@ -105,7 +105,8 @@ To attach a URL to text, enclose the text in square brackets at the end of the U
 *** Reflection pool
 
 == Image
-.Text of the picture
+[[id_of_hyla_picture]]
+.Title of the picture displayed under the picture
 image::image/hyla_arborea.jpg[width="40%"]
 
 == Admonition

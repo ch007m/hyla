@@ -3,9 +3,9 @@ module Hyla
     class Create < Command
 
       def self.process(args, options)
-        destination = options['destination'] if check_mandatory_option?('--d / --destination', options['destination'])
-        artefact_type = options['artefact_type'] if check_mandatory_option?('--a / --artefact_type', options['artefact_type'])
-        type = options['type'] if check_mandatory_option?('--t / --type', options['type'])
+        destination = options[:destination] if check_mandatory_option?('--d / --destination', options[:destination])
+        artefact_type = options[:artefact_type] if check_mandatory_option?('--a / --artefact_type', options[:artefact_type])
+        type = options[:type] if check_mandatory_option?('--t / --type', options[:type])
 
         copy_artefact(type, artefact_type, destination)
       end

@@ -9,7 +9,7 @@ module Hyla
         'source' => Dir.pwd,
         'destination' => File.join(Dir.pwd, 'generated_content'),
 
-        'backend' => 'HTML5'
+        'backend' => 'html5'
     }
 
     INCLUDE_PREFIX = 'include::'
@@ -92,7 +92,7 @@ module Hyla
     # Public: Generate a Hyla configuration Hash by merging the default
     # options with anything in _config.yml, and adding the given options on top.
     #
-    # override - A Hash of config directives that override any options in both
+    # override - A Hash of options that override any options in both
     #            the defaults and the config file. See Hyla::Configuration::DEFAULTS for a
     #            list of option names and their defaults.
     #
@@ -105,8 +105,8 @@ module Hyla
 
       # Merge DEFAULTS < _config.yml < override
       config = config.deep_merge(override)
-      config = Configuration[config].stringify_keys
-
+      # Convert String Keys to Symbols Keys
+      config = Configuration[].transform_keys_to_symbols(config)
       return config
     end
 
@@ -134,6 +134,13 @@ module Hyla
     # Return a copy of the hash where all its keys are strings
     def stringify_keys
       reduce({}) { |hsh,(k,v)| hsh.merge(k.to_s => v) }
+    end
+
+    #take keys of hash and transform those to a symbols
+    def transform_keys_to_symbols(value)
+      return value if not value.is_a?(Hash)
+      hash = value.inject({}){|memo,(k,v)| memo[k.to_sym] = self.transform_keys_to_symbols(v); memo}
+      return hash
     end
 
   end # Class Configuration

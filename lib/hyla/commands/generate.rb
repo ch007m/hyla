@@ -5,23 +5,27 @@ module Hyla
       attr_reader :artefact
 
       DEFAULT_OPTIONS = {
-          :watch_dir => '.',
-          :watch_ext => %w(ad adoc asciidoc txt index),
-          :run_on_start => false,
-          :backend => 'html5',
-          :eruby => 'erb',
-          :doctype => 'article',
-          :compact => false,
-          :attributes => {
-              'source-highlighter' => 'coderay',
-              'linkcss!' => 'true',
-              'data-uri' => 'true',
-              'stylesheet' => 'asciidoctor',
-              'stylesdir' => Configuration::styles
+
+          'source'           => Dir.pwd,
+          'destination'      => File.join(Dir.pwd, 'generated_content'),
+
+          :watch_dir         => '.',
+          :watch_ext         => %w(ad adoc asciidoc txt index),
+          :run_on_start      => false,
+          :backend           => 'html5',
+          :eruby             => 'erb',
+          :doctype           => 'article',
+          :compact           => false,
+          :attributes        => {
+              'source-highlighter'  => 'coderay',
+              'linkcss!'            => 'true',
+              'data-uri'            => 'true',
+              'stylesheet'          => 'asciidoctor.css',
+              'stylesdir'           => Configuration::styles
           },
-          :always_build_all => false,
-          :safe => :unsafe,
-          :header_footer => true
+          :always_build_all  => false,
+          :safe              => 'unsafe',
+          :header_footer     => true
       }
 
       def self.process(args, options = {})
@@ -46,20 +50,6 @@ module Hyla
             self.check_mandatory_option?('--d / --destination', options[:destination])
             @destination = options[:destination]
             @source = options[:source]
-
-            if options[:style]
-              style = [options[:style], '.css'].join()
-            else
-              style = 'asciidoctor.css'
-            end
-
-            options = {
-                :watch_ext => %w(ad adoc asc asciidoc txt),
-                :attributes => {
-                    'stylesheet' => style,
-                    'stylesdir' => Configuration::styles
-                }
-            }
 
             extensions = 'adoc|ad|txt'
 
@@ -119,7 +109,16 @@ module Hyla
 
       def self.asciidoc_to_html(source, destination, extensions, options)
 
-        @options = DEFAULT_OPTIONS.deep_merge(options)
+        # CSS Style to be applied
+        css_style = self.check_style(options[:style])
+
+        override = {
+            :attributes => {
+                'stylesheet'  => css_style
+            }
+        }
+
+        @options = DEFAULT_OPTIONS.deep_merge(override)
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
         source = File.expand_path source
@@ -179,6 +178,18 @@ module Hyla
           exit(1)
         end
 
+      end
+
+      #
+      # CSS Style to be used
+      # Default is : asciidoctor.css
+      #
+      def self.check_style(style)
+        if !style.nil?
+          css_file = [style, '.css'].join()
+        else
+          css_file = 'asciidoctor.css'
+        end
       end
 
       #

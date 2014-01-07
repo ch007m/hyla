@@ -14,6 +14,7 @@
 :doctype: article
 :sectlink: true                      // to turn section titles into links
 :sectanchors: true                   // An anchor (empty link) is added before the section title
+:linkattrs: true                     // when links are defined in text, paragraph
 
 == The Dangerous and Thrilling Documentation Chronicles
 
@@ -108,6 +109,8 @@ To attach a URL to text, enclose the text in square brackets at the end of the U
 [[id_of_hyla_picture]]
 .Title of the picture displayed under the picture
 image::image/hyla_arborea.jpg[width="40%"]
+
+Link to Figure Image : <<id_of_hyla_picture,A beautiful Hyla Arborea Picture>>
 
 == Admonition
 

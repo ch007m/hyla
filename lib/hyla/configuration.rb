@@ -41,6 +41,7 @@ module Hyla
         ":last-update-label!:\n" +
         ":source-highlighter: coderay\n" +
         ":toc: left\n" +
+        ":notitle: true\n" +
         "\n"
 
     HEADER_INDEX = ":data-uri:\n" +

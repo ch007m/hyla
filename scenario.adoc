@@ -113,13 +113,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
     hyla watch --s ~/hyla/MyTocProject/ --d generated_content
 
-== 4. Server content locally - HTTP Server
+== 4. Generate a DeckJS Slideshow
+
+    hyla generate --backend deckjs --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
+
+== 5. Server content locally - HTTP Server
 
     hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
-
-== 5. Generate a DeckJS Slideshow
-
-    !!!! hyla generate --backend deckjs --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
 
 == 6. Generate a Slideshow
 

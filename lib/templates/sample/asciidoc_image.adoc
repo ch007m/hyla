@@ -1,9 +1,10 @@
 :icons: font
 :data-uri:
 
-== Asciidoctor User Manual Reference
 
-http://asciidoctor.org/docs/user-manual/#images[Images]
+== Asciidoc(tor) Reference
+
+- http://asciidoctor.org/docs/user-manual/#images[Images]
 
 == A block centered image with subtitle, id and link to refer
 

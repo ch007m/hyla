@@ -1,6 +1,22 @@
 :source-highlighter: coderay
 
+== Asciidoc(tor) Reference
+
+- http://asciidoctor.org/docs/user-manual/#syntax-highlighting[Source Highlighting]
+- http://asciidoctor.org/docs/user-manual/#passthrough-macros[Pass through Macros]
+
 == Syntax HighLighter
+
+=== Text
+
+Text explaining where the code is located in *+++<span style="font-family: 'courier new', courier, monospace;">/directory structure</span>+++*
+
+Instructions of what the code is doing
+
+[source, txt, indent=0, subs="macros"]
++++[directory structure]#+++ pass:quotes[*command syntax*]
+
+Remark : Asciidoctor substitution with macros is used
 
 === Java
 [source,java]

@@ -56,23 +56,38 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 === 5. Generate HTML Content of an existing project (asciidoc 2 html) with a different style
 
+    Styles available : redhat, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
+
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style redhat
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style github
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style foundation
 
-=== 6.
+=== 6. Generate HTML Content within project
+
+    hyla generate --r adoc2html --s . --d generated_content
+
+=== 7. Generate HTML Content within project & using Config File
+
+   As destination directory is not longer '.' (which is the case when we add artefacts using `hyla create` command, then we must change the destination directory to `generated_content`. the original file is
+   still available as it will backuped by ruby
+
+   ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
+   hyla generate
+
 
 == 2. Project from Template
 
 === 1. Create a project using a template (training)
 
-    hyla new --force --t training ~/hyla/MyTrainingProject
-    hyla new --force --t training-exercises ~/hyla/MyTrainingExercisesProject
-    hyla new --t  book --force ~/hyla/MyBookProject
+    hyla new --t training ~/hyla/MyTrainingProject --force
+    hyla new --t training-exercises ~/hyla/MyTrainingExercisesProject --force
+    hyla new --t book --force ~/hyla/MyBookProject --force
 
 === 2. Generate content and watch it
 
-    hyla generate --r adoc2html --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
+    cd ~/hyla/MyTrainingProject
+    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
+    hyla generate
 
     hyla watch --s ~/hyla/MyTrainingProject/ --d ~/hyla/MyTrainingProject/generated_content
 
@@ -94,21 +109,34 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
     hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide --trace
 
-== 6. Generate a Slideshow DeckJS presentation from a template/sample
+== 6. Generate a Slideshow
 
-   hyla new --blank ~/hyla/MyDeckSlideShow
-   hyla create --t slideshow --a deckjs --d ~/hyla/MyDeckSlideShow
+=== 1. DeckJS using a template
+
+   rm -rf  ~/hyla/MyDeckSlideShow
+   cd ~hyla
+   hyla new --blank MyDeckSlideShow
+   hyla create --t slideshow --a deckjs --d MyDeckSlideShow
    hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide
 
-   Different DeckJS Style
+=== 2. Different DeckJS Style options
+
    hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
    hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
 
-== 7. Create a RevealJS project
+   == Slideshows (DeckJS)
 
-   hyla new --blank ~/hyla/MyRevealSlideShow
-   hyla create --t slideshow --a revealjs --d ~/hyla/MyRevealSlideShow
-   hyla generate --backend revealjs --s  ~/hyla/MyRevealSlideShow --d ~/hyla/MyRevealSlideShow/generated_content --r adoc2slide
+     hyla new --blank ~/hyla/MyDeckSlideShow
+     hyla create --t slideshow --a deckjs --d ~/hyla/MyDeckSlideShow
+     hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
+
+
+===  3. RevealJS
+
+     rm -rf ~/hyla/MyRevealSlideShow
+     hyla new --blank ~/hyla/MyRevealSlideShow
+     hyla create --t slideshow --a revealjs --d ~/hyla/MyRevealSlideShow
+     hyla generate --backend revealjs --s ~/hyla/MyRevealSlideShow --d ~/hyla/MyRevealSlideShow/generated_content --r adoc2slide
 
 
 

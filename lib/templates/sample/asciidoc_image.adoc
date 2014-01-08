@@ -1,7 +1,3 @@
-:icons: font
-:data-uri:
-
-
 == Asciidoc(tor) Reference
 
 - http://asciidoctor.org/docs/user-manual/#images[Images]
@@ -28,4 +24,3 @@ You can find Hyla in American, Europe or Asian Tropical Rain forrests !
 [[img-sunset]]
 .A mountain sunset
 image::image/hyla_arborea.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448336655"]
-

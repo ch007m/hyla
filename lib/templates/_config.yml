@@ -5,15 +5,21 @@ destination: . # or . or ~/MyProject or generated_content
 # Asciidoc and attributes options
 backend: HTML5
 attributes:
+   source-highlighter: coderay
+   linkcss!: true
+   data-uri: true
 
 # Hyla options
+# Generate command
 rendering: adoc2html
+
+# New/Create command
+project_name: demo
 artefact_type: article
 type: asciidoc
 
-# Styles supported : asciidoc, redhat,
+# Styles supported : redhat, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
 style: redhat
-project_name: demo
 
 # Location of the Table of Content to be processed
 # as a collection of asciidoc files

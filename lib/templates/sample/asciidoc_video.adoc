@@ -5,7 +5,7 @@
 == Video
 
 .Video Caption Title
-video::video/small.ogv[options=autoplay]
+video::../video/small.ogv[options=autoplay]
 
 '''
 [.big]#Video Text or Directions#

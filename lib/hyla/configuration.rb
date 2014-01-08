@@ -10,23 +10,23 @@ module Hyla
         'destination' => File.join(Dir.pwd, 'generated_content'),
 
         # Asciidoctor
-        'watch_dir'        => '.',
-        'watch_ext'        => %w(ad adoc asciidoc txt index),
-        'run_on_start'     => false,
-        'backend'          => 'html5',
-        'eruby'            => 'erb',
-        'doctype'          => 'article',
-        'compact'          => false,
-        'attributes'       => {
+        'watch_dir' => '.',
+        'watch_ext' => %w(ad adoc asciidoc txt index),
+        'run_on_start' => false,
+        'backend' => 'html5',
+        'eruby' => 'erb',
+        'doctype' => 'article',
+        'compact' => false,
+        'attributes' => {
             'source-highlighter' => 'coderay',
-            'linkcss!'           => 'true',
-            'data-uri'           => 'true',
-            'stylesheet'         => 'asciidoctor.css',
-            'stylesdir'          => Configuration[].styles
+            'linkcss!' => 'true',
+            'data-uri' => 'true',
+            'stylesheet' => 'asciidoctor.css',
+            'stylesdir' => 'styles'
         },
         'always_build_all' => false,
-        'safe'             => 'unsafe',
-        'header_footer'    => true
+        'safe' => 'unsafe',
+        'header_footer' => true
 
     }
 
@@ -123,8 +123,8 @@ module Hyla
 
       # Read config file if it exists and merge content with DEFAULT config
       new_config = read_config_file(YAML_CONFIG_FILE_NAME)
-      Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if ! new_config.nil?
-      config = config.deep_merge(new_config) if ! new_config.nil?
+      Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
+      config = config.deep_merge(new_config) if !new_config.nil?
 
       # Merge DEFAULTS < _config.yml < override
       config = config.deep_merge(override)
@@ -157,19 +157,26 @@ module Hyla
     #
     # Return a copy of the hash where all its keys are strings
     def stringify_keys
-      reduce({}) { |hsh,(k,v)| hsh.merge(k.to_s => v) }
+      reduce({}) { |hsh, (k, v)| hsh.merge(k.to_s => v) }
     end
 
-    #take keys of hash and transform those to a symbols
+    #
+    # Take keys of hash and transform those to a symbols
+    #
     def transform_keys_to_symbols(hash)
       return hash if not hash.is_a?(Hash)
-      hash.inject({}){|result, (key, value)|
+      hash.inject({}) { |result, (key, value)|
         new_key = case key
                     when String then key.to_sym
                     else key
                   end
         new_value = case value
-                      when Hash then transform_keys_to_symbols(value)
+                      when Hash
+                        if key.eql? 'attributes'
+                          value
+                        else
+                          transform_keys_to_symbols(value)
+                        end
                       else value
                     end
         result[new_key] = new_value

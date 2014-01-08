@@ -42,15 +42,24 @@ module Hyla
         #
         if options[:blank]
           create_blank_project new_project_path
+
           # Add yaml config file
           FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', new_project_path
-          Hyla.logger.info("Blank project created")
-        else
 
+          # copy styles
+          FileUtils.cp_r Configuration::styles, new_project_path
+
+          Hyla.logger.info("Blank project created")
+
+        else
           raise ArgumentError.new('You must specifiy a template type.') if options[:template_type].nil?
 
           create_sample_project(new_project_path, options[:template_type])
-          Hyla.logger.info("Sample project created")
+
+          # copy styles
+          FileUtils.cp_r Configuration::styles, new_project_path
+
+          Hyla.logger.info("Sample project created using template : #{options[:template_type]}")
         end
 
       end
@@ -73,6 +82,7 @@ module Hyla
       #
       # Create a Sample Project
       # from a Template (asciidoc, slideshow)
+      # and add styles
       #
       def self.create_sample_project(path, type)
         source = [Configuration::templates, type] * '/' + '/.'

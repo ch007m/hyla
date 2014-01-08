@@ -2,12 +2,10 @@ module Hyla
   module Commands
     class Generate < Command
 
-      attr_reader :artefact
-
       DEFAULT_OPTIONS = {
 
-          'source'           => Dir.pwd,
-          'destination'      => File.join(Dir.pwd, 'generated_content'),
+          :source           => Dir.pwd,
+          :destination      => File.join(Dir.pwd, 'generated_content'),
 
           :watch_dir         => '.',
           :watch_ext         => %w(ad adoc asciidoc txt index),
@@ -118,7 +116,9 @@ module Hyla
             }
         }
 
-        @options = DEFAULT_OPTIONS.deep_merge(override)
+        #@options = DEFAULT_OPTIONS.deep_merge(override)
+        @options = Configuration[options].deep_merge(override)
+
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
         source = File.expand_path source

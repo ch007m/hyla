@@ -78,7 +78,8 @@ command :generate do |c|
   add_common_options(c)
 
   c.action do |args, options|
-    Hyla::Commands::Generate.process(args, options.__hash__)
+    config = Hyla::Configuration.parse(options.__hash__)
+    Hyla::Commands::Generate.process(args, config)
   end
 end
 

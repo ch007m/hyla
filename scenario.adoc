@@ -109,11 +109,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
     hyla generate --r toc2adoc
 
     # Change destination in config files or pass info as option
+    # cd ../MyTocProject/
+    # subl _config.yml
     hyla generate --r adoc2html
 
     hyla watch --s ~/hyla/MyTocProject/ --d generated_content
 
-== 4. Generate a DeckJS Slideshow
+== 4. Generate a DeckJS Slideshow from Table Of Content
 
     hyla generate --backend deckjs --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
 

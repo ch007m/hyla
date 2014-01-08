@@ -19,13 +19,20 @@ And then execute:
 
 **Or** install it yourself as:
 
-    $ gem install hyla -v 1.0.x
+    $ gem install hyla -v 1.0.1
 
 == For Developer's only
 
     Clone Git project locally, move to Hyla directory and execute the following commands
     gem build hyla.gemspec
     sudo gem install hyla-1.0.x.gem
+
+== To publish Hyla to Gem Repo
+
+    gem build hyla.gemspec
+    gem install hyla-1.0.x.gem
+    gem yank hyla -v 1.0.x
+    gem push hyla-1.0.x.gem
 
 == Usage
 

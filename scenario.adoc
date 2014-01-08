@@ -96,10 +96,22 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 === 1. Generate an asciidoctor project from a Table of Content
 
     hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
-
     hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
     hyla watch --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
+
+=== 2. Generate an asciidoctor project from a Table of Content using YAML config file and watch content
+
+    rm -rf ~/hyla/MyTocProject
+    cd ~/hyla
+    hyla new --blank MyTocProject
+    cd MyTocProject
+    hyla generate --r toc2adoc
+
+    # Change destination in config files or pass info as option
+    hyla generate --r adoc2html
+
+    hyla watch --s ~/hyla/MyTocProject/ --d generated_content
 
 == 4. Server content locally - HTTP Server
 
@@ -107,14 +119,14 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 == 5. Generate a DeckJS Slideshow
 
-    hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide --trace
+    !!!! hyla generate --backend deckjs --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
 
 == 6. Generate a Slideshow
 
 === 1. DeckJS using a template
 
    rm -rf  ~/hyla/MyDeckSlideShow
-   cd ~hyla
+   cd ~/hyla
    hyla new --blank MyDeckSlideShow
    hyla create --t slideshow --a deckjs --d MyDeckSlideShow
    hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide
@@ -124,19 +136,14 @@ Using hyla we will create a new project (= directory) and add artefacts (article
    hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
    hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
 
-   == Slideshows (DeckJS)
-
-     hyla new --blank ~/hyla/MyDeckSlideShow
-     hyla create --t slideshow --a deckjs --d ~/hyla/MyDeckSlideShow
-     hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
-
-
 ===  3. RevealJS
 
-     rm -rf ~/hyla/MyRevealSlideShow
-     hyla new --blank ~/hyla/MyRevealSlideShow
-     hyla create --t slideshow --a revealjs --d ~/hyla/MyRevealSlideShow
-     hyla generate --backend revealjs --s ~/hyla/MyRevealSlideShow --d ~/hyla/MyRevealSlideShow/generated_content --r adoc2slide
+   rm -rf ~/hyla/MyRevealSlideShow
+   cd ~/hyla
+   hyla new --blank MyRevealSlideShow
+   hyla create --t slideshow --a revealjs --d MyRevealSlideShow
+   cd MyRevealSlideShow
+   hyla generate --backend revealjs --s . --d generated_content --r adoc2slide
 
 
 

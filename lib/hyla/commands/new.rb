@@ -46,7 +46,7 @@ module Hyla
           # Add yaml config file
           FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', new_project_path
 
-          # copy styles
+          # Copy styles
           FileUtils.cp_r Configuration::styles, new_project_path
 
           Hyla.logger.info("Blank project created")
@@ -56,7 +56,7 @@ module Hyla
 
           create_sample_project(new_project_path, options[:template_type])
 
-          # copy styles
+          # Copy styles
           FileUtils.cp_r Configuration::styles, new_project_path
 
           Hyla.logger.info("Sample project created using template : #{options[:template_type]}")

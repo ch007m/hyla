@@ -61,15 +61,24 @@ module Hyla
             # Assign by default backend as HTML5 if not provided by command line
             backend = options[:backend]? options[:backend] : 'html5'
 
+            #
             # Retrieve asciidoctor attributes
-            entries = options[:attributes].split(',') if options[:attributes]
-            if entries
-              attributes = Hash.new
-              entries.each do |entry|
-                words = entry.split('=')
-                attributes[words[0]] = words[1]
-              end
-            end
+            # Could be an Arrays of Strings key=value,key=value
+            # or
+            # Could be a Hash (DEFAULTS, CONFIG_File)
+            attributes = options[:attributes]
+            override_attrs = case attributes
+                        when Hash then attributes
+                        when String then
+                          result = attributes.split(',')
+                          attributes = Hash.new
+                          result.each do |entry|
+                            words = entry.split('=')
+                            attributes[words[0]] = words[1]
+                          end
+                          attributes
+                        else {}
+                      end
 
             @destination = options[:destination]
             @source = options[:source]
@@ -79,7 +88,7 @@ module Hyla
                     self.backend_dir(options[:backend])
                 ],
                 :watch_ext => %w(index),
-                :attributes => attributes
+                :attributes => override_attrs
             }
 
             extensions = 'index|adoc|ad|asciidoc'
@@ -116,9 +125,7 @@ module Hyla
             }
         }
 
-        #@options = DEFAULT_OPTIONS.deep_merge(override)
         @options = Configuration[options].deep_merge(override)
-
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
         source = File.expand_path source
@@ -227,6 +234,12 @@ module Hyla
           FileUtils.mkdir_p @out_dir
         end
 
+        # Copy YAML Config file
+        FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', @out_dir
+
+        # Copy styles
+        FileUtils.cp_r Configuration::styles, @out_dir
+
         #
         # Move to 'generated' directory as we will
         # create content relative to this directory
@@ -308,8 +321,6 @@ module Hyla
         end
 
       end
-
-      # method parse_file(f)
 
       #
       # Remove space, dot from a String

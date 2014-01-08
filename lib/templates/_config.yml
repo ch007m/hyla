@@ -3,7 +3,7 @@ source: .
 destination: . # or . or ~/MyProject or generated_content
 
 # Asciidoc and attributes options
-backend: HTML5
+backend: html5
 attributes:
    source-highlighter: coderay
    linkcss!: true
@@ -11,10 +11,10 @@ attributes:
 
 # Hyla options
 # Generate command
+#rendering: toc2adoc
 rendering: adoc2html
 
 # New/Create command
-project_name: demo
 artefact_type: article
 type: asciidoc
 
@@ -23,4 +23,5 @@ style: redhat
 
 # Location of the Table of Content to be processed
 # as a collection of asciidoc files
-toc:
+project_name: my-project
+toc: /Users/chmoulli/MyProjects/hyla/data/toc.adoc # Change location

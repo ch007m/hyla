@@ -1,3 +1,5 @@
+:icons: font
+
 image:https://raw.github.com/cmoulliard/asciidoctor-hyla/master/hyla_frog.jpg[Hyla, 100, 100, role="left"] **Hyla** is a command line tool to create a new documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow using asciidoc(tro) as markup language. It also support to watch files and render them on the fly for browser configured with Livereload. The content generated is served by a HTTP server.
 
 The Hyla project name comes from an arborical http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
@@ -6,10 +8,18 @@ The Hyla project name comes from an arborical http://en.wikipedia.org/wiki/Hyla[
 
 - https://www.ruby-lang.org/en/[Ruby] > 1.9.3
 - http://guides.rubygems.org/[RubyGems] to install Ruby Applications
+- https://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby
 
 == Installation
 
-Add this line to your application's Gemfile:
+Use `gem install` command to deploy Hyla :
+
+    $ gem install hyla -y
+    
+NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required 
+    
+
+An alternative is to create a Gemfile and add this line :
 
     gem 'hyla'
 

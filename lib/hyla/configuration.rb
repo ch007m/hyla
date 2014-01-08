@@ -9,7 +9,25 @@ module Hyla
         'source' => Dir.pwd,
         'destination' => File.join(Dir.pwd, 'generated_content'),
 
-        'backend' => 'html5'
+        # Asciidoctor
+        'watch_dir'        => '.',
+        'watch_ext'        => %w(ad adoc asciidoc txt index),
+        'run_on_start'     => false,
+        'backend'          => 'html5',
+        'eruby'            => 'erb',
+        'doctype'          => 'article',
+        'compact'          => false,
+        'attributes'       => {
+            'source-highlighter' => 'coderay',
+            'linkcss!'           => 'true',
+            'data-uri'           => 'true',
+            'stylesheet'         => 'asciidoctor.css',
+            'stylesdir'          => Configuration[].styles
+        },
+        'always_build_all' => false,
+        'safe'             => 'unsafe',
+        'header_footer'    => true
+
     }
 
     INCLUDE_PREFIX = 'include::'
@@ -99,14 +117,20 @@ module Hyla
     # Returns the final configuration Hash.
     def self.parse(override)
       config = DEFAULTS
+      Hyla::logger.debug("DEFAULTS Keys: #{config.inspect}")
       override = Configuration[override].stringify_keys
+      Hyla::logger.debug("OVERRIDE Keys: #{override.inspect}")
+
+      # Read config file if it exists and merge content with DEFAULT config
       new_config = read_config_file(YAML_CONFIG_FILE_NAME)
+      Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if ! new_config.nil?
       config = config.deep_merge(new_config) if ! new_config.nil?
 
       # Merge DEFAULTS < _config.yml < override
       config = config.deep_merge(override)
       # Convert String Keys to Symbols Keys
       config = Configuration[].transform_keys_to_symbols(config)
+      Hyla::logger.debug("Merged Keys: #{config.inspect}")
       return config
     end
 
@@ -137,10 +161,20 @@ module Hyla
     end
 
     #take keys of hash and transform those to a symbols
-    def transform_keys_to_symbols(value)
-      return value if not value.is_a?(Hash)
-      hash = value.inject({}){|memo,(k,v)| memo[k.to_sym] = self.transform_keys_to_symbols(v); memo}
-      return hash
+    def transform_keys_to_symbols(hash)
+      return hash if not hash.is_a?(Hash)
+      hash.inject({}){|result, (key, value)|
+        new_key = case key
+                    when String then key.to_sym
+                    else key
+                  end
+        new_value = case value
+                      when Hash then transform_keys_to_symbols(value)
+                      else value
+                    end
+        result[new_key] = new_value
+        result
+      }
     end
 
   end # Class Configuration

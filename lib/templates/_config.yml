@@ -1,6 +1,6 @@
 # Common options
 source: .
-destination: generated_content # or . or ~/MyProject
+destination: . # or . or ~/MyProject or generated_content
 
 # Asciidoc and attributes options
 backend: HTML5

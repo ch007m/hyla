@@ -6,6 +6,7 @@
     rm -rf ~/hyla/MyBookProject
     rm -rf ~/hyla/MyTocProject/
     rm -rf ~/hyla/MyTrainingProject/
+    rm -rf ~/hyla/MyTrainingExercisesProject/
     rm -rf ~/hyla/MyDeckSlideShow/
     rm -rf ~/hyla/MyRevealSlideShow/
 
@@ -13,37 +14,41 @@
 
     gem install hyla -v 1.0.x
 
-== 1.Create a Blank Project
+== 1. Blank Project & Artefacts
 
-=== 1. Create a new project
+Using hyla we will create a new project (= directory) and add artefacts (article, audio, video, image, source, table)
+
+== 1. Create a Blank Project (with or without --force option)
 
     hyla new --blank ~/hyla/MyBlankProject
-
-=== 2. Idem but with force option
-
     hyla new --blank ~/hyla/MyBlankProject --force
 
-=== 3. Create a project localy
+== 2. Create a Blank Project without _config.yaml config file, add artefact
 
+    cd ~/hyla
+    rm -rf MyBlankProject/
     hyla new --blank MyBlankProject --force
-
-=== 4. Add an artefact (article, book, audio, video, source)
-
     hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
     hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc --a image --d ~/hyla/MyBlankProject
     hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
     hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
     hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc --a table --d ~/hyla/MyBlankProject
 
-    and using _config.yaml file.
+== 3.  Create a Blank Project using _config.yaml config file, add artefacts
 
+    cd ~/hyla
     rm -rf MyBlankProject/
     hyla new --blank MyBlankProject --force
+    cd MyBlankProject
     hyla create --a article
     hyla create --a book
+    hyla create --a image
     hyla create --a audio
     hyla create --a video
     hyla create --a source
+    hyla create --a table
 
 === 4. Generate HTML Content of an existing project (asciidoc 2 html)
 
@@ -54,6 +59,8 @@
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style redhat
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style github
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style foundation
+
+=== 6.
 
 == 2. Project from Template
 

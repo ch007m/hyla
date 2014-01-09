@@ -2,30 +2,6 @@ module Hyla
   module Commands
     class Generate < Command
 
-      DEFAULT_OPTIONS = {
-
-          :source           => Dir.pwd,
-          :destination      => File.join(Dir.pwd, 'generated_content'),
-
-          :watch_dir         => '.',
-          :watch_ext         => %w(ad adoc asciidoc txt index),
-          :run_on_start      => false,
-          :backend           => 'html5',
-          :eruby             => 'erb',
-          :doctype           => 'article',
-          :compact           => false,
-          :attributes        => {
-              'source-highlighter'  => 'coderay',
-              'linkcss!'            => 'true',
-              'data-uri'            => 'true',
-              'stylesheet'          => 'asciidoctor.css',
-              'stylesdir'           => Configuration::styles
-          },
-          :always_build_all  => false,
-          :safe              => 'unsafe',
-          :header_footer     => true
-      }
-
       def self.process(args, options = {})
 
         rendering = options[:rendering] if self.check_mandatory_option?('--r / --rendering', options[:rendering])
@@ -46,61 +22,70 @@ module Hyla
             Hyla.logger.info "Rendering : Asciidoc to HTML"
             self.check_mandatory_option?('--s / --source', options[:source])
             self.check_mandatory_option?('--d / --destination', options[:destination])
+
             @destination = options[:destination]
             @source = options[:source]
 
-            extensions = 'adoc|ad|txt'
+            # Check Style to be used
+            new_asciidoctor_option = {
+                :attributes => {
+                    'stylesheet' => self.check_style(options[:style])
+                }
+            }
 
-            self.asciidoc_to_html(@source, @destination, extensions, options)
+            merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
+
+            extensions = 'adoc|ad|asciidoc'
+
+            self.asciidoc_to_html(@source, @destination, extensions, merged_options)
+
+          when 'index2slide'
+            Hyla.logger.info "Rendering : Asciidoctor Indexed Files to SlideShow"
+            self.check_mandatory_option?('--s / --source', options[:source])
+            self.check_mandatory_option?('--d / --destination', options[:destination])
+
+            @destination = options[:destination]
+            @source = options[:source]
+
+            new_asciidoctor_option = {
+                :template_dirs => [ self.backend_dir(options[:backend]) ],
+                :attributes => {
+                    'stylesheet' => self.check_style(options[:style])
+                }
+            }
+
+            merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
+
+            # Extension(s) of the files containing include directives
+            extensions = 'txt'
+
+            self.asciidoc_to_html(@source, @destination, extensions, merged_options)
 
           when 'adoc2slide'
             Hyla.logger.info "Rendering : Asciidoc to SlideShow"
             self.check_mandatory_option?('--s / --source', options[:source])
             self.check_mandatory_option?('--d / --destination', options[:destination])
 
-            # Assign by default backend as HTML5 if not provided by command line
-            backend = options[:backend]? options[:backend] : 'html5'
-
-            #
-            # Retrieve asciidoctor attributes
-            # Could be an Arrays of Strings key=value,key=value
-            # or
-            # Could be a Hash (DEFAULTS, CONFIG_File)
-            attributes = options[:attributes]
-            override_attrs = case attributes
-                        when Hash then attributes
-                        when String then
-                          result = attributes.split(',')
-                          attributes = Hash.new
-                          result.each do |entry|
-                            words = entry.split('=')
-                            attributes[words[0]] = words[1]
-                          end
-                          attributes
-                        else {}
-                      end
-
             @destination = options[:destination]
             @source = options[:source]
-            options = {
-                :backend => backend,
-                :template_dirs => [
-                    self.backend_dir(options[:backend])
-                ],
-                :watch_ext => %w(index),
-                :attributes => override_attrs
+
+            new_asciidoctor_option = {
+                :template_dirs => [ self.backend_dir(options[:backend]) ],
+                :attributes => {
+                    'stylesheet' => self.check_style(options[:style])
+                }
             }
 
-            extensions = 'index|adoc|ad|asciidoc'
+            merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
 
-            self.asciidoc_to_html(@source, @destination, extensions, options)
+            # Extension(s) of the files to be parsed
+            extensions = 'adoc|ad|asciidoc'
+
+            self.asciidoc_to_html(@source, @destination, extensions, merged_options)
           else
             Hyla.logger.error ">> Unknow rendering"
             exit(1)
         end
-
-        # From Table of Content File to Asciidoc directories and Files
-        # self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
       end
 
       # Return backend directory
@@ -115,17 +100,6 @@ module Hyla
       end
 
       def self.asciidoc_to_html(source, destination, extensions, options)
-
-        # CSS Style to be applied
-        css_style = self.check_style(options[:style])
-
-        override = {
-            :attributes => {
-                'stylesheet'  => css_style
-            }
-        }
-
-        @options = Configuration[options].deep_merge(override)
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
         source = File.expand_path source
@@ -173,8 +147,8 @@ module Hyla
 
             # Render asciidoc to HTML
             Hyla.logger.info ">> File to be rendered : #{path}"
-            @options[:to_dir] = html_dir
-            Asciidoctor.render_file(path, @options)
+            options[:to_dir] = html_dir
+            Asciidoctor.render_file(path, options)
 
           end
         end
@@ -269,8 +243,8 @@ module Hyla
             FileUtils.mkdir_p new_dir
             Dir.chdir(new_dir)
 
-            # Add image directory
-            Dir.mkdir('image')
+            # Add image, audio, video directory
+            self.create_asset_directory(['image', 'audio', 'video'])
 
             #
             # Create an index file
@@ -281,6 +255,7 @@ module Hyla
 
             # Include index file created to parent index file
             @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + dir_name + Configuration::INDEX_SUFFIX + Configuration::INCLUDE_SUFFIX
+            @project_index_file.puts "\n"
 
             # Move to next line record
             next
@@ -304,11 +279,13 @@ module Hyla
             f_name += '.adoc'
             @new_f = File.new(f_name, 'w')
             @new_f.puts Configuration::HEADER
+            @new_f.puts "\n"
 
             @previous_f = @new_f
 
             # Include file to index
             @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
+            @index_file.puts "\n"
           end
 
           #
@@ -320,6 +297,15 @@ module Hyla
 
         end
 
+      end
+
+      #
+      # Create Asset Directory
+      #
+      def self.create_asset_directory(assets = [])
+        assets.each do |asset|
+          Dir.mkdir(asset) if !Dir.exist? asset
+        end
       end
 
       #
@@ -350,8 +336,14 @@ module Hyla
       def self.create_index_file(file_name, level)
         n_file_name = file_name + Configuration::INDEX_SUFFIX
         index_file = File.new(n_file_name, 'w')
-        index_file.puts level + file_name
+
         index_file.puts Configuration::HEADER_INDEX
+        index_file.puts "\n"
+        # TODO - until now we cannot use level 0 for parent/children files
+        # even if doctype: book
+        # This is why the level for each index file title is '=='
+        index_file.puts '==' + file_name
+        index_file.puts "\n"
 
         index_file
       end

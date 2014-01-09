@@ -6,26 +6,22 @@ module Hyla
                 :templates, :samples, :resources, :styles, :backends
 
     DEFAULTS = {
-        'source' => Dir.pwd,
-        'destination' => File.join(Dir.pwd, 'generated_content'),
+        'source'        => Dir.pwd,
+        'destination'   => File.join(Dir.pwd, 'generated_content'),
 
         # Asciidoctor
-        'watch_dir' => '.',
-        'watch_ext' => %w(ad adoc asciidoc txt index),
-        'run_on_start' => false,
-        'backend' => 'html5',
-        'eruby' => 'erb',
-        'doctype' => 'article',
-        'compact' => false,
-        'attributes' => {
+        'backend'       => 'html5',
+        'eruby'         => 'erb',
+        'doctype'       => 'article',
+        'compact'       => false,
+        'attributes'    => {
             'source-highlighter' => 'coderay',
-            'linkcss!' => 'true',
-            'data-uri' => 'true',
-            'stylesheet' => 'asciidoctor.css',
-            'stylesdir' => 'styles'
+            'linkcss!'           => 'true',
+            'data-uri'           => 'true',
+            'stylesheet'         => 'asciidoctor.css',
+            'stylesdir'          => 'styles'
         },
-        'always_build_all' => false,
-        'safe' => 'unsafe',
+        'safe'          => 'unsafe',
         'header_footer' => true
 
     }
@@ -34,22 +30,19 @@ module Hyla
 
     INCLUDE_SUFFIX = '[]'
 
-    INDEX_SUFFIX = '_AllSlides.index'
+    INDEX_SUFFIX = '_AllSlides.txt'
 
     HEADER = ":data-uri:\n" +
         ":icons: font\n" +
         ":last-update-label!:\n" +
-        ":source-highlighter: coderay\n" +
-        ":toc: left\n" +
-        ":notitle: true\n" +
-        "\n"
+        ":source-highlighter: coderay\n"
 
     HEADER_INDEX = ":data-uri:\n" +
         ":navigation:\n" +
         ":menu:\n" +
         ":status:\n" +
-
-        "\n"
+        ":goto:\n" +
+        ":notitle:\n"
 
     LEVEL_1 = '= '
 
@@ -117,12 +110,24 @@ module Hyla
     #
     # Returns the final configuration Hash.
     def self.parse(override)
-      config = DEFAULTS
-      Hyla::logger.debug("DEFAULTS Keys: #{config.inspect}")
+
+
+      # Extract Asciidoctor attributes received from hyla command line '--a key=value,key=value'
+      # Convert them to a Hash of attributes 'attributes' => { 'backend' => html5 ... }
+      # Assign hash to override[:attributes]
+      extracted_attributes = self.extract_attributes(override[:attributes]) if override[:attributes]
+      override[:attributes] = extracted_attributes if extracted_attributes
+
+      # Stringify keys of the hash what we receive from Hyla as override
       override = Configuration[override].stringify_keys
       Hyla::logger.debug("OVERRIDE Keys: #{override.inspect}")
 
-      # Read config file if it exists and merge content with DEFAULT config
+      # Clone DEFAULTS
+      config = DEFAULTS
+      Hyla::logger.debug("DEFAULTS Keys: #{config.inspect}")
+
+      # Read YAML config file IF it exists and
+      # Merge content with DEFAULT config
       new_config = read_config_file(YAML_CONFIG_FILE_NAME)
       Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
       config = config.deep_merge(new_config) if !new_config.nil?
@@ -183,6 +188,21 @@ module Hyla
         result[new_key] = new_value
         result
       }
+    end
+
+    #
+    # Retrieve asciidoctor attributes
+    # Could be an Arrays of Strings key=value,key=value
+    # or
+    # Could be a Hash (DEFAULTS, CONFIG_File)
+    def self.extract_attributes(attributes)
+      result = attributes.split(',')
+      attributes = Hash.new
+      result.each do |entry|
+        words = entry.split('=')
+        attributes[words[0]] = words[1]
+      end
+      return attributes
     end
 
   end # Class Configuration

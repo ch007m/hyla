@@ -73,15 +73,21 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
    hyla generate
+   hyla generate --style foundation
 
 
 == 2. Project from Template
 
 === 1. Create a project using a template (training)
 
-    hyla new --t training ~/hyla/MyTrainingProject --force
-    hyla new --t training-exercises ~/hyla/MyTrainingExercisesProject --force
-    hyla new --t book --force ~/hyla/MyBookProject --force
+    cd ~/hyla
+    hyla new --t training MyTrainingProject
+
+    // TODO Refactor Training Exercises Template
+    hyla new --t training-exercises MyTrainingExercisesProject
+
+    // TODO - Add images
+    hyla new --t book MyBookProject
 
 === 2. Generate content and watch it
 
@@ -95,6 +101,8 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 === 1. Generate an asciidoctor project from a Table of Content
 
+    cd ~/hyla
+    rm -rf MyBlankProject/
     hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
     hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
@@ -115,9 +123,15 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
     hyla watch --s ~/hyla/MyTocProject/ --d generated_content
 
-== 4. Generate a DeckJS Slideshow from Table Of Content
+=== 3. Generate a DeckJS Slideshow for a module
 
-    hyla generate --backend deckjs --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
+    cd ~/hyla/MyTocProject
+    hyla generate --backend deckjs --s  A_Introduction_module/ --d A_Introduction_module/generated_content --r index2slide
+
+=== 4. Generate a DeckJS Slideshow for a Project (all the TOC)
+
+   cd ~/hyla/MyTocProject
+   hyla generate --backend deckjs --s  . --d generated_content --r index2slide --trace
 
 == 5. Server content locally - HTTP Server
 
@@ -135,8 +149,8 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 === 2. Different DeckJS Style options
 
-   hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=swiss,deckjs_transition=fade
-   hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r adoc2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
+   hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r index2slide --a deckjs_theme=swiss,deckjs_transition=fade
+   hyla generate --backend deckjs --s  ~/hyla/MyDeckSlideShow --d ~/hyla/MyDeckSlideShow/generated_content --r index2slide --a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
 
 ===  3. RevealJS
 

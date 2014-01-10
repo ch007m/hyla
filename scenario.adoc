@@ -135,7 +135,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 == 5. Server content locally - HTTP Server
 
-    hyla serve -P 4000 -H localhost --out_dir ~/hyla/MyTrainingProject/generated_content/ -b /hyla/
+    hyla serve -P 4000 -H localhost -b /hyla/ --out_dir ~/hyla/MyTrainingProject/generated_content/
 
 == 6. Generate a Slideshow
 
@@ -160,6 +160,9 @@ Using hyla we will create a new project (= directory) and add artefacts (article
    hyla create --t slideshow --a revealjs --d MyRevealSlideShow
    cd MyRevealSlideShow
    hyla generate --backend revealjs --s . --d generated_content --r adoc2slide
+
+   # View SlideShow
+   hyla serve -P 4000 -H localhost -b /hyla/ --out_dir ~/hyla/MyRevealSlideShow/generated_content/
 
 
 

@@ -14,7 +14,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     link href="revealjs/css/reveal.min.css" rel="stylesheet"
 
     - if attr? :revealjs_theme
-      link rel='stylesheet' href='revealjs/css/theme/#{attr :revealjs_theme}.css' id='custom_theme'
+      link rel='stylesheet' href='revealjs/css/theme/#{attr :revealjs_theme}.css' id='theme'
     - else
       link rel='stylesheet' href='revealjs/css/theme/default.css' id='default_theme'
 

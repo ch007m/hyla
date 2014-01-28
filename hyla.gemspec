@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'guard', '~> 1.8.3'
   s.add_runtime_dependency 'listen', '~> 1.3.1'
   s.add_runtime_dependency 'safe_yaml', '~> 1.0.0'
+  s.add_runtime_dependency 'mail', '~> 2.5.4'
 
   # Colorize Text Terminal
   s.add_runtime_dependency 'colorator', '~> 0.1'

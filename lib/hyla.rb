@@ -30,6 +30,8 @@ require 'http/parser'
 require 'multi_json'
 require 'webrick'
 require 'find'
+require 'mail'
+require 'mime/types'
 
 # internal requires
 require 'hyla/logger'

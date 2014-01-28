@@ -1,8 +1,35 @@
 :icons: font
 
-image:https://raw.github.com/cmoulliard/asciidoctor-hyla/master/hyla_frog.jpg[Hyla, 100, 100, role="left"] **Hyla** is a command line tool to create a new documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow using asciidoc(tro) as markup language. It also support to watch files and render them on the fly for browser configured with Livereload. The content generated is served by a HTTP server.
+image:https://raw.github.com/cmoulliard/asciidoctor-hyla/master/hyla_frog.jpg[Hyla, 100, 100, role="left"] **Hyla** is a Ruby command line tool to create a new
+documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow, ... using asciidoc(tor) as markup language.
 
-The Hyla project name comes from an arborical http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
+Until now, hyla looks like asciidoctor client but is is more similar to Jekyll on the principle but here we support 'asciidoc, asciidoctor' formats and not markdown.
+
+The tool allows to :
+
+- Generate slideshow presentations (deckJs, RevealJS) - https://twitter.com/cmoulliard/status/421587832159756288,
+- Setup a blank project,
+- Setup a project from template (book, training, training-exercises, documentation/training content, ...
+- Create a documentation/training project (including directories + files) from a Table of Content
+- Generate a one HTML file (= sum of all the asciidoc files) for slideshow (or trainer presentation) using index files (= file containing links to include other files)
+- Render html content from asciidoc (http://asciidoctor.org/docs/user-manual)
+- Render html using different styles
+- Watch files (LiveReload - WebSocket) and render them if a modification has been detected or file added
+...
+
+It is not a replacement or a concurrent of 'awestruct'. Idea is to package in hyla css styles, backends, samples (article, image, table, audio, video, book, report)
+and collection of templates (blog, static web site, awestruct, training, documentation = collection of modules, ... ) to boost process to develop documentation,
+training content (reason why hyla will assist you to create from a Table of content the structure of directories + asciidoc files (a file = a chapter =a module)),
+blog web, book, articles, static web site site ... without the need to install git projects (everything is packaged in one tool like jekyll).
+
+Reason / Motivation about the packaging : many end users are not developers/engineers and they enjoy to have one tool to use and not a procedure they should clone git repo, build, copy resources manually
+to finally build a documentation/training/blog ....
+
+hyla should be released regularly and will contain last releases of styles/backends/awestructs ...
+hyla will reuse stylesheets created from 'asciidoctor-stylesheet-factory' and 'asciidoctor-backends' for HTML5, RevealJS, DeckJS, DockBook ...
+hyla will include 'awestruct'
+
+The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
 == Prerequisites
 

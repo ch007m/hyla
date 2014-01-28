@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Varela+Round|Open+Sans:400italic,700italic,400,700);
-@import url(http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.css);
+@import url(http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.css);
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
 /** Correct `block` display not defined in IE 8/9. */
@@ -399,7 +399,7 @@ table.tableblock #preamble > .sectionbody > .paragraph:first-of-type p { font-si
 
 .exampleblock > .content > :last-child > :last-child, .exampleblock > .content .olist > ol > li:last-child > :last-child, .exampleblock > .content .ulist > ul > li:last-child > :last-child, .exampleblock > .content .qlist > ol > li:last-child > :last-child, .sidebarblock > .content > :last-child > :last-child, .sidebarblock > .content .olist > ol > li:last-child > :last-child, .sidebarblock > .content .ulist > ul > li:last-child > :last-child, .sidebarblock > .content .qlist > ol > li:last-child > :last-child { margin-bottom: 0; }
 
-.literalblock pre:not([class]), .listingblock pre:not([class]) { background: url('../images/golo/pre-bg.png?1385384924'); }
+.literalblock pre:not([class]), .listingblock pre:not([class]) { background: url('../images/golo/pre-bg.png?1387907329'); }
 .literalblock pre, .literalblock pre[class], .listingblock pre, .listingblock pre[class] { border-width: 1px; border-style: solid; border-color: rgba(21, 35, 71, 0.1); -webkit-border-radius: 6px; border-radius: 6px; padding: 0.8em; word-wrap: break-word; }
 .literalblock pre.nowrap, .literalblock pre[class].nowrap, .listingblock pre.nowrap, .listingblock pre[class].nowrap { overflow-x: auto; white-space: pre; word-wrap: normal; }
 .literalblock pre > code, .literalblock pre[class] > code, .listingblock pre > code, .listingblock pre[class] > code { display: block; }
@@ -650,7 +650,7 @@ span.icon > [class^="icon-"], span.icon > [class*=" icon-"] { cursor: default; }
 .conum:after { content: attr(data-value); }
 .conum:not([data-value]):empty { display: none; }
 
-body { background: url('../images/golo/body-bg.png?1385384924') #fdfaf7 repeat; }
+body { background: url('../images/golo/body-bg.png?1387907329') #fdfaf7 repeat; }
 
 #toc.toc2 ol ol { list-style-type: circle; padding-left: 1.75em; }
 

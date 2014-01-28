@@ -15,9 +15,6 @@ require 'hyla/project'
 program :version, Hyla::VERSION
 program :description, Hyla::DESCRIPTION
 
-# global_option '-s', '--source [DIR]', 'Source directory (defaults to ./)'
-# global_option '-d', '--destination [DIR]', 'Destination directory (defaults to .)'
-
 default_command :default
 
 def add_build_options(c)
@@ -118,6 +115,23 @@ command :serve do |c|
   end
 end
 alias_command :server, :serve
+
+#
+# Send as email attachment HTML file
+#
+command :sendmail do |c|
+  c.syntax = 'hyla sendmail [options]'
+  c.description = 'Send as HTML Attachment an email to the SMTP Server defined'
+  c.option '--f', '--file [File]', String, 'File to be attached'
+  c.option '--a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Attributes used to configure smtp server, port number, user password, authentication mode, sender, recipient, subject'
+
+  add_common_options(c)
+
+  c.action do |args, options|
+    config = Hyla::Configuration.parse(options.__hash__)
+    Hyla::Commands::Sendmail.process(args, config)
+  end
+end
 
 
 # NOT YET AVAILABLE

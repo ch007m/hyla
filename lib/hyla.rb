@@ -22,7 +22,6 @@ require 'guard'
 require 'safe_yaml'
 require 'asciidoctor'
 require 'asciidoctor/backends/html5'
-
 # require 'asciidoctor/backends/_stylesheets'
 require 'eventmachine'
 require 'em-websocket'

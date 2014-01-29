@@ -1,4 +1,6 @@
 :icons: font
+:date-uri:
+:linkatts
 
 image:https://raw.github.com/cmoulliard/asciidoctor-hyla/master/hyla_frog.jpg[Hyla, 100, 100, role="left"] **Hyla** is a Ruby command line tool to create a new
 documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow, ... using asciidoc(tor) as markup language.
@@ -86,88 +88,9 @@ More info about options and commands available can be find by running the `comma
 
     hyla --help
 
-Here are some examples of commands to create a new project, add artefacts (asciidoc files) watch resources and serve it using HTTP Server
+== Documentation
 
-=== New project
-
-A Blank project
-
-    hyla new --blank ~/Temp/MyBlankProject
-
-
-A  Sample Project using as template --> training
-
-    hyla new --template_type training ~/Temp/MyTrainingProject
-
-
-=== Add an artefact to a project
-
-Asciidoc(tor) documents
-
-    hyla create --t asciidoc --a article --d ~/Temp/MyBlankProject
-    hyla create --t asciidoc  --a audio --d ~/Temp/MyBlankProject
-    hyla create --t asciidoc  --a video --d ~/Temp/MyBlankProject
-    hyla create --t asciidoc  --a source_highlight --d ~/Temp/MyBlankProject
-
-Slideshow
-
-    hyla create --t slideshow  --a deckjs --d ~/Temp/MyBlankProject
-
-=== Generate Asciidoctor project from a Table of Content
-
-The entry point of a Documention site, Training, Publication or Book will consist most of the time to create
-a Table Of Content which is a collection of modules with chapters that we will develop. As this process to elaborate
-the structure of the project will consume lot of time/effort, Hyla will simplify your life as it allows from a TOC file
-
-
-    = A. Introduction module
-    >> This is the module 'A. Introduction'
-    == 1. Chapter
-    This is a chapter about ...
-    == 2. Chapter
-    This is a Chapter about ...
-    === 2.1. Section
-    ...
-    = B. Instruction module
-    >> This is the module 'B. Instruction module'
-    == 1. Chapter
-    This is a Chapter about ...`
-
-to generate a collection of folders (= modules) containing files which represent the chapters (== Titles of the TOC ).
-For each module (= Module), an index file is also created including the files listed in a module. That can be serve to generate a
-slideshow presentation using as backend (DeckJS, DZSlides, ...) later on
-
-    hyla generate --p my-project --d ~/Temp/TocProject/  --r toc2html --toc ~/MyProjects/hyla/data/toc.adoc
-
-    >> Project Name : my-project <<
-    >> Directory created : ~/Temp/MyBookProject/A_Introduction_module <<
-       = File created : 1_Chapter
-       = File created : 2_Chapter
-       = File created : 3_Chapter
-    >> Directory created : ~/Temp/MyBookProject/B_Instruction_module <<
-       = File created : 1_Chapter
-    >> Directory created : /Users/chmoulli/Temp/MyBookProject/C_Installation_module <<
-       = File created : 1_Chapter
-       = File created : 2_Chapter
-
-=== Generate HTML pages from Asciidoc
-
-    hyla generate --s ~/Temp/MyTocProject/ --d ~/Temp/MyToCProject/generated_content/ --r adoc2html
-
-=== Watch content Live
-
-While you develop asciidoc(tor) documents, it is interesting to consult the files rendered in HTML. Hyla supports such option with LiverReload
-as a WebSocket server is exposed for the browser. To watch files and let's asciidoctor to render them, simply open a terminal and provide as
- parameter the source directory containing the files to be watched.
-
-    hyla watch --s ~/Temp/MyTocProject/ --d ~/Temp/MyTocProject/generated_content/
-
-=== Serve your content locally
-
-To simplify your life, a simple HTTP Server can be started by Hyla and will allow to consult/browse HTML files generated. In this case, start this
-Hyla command in another Terminal
-
-    hyla serve -P 4000 -H localhost --out_dir ~/Temp/MyTrainingProject/generated_content/ -b /hyla/
+The `hyla`documentation is available at the link:documentation/introduction.html[following address]
 
 
 

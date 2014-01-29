@@ -38,7 +38,7 @@ require 'hyla/logger'
 require 'hyla/core_ext'
 require 'hyla/command'
 require 'hyla/configuration'
-require 'Hyla/websocket'
+require 'hyla/websocket'
 require 'hyla/logger'
 
 # extensions

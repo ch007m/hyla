@@ -7,6 +7,17 @@ module Hyla
         rendering = options[:rendering] if self.check_mandatory_option?('--r / --rendering', options[:rendering])
 
         case rendering
+
+          when 'html2pdf'
+
+            Hyla.logger.info "Rendering : Generate PDF from HTML file"
+
+            source_dir = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
+            out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
+            file_name = options[:file] if self.check_mandatory_option?('-f / --file', options[:file])
+
+            self.html_to_pdf(source_dir, out_dir, file_name)
+
           when 'toc2adoc'
 
             Hyla.logger.info "Rendering : Table of Content to Asciidoc"
@@ -48,7 +59,7 @@ module Hyla
             @source = options[:source]
 
             new_asciidoctor_option = {
-                :template_dirs => [ self.backend_dir(options[:backend]) ],
+                :template_dirs => [self.backend_dir(options[:backend])],
                 :attributes => {
                     'stylesheet' => self.check_style(options[:style])
                 }
@@ -70,7 +81,7 @@ module Hyla
             @source = options[:source]
 
             new_asciidoctor_option = {
-                :template_dirs => [ self.backend_dir(options[:backend]) ],
+                :template_dirs => [self.backend_dir(options[:backend])],
                 :attributes => {
                     'stylesheet' => self.check_style(options[:style])
                 }
@@ -297,6 +308,29 @@ module Hyla
 
         end
 
+      end
+
+      #
+      # Generate PDF
+      #
+      def self.html_to_pdf(source, destination, html_file_name)
+        file_path = [source, html_file_name] * '/'
+        html_file = File.new(file_path)
+        kit = PDFKit.new(html_file,
+                         :page_size     => 'A4',
+                         :toc           => true,
+                         :page_offset   => 1,
+                         :footer_center => 'Page [page]')
+
+        # Create destination directory if it does not exist
+        unless File.directory?(destination)
+          FileUtils.mkdir_p(destination)
+        end
+
+        # Save PDF to a file
+        pdf_file_name = [destination, html_file_name.sub(/html|htm/,'pdf')] * '/'
+        kit.to_file(pdf_file_name)
+        Hyla.logger.info ">> PDF file generated and saved : #{pdf_file_name} "
       end
 
       #

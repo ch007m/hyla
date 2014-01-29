@@ -378,17 +378,17 @@ An email can be created using as attachment an HTML file based on the informatio
 _config.yaml file. These parameters will allow to populate the email message and add as attachment the HTML
 file generated from an asciidoc file.
 
-email_attributes:
-  from:     "Charles Moulliard <ch007m@gmail.com>"
-  to:       'cmoulliard@apache.com'
-  subject:  "This is a beautiful HTML document created by Asciidoctor and Hyla Tool"
+    email_attributes:
+        from:     "Charles Moulliard <ch007m@gmail.com>"
+        to:       'cmoulliard@apache.com'
+        subject:  "This is a beautiful HTML document created by Asciidoctor and Hyla Tool"
 
-  # GMAIL
-  smtp_server:      'smtp.gmail.com'
-  port:             '587'
-  enable_starttls:  'true'
-  user:             'your_gmail_user'
-  password:         'your_gmail_password!'
+        # GMAIL
+        smtp_server:      'smtp.gmail.com'
+        port:             '587'
+        enable_starttls:  'true'
+        user:             'your_gmail_user'
+        password:         'your_gmail_password!'
 
 Two new options are required to process the request on the command line or using _config.yaml file
 

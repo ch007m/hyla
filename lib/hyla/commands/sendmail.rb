@@ -82,7 +82,7 @@ module Hyla
         parameters[:authentication] = @authentication unless @authentication.nil?
         return parameters
       end
-@
+
       def self.inline_body_with_attachments(html, attachments)
         attachments.each do |attachment|
           if (html =~ /#{attachment.filename}/)

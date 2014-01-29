@@ -171,31 +171,42 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 A PDF document can be created using the rendering option `html2pdf`. To render the HTML file, Hyla uses the following Ruby
 libraries https://github.com/pdfkit/pdfkit[pdfkit] and https://github.com/wkhtmltopdf/wkhtmltopdf[wkhtmltopdf].
 
+- Clean and create a MyPdfProject
+
     cd ~/hyla
     rm -rf MyPdfroject/
     hyla new --blank MyPdfProject --force
     cd MyPdfProject
+
+- Create 2 Asciidoc files from samples (book, image)
+
     hyla create --a book
     hyla create --a image
 
-    # Change destination firm local '.' to 'generated_content'
+- Change destination firm local '.' to 'generated_content'
+
     ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
 
-    # Generate HTML content using foundation stylesheet
+- Generate HTML content using foundation stylesheet
+
     hyla generate --style foundation
 
-    # We change the rendering from adoc2html to html2pdf
+- We change the rendering from adoc2html to html2pdf
+
     ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: html2pdf")' _config.yml
 
-    # Source directory & Destination directory
+- Source directory & Destination directory
+
     ruby -i.bak -pe 'sub(%r{source: .},"source: ./generated_content")' _config.yml
     ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: ./generated_content/pdf")' _config.yml
 
-    # We will generate the PDF file for the image and book
+- We will generate the PDF file for the image and book
+
     hyla generate -f asciidoc_book.html
     hyla generate -f asciidoc_image.html
 
-    # Result can be opened and viewed
+- Result can be opened and viewed
+
     open generated_content/pdf/asciidoc_book.pdf
     open generated_content/pdf/asciidoc_image.pdf
 

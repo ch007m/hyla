@@ -382,7 +382,6 @@ file generated from an asciidoc file.
         from:     "Charles Moulliard <ch007m@gmail.com>"
         to:       'cmoulliard@apache.com'
         subject:  "This is a beautiful HTML document created by Asciidoctor and Hyla Tool"
-
         # GMAIL
         smtp_server:      'smtp.gmail.com'
         port:             '587'

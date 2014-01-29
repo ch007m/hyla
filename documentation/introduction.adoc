@@ -418,7 +418,7 @@ Two new options are required to process the request on the command line or using
 
 - Consult the message received in your mailbox
 
-image::documentation/image/email_send.png[]
+image::image/email_send.png[]
 
 
 

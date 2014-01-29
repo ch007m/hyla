@@ -90,7 +90,7 @@ More info about options and commands available can be find by running the `comma
 
 == Documentation
 
-The `hyla`documentation is available at the link:documentation/introduction.html[following address]
+The `hyla`documentation is available at the link:documentation/introduction.adoc[following address]
 
 
 

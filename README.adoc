@@ -1,8 +1,8 @@
 :icons: font
 :date-uri:
-:linkatts
+:linkatts:
 
-image:https://raw.github.com/cmoulliard/asciidoctor-hyla/master/hyla_frog.jpg[Hyla, 100, 100, role="left"] **Hyla** is a Ruby command line tool to create a new
+image:https://raw.github.com/cmoulliard/hyla/master/documentation/image/hyla_frog.jpg[Hyla, 100, 100, role="left"] **Hyla** is a Ruby command line tool to create a new
 documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, ...), render it in HTML, SlideShow, ... using asciidoc(tor) as markup language.
 
 Until now, hyla looks like asciidoctor client but is is more similar to Jekyll on the principle but here we support 'asciidoc, asciidoctor' formats and not markdown.

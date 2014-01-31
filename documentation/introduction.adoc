@@ -48,7 +48,7 @@ The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[f
 - http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-[How do I install and use the browser extensions for LiveReload].
 Be sure to enable the option “Allow access to file URLs” checkbox in Tools > Extensions > LiveReload after installation of Chrome Extension.
 
-image::image/access_local_file.png[50,50]
+image::image/access_local_file.png[Access Local File,50,50]
 
 == Installation
 

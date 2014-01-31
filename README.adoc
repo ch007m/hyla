@@ -135,19 +135,3 @@ Enhancements / Improvements::
 
   * Rename redhat to liberation
   * Add comment and link to install LiveReload, fixed issue (#28)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

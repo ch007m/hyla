@@ -128,7 +128,7 @@ New Features::
 
 Bug fixes::
 
-  * watch option of the command line does not filter files correctly (link:{issues}28/[#28])
+  * Watch option of the command line does not filter files correctly (link:{issues}28/[#28])
   * Rename require Hyla//WebSocket to require hyla/websocket
 
 Enhancements / Improvements::

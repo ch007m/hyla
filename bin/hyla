@@ -18,13 +18,13 @@ program :description, Hyla::DESCRIPTION
 default_command :default
 
 def add_build_options(c)
-  c.option '--config CONFIG_FILE[,CONFIG_FILE2,...]', Array, 'Custom configuration file'
-  c.option '-V', '--verbose', 'Print verbose output.'
+  c.option '-c','--config CONFIG_FILE[,CONFIG_FILE2,...]', Array, 'Custom configuration file'
+  c.option '-V','--verbose', 'Print verbose output.'
 end
 
 def add_common_options(c)
-  c.option '--s', '--source [DIR]', 'Source directory (defaults to ./)'
-  c.option '--d', '--destination [DIR]', 'Destination directory (defaults to ./generated_content)'
+  c.option '-s', '--source [DIR]', 'Source directory (defaults to ./)'
+  c.option '-d', '--destination [DIR]', 'Destination directory (defaults to ./generated_content)'
 end
 
 #
@@ -33,9 +33,9 @@ end
 command :new do |c|
   c.syntax = 'hyla new PATH [options]'
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
-  c.option '--f','--force', 'Force creation even if PATH already exists'
-  c.option '--b','--blank', 'Creates project but with empty files'
-  c.option '--t','--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
+  c.option '-f','--force', 'Force creation even if PATH already exists'
+  c.option '-b','--blank', 'Creates project but with empty files'
+  c.option '-t','--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
 
   c.action do |args, options|
     Hyla::Commands::New.process(args, options.__hash__)
@@ -48,8 +48,8 @@ end
 command :create do |c|
   c.syntax = 'hyla create ARTEFACT TYPE [options]'
   c.description = 'Creates a new file from asciidoc artefact for an existing project'
-  c.option '--a', '--artefact_type [ARTEFACT_TYPE]', String, 'Artefact Type : article, audio, video, blog entry ...'
-  c.option '--t', '--type [TYPE]', String, 'Type : asciidoc, slideshow'
+  c.option '-a', '--artefact_type [ARTEFACT_TYPE]', String, 'Artefact Type : article, audio, video, blog entry ...'
+  c.option '-t', '--type [TYPE]', String, 'Type : asciidoc, slideshow'
 
   add_common_options(c)
 
@@ -65,13 +65,13 @@ end
 command :generate do |c|
   c.syntax = 'hyla generate [OPTIONS]'
   c.description = 'Generate content from asciidoc files (Table Of Content, modules, ...) to HTML, Slideshow'
-  c.option '--b', '--backend [BACKEND]', String, 'Backend to be used : HTML5, deckjs, revealjs, ...'
+  c.option '-b', '--backend [BACKEND]', String, 'Backend to be used : HTML5, deckjs, revealjs, ...'
   c.option '-f', '--file [HTML FILE]', String, 'HTML File name'
-  c.option '--p', '--project_name [PROJECT_NAME]', String, 'Project Name'
-  c.option '--r', '--rendering [RENDERING]', String, 'Code of the rendering : adoc2html, adoc2slide, toc2adoc, index2slide'
-  c.option '--t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
-  c.option '--st', '--style [STYLE]', String, 'Stylesheet theme to be applied : asciidoctor, liberation, github, colony, foundation, ...'
-  c.option '--a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'
+  c.option '-p', '--project_name [PROJECT_NAME]', String, 'Project Name'
+  c.option '-r', '--rendering [RENDERING]', String, 'Code of the rendering : adoc2html, adoc2slide, toc2adoc, index2slide'
+  c.option '-t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
+  c.option '-st', '--style [STYLE]', String, 'Stylesheet theme to be applied : asciidoctor, liberation, github, colony, foundation, ...'
+  c.option '-a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'
 
   add_common_options(c)
 
@@ -103,7 +103,7 @@ end
 command :serve do |c|
   c.syntax = 'hyla serve [options]'
   c.description = 'Serve your content locally'
-  c.option '--out_dir DIR', String, 'Output directory where content must be generated'
+  c.option '-out_dir DIR', String, 'Output directory where content must be generated'
   c.option '-B', '--detach', 'Run the server in the background (detach)'
   c.option '-P', '--port [PORT]', 'Port to listen on'
   c.option '-H', '--host [HOST]', 'Host to bind to'

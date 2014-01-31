@@ -112,7 +112,7 @@ module Hyla
     def self.parse(override)
 
 
-      # Extract Asciidoctor attributes received from hyla command line '--a key=value,key=value'
+      # Extract Asciidoctor attributes received from hyla command line '-a key=value,key=value'
       # Convert them to a Hash of attributes 'attributes' => { 'backend' => html5 ... }
       # Assign hash to override[:attributes]
       extracted_attributes = self.extract_attributes(override[:attributes]) if override[:attributes]

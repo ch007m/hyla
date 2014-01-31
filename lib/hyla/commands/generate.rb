@@ -4,7 +4,7 @@ module Hyla
 
       def self.process(args, options = {})
 
-        rendering = options[:rendering] if self.check_mandatory_option?('--r / --rendering', options[:rendering])
+        rendering = options[:rendering] if self.check_mandatory_option?('-r / --rendering', options[:rendering])
 
         case rendering
 
@@ -21,7 +21,7 @@ module Hyla
           when 'toc2adoc'
 
             Hyla.logger.info "Rendering : Table of Content to Asciidoc"
-            self.check_mandatory_option?('--t / --toc', options[:toc])
+            self.check_mandatory_option?('-t / --toc', options[:toc])
             @toc_file = options[:toc]
             @out_dir = options[:destination]
             @project_name = options[:project_name]
@@ -31,8 +31,8 @@ module Hyla
           when 'adoc2html'
 
             Hyla.logger.info "Rendering : Asciidoc to HTML"
-            self.check_mandatory_option?('--s / --source', options[:source])
-            self.check_mandatory_option?('--d / --destination', options[:destination])
+            self.check_mandatory_option?('-s / --source', options[:source])
+            self.check_mandatory_option?('-d / --destination', options[:destination])
 
             @destination = options[:destination]
             @source = options[:source]
@@ -52,8 +52,8 @@ module Hyla
 
           when 'index2slide'
             Hyla.logger.info "Rendering : Asciidoctor Indexed Files to SlideShow"
-            self.check_mandatory_option?('--s / --source', options[:source])
-            self.check_mandatory_option?('--d / --destination', options[:destination])
+            self.check_mandatory_option?('-s / --source', options[:source])
+            self.check_mandatory_option?('-d / --destination', options[:destination])
 
             @destination = options[:destination]
             @source = options[:source]
@@ -74,8 +74,8 @@ module Hyla
 
           when 'adoc2slide'
             Hyla.logger.info "Rendering : Asciidoc to SlideShow"
-            self.check_mandatory_option?('--s / --source', options[:source])
-            self.check_mandatory_option?('--d / --destination', options[:destination])
+            self.check_mandatory_option?('-s / --source', options[:source])
+            self.check_mandatory_option?('-d / --destination', options[:destination])
 
             @destination = options[:destination]
             @source = options[:source]

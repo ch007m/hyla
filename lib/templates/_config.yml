@@ -18,8 +18,8 @@ rendering: adoc2html
 artefact_type: article
 type: asciidoc
 
-# Styles supported : redhat, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
-style: redhat
+# Styles supported : liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
+style: liberation
 
 # Location of the Table of Content to be processed
 # as a collection of asciidoc files

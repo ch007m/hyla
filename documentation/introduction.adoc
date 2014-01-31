@@ -170,9 +170,9 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 === 5. Generate HTML Content of an existing project (asciidoc 2 html) with a different style
 
-    Styles available : redhat, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
+    Styles available : liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
 
-    hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style redhat
+    hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style liberation
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style github
     hyla generate --r adoc2html --s ~/hyla/MyBlankProject/ --d ~/hyla/MyBlankProject/generated_content --style foundation
 

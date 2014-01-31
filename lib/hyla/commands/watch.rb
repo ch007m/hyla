@@ -18,6 +18,7 @@ module Hyla
           :header_footer => true
       }
 
+
       WS_OPTIONS = {
           :base_url => '/modules'
       }
@@ -25,6 +26,7 @@ module Hyla
       def initialize
       end
 
+=begin
       def init(watchers = [], options = {})
         watchers = [] if !watchers
         merged_opts = DEFAULT_OPTIONS.clone
@@ -57,10 +59,11 @@ module Hyla
         # set a flag to indicate running environment
         merged_opts[:attributes]['guard'] = ''
       end
+=end
 
       def self.start_livereload
         @reload = Hyla::Commands::Reload.new
-        Thread.new { @reload.process(WS_OPTIONS) }
+        @t = Thread.new { @reload.process(WS_OPTIONS) }
       end
 
       def self.process(args, options = {})
@@ -69,6 +72,7 @@ module Hyla
         self.start_livereload
 
         @opts = DEFAULT_OPTIONS.clone
+        # @opts = {}
 
         if options.has_key? :destination
           @opts[:to_dir] = File.expand_path options[:destination]
@@ -104,8 +108,8 @@ module Hyla
         end # callback
 
         Hyla.logger.info ">> ... Starting"
-        Hyla.logger.info ">> Hyla has started to watch files in this output dir :  #{@opts[:watch_dir]}"
-        Hyla.logger.info ">> Results of Asciidoctor generation will be available here : #{@opts[:to_dir]}"
+        Hyla.logger.info ">> Hyla has started to watch files in this dir :  #{@opts[:watch_dir]}"
+        Hyla.logger.info ">> Results of rendering will be available here : #{@opts[:to_dir]}"
 
         # TODO : Investigate issue with Thread pool is not running (Celluloid::Error)
         # when using a more recent version of guard listen
@@ -113,7 +117,7 @@ module Hyla
 
         trap(:INT) {
           Hyla.logger.info "Interrupt intercepted"
-          Thread.kill
+          Thread.kill(@t)
         }
       end
 
@@ -137,8 +141,8 @@ module Hyla
 
           # TODO Check why asciidoctor populates new attributes and removes to_dir
           # TODO when it is called a second time
-          # Workaround - reset list, add again :out_dir
-          @opts[:attributes] = {}
+          # Workaround - reset list
+          # @opts[:attributes] = {}
           @opts[:to_dir] = @received_opts[:destination]
 
           # Calculate Asciidoc to_dir relative to the dir of the file to be processed
@@ -162,7 +166,6 @@ module Hyla
           # Refresh browser connected using LiveReload
           path = []
           path.push(calc_dir)
-          # TODO
           @reload.reload_browser(path)
         end
       end

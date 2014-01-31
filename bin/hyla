@@ -89,12 +89,11 @@ command :watch do |c|
 
   c.action do |args, options|
 
-    options.default :serving => true
-
     # TODO Find if it is possible to watch files, generate HTML content - asciidoctor, expose content using HTTPServer and expose WebSocket - LiveReload
     # as they are started in 2 different threads, this is not possible with existing code
     # Hyla::Commands::Serve.process(args,options.__hash__)
-    Hyla::Commands::Watch.process(args, options.__hash__)
+    config = Hyla::Configuration.parse(options.__hash__)
+    Hyla::Commands::Watch.process(args, config)
   end
 end
 

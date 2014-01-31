@@ -118,6 +118,20 @@ Issue tracker (GitHub):: {issues}
 
 == Changelog
 
+=== v1.0.3 - @cmoulliard
+
+New Features::
+
+Bug fixes::
+
+  * Change command option to use as symbol the attribute '-' for the one letter and not '--' for the full name. Example -f --file"
+
+Enhancements / Improvements::
+
+  * Refactor command watch to support to use _confg.yaml file  (link:{issues}??[#??])
+  * Pass as parameter the thread variable - Thread.kill(@t)
+
+
 === v1.0.2 (2014-01-31) - @cmoulliard
 
 New Features::

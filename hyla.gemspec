@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
 
   #  Ruby command-line executables
   s.add_runtime_dependency 'commander', '~> 4.1', '>= 4.1.3'
-  s.add_runtime_dependency 'asciidoctor', '~> 0.1', '>= 0.1.4'
+  s.add_runtime_dependency 'asciidoctor', '~> 0.1.4'
   s.add_runtime_dependency 'em-websocket', '~> 0.5'
   s.add_runtime_dependency 'multi_json',   '~> 1.8'
   s.add_runtime_dependency 'tilt'

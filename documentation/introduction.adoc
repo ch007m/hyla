@@ -41,18 +41,23 @@ The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[f
 
 == Prerequisites
 
-- https://www.ruby-lang.org/en/[Ruby] > 1.9.3
-- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
+- https://github.com/sstephenson/ruby-build#readme[rbenv-build] which let you to deploy a pre-compiled version of Ruby
 - https://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby
+- https://www.ruby-lang.org/en/[Ruby] 1.9.3-p484
+- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
+- http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-[How do I install and use the browser extensions for LiveReload]
+Be sure to enable the option “Allow access to file URLs” checkbox in Tools > Extensions > LiveReload after installation of Chrome Extension.
+image::image/access_local_file.png[50,50]
 
 == Installation
 
 Use `gem install` command to deploy Hyla :
 
-    $ gem install hyla -y
+    $ gem install hyla -y -v 1.0.x
 
 NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required
 
+NOTE : The option `-v` tells to gem installer to deploy a specific version / release. The release number will depend on the version available (1.0.1, 1.0.2, ...)
 
 An alternative is to create a Gemfile and add this line :
 
@@ -70,13 +75,12 @@ And then execute:
 
     Clone Git project locally, move to Hyla directory and execute the following commands
     gem build hyla.gemspec
-    sudo gem install hyla-1.0.x.gem
+    gem install hyla-1.0.x.gem
 
 == To publish Hyla to Gem Repo
 
     gem build hyla.gemspec
     gem install hyla-1.0.x.gem
-    gem yank hyla -v 1.0.x
     gem push hyla-1.0.x.gem
 
 == Usage

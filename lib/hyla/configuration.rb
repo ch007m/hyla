@@ -8,12 +8,16 @@ module Hyla
     DEFAULTS = {
         'source'        => Dir.pwd,
         'destination'   => File.join(Dir.pwd, 'generated_content'),
+        'watch_dir'     => '.',
+        'watch_ext'     => %w(ad adoc asc asciidoc txt index),
 
         # Asciidoctor
         'backend'       => 'html5',
         'eruby'         => 'erb',
         'doctype'       => 'article',
         'compact'       => false,
+        'to_dir'        => '.',
+        'to_file'       => '',
         'attributes'    => {
             'source-highlighter' => 'coderay',
             'linkcss!'           => 'true',

@@ -2,64 +2,12 @@ module Hyla
   module Commands
     class Watch < Command
 
-      DEFAULT_OPTIONS = {
-          :watch_dir => '.',
-          :watch_ext => %w(ad adoc asc asciidoc txt index),
-          :run_on_start => false,
-          :backend => 'html5',
-          :eruby => 'erb',
-          :doctype => 'article',
-          :compact => false,
-          :attributes => {},
-          :always_build_all => false,
-          :to_dir => '.',
-          :to_file => '',
-          :safe => :unsafe,
-          :header_footer => true
-      }
-
-
       WS_OPTIONS = {
           :base_url => '/modules'
       }
 
       def initialize
       end
-
-=begin
-      def init(watchers = [], options = {})
-        watchers = [] if !watchers
-        merged_opts = DEFAULT_OPTIONS.clone
-
-        if options.has_key? :watch_dir
-          merged_opts[:watch_dir] = options.delete :watch_dir
-          # set output to input if input is specified, but not output
-          unless options.has_key? :to_dir
-            merged_opts[:to_dir] = merged_opts[:watch_dir]
-          end
-        end
-
-        merged_opts.merge! options
-
-        # house cleaning
-        merged_opts[:watch_dir] = '.' if merged_opts[:watch_dir].to_s.empty?
-        merged_opts.delete(:to_dir) if (merged_opts[:to_dir] == '.' || merged_opts[:to_dir].to_s.empty?)
-
-        if merged_opts[:watch_dir] == '.'
-          input_re = ''
-        else
-          merged_opts[:watch_dir].chomp!('/') while merged_opts[:watch_dir].end_with?('/')
-          merged_opts[:watch_dir] << '/'
-          input_re = Regexp.escape merged_opts[:watch_dir]
-        end
-
-        watch_re = %r{^#{input_re}.+\.(?:#{merged_opts[:watch_ext] * '|'})$}
-        watchers << ::Guard::Watcher.new(watch_re)
-        merged_opts[:attributes] = {} unless merged_opts[:attributes]
-        # set a flag to indicate running environment
-        merged_opts[:attributes]['guard'] = ''
-      end
-=end
 
       def self.start_livereload
         @reload = Hyla::Commands::Reload.new
@@ -71,8 +19,9 @@ module Hyla
         # Start LiveReload
         self.start_livereload
 
-        @opts = DEFAULT_OPTIONS.clone
-        # @opts = {}
+        # @opts = DEFAULT_OPTIONS.clone
+        @opts = options
+        @opts_bk = @opts
 
         if options.has_key? :destination
           @opts[:to_dir] = File.expand_path options[:destination]
@@ -81,8 +30,6 @@ module Hyla
         if options.has_key? :source
           @opts[:watch_dir] = File.expand_path options[:source]
         end
-
-        @received_opts = options
 
         #
         # Guard Listen Callback
@@ -107,8 +54,8 @@ module Hyla
           end
         end # callback
 
-        Hyla.logger.info ">> ... Starting"
-        Hyla.logger.info ">> Hyla has started to watch files in this dir :  #{@opts[:watch_dir]}"
+        Hyla.logger.info ">> ... Starting\n"
+        Hyla.logger.info ">> Hyla has started to watch files in this dir : #{@opts[:watch_dir]}"
         Hyla.logger.info ">> Results of rendering will be available here : #{@opts[:to_dir]}"
 
         # TODO : Investigate issue with Thread pool is not running (Celluloid::Error)
@@ -139,11 +86,8 @@ module Hyla
           to_file = file_to_process.to_s.gsub(/.adoc|.ad|.asciidoc|.index/, '.html')
           @opts[:to_file] = to_file
 
-          # TODO Check why asciidoctor populates new attributes and removes to_dir
-          # TODO when it is called a second time
-          # Workaround - reset list
-          # @opts[:attributes] = {}
-          @opts[:to_dir] = @received_opts[:destination]
+          # Use destination from original config
+          @opts[:to_dir] = @opts_bk[:destination]
 
           # Calculate Asciidoc to_dir relative to the dir of the file to be processed
           # and create dir in watched dir

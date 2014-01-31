@@ -123,11 +123,13 @@ module Hyla
         dir_file = File.dirname(f)
         file_to_process = Pathname.new(f).basename
         @ext_name = File.extname(file_to_process)
-        Hyla.logger.info ">> Directory of the file(s) to be processed : #{dir_file}"
-        Hyla.logger.info ">> File to be processed : #{file_to_process}"
-        Hyla.logger.info ">> Extension of the file : #{@ext_name}"
 
         if [".adoc",".ad",".asciidoc",".txt",".index"].include? @ext_name
+
+          Hyla.logger.info ">> Directory containing file(s) to be processed : #{dir_file}"
+          Hyla.logger.info ">> File to be processed : #{file_to_process}"
+          Hyla.logger.info ">> Extension of the file : #{@ext_name}"
+
           # Generate File name
           # Rename xxx.adoc, xxx.asciidoc, xxx.ad, xxx.index to xxx.html
           to_file = file_to_process.to_s.gsub(/.adoc|.ad|.asciidoc|.index/, '.html')

@@ -159,6 +159,7 @@ module Hyla
             # Render asciidoc to HTML
             Hyla.logger.info ">> File to be rendered : #{path}"
             options[:to_dir] = html_dir
+            options[:to_file] = path
             Asciidoctor.render_file(path, options)
 
           end

@@ -24,12 +24,12 @@ Gem::Specification.new do |s|
 
   #  Ruby command-line executables
   s.add_runtime_dependency 'commander', '~> 4.1', '>= 4.1.3'
-  s.add_runtime_dependency 'asciidoctor', '~> 0.1.4'
+  s.add_runtime_dependency 'asciidoctor', '~> 0.1', '>= 0.1.4'
   s.add_runtime_dependency 'em-websocket', '~> 0.5'
-  s.add_runtime_dependency 'multi_json',   '~> 1.8'
-  s.add_runtime_dependency 'tilt'
-  s.add_runtime_dependency 'haml'
-  s.add_runtime_dependency 'slim'
+  s.add_runtime_dependency 'multi_json',   '~> 1.8', '>= 1.8.4'
+  s.add_runtime_dependency 'tilt', '~> 1.4', '>= 1.4.1'
+  s.add_runtime_dependency 'haml', '~> 4.0', '>= 4.0.4'
+  s.add_runtime_dependency 'slim', '~> 2.0', '>= 2.0.2'
   s.add_runtime_dependency 'guard', '~> 1.8', '>= 1.8.3'
   s.add_runtime_dependency 'listen', '~> 1.3', '>= 1.3.1'
   s.add_runtime_dependency 'safe_yaml', '~> 1.0', '>= 1.0.0'

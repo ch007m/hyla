@@ -1,27 +1,63 @@
+#
 # Common options
+#
 source: .
-destination: . # or . or ~/MyProject or generated_content
+destination: . # or . or ~/Hyla or generated_content
+# end common options
 
-# Asciidoc and attributes options
+#
+# Styles
+# Supported :  liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
+#
+style: liberation
+
+#
+# Asciidoctor and attributes options
+#
 backend: html5
 attributes:
    source-highlighter: coderay
    linkcss!: true
    data-uri: true
+# end asciidoctor attributes
 
+#
 # Hyla options
-# Generate command
-#rendering: toc2adoc
-rendering: adoc2html
+#
 
 # New/Create command
 artefact_type: article
 type: asciidoc
+# end new/create command
 
-# Styles supported : liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
-style: liberation
+# Generate command
+rendering: adoc2html
+# end generate command
 
-# Location of the Table of Content to be processed
-# as a collection of asciidoc files
+#
+# Generate command
+# Rendering : toc2ado
+#
 project_name: my-project
-toc: /Users/chmoulli/MyProjects/hyla/data/toc.adoc # Change location
+toc: ~/hyla/toc.adoc # Change location
+
+#
+# Sendmail command
+#
+email_attributes:
+  from:     "FirstName LastName <email address>"
+  to:       'email address'
+  subject:  "TO BE DEFINED"
+
+  # GMAIL
+  #smtp_server:      'smtp.gmail.com'
+  #port:             '587'
+  #enable_starttls:  'true'
+  #user:             'user_name'
+  #password:         'password'
+
+location: ./generated_content
+file: 'file name to be used as attachment for the email' # Change File name
+# end of sendmail command
+
+# end hyla options

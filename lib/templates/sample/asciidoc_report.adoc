@@ -1,66 +1,28 @@
 :data-uri:
-:author: Bob Moran
-:firstname: Bob
+:author: First and Last Name
+:firstname: First
 :middlename:
-:lastname: Moran
-:authorinitials: bmo
-:email: bmoran@redhat.com
+:lastname: Last
+:authorinitials:
+:email:
 :date: January 7, 2013
 
-== image:images/hyla_arborea.jpg[{author}, 40%, 35%, float="left"] {author}'s weekly Report - {date}
+== image:images/gravatar.png[{author}, 40%, 35%, float="left"]
+
+ {author}'s weekly Report - {date}
 
 === {email}
 
 [width="100%"]
 |==============================================
 |*Completed Activities* |*Weekly Meetings* |*To Do Activities*
-|Completed Modules - Lab Setup, Package Management, Networking, Device Management, Storage |11/6/2013  BLD migration to BPMS6|Review Materials and Upload to Dokeos
-|Fuse Service Works   |11/6/2013  SumTotal UAT Checkpoint|Review Demos and Connect to EC2 to create new ones with updated interface
-|Updated materials from html to asciidoc  Transfered rest of project to Zach  |11/7/2013  asciidoc Overview  |asciidoc Themes - update themes to match Branding Guidelines fonts, colors and backgrounds
-|BPMS6 | |RHEL Implementation Take Home
-|Updated BAM files into asciidoc | |Complete the Services, Authentication, Virtualization, Security and Advanced Installation Labs
-|https://mojo.redhat.com/docs/DOC-30653 |  |
+| | |
+| | |
 |==============================================
 
 == Issues
-====
-- *Dokeos Support Issues*
-* Request #13857: **** TIME SENSITIVE **** progress bar not working in SumTotal -  Not Resolved - Getting 404 Page not Found errors when viewing Dokeos content in SumTotal
-  ** The resolution to this issue is the following:
-    . Export a module from Dokeos (Navigation inside content) and uploaded it in SumTotal and now you can see the progress as 100% when the whole module is finished by the learner.
-    . Clear cache in RDC Windows Internet Explorer envionment, Reload SCORM materials move into Production,  As Learner you are able to register and open the course.  When contents are loading get 404 error that goes to the content when click OK
-    . The issue with this resolution is that when I click on the arrows from SumTotal and pass the test it returns with the Not Attempted in the Topic Status window
-    . The exported with Navigation inside content allows for the next/previous buttons but no table of contents to show how many sections there are in the module
-  ** Another issue is that when the module is not completed it starts back at the beginning and not where the user left off like it should
-
-====
 
 == Meeting(s)
-====
-- Demo/presentation of Project Hyla - Tooling & Template for Modules Training creation
-- Discuss/Reivew Bob's issues
-====
 
 == General
-====
-- Project Hyla (on going)
-- Admin tasks : cash reward, expenses
-====
 
-== Partners
-====
-- Meeting with Finavia customer
-====
-
-== Community
-====
-- Problems fixed for Hyla :
-  * Dependency issue with listen 1.3.1 & 2.0. Remove `2.0` from gemspec file
-  * Watch command does not work with files having names `.asciidoc, .ad, .adoc` as extensions
-  * Import asciidoctor backends (haml and slim)
-  * Improve rendering adoc2slides to support deckjs, revealjs
-  * Add a YAML config file to each project created to reduce options to be added for command line
-  * Merge JSON YAML config file with DEFAULTS & options keys
-  * Add control if no yaml config file is find to use DEFAULT and Commad Lines Options
-  * Allow to generate content with relative directories --> source is '.' and destination 'generated_content'
-====

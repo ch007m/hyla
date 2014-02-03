@@ -156,7 +156,7 @@ module Hyla
       config = safe_load_file(f)
       config
     rescue SystemCallError
-      Hyla::logger.warn "No _config.yaml file retrieved"
+      Hyla::logger.warn "No _config.yml file retrieved"
     end
 
     #

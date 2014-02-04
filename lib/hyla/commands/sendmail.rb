@@ -56,7 +56,8 @@ module Hyla
         attachment = File.read(file_path)
         mail.attachments[file_name] = {
             :mime_type => 'application/x-html',
-            :content => attachment}
+            :content   => attachment,
+            :Content_Transfer_Encoding => 'quoted-printable'}
 
         inline_html = inline_body_with_attachments(body, mail.attachments)
 

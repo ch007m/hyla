@@ -405,7 +405,7 @@ Two new options are required to process the request on the command line or using
 
     cd ~/hyla
     rm -rf MyEmailProject/
-    hyla new --blank MyEmailProject --force
+    hyla new -b -d MyEmailProject --force
     cd MyEmailProject
 
 - Edit the _config.yaml file and add the parameters required (see previously)

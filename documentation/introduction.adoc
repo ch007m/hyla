@@ -103,7 +103,7 @@ More info about options and commands available can be find by running the `comma
 
 == Scenario
 
-The following scenario describes how we can can setup a project using one of the option proposed by Hyla : Create, Generate, Watch, ... You can
+The following scenario describes how we can can setup a project using one of the option proposed by Hyla : Create, Generate, Watch, ...
 
 ==== 1. Delete Temp directory
 
@@ -136,13 +136,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 - Create Asciidoc files from samples (book, article, image, audio, ...)
 
-    hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
-    hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
-    hyla create --t asciidoc --a image --d ~/hyla/MyBlankProject
-    hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
-    hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
-    hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
-    hyla create --t asciidoc --a table --d ~/hyla/MyBlankProject
+    hyla create --t asciidoc -a article -d ~/hyla/MyBlankProject
+    hyla create --t asciidoc -a book -d ~/hyla/MyBlankProject
+    hyla create --t asciidoc -a image -d ~/hyla/MyBlankProject
+    hyla create --t asciidoc -a audio -d ~/hyla/MyBlankProject
+    hyla create --t asciidoc -a video -d ~/hyla/MyBlankProject
+    hyla create --t asciidoc -a source -d ~/hyla/MyBlankProject
+    hyla create --t asciidoc -a table -d ~/hyla/MyBlankProject
 
 == 3.  Create a Blank Project using _config.yaml config file, add artefacts
 
@@ -197,13 +197,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 === 1. Create a project using a template (training)
 
     cd ~/hyla
-    hyla new -t training MyTrainingProject
+    hyla new --t training MyTrainingProject
 
     // TODO Refactor Training Exercises Template
-    hyla new -t training-exercises MyTrainingExercisesProject
+    hyla new --t training-exercises MyTrainingExercisesProject
 
     // TODO - Add images
-    hyla new -t book MyBookProject
+    hyla new --t book MyBookProject
 
 === 2. Generate content and watch it
 
@@ -217,7 +217,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 === 1. Generate an asciidoctor project from a Table of Content
 
-The entry point of a Documention site, Training, Publication or Book will consist most of the time to create
+The entry point of a Documentation site, Training, Publication or Book will consist most of the time to create
 a Table Of Content which is a collection of modules with chapters that we will develop. As this process to elaborate
 the structure of the project will consume lot of time/effort, Hyla will simplify your life as it allows from a TOC file
 
@@ -309,23 +309,23 @@ Hyla command in another Terminal
 
     rm -rf  ~/hyla/MyDeckSlideShow
     cd ~/hyla
-    hyla new --blank MyDeckSlideShow
+    hyla new -b -d MyDeckSlideShow
 
-    hyla create -t slideshow -a deckjs -d MyDeckSlideShow
-    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2slide
+   hyla create --t slideshow -a deckjs -d MyDeckSlideShow
+   hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2slide
 
 === 2. Different DeckJS Style options
 
-    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r index2slide -a deckjs_theme=swiss,deckjs_transition=fade
-    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r index2slide -a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
+    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2slide -a deckjs_theme=swiss,deckjs_transition=fade
+    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2slide -a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
 
 ===  3. RevealJS
 
     rm -rf ~/hyla/MyRevealSlideShow
     cd ~/hyla
-    hyla new --blank MyRevealSlideShow
+    hyla new --blank -d MyRevealSlideShow
 
-    hyla create -t slideshow -a revealjs -d MyRevealSlideShow
+    hyla create --t slideshow -a revealjs -d MyRevealSlideShow
 
     cd MyRevealSlideShow
 
@@ -333,7 +333,7 @@ Hyla command in another Terminal
 
     open http://localhost:4000/hyla/slideshow_revealjs.html &
 
-    hyla serve -P 4000 -H localhost -b /hyla/ --out_dir ~/hyla/MyRevealSlideShow/generated_content/
+    hyla serve -P 4000 -H localhost -b /hyla/ -d generated_content/
 
 == 7. Generate a PDF
 

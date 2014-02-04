@@ -7,7 +7,7 @@ module Hyla
 
         my_opts = options
 
-        destination = options[:out_dir]
+        destination = options[:destination]  if self.check_mandatory_option?('-d / --destination', options[:destination])
 
         my_opts[:Port] = options[:port]
         my_opts[:BindAddress] = options[:host]
@@ -34,7 +34,7 @@ module Hyla
         if options[:detach] # detach the server
           pid = Process.fork { s.start }
           Process.detach(pid)
-          Hyla.logger.info "Server detatched with pid '#{pid}'.", "Run `kill -9 #{pid}' to stop the server."
+          Hyla.logger.info "Server detached with pid '#{pid}'.", "Run `kill -9 #{pid}' to stop the server."
         else # create a new server thread, then join it with current terminal
           t = Thread.new { s.start }
           trap("INT") { s.shutdown }

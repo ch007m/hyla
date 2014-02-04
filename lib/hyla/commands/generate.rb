@@ -99,8 +99,10 @@ module Hyla
         end
       end
 
+      #
       # Return backend directory
       # containing templates (haml, slim)
+      #
       def self.backend_dir(backend)
         case backend
           when 'deckjs'
@@ -110,6 +112,9 @@ module Hyla
         end
       end
 
+      #
+      # Call Asciidoctor.render function
+      #
       def self.asciidoc_to_html(source, destination, extensions, options)
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
@@ -125,6 +130,7 @@ module Hyla
           exit(1)
         end
 
+        # Move to source directory
         Dir.chdir(source)
         current_dir = Dir.pwd
         Hyla.logger.info ">>       Current dir: #{current_dir}"
@@ -134,13 +140,17 @@ module Hyla
 
         # Search for files using extensions parameter and do the rendering
         adoc_file_paths = []
-        Find.find(current_dir) do |path|
-          if path =~ /.*\.(?:#{extensions})$/
-            path1 = Pathname.new(source)
-            path2 = Pathname.new(path)
-            relative_path = path2.relative_path_from(path1).to_s
+        Find.find(current_dir) do |f|
+          if f =~ /.*\.(?:#{extensions})$/
+
+            path_to_source = Pathname.new(source)
+            path_to_adoc_file = Pathname.new(f)
+            relative_path = path_to_adoc_file.relative_path_from(path_to_source).to_s
             Hyla.logger.debug ">>       Relative path: #{relative_path}"
             adoc_file_paths << relative_path
+
+            # Get asciidoc file name
+            file_name_processed = path_to_adoc_file.basename
 
             # Create dir
             html_dir = @destination + '/' + File.dirname(relative_path)
@@ -157,10 +167,13 @@ module Hyla
             end
 
             # Render asciidoc to HTML
-            Hyla.logger.info ">> File to be rendered : #{path}"
+            Hyla.logger.info ">> File to be rendered : #{f}"
+
+            # Convert asciidoc file name to html file name
+            html_file_name = file_name_processed.to_s.gsub(/.adoc$|.ad$|.asciidoc$|.index$|.txt$/, '.html')
             options[:to_dir] = html_dir
-            options[:to_file] = path
-            Asciidoctor.render_file(path, options)
+            options[:to_file] = html_file_name
+            Asciidoctor.render_file(f, options)
 
           end
         end
@@ -220,7 +233,7 @@ module Hyla
           FileUtils.mkdir_p @out_dir
         end
 
-        # Copy YAML Config file
+        # Copy YML Config file
         FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', @out_dir
 
         # Copy styles
@@ -377,7 +390,7 @@ module Hyla
         # TODO - until now we cannot use level 0 for parent/children files
         # even if doctype: book
         # This is why the level for each index file title is '=='
-        index_file.puts '==' + file_name
+        index_file.puts '== ' + file_name
         index_file.puts "\n"
 
         index_file

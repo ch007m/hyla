@@ -40,9 +40,14 @@ The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[f
 
 == Prerequisites
 
-- https://www.ruby-lang.org/en/[Ruby] > 1.9.3
-- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
+- https://github.com/sstephenson/ruby-build#readme[rbenv-build] which let you to deploy a pre-compiled version of Ruby
 - https://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby
+- https://www.ruby-lang.org/en/[Ruby] 1.9.3-p484
+- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
+- http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-[How do I install and use the browser extensions for LiveReload].
+Be sure to enable the option “Allow access to file URLs” checkbox in Tools > Extensions > LiveReload after installation of Chrome Extension.
+
+image::image/access_local_file.png[Access Local File,650,150]
 
 == Installation
 
@@ -125,11 +130,18 @@ New Features::
 Bug fixes::
 
   * Change command option to use as symbol the attribute '-' for the one letter and not '--' for the full name. Example -f --file"
+  * Embedded image is not displayed with html attached (link:{issues}30[#30])
+  * Typo error - missing white space between title and level (link:{issues}33[#33])
 
 Enhancements / Improvements::
 
   * Refactor command watch to support to use _confg.yaml file  (link:{issues}??[#??])
   * Pass as parameter the thread variable - Thread.kill(@t)
+  * Refactor `serve` command to allow to have parameters in _config.yaml file
+  * Clean up report template
+  * Refactor _config.yaml to provide more info on options (link:{issues}31[#31])
+  * Check gem required (link:{issues}10[#10])
+  * -st parameter is not supported by commander (link:{issues}32[#32])
 
 
 === v1.0.2 (2014-01-31) - @cmoulliard

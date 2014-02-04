@@ -19,7 +19,6 @@ module Hyla
         # Start LiveReload
         self.start_livereload
 
-        # @opts = DEFAULT_OPTIONS.clone
         @opts = options
         @opts_bk = @opts
 
@@ -83,7 +82,7 @@ module Hyla
 
           # Generate File name
           # Rename xxx.adoc, xxx.asciidoc, xxx.ad, xxx.index to xxx.html
-          to_file = file_to_process.to_s.gsub(/.adoc|.ad|.asciidoc|.index/, '.html')
+          to_file = file_to_process.to_s.gsub(/.adoc$|.ad$|.asciidoc$|.index$/, '.html')
           @opts[:to_file] = to_file
 
           # Use destination from original config

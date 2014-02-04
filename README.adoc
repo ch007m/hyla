@@ -132,6 +132,7 @@ Bug fixes::
   * Change command option to use as symbol the attribute '-' for the one letter and not '--' for the full name. Example -f --file"
   * Embedded image is not displayed with html attached (link:{issues}30[#30])
   * Typo error - missing white space between title and level (link:{issues}33[#33])
+  * -st parameter is not supported by commander (link:{issues}32[#32])
 
 Enhancements / Improvements::
 
@@ -141,7 +142,7 @@ Enhancements / Improvements::
   * Clean up report template
   * Refactor _config.yaml to provide more info on options (link:{issues}31[#31])
   * Check gem required (link:{issues}10[#10])
-  * -st parameter is not supported by commander (link:{issues}32[#32])
+  * Add shell scripts to play with different scenario #34
 
 
 === v1.0.2 (2014-01-31) - @cmoulliard

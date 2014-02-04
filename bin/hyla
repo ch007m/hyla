@@ -23,22 +23,25 @@ def add_build_options(c)
 end
 
 def add_common_options(c)
-  c.option '-s', '--source [DIR]', 'Source directory (defaults to ./)'
-  c.option '-d', '--destination [DIR]', 'Destination directory (defaults to ./generated_content)'
+  c.option '-s', '--source [DIR]', String, 'Source directory (defaults to ./)'
+  c.option '-d', '--destination [DIR]', String, 'Destination directory (defaults to ./generated_content)'
 end
 
 #
 # Creates a new Hyla project using a template or blank to the PATH specified
 #
 command :new do |c|
-  c.syntax = 'hyla new PATH [options]'
+  c.syntax = 'hyla new [options]'
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
   c.option '-f','--force', 'Force creation even if PATH already exists'
   c.option '-b','--blank', 'Creates project but with empty files'
-  c.option '-t','--template_type TEMPLATE_TYPE', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
+  c.option '-','--template_type [TEMPLATE_TYPE]', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
+
+  add_common_options(c)
 
   c.action do |args, options|
-    Hyla::Commands::New.process(args, options.__hash__)
+    config = Hyla::Configuration.parse(options.__hash__)
+    Hyla::Commands::New.process(args, config)
   end
 end
 
@@ -46,10 +49,10 @@ end
 # Creates a new file from an artefact within an existing project
 #
 command :create do |c|
-  c.syntax = 'hyla create ARTEFACT TYPE [options]'
+  c.syntax = 'hyla create [options]'
   c.description = 'Creates a new file from asciidoc artefact for an existing project'
   c.option '-a', '--artefact_type [ARTEFACT_TYPE]', String, 'Artefact Type : article, audio, video, blog entry ...'
-  c.option '-t', '--type [TYPE]', String, 'Type : asciidoc, slideshow'
+  c.option '--t', '--type [TYPE]', String, 'Type : asciidoc, slideshow'
 
   add_common_options(c)
 
@@ -69,7 +72,7 @@ command :generate do |c|
   c.option '-f', '--file [HTML FILE]', String, 'HTML File name'
   c.option '-p', '--project_name [PROJECT_NAME]', String, 'Project Name'
   c.option '-r', '--rendering [RENDERING]', String, 'Code of the rendering : adoc2html, adoc2slide, toc2adoc, index2slide'
-  c.option '-t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
+  c.option '--t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
   c.option '-y', '--style [STYLE]', String, 'Stylesheet theme to be applied : asciidoctor, liberation, github, colony, foundation, ...'
   c.option '-a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'
 

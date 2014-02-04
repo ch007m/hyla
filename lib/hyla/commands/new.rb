@@ -3,12 +3,15 @@ module Hyla
     class New < Command
 
       def self.process(args, options = {})
-        raise ArgumentError.new('You must specify a project name to be created.') if args.empty?
+        # raise ArgumentError.new('You must specify a project name to be created.') if args.empty?
+        out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
 
         #
         # Calculate project path (rel/absolute)
         #
-        new_project_path = File.expand_path(args[0], Dir.pwd)
+        #new_project_path = File.expand_path(args[0], Dir.pwd)
+        new_project_path = File.expand_path(out_dir, Dir.pwd)
+
 
         if Dir.exist? new_project_path
 

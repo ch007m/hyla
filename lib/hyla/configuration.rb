@@ -68,7 +68,7 @@ module Hyla
 
     BACKENDS = '../../lib/resources/backends'
 
-    YAML_CONFIG_FILE_NAME = '_config.yml'
+    YAML_CONFIG_FILE_NAME = '_config.yaml'
 
     #
     # Templates Location
@@ -106,7 +106,7 @@ module Hyla
     end
 
     # Public: Generate a Hyla configuration Hash by merging the default
-    # options with anything in _config.yml, and adding the given options on top.
+    # options with anything in _config.yaml, and adding the given options on top.
     #
     # override - A Hash of options that override any options in both
     #            the defaults and the config file. See Hyla::Configuration::DEFAULTS for a
@@ -139,7 +139,7 @@ module Hyla
       Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
       config = config.deep_merge(new_config) if !new_config.nil?
 
-      # Merge DEFAULTS < _config.yml < override
+      # Merge DEFAULTS < _config.yaml < override
       config = config.deep_merge(override)
       # Convert String Keys to Symbols Keys
       config = Configuration[].transform_keys_to_symbols(config)
@@ -156,7 +156,7 @@ module Hyla
       config = safe_load_file(f)
       config
     rescue SystemCallError
-      Hyla::logger.warn "No _config.yml file retrieved"
+      Hyla::logger.warn "No _config.yaml file retrieved"
     end
 
     #

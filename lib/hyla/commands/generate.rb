@@ -135,8 +135,8 @@ module Hyla
         current_dir = Dir.pwd
         Hyla.logger.info ">>       Current dir: #{current_dir}"
 
-        # Delete destination directory
-        FileUtils.rm_rf(Dir.glob(@destination))
+        # Delete destination directory (generated_content, ...)
+        # FileUtils.rm_rf(Dir.glob(@destination))
 
         # Search for files using extensions parameter and do the rendering
         adoc_file_paths = []
@@ -152,7 +152,9 @@ module Hyla
             # Get asciidoc file name
             file_name_processed = path_to_adoc_file.basename
 
-            # Create dir
+            #
+            # Create destination dir relative to the path calculated
+            #
             html_dir = @destination + '/' + File.dirname(relative_path)
             Hyla.logger.info ">>        Dir of html: #{html_dir}"
             FileUtils.mkdir_p html_dir

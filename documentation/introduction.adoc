@@ -56,7 +56,7 @@ Use `gem install` command to deploy Hyla :
 
     $ gem install hyla -y -v 1.0.x
 
-NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required
+NOTE : The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required
 
 NOTE : The option `-v` tells to gem installer to deploy a specific version / release. The release number will depend on the version available (1.0.1, 1.0.2, ...)
 
@@ -70,13 +70,15 @@ And then execute:
 
 **Or** install it yourself as:
 
-    $ gem install hyla -v 1.0.1
+    $ gem install hyla -v _version_
+
+where _version_ should be 1.0.2, 1.0.x
 
 == For Developer's only
 
     Clone Git project locally, move to Hyla directory and execute the following commands
     gem build hyla.gemspec
-    gem install hyla-1.0.x.gem
+    gem install hyla-1.0.x
 
 == To publish Hyla to Gem Repo
 
@@ -101,6 +103,8 @@ More info about options and commands available can be find by running the `comma
 
 == Scenario
 
+The following scenario describes how we can can setup a project using one of the option proposed by Hyla : Create, Generate, Watch, ... You can
+
 ==== 1. Delete Temp directory
 
     rm -rf ~/hyla/MyBlankProject/
@@ -112,12 +116,6 @@ More info about options and commands available can be find by running the `comma
     rm -rf ~/hyla/MyDeckSlideShow/
     rm -rf ~/hyla/MyRevealSlideShow/
     rm -rf ~/hyla/MyEmailProject/
-
-==== 2. Install Gem Hyla
-
-    gem install hyla -v _version_
-
-where _version_ could be 1.0.1
 
 == 1. Blank Project & Artefacts
 
@@ -148,11 +146,14 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 == 3.  Create a Blank Project using _config.yaml config file, add artefacts
 
-- Clean and create a MyBlankProject (= directory) using --force option
+- Clean up project and create a MyBlankProject (= directory) using --force option
 
     cd ~/hyla
     rm -rf MyBlankProject/
+
+    # Create a Blank project but containing the yaml config file
     hyla new --blank MyBlankProject --force
+
     cd MyBlankProject
 
 - Create Asciidoc files from samples (book, article, image, audio, ...)
@@ -186,7 +187,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
    As destination directory is not longer '.' (which is the case when we add artefacts using `hyla create` command, then we must change the destination directory to `generated_content`. the original file is
    still available as it will backup by ruby
 
-    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
+    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
     hyla generate
     hyla generate -y foundation
 
@@ -207,7 +208,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 === 2. Generate content and watch it
 
     cd ~/hyla/MyTrainingProject
-    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
+    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
     hyla generate
 
     hyla watch -s ~/hyla/MyTrainingProject/ -d ~/hyla/MyTrainingProject/generated_content
@@ -280,7 +281,7 @@ as a WebSocket server is exposed for the browser. To watch files and let's ascii
 
     # Change destination in config files or pass info as option
     # cd ../MyTocProject/
-    # subl _config.yml
+    # subl _config.yaml
     hyla generate -r adoc2html
 
     hyla watch -s ~/hyla/MyTocProject/ -d generated_content
@@ -353,7 +354,7 @@ libraries https://github.com/pdfkit/pdfkit[pdfkit] and https://github.com/wkhtml
 
 - Change destination firm local '.' to 'generated_content'
 
-    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
+    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
 
 - Generate HTML content using foundation stylesheet
 
@@ -361,12 +362,12 @@ libraries https://github.com/pdfkit/pdfkit[pdfkit] and https://github.com/wkhtml
 
 - We change the rendering from adoc2html to html2pdf
 
-    ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: html2pdf")' _config.yml
+    ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: html2pdf")' _config.yaml
 
 - Source directory & Destination directory
 
-    ruby -i.bak -pe 'sub(%r{source: .},"source: ./generated_content")' _config.yml
-    ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: ./generated_content/pdf")' _config.yml
+    ruby -i.bak -pe 'sub(%r{source: .},"source: ./generated_content")' _config.yaml
+    ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: ./generated_content/pdf")' _config.yaml
 
 - We will generate the PDF file for the image and book
 
@@ -411,7 +412,7 @@ Two new options are required to process the request on the command line or using
 
 - Change destination firm local '.' to 'generated_content'
 
-    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yml
+    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
 
 - Generate HTML content using foundation stylesheet
 

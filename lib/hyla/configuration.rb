@@ -125,7 +125,7 @@ module Hyla
       extracted_email_attributes = self.extract_attributes(override[:email_attributes]) if override[:email_attributes]
       override[:email_attributes] = extracted_email_attributes if extracted_email_attributes
 
-      # Stringify keys of the hash what we receive from Hyla as override
+      # Stringify keys of the hash that we receive from Hyla
       override = Configuration[override].stringify_keys
       Hyla::logger.debug("OVERRIDE Keys: #{override.inspect}")
 

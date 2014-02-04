@@ -2,7 +2,7 @@
 # Common options
 #
 source: .
-destination: . # or . or ~/Hyla or generated_content
+destination: generated_content # or . or ~/Hyla or generated_content
 # end common options
 
 #

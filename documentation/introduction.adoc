@@ -294,7 +294,7 @@ as a WebSocket server is exposed for the browser. To watch files and let's ascii
 === 4. Generate a DeckJS Slideshow for a Project (all the TOC)
 
     cd ~/hyla/MyTocProject
-    hyla generate --backend deckjs -s  . -d generated_content -r index2slide --trace
+    hyla generate --backend deckjs -s  . -d generated_content -r index2slide
 
 == 5. Server content locally - HTTP Server
 
@@ -344,17 +344,12 @@ libraries https://github.com/pdfkit/pdfkit[pdfkit] and https://github.com/wkhtml
 
     cd ~/hyla
     rm -rf MyPdfroject/
-    hyla new --blank MyPdfProject --force
+    hyla new -b -d MyPdfProject --force
     cd MyPdfProject
 
-- Create 2 Asciidoc files from samples (book, image)
+- Create Asciidoc file from sample (book)
 
-    hyla create --a book
-    hyla create --a image
-
-- Change destination firm local '.' to 'generated_content'
-
-    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
+    hyla create -a book --t asciidoc -d .
 
 - Generate HTML content using foundation stylesheet
 
@@ -408,11 +403,11 @@ Two new options are required to process the request on the command line or using
     hyla new -b -d MyEmailProject --force
     cd MyEmailProject
 
+- Add an asciidoc file (report, doc, book, article)
+
+    hyla create --a book --d .
+
 - Edit the _config.yaml file and add the parameters required (see previously)
-
-- Change destination firm local '.' to 'generated_content'
-
-    ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
 
 - Generate HTML content using foundation stylesheet
 

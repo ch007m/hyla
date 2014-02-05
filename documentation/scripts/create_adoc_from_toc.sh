@@ -13,10 +13,6 @@ fi
 echo "TOC file location : $1"
 echo "Project Name : $2"
 
-echo "Create a $2 using --force option"
-cd ~/hyla
-rm -rf $2/
-
 hyla generate -r toc2adoc -p my-project -d ~/hyla/$2/ --toc $1
 hyla generate -r adoc2html -s ~/hyla/$2/ -d ~/hyla/$2/generated_content
 

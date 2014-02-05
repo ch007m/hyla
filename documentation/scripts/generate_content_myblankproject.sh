@@ -11,7 +11,6 @@ echo "Backup _config.yaml file as we don't use it here"
 mv _config.yaml _config.yaml.bk
 
 echo "Add asciidoc files"
-hyla new -b -d MyBlankProject --force
 hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
 hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
 hyla create --t asciidoc --a image --d ~/hyla/MyBlankProject

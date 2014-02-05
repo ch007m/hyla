@@ -23,7 +23,7 @@ module Hyla
         Hyla::logger.info ">>   Artefact #{artefact_file_name} added to project #{destination}"
 
         case artefact_type
-          when 'image','audio','video'
+          when 'image','audio','video','source'
            source_dir = [Configuration::samples, artefact_type] * '/'
            FileUtils.cp_r(source_dir,destination)
         end

@@ -30,6 +30,13 @@ public class HelloWorld {
 }
 ----
 
+Include Java code using snippet tag and include block macro
+
+[source,java]
+----
+include::source/HelloWorld.java[tag=snippetHello]
+----
+
 === XML
 [source,xml]
 ----

@@ -47,8 +47,6 @@ The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[f
 - http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-[How do I install and use the browser extensions for LiveReload].
 Be sure to enable the option “Allow access to file URLs” checkbox in Tools > Extensions > LiveReload after installation of Chrome Extension.
 
-image::image/access_local_file.png[Access Local File,650,150]
-
 == Installation
 
 The latest source code is located in the {sources}[Hyla git repository] on GitHub. Hyla can be installed via the +gem+ command, bundler.
@@ -69,7 +67,7 @@ And then execute:
 
 **Or** install it yourself as:
 
-    $ gem install hyla -v 1.0.2
+    $ gem install hyla -v 1.0.3
 
 == For Developer's only
 

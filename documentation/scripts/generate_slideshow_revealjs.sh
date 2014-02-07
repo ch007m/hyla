@@ -13,7 +13,7 @@ hyla create --t slideshow -a revealjs -d MyRevealSlideShow
 echo "Generate HTML5 Slideshow content"
 cd MyRevealSlideShow
 
-hyla generate --backend revealjs -s . -d generated_content -r adoc2slide
+hyla generate --backend revealjs -s . -d generated_content -r adoc2htmlslide
 
 echo "Open the slideshow using your web browser"
 open http://localhost:4000/hyla/slideshow_revealjs.html &

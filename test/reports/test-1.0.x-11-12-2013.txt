@@ -21,7 +21,7 @@ rm -rf ~/hyla/MyTrainingProject/
 ./hyla generate --r toc2adoc --p my-project --d ~/hyla/MyTocProject/ --toc ~/MyProjects/hyla/data/toc.adoc
 ./hyla generate --r adoc2html --s ~/hyla/MyTocProject/ --d ~/hyla/MyTocProject/generated_content
 
-./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
+./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2htmlslide
 
 TESTS SUCCEEDED
 
@@ -101,7 +101,7 @@ Rendering : Asciidoc to HTML
 >> File to be rendered : /Users/chmoulli/hyla/MyTocProject/C_Installation_module/1_Chapter.adoc
 >>        Dir of html: /Users/chmoulli/hyla/MyTocProject/generated_content/C_Installation_module
 >> File to be rendered : /Users/chmoulli/hyla/MyTocProject/C_Installation_module/2_Chapter.adoc
-RedHat-MacBook:bin chmoulli$ ./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2slide
+RedHat-MacBook:bin chmoulli$ ./hyla generate --s  ~/hyla/MyTocProject/A_Introduction_module/ --d ~/hyla/MyTocProject/A_Introduction_module/generated_content --r adoc2htmlslide
 Rendering : Asciidoc to SlideShow
 >>       Source dir: /Users/chmoulli/hyla/MyTocProject/A_Introduction_module
 >>  Destination dir: /Users/chmoulli/hyla/MyTocProject/A_Introduction_module/generated_content

@@ -27,10 +27,10 @@ ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: ./generate
 echo "Generate the PDF file for the image and book"
 
 hyla generate -f asciidoc_book.html
-hyla generate -f asciidoc_image.html
+#hyla generate -f asciidoc_image.html
 
 echo "Result can be opened and viewed"
 
 open generated_content/pdf/asciidoc_book.pdf
-open generated_content/pdf/asciidoc_image.pdf
+#open generated_content/pdf/asciidoc_image.pdf
 

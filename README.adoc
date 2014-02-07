@@ -144,7 +144,7 @@ Enhancements / Improvements::
   * Check gem required (link:{issues}10[#10])
   * Add shell scripts to play with different scenario (link:{issues}34[#34])
   * Add example of code snippet (link:{issues}37[#37])
-
+  * Rename adoc2slide and index2slide to adoc2htmlslide, index2htmlslide (link:{issues}38[#38])
 
 === v1.0.2 (2014-01-31) - @cmoulliard
 

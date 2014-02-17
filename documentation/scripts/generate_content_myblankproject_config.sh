@@ -9,7 +9,6 @@ hyla new -b -d ~/hyla/MyBlankProject --force
 cd ~/hyla/MyBlankProject
 
 echo "Add asciidoc files"
-hyla new -b -d MyBlankProject --force
 hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
 hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
 hyla create --t asciidoc --a image --d ~/hyla/MyBlankProject
@@ -19,10 +18,17 @@ hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
 hyla create --t asciidoc --a table --d ~/hyla/MyBlankProject
 
 echo "Change style in the _config.yaml file"
-ruby -i.bak -pe 'sub(%r{style: liberation},"style: foundation")' _config.yaml
+#ruby -i.bak -pe 'sub(%r{style: liberation},"style: foundation")' _config.yaml
+ruby -i.bak -pe 'sub(%r{footer_copyright:},"footer_copyright: Copyright ©2014 Red Hat, Inc.")' _config.yaml
+ruby -i.bak -pe 'sub(%r{header_image_path:},"header_image_path: image/rhheader_thin.png")' _config.yaml
+ruby -i.bak -pe 'sub(%r{revealjs_theme:},"revealjs_theme: gpe")' _config.yaml
+
+echo "Copy logo"
+mkdir -p generated_content/image
+cp /Users/chmoulli/hyla/RevealCreatedContent/image/rhheader_thin.png ./generated_content/image/
 
 echo "Generate HTML content"
 hyla generate
 
-echo "Revert style"
-ruby -i.bak -pe 'sub(%r{style: foundation},"style: liberation")' _config.yaml
+#echo "Revert style"
+#ruby -i.bak -pe 'sub(%r{style: foundation},"style: liberation")' _config.yaml

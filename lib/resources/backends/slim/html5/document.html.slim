@@ -67,6 +67,8 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       / AsciiDoc leaves an empty header div even if there's no doctitle
       #header
         - if has_header?
+          - if attr? :header_image_path
+            img src='#{attr :header_image_path}'
           - unless notitle
             h1=@header.title
           - if attr? :author
@@ -89,6 +91,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
           - if attr? :revremark
             br
             span#revremark=attr :revremark
+        - else
+          - if attr? :header_image_path
+            img src='#{attr :header_image_path}'
         - if (attr? :toc) && (attr? 'toc-placement', 'auto')
           #toc class=(attr 'toc-class', 'toc')
             #toctitle=attr 'toc-title'
@@ -101,12 +106,6 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         - footnotes.each do |fn|
           .footnote id='_footnote_#{fn.index}'
             <a href="#_footnoteref_#{fn.index}">#{fn.index}</a>. #{fn.text}
-    #footer
-      #footer-text
-        - if attr? :revnumber
-          | #{attr 'version-label'} #{attr :revnumber}
-        - if attr? 'last-update-label'
-          br
-          | #{attr 'last-update-label'} #{attr :docdatetime}
-      - unless (docinfo_content = (docinfo :footer)).empty?
-        =docinfo_content
+    - if attr? :footer_copyright
+      .footer-copyright
+        =attr :footer_copyright

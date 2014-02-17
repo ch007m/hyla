@@ -4,7 +4,7 @@
 :twitter: cmoulliard
 :blog: http://cmoulliard.github.io
 // Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
-:revealjs_theme: default
+// :revealjs_theme: default
 :linkattrs:
 :idprefix:
 

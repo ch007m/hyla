@@ -19,6 +19,9 @@ attributes:
    source-highlighter: coderay
    linkcss!: true
    data-uri: true
+   footer_copyright: # Copyright Text
+   header_image_path: # image path location
+   revealjs_theme: # theme to be used default, ...
 # end asciidoctor attributes
 
 #

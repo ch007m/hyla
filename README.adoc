@@ -121,6 +121,18 @@ Issue tracker (GitHub):: {issues}
 
 == Changelog
 
+=== v1.0.4 - @cmoulliard
+
+New Features::
+
+  * Support footer with copyright
+  * Add a header with logo
+  * Create directory/folder containing `Liberation` fonts
+
+Bug fixes::
+
+Enhancements / Improvements::
+
 === v1.0.3 - @cmoulliard
 
 New Features::

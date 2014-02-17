@@ -39,6 +39,7 @@ module Hyla
 
             # Check Style to be used
             new_asciidoctor_option = {
+                :template_dirs => [self.backend_dir(options[:backend])],
                 :attributes => {
                     'stylesheet' => self.check_style(options[:style])
                 }
@@ -109,6 +110,8 @@ module Hyla
             return [Configuration::backends, 'haml', 'deckjs'] * '/'
           when 'revealjs'
             return [Configuration::backends, 'slim', 'revealjs'] * '/'
+          when 'html5'
+            return [Configuration::backends, 'slim', 'html5'] * '/'
         end
       end
 
@@ -135,6 +138,12 @@ module Hyla
         current_dir = Dir.pwd
         Hyla.logger.info ">>       Current dir: #{current_dir}"
 
+        #
+        # Backup Asciidoctor attributes
+        # Strange issue discovered
+        #
+        @attributes_bk = options[:attributes]
+
         # Delete destination directory (generated_content, ...)
         # FileUtils.rm_rf(Dir.glob(@destination))
 
@@ -159,6 +168,9 @@ module Hyla
             Hyla.logger.info ">>        Dir of html: #{html_dir}"
             FileUtils.mkdir_p html_dir
 
+            # Copy Fonts
+            self.cp_resources_to_dir(File.dirname(html_dir), 'fonts')
+
             # Copy Resources for Slideshow
             case options[:backend]
               when 'deckjs'
@@ -175,6 +187,7 @@ module Hyla
             html_file_name = file_name_processed.to_s.gsub(/.adoc$|.ad$|.asciidoc$|.index$|.txt$/, '.html')
             options[:to_dir] = html_dir
             options[:to_file] = html_file_name
+            options[:attributes] = @attributes_bk
             Asciidoctor.render_file(f, options)
 
           end

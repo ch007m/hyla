@@ -19,11 +19,18 @@
       %meta(name='keywords'){:content=>(attr :keywords)}
     - if attr? :author
       %meta(name='author'){:content=>(attr :author)}
-
+    :javascript
+      document.write( '<link rel="stylesheet" href="revealjs/css/print/' +
+      ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) +
+      '.css" type="text/css" media="print">' );
   %body{:id=>@id, :class=>['reveal-container',(attr :doctype)]}
     .reveal
+      .header
+        %img(src='image/rhheader_thin.png' alt='RedHat Corporate Logo')
       .slides
         =content
+      .footer
+        Copyright ©2014 Red Hat, Inc.
     %script(src='lib/js/head.min.js')
     %script(src='reveal.js/js/reveal.min.js')
     :javascript
@@ -53,7 +60,7 @@
         // Apply a 3D roll to links on hover
         rollingLinks: true,
         // Transition style
-        transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+        transition: 'none', // default/cube/page/concave/zoom/linear/fade/none
         // Transition speed
         transitionSpeed: 'default', // default/fast/slow
         // Transition style for full page backgrounds

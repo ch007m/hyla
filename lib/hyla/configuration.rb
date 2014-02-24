@@ -6,26 +6,26 @@ module Hyla
                 :templates, :samples, :resources, :styles, :fonts, :backends
 
     DEFAULTS = {
-        'source'        => Dir.pwd,
-        'destination'   => File.join(Dir.pwd, 'generated_content'),
-        'watch_dir'     => '.',
-        'watch_ext'     => %w(ad adoc asc asciidoc txt index),
+        'source' => Dir.pwd,
+        'destination' => File.join(Dir.pwd, 'generated_content'),
+        'watch_dir' => '.',
+        'watch_ext' => %w(ad adoc asc asciidoc txt index),
 
         # Asciidoctor
-        'backend'       => 'html5',
-        'eruby'         => 'erb',
-        'doctype'       => 'article',
-        'compact'       => false,
-        'to_dir'        => '.',
-        'to_file'       => '',
-        'attributes'    => {
+        'backend' => 'html5',
+        'eruby' => 'erb',
+        'doctype' => 'article',
+        'compact' => false,
+        'to_dir' => '.',
+        'to_file' => '',
+        'attributes' => {
             'source-highlighter' => 'coderay',
-            'linkcss!'           => 'true',
-            'data-uri'           => 'true',
-            'stylesheet'         => 'asciidoctor.css',
-            'stylesdir'          => 'styles'
+            'linkcss!' => 'true',
+            'data-uri' => 'true',
+            'stylesheet' => 'asciidoctor.css',
+            'stylesdir' => 'styles'
         },
-        'safe'          => 'unsafe',
+        'safe' => 'unsafe',
         'header_footer' => true
 
     }
@@ -142,13 +142,21 @@ module Hyla
       config = DEFAULTS
       Hyla::logger.debug("DEFAULTS Keys: #{config.inspect}")
 
-      # Read YAML config file IF it exists and
-      # Merge content with DEFAULT config
-      new_config = read_config_file(YAML_CONFIG_FILE_NAME)
-      Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
-      config = config.deep_merge(new_config) if !new_config.nil?
+      #
+      # Read the config file passed as parameter if it exists
+      # otherwise read default _config.yaml file if it exists and
+      # merge content with DEFAULT config
+      #
+      alt_config = read_config_file(override['config']) if override['config']
+      if !alt_config.nil?
+        config = config.deep_merge(alt_config)
+      else
+        new_config = read_config_file(YAML_CONFIG_FILE_NAME)
+        Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
+        config = config.deep_merge(new_config) if !new_config.nil?
+      end
 
-      # Merge DEFAULTS < _config.yaml < override
+      # Merge DEFAULTS < _config.yaml or your_config.yaml file < override
       config = config.deep_merge(override)
       # Convert String Keys to Symbols Keys
       config = Configuration[].transform_keys_to_symbols(config)
@@ -189,8 +197,10 @@ module Hyla
       return hash if not hash.is_a?(Hash)
       hash.inject({}) { |result, (key, value)|
         new_key = case key
-                    when String then key.to_sym
-                    else key
+                    when String then
+                      key.to_sym
+                    else
+                      key
                   end
         new_value = case value
                       when Hash
@@ -199,7 +209,8 @@ module Hyla
                         else
                           transform_keys_to_symbols(value)
                         end
-                      else value
+                      else
+                        value
                     end
         result[new_key] = new_value
         result

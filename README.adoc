@@ -128,6 +128,7 @@ New Features::
   * Support footer with copyright (link:{issues}40[#40])
   * Add a header with logo (link:{issues}40[#40])
   * Create directory/folder containing `Liberation` fonts
+  * Allow to use a different config file (link:{issues}#41[#41])
 
 Bug fixes::
 

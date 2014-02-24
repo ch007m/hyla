@@ -18,7 +18,7 @@ program :description, Hyla::DESCRIPTION
 default_command :default
 
 def add_build_options(c)
-  c.option '-c','--config CONFIG_FILE[,CONFIG_FILE2,...]', Array, 'Custom configuration file'
+  c.option '-c','--config CONFIG_FILE', String, 'Custom configuration file'
   c.option '-V','--verbose', 'Print verbose output.'
 end
 
@@ -35,9 +35,10 @@ command :new do |c|
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
   c.option '-f','--force', 'Force creation even if PATH already exists'
   c.option '-b','--blank', 'Creates project but with empty files'
-  c.option '-','--template_type [TEMPLATE_TYPE]', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
+  c.option '--t','--template_type [TEMPLATE_TYPE]', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
 
   add_common_options(c)
+  add_build_options(c)
 
   c.action do |args, options|
     config = Hyla::Configuration.parse(options.__hash__)
@@ -55,6 +56,7 @@ command :create do |c|
   c.option '--t', '--type [TYPE]', String, 'Type : asciidoc, slideshow'
 
   add_common_options(c)
+  add_build_options(c)
 
   c.action do |args, options|
     config = Hyla::Configuration.parse(options.__hash__)
@@ -77,6 +79,7 @@ command :generate do |c|
   c.option '-a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'
 
   add_common_options(c)
+  add_build_options(c)
 
   c.action do |args, options|
     config = Hyla::Configuration.parse(options.__hash__)
@@ -88,7 +91,9 @@ end
 command :watch do |c|
   c.syntax = 'hyla watch [options]'
   c.description = 'Watch directories for any change, add or file deleted and render document (HTML5)'
+
   add_common_options(c)
+  add_build_options(c)
 
   c.action do |args, options|
 
@@ -110,7 +115,9 @@ command :serve do |c|
   c.option '-P', '--port [PORT]', 'Port to listen on'
   c.option '-H', '--host [HOST]', 'Host to bind to'
   c.option '-b', '--baseurl [URL]', 'Base URL'
+
   add_common_options(c)
+  add_build_options(c)
 
   c.action do |args, options|
     options.default :serving => true
@@ -131,6 +138,7 @@ command :sendmail do |c|
   c.option '-e', '--email_attributes [KEY=VALUE,KEY=VALUE]', String, 'Email attributes used to configure smtp server, port number, user password, authentication mode, sender, recipient, subject'
 
   add_common_options(c)
+  add_build_options(c)
 
   c.action do |args, options|
 

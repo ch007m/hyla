@@ -68,7 +68,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       #header
         - if has_header?
           - if attr? :header_image_path
-            img src='#{attr :header_image_path}'
+            img src=image_uri(attr :header_image_path)
           - unless notitle
             h1=@header.title
           - if attr? :author

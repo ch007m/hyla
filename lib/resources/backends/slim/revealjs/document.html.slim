@@ -27,7 +27,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     .reveal
       - if attr? :header_image_path
         .header
-          img src='#{attr :header_image_path}'
+          img src=image_uri(attr :header_image_path)
       // Any section element inside of this container is displayed as a slide
       .slides
         =content

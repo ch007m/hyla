@@ -125,13 +125,16 @@ Issue tracker (GitHub):: {issues}
 
 New Features::
 
-  * Support footer with copyright
-  * Add a header with logo
+  * Support footer with copyright (link:{issues}40[#40])
+  * Add a header with logo (link:{issues}40[#40])
   * Create directory/folder containing `Liberation` fonts
 
 Bug fixes::
 
 Enhancements / Improvements::
+
+  * Add option to support attachment (link:{issues}39[#39]) for email
+
 
 === v1.0.3 - @cmoulliard
 

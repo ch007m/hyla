@@ -7,6 +7,7 @@ module Hyla
         location = options[:location] if check_mandatory_option?('-s / --location', options[:location])
         file_name = options[:file] if check_mandatory_option?('-f / --file', options[:file])
         email_attributes = options[:email_attributes] if check_mandatory_option?('-e / --email_attributes', options[:email_attributes])
+        attachment = options[:attachment]
 
         sender = email_attributes[:from]
         recipients = email_attributes[:to]
@@ -46,20 +47,22 @@ module Hyla
         </html>
         EOS
 
-        mail = Mail.new do
-          to recipients
-          from sender
-          subject subject
-          content_type 'multipart/related'
+        mail = populate_email(recipients, sender, subject)
+
+        case attachment
+          when true
+
+            attachment = File.read(file_path)
+            mail.attachments[file_name] = {
+                :mime_type => 'application/x-html',
+                :content => attachment,
+                :Content_Transfer_Encoding => 'quoted-printable'}
+
+            inline_html = inline_body_with_attachments(body, mail.attachments)
+
+          when false
+            inline_html = File.read(file_path)
         end
-
-        attachment = File.read(file_path)
-        mail.attachments[file_name] = {
-            :mime_type => 'application/x-html',
-            :content   => attachment,
-            :Content_Transfer_Encoding => 'quoted-printable'}
-
-        inline_html = inline_body_with_attachments(body, mail.attachments)
 
         html_part = Mail::Part.new do
           content_type 'text/html; charset=UTF-8'
@@ -73,6 +76,24 @@ module Hyla
         Hyla.logger.info "Email send to SMTP server from #{sender} with this subject : #{subject}"
       end
 
+      #
+      # Create Mail using
+      # Recipients, Sender and subject
+      #
+      def self.populate_email(recipients, sender, subject)
+        mail = Mail.new do
+          to recipients
+          from sender
+          subject subject
+          content_type 'multipart/related'
+        end
+        return mail
+      end
+
+      #
+      # Generate the Hash of the parameters
+      # used by mail compoent nto send email
+      #
       def self.parameters()
         parameters = {}
         parameters[:address] = @smtp_server unless @smtp_server.nil?
@@ -84,6 +105,9 @@ module Hyla
         return parameters
       end
 
+      #
+      # Substitute filename with cid
+      #
       def self.inline_body_with_attachments(html, attachments)
         attachments.each do |attachment|
           if (html =~ /#{attachment.filename}/)

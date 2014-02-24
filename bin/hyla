@@ -127,11 +127,15 @@ command :sendmail do |c|
   c.description = 'Send as HTML Attachment an email to the SMTP Server defined'
   c.option '-f', '--file [File]', String, 'File to be attached'
   c.option '-l', '--location [PATH]', String, 'Directory containing file to be attached'
+  c.option '-a', '--attachment [boolean]', 'Attach to the email the HTML generated'
   c.option '-e', '--email_attributes [KEY=VALUE,KEY=VALUE]', String, 'Email attributes used to configure smtp server, port number, user password, authentication mode, sender, recipient, subject'
 
   add_common_options(c)
 
   c.action do |args, options|
+
+    options.default :attachment => false
+
     config = Hyla::Configuration.parse(options.__hash__)
     Hyla::Commands::Sendmail.process(args, config)
   end

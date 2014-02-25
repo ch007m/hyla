@@ -2,16 +2,28 @@ module Hyla
   module Commands
     class New < Command
 
+      @readme_content = <<-EOS
+== Readme Asciidoctor Project
+
+This is an empty Asciidoctor readme file.
+
+To create **asciidoc(tor)** content, more info is available http://asciidoctor.org/docs/user-manual[here]
+
+Otherwise, you can add content to this newly project created using this hyla command :
+
+  hyla create --t asciidoc --a xxx  --d pathToProjectCreated
+
+where xxx can be article, book, source, audio, video, ...
+EOS
+
       def self.process(args, options = {})
-        # raise ArgumentError.new('You must specify a project name to be created.') if args.empty?
+
         out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
 
         #
         # Calculate project path (rel/absolute)
         #
-        #new_project_path = File.expand_path(args[0], Dir.pwd)
         new_project_path = File.expand_path(out_dir, Dir.pwd)
-
 
         if Dir.exist? new_project_path
 
@@ -73,12 +85,7 @@ module Hyla
       def self.create_blank_project(path)
         Dir.chdir(path) do
           f = File.open('readme.ad', 'w')
-          f.puts "= Readme Asciidoctor Project"
-          f.puts "This is an empty Asciidoctor readme file."
-          f.puts "To create **asciidoc(tor)** content, more info are available http://asciidoctor.org/docs/user-manual[here]"
-          f.puts "otherwise, you can add content to this newly project created using this hyla command :"
-          f.puts "hyla create --t asciidoc --a xxx  --d pathToProjectCreated"
-          f.puts "where xxx can be article, book, source, audio, video, ..."
+          f.puts @readme_content
         end
       end
 

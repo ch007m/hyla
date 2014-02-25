@@ -5,18 +5,18 @@ module Hyla
       def self.process(args, options)
         include WEBrick
 
-        my_opts = options
+        my_opts = {}
 
         destination = options[:destination]  if self.check_mandatory_option?('-d / --destination', options[:destination])
 
         my_opts[:Port] = options[:port]
         my_opts[:BindAddress] = options[:host]
+        my_opts[:baseurl] = options[:baseurl]
         my_opts[:MimeTypes] = self.mime_types
         my_opts[:DoNotReverseLookupmy_opts] = true
         my_opts[:StartCallback] = start_callback(options[:detach])
         my_opts[:AccessLog] = []
         my_opts[:Logger] = Log::new([], Log::WARN)
-        my_opts[:baseurl] = options[:baseurl]
 
         # recreate NondisclosureName under utf-8 circumstance
         fh_option = WEBrick::Config::FileHandler

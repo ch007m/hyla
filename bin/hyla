@@ -121,7 +121,8 @@ command :serve do |c|
 
   c.action do |args, options|
     options.default :serving => true
-    Hyla::Commands::Serve.process(args, options.__hash__)
+    config = Hyla::Configuration.parse(options.__hash__)
+    Hyla::Commands::Serve.process(args, config)
   end
 end
 alias_command :server, :serve

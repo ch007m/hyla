@@ -22,6 +22,7 @@ attributes:
    footer_copyright: # Copyright Text
    header_image_path: # image path location
    revealjs_theme: # theme to be used default, ...
+   showscript: true # Co(Un)mment this line when you want to display scripts for instructors
 # end asciidoctor attributes
 
 #
@@ -52,6 +53,13 @@ rendering: adoc2html           # Render asciidoc, asciidoctor files to HTML usin
 #
 project_name: my-project
 toc: ~/hyla/toc.adoc # Change location
+
+#
+# Serve command
+#
+port: 4000 # HTTP Local port number
+host: localhost # Your local machine http://localhost
+baseurl: /hyla/ # Used to map destination directory with base url to access content --> http://localhost:4000/hyla/
 
 #
 # Sendmail command

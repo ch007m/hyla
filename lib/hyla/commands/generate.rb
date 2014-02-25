@@ -90,6 +90,8 @@ module Hyla
             return [Configuration::backends, 'slim', 'revealjs'] * '/'
           when 'html5'
             return [Configuration::backends, 'slim', 'html5'] * '/'
+          else
+            return [Configuration::backends, 'slim', 'html5'] * '/'
         end
       end
 

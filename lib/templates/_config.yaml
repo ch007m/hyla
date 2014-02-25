@@ -19,10 +19,10 @@ attributes:
    source-highlighter: coderay
    linkcss!: true
    data-uri: true
-   footer_copyright: # Copyright Text
-   header_image_path: # image path location
+   # footer_copyright: # Co(Un)mment this line and add Copyright Text when required
+   # header_image_path: # Co(Un)mment this line and add image path location when required
    revealjs_theme: # theme to be used default, ...
-   showscript: true # Co(Un)mment this line when you want to display scripts for instructors
+   # showscript: true # Co(Un)mment this line when you want to display scripts for instructors
 # end asciidoctor attributes
 
 #

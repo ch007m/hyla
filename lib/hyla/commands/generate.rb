@@ -8,16 +8,6 @@ module Hyla
 
         case rendering
 
-          when 'html2pdf'
-
-            Hyla.logger.info "Rendering : Generate PDF from HTML file"
-
-            source_dir = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
-            out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
-            file_name = options[:file] if self.check_mandatory_option?('-f / --file', options[:file])
-
-            self.html_to_pdf(source_dir, out_dir, file_name)
-
           when 'toc2adoc'
 
             Hyla.logger.info "Rendering : Table of Content to Asciidoc"
@@ -73,27 +63,15 @@ module Hyla
 
             self.asciidoc_to_html(@source, @destination, extensions, merged_options)
 
-          when 'adoc2htmlslide'
-            Hyla.logger.info "Rendering : Asciidoc to SlideShow"
-            self.check_mandatory_option?('-s / --source', options[:source])
-            self.check_mandatory_option?('-d / --destination', options[:destination])
+          when 'html2pdf'
 
-            @destination = options[:destination]
-            @source = options[:source]
+            Hyla.logger.info "Rendering : Generate PDF from HTML file"
 
-            new_asciidoctor_option = {
-                :template_dirs => [self.backend_dir(options[:backend])],
-                :attributes => {
-                    'stylesheet' => self.check_style(options[:style])
-                }
-            }
+            source_dir = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
+            out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
+            file_name = options[:file] if self.check_mandatory_option?('-f / --file', options[:file])
 
-            merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
-
-            # Extension(s) of the files to be parsed
-            extensions = 'adoc|ad|asciidoc'
-
-            self.asciidoc_to_html(@source, @destination, extensions, merged_options)
+            self.html_to_pdf(source_dir, out_dir, file_name)
           else
             Hyla.logger.error ">> Unknow rendering"
             exit(1)

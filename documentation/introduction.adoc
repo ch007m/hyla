@@ -312,12 +312,12 @@ Hyla command in another Terminal
     hyla new -b -d MyDeckSlideShow
 
    hyla create --t slideshow -a deckjs -d MyDeckSlideShow
-   hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2htmlslide
+   hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html
 
 === 2. Different DeckJS Style options
 
-    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2htmlslide -a deckjs_theme=swiss,deckjs_transition=fade
-    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2htmlslide -a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
+    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=swiss,deckjs_transition=fade
+    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide
 
 ===  3. RevealJS
 
@@ -329,7 +329,7 @@ Hyla command in another Terminal
 
     cd MyRevealSlideShow
 
-    hyla generate --backend revealjs -s . -d generated_content -r adoc2htmlslide
+    hyla generate --backend revealjs -s . -d generated_content -r adoc2html
 
     open http://localhost:4000/hyla/slideshow_revealjs.html &
 

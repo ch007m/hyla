@@ -136,7 +136,8 @@ Bug fixes::
 Enhancements / Improvements::
 
   * Add option to support attachment (link:{issues}39[#39]) for email
-
+  * Revert modification to propose adoc2html instead of adoc2htmlslide (link:{issues}38[#38])
+  * Revert modification to propose index2html instead of index2htmlslide (link:{issues}38[#38])
 
 === v1.0.3 - @cmoulliard
 

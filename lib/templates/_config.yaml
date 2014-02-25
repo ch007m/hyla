@@ -37,8 +37,7 @@ type: asciidoc
 #
 # Generate command
 #
-rendering: adoc2html           # Render asciidoc, asciidoctor files to HTML using backend HTML5
-# rendering: adoc2htmlslide    # Render asciidoc, asciidoctor files to HTML using backend revealjs or deckjs
+rendering: adoc2html           # Render asciidoc, asciidoctor files to HTML using backend HTML5, Revealjs or Deckjs
 
 # rendering: toc2adoc          # Using an asciidoc file which is a Table Of Content a collection of directories (title level 1) and files (title level 2, 3)
 

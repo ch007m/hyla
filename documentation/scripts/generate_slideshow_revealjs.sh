@@ -19,7 +19,7 @@ cp -r /Users/chmoulli/hyla/RevealCreatedContent/image ./image
 echo "Change theme to GPE"
 ruby -i.bak -pe 'sub(%r{revealjs_theme: deault},"revealjs_theme: gpe")' _config.yaml
 
-hyla generate --backend revealjs -s . -d generated_content -r adoc2htmlslide --trace
+hyla generate --backend revealjs -s . -d generated_content -r adoc2html --trace
 
 echo "Open the slideshow using your web browser"
 # open http://localhost:4000/hyla/slideshow_revealjs.html &

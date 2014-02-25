@@ -16,7 +16,7 @@ cd MyRevealSlideShow
 echo "Change theme to GPE, backend to reveal"
 ruby -i.bak -pe 'sub(%r{revealjs_theme: default},"revealjs_theme: gpe")' _config.yaml
 ruby -i.bak -pe 'sub(%r{backend: html5},"backend: revealjs")' _config.yaml
-ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: adoc2htmlslide")' _config.yaml
+ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: adoc2html")' _config.yaml
 
 hyla generate
 
@@ -32,5 +32,5 @@ echo "Start web server"
 echo "Change theme to GPE"
 #ruby -i.bak -pe 'sub(%r{revealjs_theme: gpe},"revealjs_theme: default")' _config.yaml
 #ruby -i.bak -pe 'sub(%r{backend: revealjs},"backend: html5")' _config.yaml
-#ruby -i.bak -pe 'sub(%r{rendering: adoc2htmlslide},"rendering: adoc2html")' _config.yaml
+#ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: adoc2html")' _config.yaml
 

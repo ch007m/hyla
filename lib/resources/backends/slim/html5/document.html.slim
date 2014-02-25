@@ -93,7 +93,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
             span#revremark=attr :revremark
         - else
           - if attr? :header_image_path
-            img src='#{attr :header_image_path}'
+            img src=image_uri(attr :header_image_path)
         - if (attr? :toc) && (attr? 'toc-placement', 'auto')
           #toc class=(attr 'toc-class', 'toc')
             #toctitle=attr 'toc-title'

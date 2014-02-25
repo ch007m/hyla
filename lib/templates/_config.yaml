@@ -73,8 +73,7 @@ email_attributes:
   #user:             'user_name'
   #password:         'password'
 
-location: ./generated_content
-file: 'file name to be used as attachment for the email' # Change File name
+file: 'file name to be used as attachment for the email or embed in the body of the email' # Change File name
 # end of sendmail command
 
 # end hyla options

@@ -393,7 +393,7 @@ file generated from an asciidoc file.
 
 Two new options are required to process the request on the command line or using _config.yaml file
 
-    location: ./generated_content
+    source: ./generated_content
     file: name_of_html_file
 
 - Create a Blank project

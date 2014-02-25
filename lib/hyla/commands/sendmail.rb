@@ -4,7 +4,7 @@ module Hyla
 
       def self.process(args, options)
 
-        location = options[:location] if check_mandatory_option?('-s / --location', options[:location])
+        location = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
         file_name = options[:file] if check_mandatory_option?('-f / --file', options[:file])
         email_attributes = options[:email_attributes] if check_mandatory_option?('-e / --email_attributes', options[:email_attributes])
         attachment = options[:attachment]

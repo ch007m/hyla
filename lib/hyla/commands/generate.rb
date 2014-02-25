@@ -41,7 +41,7 @@ module Hyla
 
             self.asciidoc_to_html(@source, @destination, extensions, merged_options)
 
-          when 'index2htmlslide'
+          when 'index2html'
             Hyla.logger.info "Rendering : Asciidoctor Indexed Files to SlideShow"
             self.check_mandatory_option?('-s / --source', options[:source])
             self.check_mandatory_option?('-d / --destination', options[:destination])

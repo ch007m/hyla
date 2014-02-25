@@ -289,12 +289,12 @@ as a WebSocket server is exposed for the browser. To watch files and let's ascii
 === 3. Generate a DeckJS Slideshow for a module
 
     cd ~/hyla/MyTocProject
-    hyla generate --backend deckjs -s  A_Introduction_module/ -d A_Introduction_module/generated_content -r index2htmlslide
+    hyla generate --backend deckjs -s  A_Introduction_module/ -d A_Introduction_module/generated_content -r index2html
 
 === 4. Generate a DeckJS Slideshow for a Project (all the TOC)
 
     cd ~/hyla/MyTocProject
-    hyla generate --backend deckjs -s  . -d generated_content -r index2htmlslide
+    hyla generate --backend deckjs -s  . -d generated_content -r index2html
 
 == 5. Server content locally - HTTP Server
 

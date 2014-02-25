@@ -7,4 +7,4 @@ source create_adoc_from_toc.sh $1 $2
 
 echo "Generate slideshow for a module using deckjs as backend"
 cd ~/hyla/MyTocProject
-hyla generate --backend deckjs -s  A_Introduction_module/ -d A_Introduction_module/generated_content -r index2htmlslide
+hyla generate --backend deckjs -s  A_Introduction_module/ -d A_Introduction_module/generated_content -r index2html

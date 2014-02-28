@@ -50,6 +50,10 @@ Be sure to enable the option “Allow access to file URLs” checkbox in Tools >
 
 image::image/access_local_file.png[Access Local File,650,150]
 
+== Dependencies
+
+- https://github.com/hakimel/reveal.js[RevealJS] - Version 2.6.1
+
 == Installation
 
 Use `gem install` command to deploy Hyla :

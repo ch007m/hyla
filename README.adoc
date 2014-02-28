@@ -142,6 +142,7 @@ Enhancements / Improvements::
   * Revert modification to propose index2html instead of index2htmlslide (link:{issues}38[#38])
   * Change h2 font-size of revaljs backend (2.11em --> 2em)
   * Left justified the slides of revealjs
+  * Change margin to use Reveal option margin: 0.2
 
 === v1.0.3 - @cmoulliard
 

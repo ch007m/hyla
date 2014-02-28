@@ -109,7 +109,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     - if attr? :footer_copyright
       .footer-copyright
         =attr :footer_copyright
-    - else
+    - unless attr? :nofooter
       #footer
         #footer-text
           - if attr? :revnumber

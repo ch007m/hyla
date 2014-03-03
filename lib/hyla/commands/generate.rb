@@ -75,7 +75,7 @@ module Hyla
             header_html_path = options[:header_html_path]
             footer_text = options[:footer_text]
 
-            self.html_to_pdf2(file_name, source_dir, out_dir, footer_text, header_html_path, cover_path)
+            self.html_to_pdf(file_name, source_dir, out_dir, footer_text, header_html_path, cover_path)
           else
             Hyla.logger.error ">> Unknow rendering"
             exit(1)
@@ -323,6 +323,7 @@ module Hyla
 
       end
 
+=begin
       #
       # Generate PDF
       #
@@ -345,11 +346,16 @@ module Hyla
         kit.to_file(pdf_file_name)
         Hyla.logger.info ">> PDF file generated and saved : #{pdf_file_name} "
       end
+=end
 
-      def self.html_to_pdf2(file_name, source, destination, footer_text, header_html_path, cover_path)
+      def self.html_to_pdf(file_name, source, destination, footer_text, header_html_path, cover_path)
 
         destination= File.expand_path destination
         pdf_file = [destination, "result.pdf"] * '/'
+        wkhtml_cmd = "wkhtmltopdf"
+        size = 'A4'
+
+        # pdf_file_name = [destination, html_file_name.sub(/html|htm/, 'pdf')] * '/'
 
         list_of_files = ""
 
@@ -373,8 +379,13 @@ module Hyla
           list_of_files = [File.expand_path(source), file_name] * '/'
         end
 
+        wkhtml_cmd.concat " #{list_of_files} #{pdf_file}"
+        wkhtml_cmd.concat " --margin-top '18mm' --header-html '#{header_html_path}'" if ! header_html_path.nil? || !header_html_path.empty?
+        wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if ! footer_text.nil? || !footer_text.empty?
+        wkhtml_cmd.concat " --cover '#{cover_path}'" if ! cover_path.nil? || !cover_path.empty?
+
         Dir.chdir(source) do
-          system "wkhtmltopdf #{list_of_files} #{pdf_file} --header-html '#{header_html_path}' --margin-top '18' --page-size 'A4' --footer-center '#{footer_text}' --margin-bottom '10mm' --cover '#{cover_path}'"
+          system "#{wkhtml_cmd} --page-size #{size}"
         end
       end
 

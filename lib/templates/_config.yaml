@@ -76,4 +76,12 @@ email_attributes:
 file: 'file name to be used as attachment for the email or embed in the body of the email' # Change File name
 # end of sendmail command
 
+#
+# PDF options
+#
+# file: file_name.html # If empty, then the content of the source directory will be used
+# cover_path: # Co(Un)mment this line to use it and Path to the HTML file containing the cover page
+# header_html_path: # Co(Un)mment this line to use it and add Path to the HTML file containing header/banner
+# footer_text:  # Co(Un)mment this line to use it and add Copyright Text
+
 # end hyla options

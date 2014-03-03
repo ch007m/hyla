@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'listen', '~> 1.3', '>= 1.3.1'
   s.add_runtime_dependency 'safe_yaml', '~> 1.0', '>= 1.0.0'
   s.add_runtime_dependency 'mail', '~> 2.5', '>= 2.5.4'
-  s.add_runtime_dependency 'pdfkit', '~> 0.5', '>= 0.5.4'
   s.add_runtime_dependency 'wkhtmltopdf-binary', '~> 0.1', '>= 0.1.2'
 
   # Colorize Text Terminal

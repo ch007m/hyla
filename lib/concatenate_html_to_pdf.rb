@@ -10,9 +10,8 @@ class ConcatenateHtmlToPdf
   output_file = module_name + ".pdf"
 
   footer_text = "Copyright ©2014 Red Hat, Inc."
-  header_html = "file:///Users/chmoulli/hyla/header_redhat_logo.html"
-  #header_html = "file:///Users/chmoulli/hyla/images/rhheader_thin.png"
-
+  header_html = "file:///Users/chmoulli/hyla/resources/header_logo.html"
+  cover_url = '/Users/chmoulli/RedHat/GPE/content/fsw/1_Composite_Applications/generated_content/p01m1title.html'
 
   list_of_files = ""
 
@@ -21,17 +20,20 @@ class ConcatenateHtmlToPdf
   end
 
   filter = source + "*.html"
-
   files = Dir[filter]
-  # files = files.sort.map { |file| file[1] }
+
   files.each do |file|
+    file_name = File.basename file
+    next if file_name.include?('assessments')
+    next if file_name.include?('labinstructions')
+    next if file_name.include?('title')
     list_of_files = list_of_files + " " + file
   end
 
+  puts list_of_files
+
   Dir.chdir(source) do
-    system "wkhtmltopdf #{list_of_files} #{destination}/#{output_file} --footer-center '#{footer_text}' --header-html '#{header_html}' "
+    system "wkhtmltopdf #{list_of_files} #{destination}/#{output_file} --header-html '#{header_html}' --margin-top '18' --page-size 'A4' --footer-center '#{footer_text}' --margin-bottom '10mm' --cover '#{cover_url}'"
   end
-
-
 
 end

@@ -1,3 +1,4 @@
+# encoding: utf-8
 module Hyla
   module Commands
     class Generate < Command
@@ -69,9 +70,12 @@ module Hyla
 
             source_dir = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
             out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
-            file_name = options[:file] if self.check_mandatory_option?('-f / --file', options[:file])
+            file_name = options[:file]
+            cover_path = options[:cover_path]
+            header_html_path = options[:header_html_path]
+            footer_text = options[:footer_text]
 
-            self.html_to_pdf(source_dir, out_dir, file_name)
+            self.html_to_pdf2(file_name, source_dir, out_dir, footer_text, header_html_path, cover_path)
           else
             Hyla.logger.error ">> Unknow rendering"
             exit(1)
@@ -326,9 +330,9 @@ module Hyla
         file_path = [source, html_file_name] * '/'
         html_file = File.new(file_path)
         kit = PDFKit.new(html_file,
-                         :page_size     => 'A4',
-                         :toc           => true,
-                         :page_offset   => 1,
+                         :page_size => 'A4',
+                         :toc => true,
+                         :page_offset => 1,
                          :footer_center => 'Page [page]')
 
         # Create destination directory if it does not exist
@@ -337,9 +341,41 @@ module Hyla
         end
 
         # Save PDF to a file
-        pdf_file_name = [destination, html_file_name.sub(/html|htm/,'pdf')] * '/'
+        pdf_file_name = [destination, html_file_name.sub(/html|htm/, 'pdf')] * '/'
         kit.to_file(pdf_file_name)
         Hyla.logger.info ">> PDF file generated and saved : #{pdf_file_name} "
+      end
+
+      def self.html_to_pdf2(file_name, source, destination, footer_text, header_html_path, cover_path)
+
+        destination= File.expand_path destination
+        pdf_file = [destination, "result.pdf"] * '/'
+
+        list_of_files = ""
+
+        unless File.directory?(destination)
+          FileUtils.mkdir_p(destination)
+        end
+
+        if file_name.nil? || file_name.empty?
+          filter = [source] * '/' + "*.html"
+          files = Dir[filter]
+
+          files.each do |file|
+            file_name = File.basename file
+            next if file_name.include?('assessments')
+            next if file_name.include?('labinstructions')
+            next if file_name.include?('title')
+            file = File.expand_path file
+            list_of_files = list_of_files + " " + file
+          end
+        else
+          list_of_files = [File.expand_path(source), file_name] * '/'
+        end
+
+        Dir.chdir(source) do
+          system "wkhtmltopdf #{list_of_files} #{pdf_file} --header-html '#{header_html_path}' --margin-top '18' --page-size 'A4' --footer-center '#{footer_text}' --margin-bottom '10mm' --cover '#{cover_path}'"
+        end
       end
 
       #

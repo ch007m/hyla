@@ -235,7 +235,7 @@ module Hyla
           FileUtils.mkdir_p @out_dir
         end
 
-        # Copy YML Config file
+        # Copy YAML Config file
         FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', @out_dir
 
         # Copy styles

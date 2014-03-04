@@ -42,11 +42,12 @@ module Hyla
         ":source-highlighter: coderay\n"
 
     HEADER_INDEX = ":data-uri:\n" +
-        ":navigation:\n" +
-        ":menu:\n" +
-        ":status:\n" +
-        ":goto:\n" +
-        ":notitle:\n"
+        ":navigation: # navigation attribute used for DeckJS Slideshow\n" +
+        ":menu: # navigation attribute used for DeckJS Slideshow\n" +
+        ":status: # navigation attribute used for DeckJS Slideshow\n" +
+        ":goto: # navigation attribute used for DeckJS Slideshow\n" +
+        ":notitle: # navigation attribute used for DeckJS Slideshow\n" +
+        ":toc: left # Comment or uncomment this attribute if you don't need to display left part of the HTML page a table of content\n"
 
     LEVEL_1 = '= '
 

@@ -13,9 +13,12 @@ module Hyla
 
             Hyla.logger.info "Rendering : Table of Content to Asciidoc"
             self.check_mandatory_option?('-t / --toc', options[:toc])
+            self.check_mandatory_option?('-d / --destination', options[:destination])
+
             @toc_file = options[:toc]
             @out_dir = options[:destination]
-            @project_name = options[:project_name]
+            @project_name = options[:project_name] if options[:project_name]
+            @project_name = 'My Project' if !options[:project_name]
 
             self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
 

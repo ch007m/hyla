@@ -3,7 +3,7 @@ module Hyla
 
     attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS,
                 :ADOC_EXT, :PREFIX_ARTEFACT, :YAML_CONFIG_FILE_NAME, :DEFAULTS,
-                :templates, :samples, :resources, :styles, :fonts, :backends
+                :templates, :cover_template, :samples, :resources, :styles, :fonts, :backends
 
     DEFAULTS = {
         'source' => Dir.pwd,
@@ -46,7 +46,7 @@ module Hyla
         ":menu: # navigation attribute used for DeckJS Slideshow\n" +
         ":status: # navigation attribute used for DeckJS Slideshow\n" +
         ":goto: # navigation attribute used for DeckJS Slideshow\n" +
-        ":notitle: # navigation attribute used for DeckJS Slideshow\n" +
+        ":notitle: \n" +
         ":toc: left # Comment or uncomment this attribute if you don't need to display left part of the HTML page a table of content\n"
 
     LEVEL_1 = '= '
@@ -71,7 +71,16 @@ module Hyla
 
     BACKENDS = '../../lib/resources/backends'
 
+    COVER_TEMPLATE = '../../lib/resources/cover.slim'
+
     YAML_CONFIG_FILE_NAME = '_config.yaml'
+
+    #
+    # Cover Slim Template
+    #
+    def self.cover_template
+      File.expand_path(COVER_TEMPLATE, File.dirname(__FILE__))
+    end
 
     #
     # Templates Location

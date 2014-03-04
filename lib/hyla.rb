@@ -31,7 +31,7 @@ require 'webrick'
 require 'find'
 require 'mail'
 require 'mime/types'
-require 'pdfkit'
+require 'slim'
 
 # internal requires
 require 'hyla/logger'

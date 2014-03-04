@@ -79,6 +79,31 @@ module Hyla
             footer_text = options[:footer_text]
 
             self.html_to_pdf(file_name, source_dir, out_dir, footer_text, header_html_path, cover_path)
+
+          when 'cover2html'
+
+            Hyla.logger.info "Rendering : Generate Cover HTML pages"
+
+            out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
+            file_name = options[:file]
+
+            # Configure Slim engine
+            slim_file = Configuration::cover_template
+            slim_tmpl = File.read(slim_file)
+            template = Slim::Template.new(:pretty => true) { slim_tmpl }
+
+            # Do the Rendering
+            res = template.render(Object.new, :course_name => options[:course_name], :module_name => options[:module_name], :image_path => options[:image_path])
+
+            unless Dir.exist? out_dir
+              FileUtils.mkdir_p out_dir
+            end
+
+            Dir.chdir(out_dir)
+            out_file = File.new(file_name, 'w')
+            out_file.puts res
+            out_file.puts "\n"
+
           else
             Hyla.logger.error ">> Unknow rendering"
             exit(1)

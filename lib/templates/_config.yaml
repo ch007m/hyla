@@ -22,8 +22,8 @@ attributes:
    # stylesdir: path_of_the_styles directory
    # footer_copyright: # Co(Un)mment this line and add Copyright Text when required
    # header_image_path: # Co(Un)mment this line and add image path location when required
-   # nofooter: # Co(Un)mment this line when you don't want to see the footer - black line
-   # noheader: # Co(Un)mment this line when you don't want to see the header section
+   # nofooter: true # Co(Un)mment this line when you don't want to see the footer - black line
+   # noheader: true # Co(Un)mment this line when you don't want to see the header section
    revealjs_theme: # theme to be used default, ...
    # showscript: true # Co(Un)mment this line when you want to display scripts for instructors
 # end asciidoctor attributes

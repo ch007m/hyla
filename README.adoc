@@ -134,6 +134,7 @@ New Features::
 Bug fixes::
 
   * Image of the header is not embedded in the HTML file generated
+  * Fix issue when no project_name is provided
 
 Enhancements / Improvements::
 
@@ -144,6 +145,9 @@ Enhancements / Improvements::
   * Left justified the slides of revealjs
   * Change margin to use Reveal option margin: 0.2
   * Refactor pdf rendering to allow to group HTML files, add a footer and banner
+  * Comment nofooter, noheader and stylesdir
+  * Add comment line for the attributes added for the TOC
+  * Remove pdf kit dep
 
 === v1.0.3 - @cmoulliard
 

@@ -303,7 +303,7 @@ module Hyla
             # Create File
             f_name = remove_special_chars(3, line)
             Hyla.logger.info '   # File created : ' + f_name.to_s
-            f_name += '.adoc'
+            f_name += '.ad'
             @new_f = File.new(f_name, 'w')
             @new_f.puts Configuration::HEADER
             @new_f.puts "\n"

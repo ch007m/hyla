@@ -266,11 +266,9 @@ module Hyla
         # Expand File Path
         @out_dir = File.expand_path out_dir
 
-        # Re Create Directory of generated content
-        if Dir.exist? @out_dir
-          FileUtils.rm_rf @out_dir
-          FileUtils.mkdir_p @out_dir
-        else
+        #
+        # Create destination directory if it does not exist
+        unless Dir.exist? @out_dir
           FileUtils.mkdir_p @out_dir
         end
 
@@ -306,7 +304,7 @@ module Hyla
             dir_name = remove_special_chars(2, line)
             new_dir = [@out_dir, dir_name].join('/')
             Hyla.logger.info '>> Directory created : ' + new_dir + ' <<'
-            FileUtils.mkdir_p new_dir
+            FileUtils.mkdir new_dir
             Dir.chdir(new_dir)
 
             # Add image, audio, video directory
@@ -322,6 +320,21 @@ module Hyla
             # Include index file created to parent index file
             @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + dir_name + Configuration::INDEX_SUFFIX + Configuration::INCLUDE_SUFFIX
             @project_index_file.puts "\n"
+
+            #
+            # Generate a Module key value
+            # 01, 02, ...
+            # that we will use as key to create the asciidoc file
+            #
+            dir_name = File.basename(Dir.getwd)
+            @module_key = dir_name.initial.rjust(2, '0')
+            Hyla.logger.info ">> Module key : #@module_key <<"
+
+            #
+            # Reset counter value used to generate file number
+            # for the file 01, 00
+            #
+            @index = 0
 
             # Move to next line record
             next
@@ -339,10 +352,22 @@ module Hyla
               @previous_f.close
             end
 
-            # Create File
+            #
+            # Replace special characters form the file and
+            # add the module key followed by the index value for the file
+            # Example : m01p01_MyTitle.ad, m01p02_Another_Title.ad
+            #
             f_name = remove_special_chars(3, line)
+            @index += 1
+            #file_index = @index.to_s.initial.rjust(2, '0')
+            file_index = sprintf('%02d', @index)
+            f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name + '.ad'
+
             Hyla.logger.info '   # File created : ' + f_name.to_s
-            f_name += '.ad'
+
+            #
+            # Create File and add configuration HEADER
+            #
             @new_f = File.new(f_name, 'w')
             @new_f.puts Configuration::HEADER
             @new_f.puts "\n"

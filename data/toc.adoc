@@ -1,4 +1,4 @@
-= A. Introduction module
+= 1. Introduction module
 
 >> This is the module 'A. Introduction'
 
@@ -28,7 +28,7 @@ This is a Section about ...
 
 
 
-= B. Instruction module
+= 2. Instruction module
 
 >> This is the module 'B. Instruction module'
 
@@ -42,7 +42,7 @@ This is a Section about ...
 
 
 
-= C. Installation module
+= 3. Installation module
 
 >> This is the module 'C. Installation module'
 

@@ -1,4 +1,3 @@
-
 class Hash
 
   # Merges self with another hash, recursively.
@@ -20,5 +19,11 @@ class Hash
     end
 
     target
+  end
+end
+
+class String
+  def initial
+    self[0,1]
   end
 end

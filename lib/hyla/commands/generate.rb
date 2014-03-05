@@ -80,7 +80,7 @@ module Hyla
 
             self.html_to_pdf(file_name, source_dir, out_dir, footer_text, header_html_path, cover_path)
 
-          when 'cover2html'
+          when 'cover2png'
 
             Hyla.logger.info "Rendering : Generate Cover HTML page & picture - format png"
 

@@ -73,6 +73,7 @@ module Hyla
 
             source_dir = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
             out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
+
             file_name = options[:file]
             cover_path = options[:cover_path]
             header_html_path = options[:header_html_path]
@@ -94,7 +95,10 @@ module Hyla
             template = Slim::Template.new(:pretty => true) { slim_tmpl }
 
             # Do the Rendering HTML
-            res = template.render(Object.new, :course_name => options[:course_name], :module_name => options[:module_name], :image_path => options[:image_path])
+            parameters = {:course_name => options[:course_name],
+                          :module_name => options[:module_name],
+                          :image_path  => options[:image_path]}
+            res = template.render(Object.new, parameters)
 
             unless Dir.exist? out_dir
               FileUtils.mkdir_p out_dir
@@ -108,7 +112,7 @@ module Hyla
               # Do the Rendering Image
               kit = IMGKit.new(res, quality: 90, width: 950, height: 750)
               kit.to_img(:png)
-              kit.to_file(options[:cover_image])
+              kit.to_file(image_name)
 
               # Convert HTML to Image
               # system ("wkhtmltoimage -f 'png' #{file_name} #{image_name}")

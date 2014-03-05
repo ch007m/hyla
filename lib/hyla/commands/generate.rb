@@ -300,11 +300,15 @@ module Hyla
           #
           if line[/^=\s/]
 
-            # Create File
+            #
+            # Create Directory of the module and next the File
+            #
             dir_name = remove_special_chars(2, line)
             new_dir = [@out_dir, dir_name].join('/')
-            Hyla.logger.info '>> Directory created : ' + new_dir + ' <<'
+            FileUtils.rm_rf new_dir
             FileUtils.mkdir new_dir
+            Hyla.logger.info '>> Directory created : ' + new_dir + ' <<'
+
             Dir.chdir(new_dir)
 
             # Add image, audio, video directory
@@ -436,9 +440,10 @@ module Hyla
 
           files.each do |file|
             file_name = File.basename file
-            next if file_name.include?('assessments')
-            next if file_name.include?('labinstructions')
-            next if file_name.include?('title')
+            next if file_name.downcase.include?('assessments')
+            next if file_name.downcase.include?('labinstructions')
+            next if file_name.downcase.include?('title')
+            next if file_name.downcase.include?('cover')
             file = File.expand_path file
             list_of_files = list_of_files + " " + file
           end
@@ -469,7 +474,9 @@ module Hyla
       # Remove space, dot from a String
       #
       def self.remove_special_chars(pos, text)
-        return text[pos, text.length].strip.gsub(/\s/, '_').gsub('.', '')
+        return text[pos, text.length].strip.gsub(/\s/, '_')
+                                           .gsub('.', '')
+                                           .gsub('&', '')
       end
 
       #

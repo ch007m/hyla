@@ -32,6 +32,7 @@ require 'find'
 require 'mail'
 require 'mime/types'
 require 'slim'
+require 'imgkit'
 
 # internal requires
 require 'hyla/logger'

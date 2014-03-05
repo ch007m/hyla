@@ -82,27 +82,37 @@ module Hyla
 
           when 'cover2html'
 
-            Hyla.logger.info "Rendering : Generate Cover HTML pages"
+            Hyla.logger.info "Rendering : Generate Cover HTML page & picture - format png"
 
             out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
-            file_name = options[:file]
+            file_name = options[:cover_file]
+            image_name = options[:cover_image]
 
             # Configure Slim engine
             slim_file = Configuration::cover_template
             slim_tmpl = File.read(slim_file)
             template = Slim::Template.new(:pretty => true) { slim_tmpl }
 
-            # Do the Rendering
+            # Do the Rendering HTML
             res = template.render(Object.new, :course_name => options[:course_name], :module_name => options[:module_name], :image_path => options[:image_path])
 
             unless Dir.exist? out_dir
               FileUtils.mkdir_p out_dir
             end
 
-            Dir.chdir(out_dir)
-            out_file = File.new(file_name, 'w')
-            out_file.puts res
-            out_file.puts "\n"
+            Dir.chdir(out_dir) do
+              out_file = File.new(file_name, 'w')
+              out_file.puts res
+              out_file.puts "\n"
+
+              # Do the Rendering Image
+              kit = IMGKit.new(res, quality: 90, width: 950, height: 750)
+              kit.to_img(:png)
+              kit.to_file(options[:cover_image])
+
+              # Convert HTML to Image
+              # system ("wkhtmltoimage -f 'png' #{file_name} #{image_name}")
+            end
 
           else
             Hyla.logger.error ">> Unknow rendering"
@@ -408,9 +418,9 @@ module Hyla
         end
 
         wkhtml_cmd.concat " #{list_of_files} #{pdf_file}"
-        wkhtml_cmd.concat " --margin-top '18mm' --header-html '#{header_html_path}'" if ! header_html_path.nil? || !header_html_path.empty?
-        wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if ! footer_text.nil? || !footer_text.empty?
-        wkhtml_cmd.concat " --cover '#{cover_path}'" if ! cover_path.nil? || !cover_path.empty?
+        wkhtml_cmd.concat " --margin-top '18mm' --header-html '#{header_html_path}'" if !header_html_path.nil? || !header_html_path.empty?
+        wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if !footer_text.nil? || !footer_text.empty?
+        wkhtml_cmd.concat " --cover '#{cover_path}'" if !cover_path.nil? || !cover_path.empty?
 
         Dir.chdir(source) do
           system "#{wkhtml_cmd} --page-size #{size}"

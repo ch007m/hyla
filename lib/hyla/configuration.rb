@@ -30,6 +30,16 @@ module Hyla
 
     }
 
+    #
+    # Matches an include preprocessor directive.
+    #
+    # Examples
+    #
+    #   include::chapter1.ad[]
+    #   include::example.txt[lines=1;2;5..10]
+    #
+    IncludeDirectiveRx = /^\\?include::([^\[]+)\[(.*?)\]$/
+
     INCLUDE_PREFIX = 'include::'
 
     INCLUDE_SUFFIX = '[]'

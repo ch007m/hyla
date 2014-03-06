@@ -23,7 +23,12 @@ class Hash
 end
 
 class String
+
+  #
+  # Get the first position
+  #
   def initial
     self[0,1]
   end
+
 end

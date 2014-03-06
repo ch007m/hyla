@@ -75,7 +75,7 @@ module Hyla
             out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
 
             file_name = options[:file]
-            cover_path = options[:cover_path]
+            cover_path ||= options[:cover_path]
             header_html_path = options[:header_html_path]
             footer_text = options[:footer_text]
 
@@ -97,7 +97,7 @@ module Hyla
             # Do the Rendering HTML
             parameters = {:course_name => options[:course_name],
                           :module_name => options[:module_name],
-                          :image_path  => options[:image_path]}
+                          :image_path => options[:image_path]}
             res = template.render(Object.new, parameters)
 
             unless Dir.exist? out_dir
@@ -421,6 +421,7 @@ module Hyla
 
       def self.html_to_pdf(file_name, source, destination, footer_text, header_html_path, cover_path)
 
+        @cover_path = cover_path
         destination= File.expand_path destination
         pdf_file = [destination, "result.pdf"] * '/'
         wkhtml_cmd = "wkhtmltopdf"
@@ -448,13 +449,34 @@ module Hyla
             list_of_files = list_of_files + " " + file
           end
         else
-          list_of_files = [File.expand_path(source), file_name] * '/'
+          #
+          # If the file passed as parameter has extension name equal to txt, then we will extract the file names
+          # whenever we have a include:: directive in the file
+          #
+          extension_name = File.extname file_name
+
+          case extension_name
+            when '.txt'
+              file_to_processed = [File.expand_path(Dir.getwd), file_name] * '/'
+              result = self.extract_file_names(file_to_processed, source)
+
+              result.each do | file_path |
+                if file_path.downcase.include?('title') || file_path.downcase.include?('cover')
+                  @cover_path = file_path
+                  next
+                end
+                list_of_files = list_of_files + " " + file_path
+              end
+
+            else
+              list_of_files = [File.expand_path(source), file_name] * '/'
+          end
         end
 
         wkhtml_cmd.concat " #{list_of_files} #{pdf_file}"
-        wkhtml_cmd.concat " --margin-top '18mm' --header-html '#{header_html_path}'" if !header_html_path.nil? || !header_html_path.empty?
-        wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if !footer_text.nil? || !footer_text.empty?
-        wkhtml_cmd.concat " --cover '#{cover_path}'" if !cover_path.nil? || !cover_path.empty?
+        wkhtml_cmd.concat " --margin-top '18mm' --header-html '#{header_html_path}'" if header_html_path
+        wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if footer_text
+        wkhtml_cmd.concat " --cover '#@cover_path'" if @cover_path
 
         Dir.chdir(source) do
           system "#{wkhtml_cmd} --page-size #{size}"
@@ -475,8 +497,8 @@ module Hyla
       #
       def self.remove_special_chars(pos, text)
         return text[pos, text.length].strip.gsub(/\s/, '_')
-                                           .gsub('.', '')
-                                           .gsub('&', '')
+        .gsub('.', '')
+        .gsub('&', '')
       end
 
       #
@@ -522,6 +544,39 @@ module Hyla
         else
           true
         end
+      end
+
+      #
+      # Extract files names from a file containing include:: directive
+      #
+      def self.extract_file_names(file_name, destination)
+
+        result = []
+        f = File.open(file_name, 'r')
+        matches = f.grep(Configuration::IncludeDirectiveRx)
+
+        if matches
+
+          matches.each do |record|
+            # Extract string after include::
+            matchdata = record.match(/^include::(.+)/)
+
+            if matchdata
+
+              data = matchdata[1]
+              # Remove []
+              name = data.to_s.gsub(/[\[\]]/, '').strip
+
+              # Rename file to .html
+              name = name.gsub(/ad$/, 'html')
+              file_name = [destination, name] * '/'
+              file_path = File.expand_path file_name
+              result << file_path
+            end
+          end
+        end
+        f.close
+        return result
       end
 
     end # class

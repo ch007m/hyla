@@ -477,9 +477,11 @@ module Hyla
         wkhtml_cmd.concat " --margin-top '18mm' --header-html '#{header_html_path}'" if header_html_path
         wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if footer_text
         wkhtml_cmd.concat " --cover '#@cover_path'" if @cover_path
+        wkhtml_cmd.concat " --page-size #{size}"
+        Hyla.logger.info "Wkhtml cmd syntax : #{wkhtml_cmd}"
 
         Dir.chdir(source) do
-          system "#{wkhtml_cmd} --page-size #{size}"
+          system "#{wkhtml_cmd}"
         end
       end
 

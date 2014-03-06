@@ -1,8 +1,5 @@
-- show_title = attr 'notitle'
 section id=@id data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(attr 'data-background') data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
-  p = "Show Title :" + show_title.to_s + "."
-  - if !show_title
-    h2=title
+  h2=title
   - if attr? :scrollbar
     .scrollbar
       =content

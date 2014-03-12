@@ -12,13 +12,13 @@ ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: .")' _conf
 ruby -i.bak -pe 'sub(%r{# header_image_path: },"header_image_path: image/rhheader_thin.png ")' _config.yaml
 ruby -i.bak -pe 'sub(%r{# footer_copyright: },"footer-copyright: Copyright ©2014 Red Hat, Inc.")' _config.yaml
 
-hyla create --a article
-hyla create --a book
-hyla create --a image
-hyla create --a audio
-hyla create --a video
-hyla create --a source
-hyla create --a table
+hyla add --a article
+hyla add --a book
+hyla add --a image
+hyla add --a audio
+hyla add --a video
+hyla add --a source
+hyla add --a table
 
 echo "Copy header file"
 mkdir image

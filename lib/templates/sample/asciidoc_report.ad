@@ -8,10 +8,11 @@
 :date: January 7, 2013
 
 == image:images/gravatar.png[{author}, 40%, 35%, float="left"]
-
- {author}'s weekly Report - {date}
+== {author}'s weekly report : {date}
 
 === {email}
+
+== General
 
 [width="100%"]
 |==============================================

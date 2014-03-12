@@ -8,7 +8,7 @@ echo "Create a blank project"
 hyla new -b -d MyDeckSlideShow
 
 echo "Create from slideshow template a DeckJS  file"
-hyla create --t slideshow -a deckjs -d MyDeckSlideShow
+hyla add --t slideshow -a deckjs -d MyDeckSlideShow
 
 echo "Generate HTML5 Slideshow content"
 hyla generate --backend deckjs -s ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=swiss,deckjs_transition=fade

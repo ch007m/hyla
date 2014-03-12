@@ -7,7 +7,7 @@ cd ~/hyla
 hyla new -b -d MyBlankProject --force
 cd MyBlankProject
 
-hyla create -a book -c ~/hyla/my_config_html.yaml
+hyla add -a book -c ~/hyla/my_config_html.yaml
 
 echo "Project created"
 ls -la ~/hyla/MyBlankProject

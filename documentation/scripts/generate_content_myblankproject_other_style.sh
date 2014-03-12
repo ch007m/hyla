@@ -10,13 +10,13 @@ cd ~/hyla/MyBlankProject
 
 echo "Add asciidoc files"
 hyla new -b -d MyBlankProject --force
-hyla create --t asciidoc --a article --d ~/hyla/MyBlankProject
-hyla create --t asciidoc --a book --d ~/hyla/MyBlankProject
-hyla create --t asciidoc --a image --d ~/hyla/MyBlankProject
-hyla create --t asciidoc --a audio --d ~/hyla/MyBlankProject
-hyla create --t asciidoc --a video --d ~/hyla/MyBlankProject
-hyla create --t asciidoc --a source --d ~/hyla/MyBlankProject
-hyla create --t asciidoc --a table --d ~/hyla/MyBlankProject
+hyla add --t asciidoc --a article --d ~/hyla/MyBlankProject
+hyla add --t asciidoc --a book --d ~/hyla/MyBlankProject
+hyla add --t asciidoc --a image --d ~/hyla/MyBlankProject
+hyla add --t asciidoc --a audio --d ~/hyla/MyBlankProject
+hyla add --t asciidoc --a video --d ~/hyla/MyBlankProject
+hyla add --t asciidoc --a source --d ~/hyla/MyBlankProject
+hyla add --t asciidoc --a table --d ~/hyla/MyBlankProject
 
 echo "Change style in the _config.yaml file"
 ruby -i.bak -pe 'sub(%r{style: liberation},"style: foundation")' _config.yaml

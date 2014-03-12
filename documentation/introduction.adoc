@@ -140,13 +140,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 - Create Asciidoc files from samples (book, article, image, audio, ...)
 
-    hyla create --t asciidoc -a article -d ~/hyla/MyBlankProject
-    hyla create --t asciidoc -a book -d ~/hyla/MyBlankProject
-    hyla create --t asciidoc -a image -d ~/hyla/MyBlankProject
-    hyla create --t asciidoc -a audio -d ~/hyla/MyBlankProject
-    hyla create --t asciidoc -a video -d ~/hyla/MyBlankProject
-    hyla create --t asciidoc -a source -d ~/hyla/MyBlankProject
-    hyla create --t asciidoc -a table -d ~/hyla/MyBlankProject
+    hyla add --t asciidoc -a article -d ~/hyla/MyBlankProject
+    hyla add --t asciidoc -a book -d ~/hyla/MyBlankProject
+    hyla add --t asciidoc -a image -d ~/hyla/MyBlankProject
+    hyla add --t asciidoc -a audio -d ~/hyla/MyBlankProject
+    hyla add --t asciidoc -a video -d ~/hyla/MyBlankProject
+    hyla add --t asciidoc -a source -d ~/hyla/MyBlankProject
+    hyla add --t asciidoc -a table -d ~/hyla/MyBlankProject
 
 == 3.  Create a Blank Project using _config.yaml config file, add artefacts
 
@@ -162,13 +162,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 - Create Asciidoc files from samples (book, article, image, audio, ...)
 
-    hyla create --a article
-    hyla create --a book
-    hyla create --a image
-    hyla create --a audio
-    hyla create --a video
-    hyla create --a source
-    hyla create --a table
+    hyla add --a article
+    hyla add --a book
+    hyla add --a image
+    hyla add --a audio
+    hyla add --a video
+    hyla add --a source
+    hyla add --a table
 
 === 4. Generate HTML Content of an existing project (asciidoc 2 html)
 
@@ -188,7 +188,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 === 7. Generate HTML Content within project & using Config File
 
-   As destination directory is not longer '.' (which is the case when we add artefacts using `hyla create` command, then we must change the destination directory to `generated_content`. the original file is
+   As destination directory is not longer '.' (which is the case when we add artefacts using `hyla add` command, then we must change the destination directory to `generated_content`. the original file is
    still available as it will backup by ruby
 
     ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
@@ -315,7 +315,7 @@ Hyla command in another Terminal
     cd ~/hyla
     hyla new -b -d MyDeckSlideShow
 
-   hyla create --t slideshow -a deckjs -d MyDeckSlideShow
+   hyla add --t slideshow -a deckjs -d MyDeckSlideShow
    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html
 
 === 2. Different DeckJS Style options
@@ -329,7 +329,7 @@ Hyla command in another Terminal
     cd ~/hyla
     hyla new --blank -d MyRevealSlideShow
 
-    hyla create --t slideshow -a revealjs -d MyRevealSlideShow
+    hyla add --t slideshow -a revealjs -d MyRevealSlideShow
 
     cd MyRevealSlideShow
 
@@ -353,7 +353,7 @@ libraries https://github.com/pdfkit/pdfkit[pdfkit] and https://github.com/wkhtml
 
 - Create Asciidoc file from sample (book)
 
-    hyla create -a book --t asciidoc -d .
+    hyla add -a book --t asciidoc -d .
 
 - Generate HTML content using foundation stylesheet
 
@@ -409,7 +409,7 @@ Two new options are required to process the request on the command line or using
 
 - Add an asciidoc file (report, doc, book, article)
 
-    hyla create --a book --d .
+    hyla add --a book --d .
 
 - Edit the _config.yaml file and add the parameters required (see previously)
 

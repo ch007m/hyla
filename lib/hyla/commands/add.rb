@@ -1,6 +1,6 @@
 module Hyla
   module Commands
-    class Create < Command
+    class Add < Command
 
       def self.process(args, options)
         destination = options[:destination] if check_mandatory_option?('-d / --destination', options[:destination])

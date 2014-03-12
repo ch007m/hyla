@@ -11,7 +11,7 @@ To create **asciidoc(tor)** content, more info is available http://asciidoctor.o
 
 Otherwise, you can add content to this newly project created using this hyla command :
 
-  hyla create --t asciidoc --a xxx  --d pathToProjectCreated
+  hyla add --t asciidoc --a xxx  --d pathToProjectCreated
 
 where xxx can be article, book, source, audio, video, ...
 EOS

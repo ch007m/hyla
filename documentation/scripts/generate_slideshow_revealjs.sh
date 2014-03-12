@@ -8,7 +8,7 @@ echo "Create a blank project"
 hyla new --blank -d MyRevealSlideShow
 
 echo "Create from slideshow template a RevealJS  file"
-hyla create --t slideshow -a revealjs -d MyRevealSlideShow
+hyla add --t slideshow -a revealjs -d MyRevealSlideShow
 
 echo "Generate HTML5 Slideshow content"
 cd MyRevealSlideShow

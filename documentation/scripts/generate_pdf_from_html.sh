@@ -9,7 +9,7 @@ cd MyPdfProject
 
 echo "Create one Asciidoc file from sample (book)"
 
-hyla create -a book --t asciidoc -d .
+hyla add -a book --t asciidoc -d .
 
 echo "Generate HTML content using foundation stylesheet"
 

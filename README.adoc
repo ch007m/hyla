@@ -155,6 +155,7 @@ Enhancements / Improvements::
   * Remove pdf kit dependency
   * Rename .adoc to .ad for files generated during toc2adoc rendering
   * Add true to nofooter, noheader
+  * Rename `hyla create' command to 'hyla add`
 
 
 === v1.0.3 - @cmoulliard

@@ -5,6 +5,6 @@ This is an empty Book project.
 - To create **asciidoc(tor)** content, more info are available http://asciidoctor.org/docs/user-manual[here]
 - Otherwise, you can add content to this newly project created using this hyla command :
 
-    hyla create --t asciidoc --a xxx  --d pathToProjectCreated
+    hyla add --t asciidoc --a xxx  --d pathToProjectCreated
 
     where xxx could be chapter, source, audio, video, ..."

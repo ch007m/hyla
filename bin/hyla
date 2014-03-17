@@ -77,6 +77,11 @@ command :generate do |c|
   c.option '--t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
   c.option '-y', '--style [STYLE]', String, 'Stylesheet theme to be applied : asciidoctor, liberation, github, colony, foundation, ...'
   c.option '-a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'
+  c.option '-o','--cover_image [PNG FILE NAME]', String, 'Name of the cover png image file generated'
+  c.option '-n','--course_name [COURSE NAME]', String, 'Name of the course'
+  c.option '-l','--cover_file [HTML FILE NAME]', String, 'Name of the cover html image file generated'
+  c.option '-m','--module_name [MODULE NAME]', String, 'Name of the module'
+  c.option '-i','--image_path [BACKGROUND IMAGE]', String, 'Location of the file used as background'
 
   add_common_options(c)
   add_build_options(c)

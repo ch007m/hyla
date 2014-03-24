@@ -9,9 +9,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         meta name=key content=(attr key)
 
     title=((doctitle :sanitize => true) || (attr 'untitled-label'))
-    meta content="yes" name="apple-mobile-web-app-capable"
-    meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"
-    meta content="width=(device-width, initial-scale=1.0, maximum-scale=1.0,)user-scalable=no" name="viewport"
+    meta name="apple-mobile-web-app-capable" content="yes"
+    meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"
+    meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" 
 
     link href="revealjs/css/reveal.min.css" rel="stylesheet"
 
@@ -20,8 +20,15 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     - else
       link rel='stylesheet' href='revealjs/css/theme/gpe.css' id='theme'
 
+    - if attr? :icons, 'font'
+      - if !(attr 'iconfont-remote', '').nil?
+        link rel='stylesheet' href=(attr 'iconfont-cdn', 'http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
+      - else
+        link rel='stylesheet' href=normalize_web_path("#{attr 'iconfont-name', 'font-awesome'}.css", (attr :stylesdir, ''))
+
     // For syntax highlighting
     link href="revealjs/lib/css/zenburn.css" rel="stylesheet"
+
     // If the query includes 'print-pdf', use the PDF print sheet
     javascript:
       if( window.location.search.match( /print-pdf/gi ) ) {

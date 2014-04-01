@@ -66,6 +66,7 @@ module Hyla
 
         html_part = Mail::Part.new do
           content_type 'text/html; charset=UTF-8'
+          content_transfer_encoding 'quoted-printable'
           body inline_html
         end
 

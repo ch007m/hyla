@@ -195,7 +195,9 @@ module Hyla
             FileUtils.mkdir_p html_dir
 
             # Copy Fonts
-            self.cp_resources_to_dir(File.dirname(html_dir), 'fonts')
+            # TODO : Verify if we still needed as the FONTS liberation have been moved
+            # TODO : under local lib directory of revealjs
+            # self.cp_resources_to_dir(File.dirname(html_dir), 'fonts')
 
             # Copy Resources for Slideshow
             case options[:backend]

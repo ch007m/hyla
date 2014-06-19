@@ -73,12 +73,12 @@ And then execute:
 
     Clone Git project locally, move to Hyla directory and execute the following commands
     gem build hyla.gemspec
-    sudo gem install hyla-1.0.x.gem
+    sudo gem install hyla-1.0.x.gem -l
 
 == To publish Hyla to Gem Repo
 
     gem build hyla.gemspec
-    gem install hyla-1.0.x.gem
+    gem install hyla-1.0.x.gem -l
     gem yank hyla -v 1.0.x
     gem push hyla-1.0.x.gem
 

@@ -15,26 +15,31 @@
 @font-face {
     font-family: 'liberation';
     src: local('LiberationSans Regular'), local('LiberationSans'), url(fonts/liberation/Sans-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'liberation';
     src: url(fonts/liberation/Sans-Bold.ttf) format('truetype');
     font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'liberation';
     src: url(fonts/liberation/Sans-BoldItalic.ttf) format('truetype');
-    font-style: italic, oblique;
     font-weight: bold;
+    font-style: italic;
 }
 
 @font-face {
     font-family: 'liberation';
     src: url(fonts/liberation/Sans-Italic.ttf) format('truetype');
+    font-weight: normal;
     font-style: italic, oblique;
 }
+
 
 /*********************************************
  * ScrollBar

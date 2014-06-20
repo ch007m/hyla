@@ -22,7 +22,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
 
     - if attr? :icons, 'font'
       - if !(attr 'iconfont-remote', '').nil?
-        link rel='stylesheet' href=(attr 'iconfont-cdn', 'http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css')
+        link rel='stylesheet' href=(attr 'iconfont-cdn', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css')
       - else
         link rel='stylesheet' href=normalize_web_path("#{attr 'iconfont-name', 'font-awesome'}.css", (attr :stylesdir, ''))
 

@@ -1,12 +1,17 @@
-:description: RevealJS Template to create a beautiful HTML Slideshow
-:backend: revealjs
 :author: Charles Moulliard
-:twitter: cmoulliard
+:backend: revealjs
 :blog: http://cmoulliard.github.io
-// Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
-// :revealjs_theme: default
-:linkattrs:
+:browser_history: true
+:description: RevealJS Template to create a beautiful HTML Slideshow
 :idprefix:
+:linkattrs:
+// Themes : default, beige, moon, blood, night, serif, simple, sky, solarized
+:revealjs_theme: default
+:revealjs_display_slide_number: false
+:revealjs_slide_vertical_alignment: false
+:revealjs_history: true
+
+:twitter: cmoulliard
 
 = Getting Started with Reveal.js
 

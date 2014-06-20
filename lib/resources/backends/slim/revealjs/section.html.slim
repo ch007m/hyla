@@ -1,7 +1,18 @@
-section id=@id data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(attr 'data-background') data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
-  h2=title
-  - if attr? :scrollbar
-    .scrollbar
-      =content
+- resize_text = (attr? :resize_section) ? (attr :resize_section) : false
+  - if resize_text == 'true'
+    div style="position:absolute; top:150px; left:10px; right:10px;"
+      section id=@id data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(attr 'data-background') data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
+        h2=title
+        - if attr? :scrollbar
+          .scrollbar
+            =content
+        - else
+          =content.chomp
   - else
-    =content.chomp
+    section id=@id data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(attr 'data-background') data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
+      h2=title
+      - if attr? :scrollbar
+        .scrollbar
+          =content
+      - else
+        =content.chomp

@@ -30,6 +30,28 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     // For syntax highlighting
     link href="revealjs/lib/css/zenburn.css" rel="stylesheet"
 
+    - case attr 'source-highlighter'
+    - when 'coderay'
+      - if (attr 'coderay-css', 'class') == 'class'
+        - if @safe >= Asciidoctor::SafeMode::SECURE || (attr? :linkcss)
+          link rel='stylesheet' href=normalize_web_path('asciidoctor-coderay.css', (attr :stylesdir, ''))
+        - else
+          style=Asciidoctor::HTML5.default_coderay_stylesheet
+    - when 'pygments'
+      - if (attr 'pygments-css', 'class') == 'class'
+        - if @safe >= Asciidoctor::SafeMode::SECURE || (attr? :linkcss)
+          link rel='stylesheet' href=normalize_web_path('asciidoctor-pygments.css', (attr :stylesdir, ''))
+        - else
+          style=Asciidoctor::HTML5.pygments_stylesheet(attr 'pygments-style')
+    - when 'highlightjs'
+      link rel='stylesheet' href="#{attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0'}/styles/#{attr 'highlightjs-theme', 'default'}.min.css"
+      script src="#{attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0'}/highlight.min.js"
+      script hljs.initHighlightingOnLoad()
+    - when 'prettify'
+      link rel='stylesheet' href="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/#{attr 'prettify-theme', 'prettify'}.min.css"
+      script src="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/prettify.min.js"
+      script document.addEventListener('DOMContentLoaded', prettyPrint)
+
     // If the query includes 'print-pdf', use the PDF print sheet
     javascript:
       if( window.location.search.match( /print-pdf/gi ) ) {
@@ -106,10 +128,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
              { src: 'revealjs/lib/js/classList.js', condition: function() { return !document.body.classList; } },
              { src: 'revealjs/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
              { src: 'revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-             { src: 'revealjs/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
              { src: 'revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-             { src: 'revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-             { src: 'revealjs/plugin/remotes/remotes.js', async: true, condition: function () { return !!document.body.classList; } },
+             { src: 'revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+             { src: 'revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
              { src: 'revealjs/plugin/math/math.js', async: true }
          ]
        });

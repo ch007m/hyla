@@ -82,12 +82,12 @@ where _version_ should be 1.0.2, 1.0.x
 
     Clone Git project locally, move to Hyla directory and execute the following commands
     gem build hyla.gemspec
-    gem install hyla-1.0.x
+    gem install hyla-1.0.x -l
 
 == To publish Hyla to Gem Repo
 
     gem build hyla.gemspec
-    gem install hyla-1.0.x.gem
+    gem install hyla-1.0.x.gem -l
     gem push hyla-1.0.x.gem
 
 == Usage

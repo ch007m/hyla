@@ -130,8 +130,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
              { src: 'revealjs/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
              { src: 'revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
              { src: 'revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-             { src: 'revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
              { src: 'revealjs/plugin/math/math.js', async: true }
          ]
+         // TODO : Add a parameter to enable/disbale REMOTE
+         // { src: 'revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
        });
 

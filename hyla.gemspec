@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|s|features)/})
   s.require_paths = ['lib']
 
-  s.add_development_dependency 'bundler', '~> 1.3'
+  s.add_development_dependency 'bundler', '~> 1.5', '>= 1.5.2'
   s.add_development_dependency 'rake', '~> 10.1'
 
   #  Ruby command-line executables
@@ -35,12 +35,13 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'listen', '~> 1.3', '>= 1.3.1'
   s.add_runtime_dependency 'lumberjack', '~> 1.0', '>= 1.0.4'
   s.add_runtime_dependency 'mail', '~> 2.5', '>= 2.5.4'
+  s.add_runtime_dependency 'method_source', '~> 0.8', '>= 0.8.2'
   s.add_runtime_dependency 'multi_json', '~> 1.8', '>= 1.8.4'
   s.add_runtime_dependency 'rdoc', '~> 3.12', '>= 3.12.2'
   s.add_runtime_dependency 'pry', '< 0.10'
   s.add_runtime_dependency 'safe_yaml', '~> 1.0', '>= 1.0.0'
   s.add_runtime_dependency 'slim', '~> 2.0', '>= 2.0.2'
-  s.add_runtime_dependency 'slop', '= 3.5.0'
+  s.add_runtime_dependency 'slop', '~> 3.5', '>= 3.5.0'
   s.add_runtime_dependency 'temple', '= 0.6.7'
   s.add_runtime_dependency 'tilt', '~> 1.4', '>= 1.4.1'
   s.add_runtime_dependency 'thor', '= 0.18.1'

@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'mail', '~> 2.5', '>= 2.5.4'
   s.add_runtime_dependency 'multi_json', '~> 1.8', '>= 1.8.4'
   s.add_runtime_dependency 'rdoc', '~> 3.12', '>= 3.12.2'
-  s.add_runtime_dependency 'pry', '~> 0.9', '>= 0.9.12.6'
+  s.add_runtime_dependency 'pry', '< 0.10'
   s.add_runtime_dependency 'safe_yaml', '~> 1.0', '>= 1.0.0'
   s.add_runtime_dependency 'slim', '~> 2.0', '>= 2.0.2'
   s.add_runtime_dependency 'slop', '= 3.5.0'

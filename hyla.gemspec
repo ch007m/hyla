@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
 
   #  Ruby command-line executables
   s.add_runtime_dependency 'asciidoctor', '~> 0.1'
-  s.add_runtime_dependency 'coderay', '~> 1.1'
+  s.add_runtime_dependency 'coderay', '~> 1.0'
   s.add_runtime_dependency 'commander', '~> 4.1'
   s.add_runtime_dependency 'em-websocket', '~> 0.5'
   s.add_runtime_dependency 'eventmachine', '~> 1.0'
@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'pry', '~> 0.9'
   s.add_runtime_dependency 'safe_yaml', '~> 1.0'
   s.add_runtime_dependency 'slim', '~> 2.0'
-  s.add_runtime_dependency 'slop', '~> 3.5'
+  s.add_runtime_dependency 'slop', '~> 3.4'
   s.add_runtime_dependency 'temple', '~> 0.6'
   s.add_runtime_dependency 'tilt', '~> 1.4'
   s.add_runtime_dependency 'thor', '~> 0.18'

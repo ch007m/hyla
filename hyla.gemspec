@@ -20,7 +20,6 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler', '~> 1.3'
   s.add_development_dependency 'rake', '~> 10.1'
-  s.add_development_dependency 'rdoc', '~> 3.11'
 
   #  Ruby command-line executables
   s.add_runtime_dependency 'commander', '~> 4.1', '>= 4.1.3'
@@ -36,6 +35,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'mail', '~> 2.5', '>= 2.5.4'
   s.add_runtime_dependency 'wkhtmltopdf-binary', '~> 0.1', '>= 0.1.2'
   s.add_runtime_dependency 'imgkit', '~> 1.0', '>= 1.0.3'
+  s.add_runtime_dependency 'pry', '<= 0.10.0'
+  s.add_runtime_dependency 'rdoc', '~> 3.11'
 
   # Colorize Text Terminal
   s.add_runtime_dependency 'colorator', '~> 0.1'

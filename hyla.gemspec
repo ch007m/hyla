@@ -22,6 +22,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake', '~> 10.1'
 
   #  Ruby command-line executables
+  # Add pry before
+  s.add_runtime_dependency 'pry', '~> 0.9'
   s.add_runtime_dependency 'asciidoctor', '~> 0.1'
   s.add_runtime_dependency 'coderay', '~> 1.0'
   s.add_runtime_dependency 'commander', '~> 4.1'
@@ -38,7 +40,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'method_source', '~> 0.8'
   s.add_runtime_dependency 'multi_json', '~> 1.8'
   s.add_runtime_dependency 'rdoc', '~> 3.12'
-  s.add_runtime_dependency 'pry', '~> 0.9'
   s.add_runtime_dependency 'safe_yaml', '~> 1.0'
   s.add_runtime_dependency 'slim', '~> 2.0'
   s.add_runtime_dependency 'slop', '~> 3.4'

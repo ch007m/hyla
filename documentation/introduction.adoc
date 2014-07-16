@@ -127,8 +127,8 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 == 1. Create a Blank Project (with or without --force option)
 
-    hyla new --blank ~/hyla/MyBlankProject
-    hyla new --blank ~/hyla/MyBlankProject --force
+    hyla new --blank -d ~/hyla/MyBlankProject
+    hyla new --blank -d ~/hyla/MyBlankProject --force
 
 == 2. Create a Blank Project without _config.yaml config file, add artefact
 
@@ -136,7 +136,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
     cd ~/hyla
     rm -rf MyBlankProject/
-    hyla new --blank MyBlankProject --force
+    hyla new --blank -d MyBlankProject
 
 - Create Asciidoc files from samples (book, article, image, audio, ...)
 
@@ -156,7 +156,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
     rm -rf MyBlankProject/
 
     # Create a Blank project but containing the yaml config file
-    hyla new --blank MyBlankProject --force
+    hyla new --blank -d MyBlankProject
 
     cd MyBlankProject
 
@@ -201,13 +201,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 === 1. Create a project using a template (training)
 
     cd ~/hyla
-    hyla new --t training MyTrainingProject
+    hyla new --t training -d MyTrainingProject
 
     // TODO Refactor Training Exercises Template
-    hyla new --t training-exercises MyTrainingExercisesProject
+    hyla new --t training-exercises -d MyTrainingExercisesProject
 
     // TODO - Add images
-    hyla new --t book MyBookProject
+    hyla new --t book -d MyBookProject
 
 === 2. Generate content and watch it
 
@@ -228,16 +228,21 @@ the structure of the project will consume lot of time/effort, Hyla will simplify
 
     = A. Introduction module
     >> This is the module 'A. Introduction'
+
     == 1. Chapter
     This is a chapter about ...
+
     == 2. Chapter
     This is a Chapter about ...
+
     === 2.1. Section
-    ...
+    This is a sub chapter
+
     = B. Instruction module
     >> This is the module 'B. Instruction module'
+
     == 1. Chapter
-    This is a Chapter about ...`
+    This is a Chapter about ...
 
 to generate a collection of folders (= modules) containing files which represent the chapters (== Titles of the TOC ).
 For each module (= Module), an index file is also created including the files listed in a module. That can be serve to generate a

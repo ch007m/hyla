@@ -46,7 +46,7 @@ module Hyla
             self.asciidoc_to_html(@source, @destination, extensions, merged_options)
 
           when 'index2html'
-            Hyla.logger.info "Rendering : Asciidoctor Indexed Files to SlideShow"
+            Hyla.logger.info "Rendering : Asciidoctor Indexed Files to HTML"
             self.check_mandatory_option?('-s / --source', options[:source])
             self.check_mandatory_option?('-d / --destination', options[:destination])
 
@@ -195,7 +195,7 @@ module Hyla
             FileUtils.mkdir_p html_dir
 
             # Copy Fonts
-            # TODO : Verify if we still needed as the FONTS liberation have been moved
+            # TODO : Verify if we still need to do that as the FONTS liberation have been moved
             # TODO : under local lib directory of revealjs
             # self.cp_resources_to_dir(File.dirname(html_dir), 'fonts')
 
@@ -208,15 +208,38 @@ module Hyla
                 self.cp_resources_to_dir(File.dirname(html_dir), 'revealjs')
             end
 
-            # Render asciidoc to HTML
-            Hyla.logger.info ">> File to be rendered : #{f}"
+            #
+            # Check if companion parameter is defined
+            # as we have to generate a new AllSlides.txt file
+            # containing as tag name this value [snippet]
+            #
+            if options[:snippet_content] == true
+              Hyla.logger.info "Snippet content has been selected. Index file will be modified and modifications will be reverted after asciidoctor processing"
+              add_tag_to_index_file(f)
+            end
 
+            #
+            # Render asciidoc to HTML
+            #
+            Hyla.logger.info ">> File to be rendered : #{file_name_processed}"
+
+            #
             # Convert asciidoc file name to html file name
+            #
             html_file_name = file_name_processed.to_s.gsub(/.adoc$|.ad$|.asciidoc$|.index$|.txt$/, '.html')
             options[:to_dir] = html_dir
             options[:to_file] = html_file_name
             options[:attributes] = @attributes_bk
             Asciidoctor.render_file(f, options)
+
+            #
+            # Check if companion parameter is defined
+            # as we have to generate a new AllSlides.txt file
+            # containing as tag name this value [companion]
+            #
+            if options[:snippet_content] == true
+              remove_tag_from_index_file(f)
+            end
 
           end
         end
@@ -536,6 +559,24 @@ module Hyla
         index_file.puts "\n"
 
         index_file
+      end
+
+      #
+      # Add snippet tag index file
+      #
+      def self.add_tag_to_index_file(index_file)
+        text = File.read(index_file)
+        replace = text.gsub!('[]','[tag=' + Configuration::SNIPPET_TAG + ']')
+        File.open(index_file, "w") { |file| file.puts replace }
+      end
+
+      #
+      # Remove snippet tag from index file
+      #
+      def self.remove_tag_from_index_file(index_file)
+        text = File.read(index_file)
+        replace = text.gsub!('[tag=' + Configuration::SNIPPET_TAG + ']', '[]')
+        File.open(index_file, "w") { |file| file.puts replace }
       end
 
       #

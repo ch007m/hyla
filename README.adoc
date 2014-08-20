@@ -79,8 +79,22 @@ And then execute:
 
     gem build hyla.gemspec
     gem install hyla-1.0.x.gem -l
-    gem yank hyla -v 1.0.x
     gem push hyla-1.0.x.gem
+
+== To delete a release pushed to RubyGems (= yank)
+
+    gem yank hyla -v 1.0.x
+
+== To create a release, generate a tagged release and publish it to Gem Repo
+
+    gem build hyla.gemspec
+    gem install hyla-1.0.5.gem
+    git commit -m "Release Hyla 1.0.5" -a
+    git push
+    git tag -a hyla-1.0.5 -m "Release hyla 1.0.5"
+    git push origin hyla-1.0.5
+
+    gem push hyla-1.0.5.gem
 
 == Usage
 

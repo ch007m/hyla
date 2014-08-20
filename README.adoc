@@ -121,6 +121,28 @@ Issue tracker (GitHub):: {issues}
 
 == Changelog
 
+=== v1.0.5 - @cmoulliard
+
+New Features::
+
+ * Add tag and attribute to allow to generate snippet content(link:{issues}65[#65])
+ * Add remote control and mathjax attribute - Revealjs(link:{issues}58[#58])
+ * Add paging number option for revealjs (link:{issues}57[#57])
+
+Bug fixes::
+
+ * Font liberation not retrieved using revealsjs(link:{issues}60[#60])
+ * Fix issue with image not embedded correctly - CR after 999positions(link:{issues}50[#50])
+ * PDF slides are not all exported(link:{issues}46[#46])
+
+Enhancements / Improvements::
+
+ * Add css file of Font Awesome 4.1.0 for revealjs(link:{issues}49[#49])
+ * Add coderay, highlightjs & pygments support for revealjs(link:{issues}48[#48])
+ * Add a variable to specify if we would like to center alignment of the slides(link:{issues}47[#47])
+ * Check gem required(link:{issues}10[#10])
+
+
 === v1.0.4 - @cmoulliard
 
 New Features::

@@ -562,12 +562,14 @@ module Hyla
       end
 
       #
-      # Add snippet tag index file
+      # Add snippet tag to index file with extension .ad[]
+      # TODO : Check if we can support parent / children
+      # as this is not yet the case
       #
       def self.add_tag_to_index_file(index_file)
         text = File.read(index_file)
-        replace = text.gsub!('[]','[tag=' + Configuration::SNIPPET_TAG + ']')
-        File.open(index_file, "w") { |file| file.puts replace }
+        replace = text.gsub(/.ad\[/       ,'.ad[tag=' + Configuration::SNIPPET_TAG)
+        File.open(index_file, "w") { |file| file.puts replace } if !replace.empty?
       end
 
       #

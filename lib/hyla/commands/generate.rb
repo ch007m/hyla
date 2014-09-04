@@ -41,9 +41,10 @@ module Hyla
 
             merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
 
-            extensions = 'adoc|ad|asciidoc'
+            extensions = 'adoc,ad,asciidoc'
+            excludes = 'code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
 
-            self.asciidoc_to_html(@source, @destination, extensions, merged_options)
+            self.asciidoc_to_html(@source, @destination, extensions, excludes, merged_options)
 
           when 'index2html'
             Hyla.logger.info "Rendering : Asciidoctor Indexed Files to HTML"
@@ -62,10 +63,13 @@ module Hyla
 
             merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
 
+            #
             # Extension(s) of the files containing include directives
+            #
             extensions = 'txt'
+            excludes = 'code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
 
-            self.asciidoc_to_html(@source, @destination, extensions, merged_options)
+            self.asciidoc_to_html(@source, @destination, extensions, excludes, merged_options)
 
           when 'html2pdf'
 
@@ -144,7 +148,7 @@ module Hyla
       #
       # Call Asciidoctor.render function
       #
-      def self.asciidoc_to_html(source, destination, extensions, options)
+      def self.asciidoc_to_html(source, destination, extensions, excludes, options)
 
         # Move to Source directory & Retrieve Asciidoctor files to be processed
         source = File.expand_path source
@@ -173,74 +177,80 @@ module Hyla
         # Delete destination directory (generated_content, ...)
         # FileUtils.rm_rf(Dir.glob(@destination))
 
-        # Search for files using extensions parameter and do the rendering
         adoc_file_paths = []
-        Find.find(current_dir) do |f|
-          if f =~ /.*\.(?:#{extensions})$/
 
-            path_to_source = Pathname.new(source)
-            path_to_adoc_file = Pathname.new(f)
-            relative_path = path_to_adoc_file.relative_path_from(path_to_source).to_s
-            Hyla.logger.debug ">>       Relative path: #{relative_path}"
-            adoc_file_paths << relative_path
+        #
+        # Search for files into the current directory using extensions parameter as filter key
+        # Reject directory specified and do the rendering
+        #
+        files = Dir[current_dir + "/**/*.{" + extensions + "}"].reject { |f| f =~ /\/#{excludes}\// }
 
-            # Get asciidoc file name
-            file_name_processed = path_to_adoc_file.basename
+        #
+        # Check if companion parameter is defined
+        # as we have to modify the AllSlides.txt file
+        # containing as tag name this value [tag=snippet]
+        #
+        if options[:snippet_content] == true
+          files.each do |f|
+            add_tag_to_index_file(f)
+          end
+        end
 
-            #
-            # Create destination dir relative to the path calculated
-            #
-            html_dir = @destination + '/' + File.dirname(relative_path)
-            Hyla.logger.info ">>        Dir of html: #{html_dir}"
-            FileUtils.mkdir_p html_dir
+        files.each do |f|
+          path_to_source = Pathname.new(source)
+          path_to_adoc_file = Pathname.new(f)
+          relative_path = path_to_adoc_file.relative_path_from(path_to_source).to_s
+          Hyla.logger.debug ">>       Relative path: #{relative_path}"
+          adoc_file_paths << relative_path
 
-            # Copy Fonts
-            # TODO : Verify if we still need to do that as the FONTS liberation have been moved
-            # TODO : under local lib directory of revealjs
-            # self.cp_resources_to_dir(File.dirname(html_dir), 'fonts')
+          # Get asciidoc file name
+          file_name_processed = path_to_adoc_file.basename
 
-            # Copy Resources for Slideshow
-            case options[:backend]
-              when 'deckjs'
-                # Copy css, js files to destination directory
-                self.cp_resources_to_dir(File.dirname(html_dir), 'deck.js')
-              when 'revealjs'
-                self.cp_resources_to_dir(File.dirname(html_dir), 'revealjs')
-            end
+          #
+          # Create destination dir relative to the path calculated
+          #
+          html_dir = @destination + '/' + File.dirname(relative_path)
+          Hyla.logger.info ">>        Dir of html: #{html_dir}"
+          FileUtils.mkdir_p html_dir
 
-            #
-            # Check if companion parameter is defined
-            # as we have to generate a new AllSlides.txt file
-            # containing as tag name this value [snippet]
-            #
-            if options[:snippet_content] == true
-              Hyla.logger.info "Snippet content has been selected. Index file will be modified and modifications will be reverted after asciidoctor processing"
-              add_tag_to_index_file(f)
-            end
+          # Copy Fonts
+          # TODO : Verify if we still need to do that as the FONTS liberation have been moved
+          # TODO : under local lib directory of revealjs
+          # self.cp_resources_to_dir(File.dirname(html_dir), 'fonts')
 
-            #
-            # Render asciidoc to HTML
-            #
-            Hyla.logger.info ">> File to be rendered : #{file_name_processed}"
+          # Copy Resources for Slideshow
+          case options[:backend]
+            when 'deckjs'
+              # Copy css, js files to destination directory
+              self.cp_resources_to_dir(File.dirname(html_dir), 'deck.js')
+            when 'revealjs'
+              self.cp_resources_to_dir(File.dirname(html_dir), 'revealjs')
+          end
 
-            #
-            # Convert asciidoc file name to html file name
-            #
-            html_file_name = file_name_processed.to_s.gsub(/.adoc$|.ad$|.asciidoc$|.index$|.txt$/, '.html')
-            options[:to_dir] = html_dir
-            options[:to_file] = html_file_name
-            options[:attributes] = @attributes_bk
-            Asciidoctor.render_file(f, options)
+          #
+          # Render asciidoc to HTML
+          #
+          Hyla.logger.info ">> File to be rendered : #{file_name_processed}"
 
-            #
-            # Check if companion parameter is defined
-            # as we have to generate a new AllSlides.txt file
-            # containing as tag name this value [companion]
-            #
-            if options[:snippet_content] == true
-              remove_tag_from_index_file(f)
-            end
+          #
+          # Convert asciidoc file name to html file name
+          #
+          html_file_name = file_name_processed.to_s.gsub(/.adoc$|.ad$|.asciidoc$|.index$|.txt$/, '.html')
+          options[:to_dir] = html_dir
+          options[:to_file] = html_file_name
+          options[:attributes] = @attributes_bk
+          Asciidoctor.render_file(f, options)
 
+          # end
+        end
+
+        #
+        # Check if companion parameter is defined
+        # and remove the companion tag from indexed files
+        #
+        if options[:snippet_content] == true
+          files.each do |f|
+            remove_tag_from_index_file(f)
           end
         end
 
@@ -251,6 +261,7 @@ module Hyla
         end
 
       end
+
 
       #
       # CSS Style to be used
@@ -485,7 +496,7 @@ module Hyla
               file_to_processed = [File.expand_path(Dir.getwd), file_name] * '/'
               result = self.extract_file_names(file_to_processed, source)
 
-              result.each do | file_path |
+              result.each do |file_path|
                 if file_path.downcase.include?('title') || file_path.downcase.include?('cover')
                   @cover_path = file_path
                   next
@@ -563,22 +574,40 @@ module Hyla
 
       #
       # Add snippet tag to index file with extension .ad[]
-      # TODO : Check if we can support parent / children
       # as this is not yet the case
       #
       def self.add_tag_to_index_file(index_file)
-        text = File.read(index_file)
-        replace = text.gsub(/.ad\[/       ,'.ad[tag=' + Configuration::SNIPPET_TAG)
-        File.open(index_file, "w") { |file| file.puts replace } if !replace.empty?
+        content = File.read(index_file)
+        #
+        # Modify the content of an index file if
+        # it contains include::file with extension .ad, .adoc or .asciidoc
+        #
+        if content =~ /(\.ad)|(\.adoc)|(\.asciidoc)/
+          replace = content.gsub(/\[/, '[tag=' + Configuration::SNIPPET_TAG)
+          replace_content(index_file, replace)
+        end
       end
 
       #
       # Remove snippet tag from index file
       #
       def self.remove_tag_from_index_file(index_file)
-        text = File.read(index_file)
-        replace = text.gsub!('[tag=' + Configuration::SNIPPET_TAG + ']', '[]')
-        File.open(index_file, "w") { |file| file.puts replace }
+        content = File.read(index_file)
+        #
+        # Modify the content of an index file if
+        # it contains include::file with extension .ad, .adoc or .asciidoc
+        #
+        if content =~ /(\.ad)|(\.adoc)|(\.asciidoc)/
+          replace = content.gsub('[tag=' + Configuration::SNIPPET_TAG, '[')
+          replace_content(index_file, replace)
+        end
+      end
+
+      #
+      # Replace content of a File
+      #
+      def self.replace_content(f, content)
+        File.open(f, "w") { |f| f.puts content } if !content.empty?
       end
 
       #

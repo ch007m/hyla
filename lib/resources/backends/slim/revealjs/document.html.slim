@@ -1,7 +1,7 @@
 - slide_vertical_alignment = (attr? :revealjs_vertical_alignment) ? (attr :revealjs_vertical_alignment) : true
 - browser_history = (attr? :revealjs_history) ? (attr :revealjs_history) : true
 - display_slide_number = (attr? :revealjs_display_slide_number) ? (attr :revealjs_display_slide_number) : false
-- transition = (attr? :revealjs_transition) ? (attr :revealjs_transition) : default
+- transition = (attr? :revealjs_transition) ? (attr :revealjs_transition) : 'default'
 doctype 5
 html lang=(attr :lang, 'en' unless attr? :nolang)
   head
@@ -120,7 +120,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 
          // Transition style
-         transition: Reveal.getQueryHash().transition || #{transition}, // default/cube/page/concave/zoom/linear/fade/none
+         transition: Reveal.getQueryHash().transition || '#{transition}', // default/cube/page/concave/zoom/linear/fade/none
 
         // Parallax scrolling
         // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',

@@ -23,6 +23,10 @@ require 'safe_yaml'
 require 'asciidoctor'
 require 'asciidoctor/backends/html5'
 # require 'asciidoctor/backends/_stylesheets'
+
+# Added to fix issue with Ruby 2.0 on Windows machine
+require 'em/pure_ruby'
+
 require 'eventmachine'
 require 'em-websocket'
 require 'http/parser'

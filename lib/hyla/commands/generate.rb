@@ -42,7 +42,7 @@ module Hyla
             merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
 
             extensions = 'adoc,ad,asciidoc'
-            excludes = 'code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
+            excludes = 'lab_assets|lab_assets_solution|code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
 
             self.asciidoc_to_html(@source, @destination, extensions, excludes, merged_options)
 
@@ -67,7 +67,7 @@ module Hyla
             # Extension(s) of the files containing include directives
             #
             extensions = 'txt'
-            excludes = 'code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
+            excludes = 'lab_assets|lab_assets_solution|code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
 
             self.asciidoc_to_html(@source, @destination, extensions, excludes, merged_options)
 

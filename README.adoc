@@ -67,7 +67,7 @@ And then execute:
 
 **Or** install it yourself as:
 
-    $ gem install hyla -v 1.0.3
+    $ gem install hyla -v 1.0.6
 
 == For Developer's only
 
@@ -88,13 +88,13 @@ And then execute:
 == To create a release, generate a tagged release and publish it to Gem Repo
 
     gem build hyla.gemspec
-    gem install hyla-1.0.5.gem
-    git commit -m "Release Hyla 1.0.5" -a
+    gem install hyla-1.0.6.gem
+    git commit -m "Release Hyla 1.0.6" -a
     git push
-    git tag -a hyla-1.0.5 -m "Release hyla 1.0.5"
-    git push origin hyla-1.0.5
+    git tag -a hyla-1.0.6 -m "Release hyla 1.0.6"
+    git push origin hyla-1.0.6
 
-    gem push hyla-1.0.5.gem
+    gem push hyla-1.0.6.gem
 
 == Usage
 

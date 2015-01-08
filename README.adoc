@@ -135,6 +135,20 @@ Issue tracker (GitHub):: {issues}
 
 == Changelog
 
+=== v1.0.6 - @cmoulliard
+
+Enhancements / Improvements::
+
+* Add attribute to include additional <scripts/> tags within the HTML generated(link:{issues}74[#74])
+* Exclude lab_assets & lab_assets_solution(link:{issues}73[#73])
+* Add data-state attribute to revealjs slim backend(link:{issues}72[#72])
+* Add possibility to definie the transition style for revealjs(link:{issues}69[#69])
+* It should be possible to define custom theme for revealjs(link:{issues}68[#68])
+
+Bug fixes::
+
+* Snippet tag is added to the parent include file bug(link:{issues}67[#67])
+
 === v1.0.5 - @cmoulliard
 
 New Features::

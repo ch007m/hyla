@@ -69,7 +69,8 @@ module Hyla
 
     SKIP_CHARACTERS = '>>'
 
-    ADOC_EXT = '.ad'
+    #ADOC_EXT = '.ad'
+    ADOC_EXT = '.adoc'
 
     PREFIX_ARTEFACT = 'asciidoc_'
 

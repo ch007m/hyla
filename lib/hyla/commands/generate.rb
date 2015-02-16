@@ -301,6 +301,7 @@ module Hyla
 
         # Expand File Path
         @out_dir = File.expand_path out_dir
+        Hyla.logger.info '>> Output directory : ' + out_dir + ' <<'
 
         #
         # Create destination directory if it does not exist
@@ -315,7 +316,7 @@ module Hyla
         FileUtils.cp_r Configuration::styles, @out_dir
 
         #
-        # Move to 'generated' directory as we will
+        # Move to the directory as we will
         # create content relative to this directory
         #
         Dir.chdir @out_dir

@@ -305,6 +305,7 @@ module Hyla
 
         #
         # Create destination directory if it does not exist
+        #
         unless Dir.exist? @out_dir
           FileUtils.mkdir_p @out_dir
         end
@@ -313,7 +314,7 @@ module Hyla
         FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', @out_dir
 
         # Copy styles
-        FileUtils.cp_r Configuration::styles, @out_dir
+        # FileUtils.cp_r Configuration::styles, @out_dir
 
         #
         # Move to the directory as we will

@@ -50,18 +50,27 @@ module Hyla
 
     SNIPPET_TAG = 'snippet'
 
-    HEADER = ":data-uri:\n" +
-        ":icons: font\n" +
-        ":last-update-label!:\n" +
-        ":source-highlighter: coderay\n"
+
+    #    OLD HEADER used with hyla < 1.0.7
+    #    HEADER = ":data-uri:\n" +
+    #        ":icons: font\n" +
+    #        ":last-update-label!:\n" +
+    #        ":source-highlighter: coderay\n"
+    #
+
+    HEADER = "ifndef::local[]\n" +
+             ":imagesdir: ../image/\n" +
+             "endif::[]\n"
 
     HEADER_INDEX = ":data-uri:\n" +
-        ":navigation: # navigation attribute used for DeckJS Slideshow\n" +
-        ":menu: # navigation attribute used for DeckJS Slideshow\n" +
-        ":status: # navigation attribute used for DeckJS Slideshow\n" +
-        ":goto: # navigation attribute used for DeckJS Slideshow\n" +
-        ":notitle: \n" +
-        ":toc: left # Comment or uncomment this attribute if you don't need to display left part of the HTML page a table of content\n"
+        ":icons: font\n" +
+        ":iconfont-remote:\n" +
+        ":iconfont-cdn: http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css\n" +
+        ":last-update-label!:\n" +
+        ":revealjs_display_slide_number: true\n" +
+        ":revealjs_history: true\n" +
+        ":revealjs_vertical_alignment: false\n" +
+        ":toc: left\n"
 
     LEVEL_1 = '= '
 

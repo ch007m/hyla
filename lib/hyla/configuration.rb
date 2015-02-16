@@ -46,6 +46,8 @@ module Hyla
 
     INDEX_SUFFIX = '_AllSlides.txt'
 
+    INDEX_FILE = 'AllSlides.txt'
+
     SNIPPET_TAG = 'snippet'
 
     HEADER = ":data-uri:\n" +

@@ -322,7 +322,7 @@ module Hyla
         @out_dir = Pathname.pwd
 
         # Create index file of all index files
-        @project_index_file = self.create_index_file(project_name, Configuration::LEVEL_1)
+        @project_index_file = self.create_index_file_withoutprefix(project_name, Configuration::LEVEL_1)
 
 
         # File iteration
@@ -355,10 +355,15 @@ module Hyla
             # It is used to include files belonging to a module and will be used for SlideShows
             # The file created contains a title (= Dir Name) and header with attributes
             #
-            @index_file = create_index_file(dir_name, Configuration::LEVEL_1)
+            @index_file = create_index_file_withoutprefix(dir_name, Configuration::LEVEL_1)
 
+            #
             # Include index file created to parent index file
-            @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + dir_name + Configuration::INDEX_SUFFIX + Configuration::INCLUDE_SUFFIX
+            # we don't prefix the AllSlides.txt file anymore
+            #
+            # BEFORE @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + dir_name + Configuration::INDEX_SUFFIX + Configuration::INCLUDE_SUFFIX
+            @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + Configuration::INDEX_FILE + Configuration::INCLUDE_SUFFIX
+
             @project_index_file.puts "\n"
 
             #
@@ -557,9 +562,27 @@ module Hyla
       # Create ascidoc index file
       # containing references to asciidoc files part of a module
       #
-      def self.create_index_file(file_name, level)
+      def self.create_index_file_withprefix(file_name, level)
         n_file_name = file_name + Configuration::INDEX_SUFFIX
         index_file = File.new(n_file_name, 'w')
+
+        index_file.puts Configuration::HEADER_INDEX
+        index_file.puts "\n"
+        # TODO - until now we cannot use level 0 for parent/children files
+        # even if doctype: book
+        # This is why the level for each index file title is '=='
+        index_file.puts '== ' + file_name
+        index_file.puts "\n"
+
+        index_file
+      end
+
+      #
+      # Create ascidoc index file
+      # containing references to asciidoc files part of a module
+      #
+      def self.create_index_file_withoutprefix(file_name, level)
+        index_file = File.new(Configuration::INDEX_FILE, 'w')
 
         index_file.puts Configuration::HEADER_INDEX
         index_file.puts "\n"

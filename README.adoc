@@ -135,6 +135,13 @@ Issue tracker (GitHub):: {issues}
 
 == Changelog
 
+=== v1.0.7 - @cmoulliard
+
+Enhancements / Improvements::
+
+* Remove the prefix (which is the name of the folder) before text AllSlides of the file (link:{issues}75[#75])
+
+
 === v1.0.6 - @cmoulliard
 
 Enhancements / Improvements::

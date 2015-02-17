@@ -409,7 +409,7 @@ module Hyla
             @index += 1
             #file_index = @index.to_s.initial.rjust(2, '0')
             file_index = sprintf('%02d', @index)
-            f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name + '.ad'
+            f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name + Configuration::ADOC_EXT
 
             Hyla.logger.info '   # File created : ' + f_name.to_s
 

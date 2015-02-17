@@ -339,7 +339,8 @@ module Hyla
           if line[/^=\s/]
 
             #
-            # Create Directory of the module and next the File
+            # Create the Directory name for the module and next the files
+            # The special characters are removed from the string
             #
             dir_name = remove_special_chars(2, line)
             new_dir = [@out_dir, dir_name].join('/')
@@ -401,13 +402,14 @@ module Hyla
             end
 
             #
-            # Replace special characters form the file and
-            # add the module key followed by the index value for the file
-            # Example : m01p01_MyTitle.ad, m01p02_Another_Title.ad
+            # Replace special characters from the title before to generate the file name
+            # Convert Uppercase to lowercase
+            # Convention : m letter followed by module number, letter p & a number 01, 02, ..., 0n, next the title & .Adoc extension
+            # Example : m01p01_mytitle.adoc, m01p02_anothertitle.adoc
             #
-            f_name = remove_special_chars(3, line)
+            f_name = remove_special_chars(3, line).downcase
+
             @index += 1
-            #file_index = @index.to_s.initial.rjust(2, '0')
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name + Configuration::ADOC_EXT
 
@@ -539,7 +541,8 @@ module Hyla
       end
 
       #
-      # Remove space, dot from a String
+      # Remove space, dot, ampersand characters from the String
+      # at a position specified
       #
       def self.remove_special_chars(pos, text)
         return text[pos, text.length].strip.gsub(/\s/, '_')

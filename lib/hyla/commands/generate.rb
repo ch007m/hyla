@@ -368,7 +368,6 @@ module Hyla
             # BEFORE @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + dir_name + Configuration::INDEX_SUFFIX + Configuration::INCLUDE_SUFFIX
             #
             @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + Configuration::INDEX_FILE + Configuration::INCLUDE_SUFFIX
-
             @project_index_file.puts "\n"
 
             #
@@ -572,6 +571,7 @@ module Hyla
         return text[pos, text.length].strip.gsub(/\s/, '_')
         .gsub('.', '')
         .gsub('&', '')
+        .gsub('__', '_')
       end
 
       #

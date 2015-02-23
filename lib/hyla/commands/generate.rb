@@ -401,6 +401,23 @@ module Hyla
             @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
             @index_file.puts "\n"
 
+            #
+            # Add the objectives.adoc file
+            #
+            @index += 1
+            file_index = sprintf('%02d', @index)
+            f_name = 'm' + @module_key + 'p' + file_index + '_objectives' + Configuration::ADOC_EXT
+            objectives_f = File.new(f_name, 'w')
+            objectives_f.puts Configuration::HEADER_TXT
+            objectives_f.puts Configuration::OBJECTIVES_TXT
+            objectives_f.close
+
+            #
+            # Include cover file to index
+            #
+            @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
+            @index_file.puts "\n"
+
             # Move to next line record
             next
           end
@@ -442,7 +459,6 @@ module Hyla
             #
             @new_f = File.new(f_name, 'w')
             @new_f.puts Configuration::HEADER_TXT
-
             @new_f.puts "\n"
 
             @previous_f = @new_f

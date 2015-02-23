@@ -58,9 +58,11 @@ module Hyla
     #        ":source-highlighter: coderay\n"
     #
 
-    HEADER_TXT = "ifndef::local[]\n" +
-             ":imagesdir: ../image/\n" +
-             "endif::[]\n"
+    # HEADER_TXT = "ifndef::local[]\n" +
+    #         ":imagesdir: ../image/\n" +
+    #         "endif::[]\n"
+
+    HEADER_TXT = "# Asciidoctor attributes\n\n"
 
     FOOTER_TXT = "ifdef::showscript[]\n" +
         "// tag::snippet[]\n" +
@@ -78,6 +80,29 @@ module Hyla
                 "== Cover\n" +
                 "\n" +
                 "image::image:xxx.png[]"
+
+    OBJECTIVES_TXT = "== Module Topics\n" +
+                     "\n" +
+                     "ifdef::audioscript[]\n" +
+                     "audio::audio/mXXpYY_objectives.mp3[]\n" +
+                     "endif::[]\n" +
+                     "\n" +
+                     "By completing this module you will learn about the following topics:\n" +
+                     "\n" +
+                     "  ** Blabla\n" +
+                     "\n" +
+                     "ifdef::showscript[]\n" +
+                     "// tag::snippet[]\n" +
+                     "\n" +
+                     "== Module Topics\n" +
+                     "\n" +
+                     "ifdef::audioscript[]\n" +
+                     "audio::audio/mXXpYY_objectives.mp3[]\n" +
+                     "endif::[]\n" +
+                     "\n" +
+                     "* This module introduces ...\n" +
+                     "// end::snippet[]\n" +
+                     "endif::[]\n"
 
     HEADER_INDEX = ":data-uri:\n" +
         ":icons: font\n" +

@@ -77,10 +77,6 @@ module Hyla
                 "\n" +
                 "== Cover\n" +
                 "\n" +
-                "ifdef::includeaudio[]\n" +
-                "audio::audio/xxxx.mp3[]\n" +
-                "endif::[]\n" +
-                "\n" +
                 "image::image:xxx.png[]"
 
     HEADER_INDEX = ":data-uri:\n" +

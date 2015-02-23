@@ -62,7 +62,7 @@ module Hyla
     #         ":imagesdir: ../image/\n" +
     #         "endif::[]\n"
 
-    HEADER_TXT = "# Asciidoctor attributes\n\n"
+    HEADER_TXT = "// Asciidoctor attributes\n\n"
 
     FOOTER_TXT = "ifdef::showscript[]\n" +
         "// tag::snippet[]\n" +

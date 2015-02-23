@@ -51,14 +51,14 @@ module Hyla
     SNIPPET_TAG = 'snippet'
 
 
-    #    OLD HEADER used with hyla < 1.0.7
-    #    HEADER = ":data-uri:\n" +
+    #    OLD HEADER_TXT used with hyla < 1.0.7
+    #    HEADER_TXT = ":data-uri:\n" +
     #        ":icons: font\n" +
     #        ":last-update-label!:\n" +
     #        ":source-highlighter: coderay\n"
     #
 
-    HEADER = "ifndef::local[]\n" +
+    HEADER_TXT = "ifndef::local[]\n" +
              ":imagesdir: ../image/\n" +
              "endif::[]\n"
 
@@ -71,6 +71,18 @@ module Hyla
         ":revealjs_history: true\n" +
         ":revealjs_vertical_alignment: false\n" +
         ":toc: left\n"
+
+    FOOTER_TXT = "ifdef::showscript[]
+// tag::snippet[]
+
+== TITLE
+
+ifdef::includeaudio[]
+audio::audio/xxxx.mp3[]
+endif::[]
+
+// end::snippet[]
+endif::[]"
 
     LEVEL_1 = '= '
 

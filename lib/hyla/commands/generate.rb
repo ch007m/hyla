@@ -398,6 +398,12 @@ module Hyla
 
             # Close File created previously if it exists
             if !@previous_f.nil?
+
+              #
+              # Add Footer_text to the file created
+              #
+              @previous_f.puts Configuration::FOOTER_TXT
+
               @previous_f.close
             end
 
@@ -416,10 +422,11 @@ module Hyla
             Hyla.logger.info '   # File created : ' + f_name.to_s
 
             #
-            # Create File and add configuration HEADER
+            # Create File and add configuration HEADER_TXT
             #
             @new_f = File.new(f_name, 'w')
-            @new_f.puts Configuration::HEADER
+            @new_f.puts Configuration::HEADER_TXT
+
             @new_f.puts "\n"
 
             @previous_f = @new_f

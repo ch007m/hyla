@@ -366,6 +366,7 @@ module Hyla
             # we don't prefix the AllSlides.txt file anymore
             #
             # BEFORE @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + dir_name + Configuration::INDEX_SUFFIX + Configuration::INCLUDE_SUFFIX
+            #
             @project_index_file.puts Configuration::INCLUDE_PREFIX + dir_name + '/' + Configuration::INDEX_FILE + Configuration::INCLUDE_SUFFIX
 
             @project_index_file.puts "\n"
@@ -381,9 +382,25 @@ module Hyla
 
             #
             # Reset counter value used to generate file number
-            # for the file 01, 00
+            # for the file 01, 00 within this module
             #
             @index = 0
+
+            #
+            # Add the cover.adoc file
+            #
+            @index += 1
+            file_index = sprintf('%02d', @index)
+            f_name = 'm' + @module_key + 'p' + file_index + '_cover' + Configuration::ADOC_EXT
+            cover_f = File.new(f_name, 'w')
+            cover_f.puts Configuration::COVER_TXT
+            cover_f.close
+
+            #
+            # Include cover file to index
+            #
+            @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
+            @index_file.puts "\n"
 
             # Move to next line record
             next

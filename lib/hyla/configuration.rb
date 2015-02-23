@@ -62,6 +62,27 @@ module Hyla
              ":imagesdir: ../image/\n" +
              "endif::[]\n"
 
+    FOOTER_TXT = "ifdef::showscript[]\n" +
+        "// tag::snippet[]\n" +
+        "\n" +
+        "== TITLE\n" +
+        "\n" +
+        "ifdef::includeaudio[]\n" +
+        "audio::audio/xxxx.mp3[]\n" +
+        "endif::[]\n" +
+        "// end::snippet[]\n" +
+        "endif::[]\n"
+
+    COVER_TXT = ":noheader: true\n" +
+                "\n" +
+                "== Cover\n" +
+                "\n" +
+                "ifdef::includeaudio[]\n" +
+                "audio::audio/xxxx.mp3[]\n" +
+                "endif::[]\n" +
+                "\n" +
+                "image::image:xxx.png[]"
+
     HEADER_INDEX = ":data-uri:\n" +
         ":icons: font\n" +
         ":iconfont-remote:\n" +
@@ -71,18 +92,6 @@ module Hyla
         ":revealjs_history: true\n" +
         ":revealjs_vertical_alignment: false\n" +
         ":toc: left\n"
-
-    FOOTER_TXT = "ifdef::showscript[]
-// tag::snippet[]
-
-== TITLE
-
-ifdef::includeaudio[]
-audio::audio/xxxx.mp3[]
-endif::[]
-
-// end::snippet[]
-endif::[]"
 
     LEVEL_1 = '= '
 

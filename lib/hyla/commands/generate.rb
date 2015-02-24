@@ -448,9 +448,10 @@ module Hyla
             @index += 1
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_objectives' + Configuration::ADOC_EXT
+            rep_txt = Configuration::OBJECTIVES_TXT.gsub(/xxx\.mp3/,f_name)
             objectives_f = File.new(f_name, 'w')
             objectives_f.puts Configuration::HEADER_TXT
-            objectives_f.puts Configuration::OBJECTIVES_TXT
+            objectives_f.puts rep_txt
             objectives_f.close
 
             #

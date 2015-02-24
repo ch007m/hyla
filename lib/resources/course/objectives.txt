@@ -1,7 +1,7 @@
 == Module Topics
 
 ifdef::audioscript[]
-audio::audio/mXXpYY_objectives.mp3[]
+audio::audio/xxx.mp3[]
 endif::[]
 
 By completing this module you will learn about the following topics:
@@ -15,7 +15,7 @@ ifdef::showscript[]
 == Module Topics
 
 ifdef::audioscript[]
-audio::audio/mXXpYY_objectives.mp3[]
+audio::audio/xxx_objectives.mp3[]
 endif::[]
 
 * This module introduces ...

@@ -74,20 +74,6 @@ module Hyla
 
     PREFIX_ARTEFACT = 'asciidoc_'
 
-    TEMPLATES = '../../lib/templates'
-
-    RESOURCES = '../../lib/resources'
-
-    SAMPLES = '../../lib/templates/sample'
-
-    STYLES = '../../lib/resources/styles'
-
-    FONTS = '../../lib/resources/fonts'
-
-    BACKENDS = '../../lib/resources/backends'
-
-    COVER_TEMPLATE = '../../lib/resources/cover.slim'
-
     YAML_CONFIG_FILE_NAME = '_config.yaml'
 
     #
@@ -255,6 +241,20 @@ module Hyla
         result
       }
     end
+
+    TEMPLATES = '../../lib/templates'
+
+    RESOURCES = '../../lib/resources'
+
+    SAMPLES = '../../lib/templates/sample'
+
+    STYLES = '../../lib/resources/styles'
+
+    FONTS = '../../lib/resources/fonts'
+
+    BACKENDS = '../../lib/resources/backends'
+
+    COVER_TEMPLATE = '../../lib/resources/cover.slim'
 
     ASSESSMENT_TXT = File.open(self.resources + '/course/assessment.txt','r').read
 

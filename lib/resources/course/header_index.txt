@@ -1,0 +1,9 @@
+:data-uri:
+:icons: font
+:iconfont-remote:
+:iconfont-cdn: http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css
+:last-update-label!:
+:revealjs_display_slide_number: true
+:revealjs_history: true
+:revealjs_vertical_alignment: false
+:toc: left

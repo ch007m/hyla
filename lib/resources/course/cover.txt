@@ -1,0 +1,5 @@
+:noheader: true
+
+== Cover
+
+image::image/xxx.png[]

@@ -27,7 +27,6 @@ module Hyla
         },
         'safe' => 'unsafe',
         'header_footer' => true
-
     }
 
     #
@@ -57,85 +56,12 @@ module Hyla
     #        ":last-update-label!:\n" +
     #        ":source-highlighter: coderay\n"
     #
+    #    HEADER_TXT = "ifndef::local[]\n" +
+    #                 ":imagesdir: ../image/\n" +
+    #                 "endif::[]\n"
 
-    # HEADER_TXT = "ifndef::local[]\n" +
-    #         ":imagesdir: ../image/\n" +
-    #         "endif::[]\n"
 
     HEADER_TXT = "// Asciidoctor attributes\n\n"
-
-    FOOTER_TXT = "ifdef::showscript[]\n" +
-        "// tag::snippet[]\n" +
-        "\n" +
-        "== TITLE\n" +
-        "\n" +
-        "ifdef::includeaudio[]\n" +
-        "audio::audio/xxxx.mp3[]\n" +
-        "endif::[]\n" +
-        "// end::snippet[]\n" +
-        "endif::[]\n"
-
-    LABS_TXT = ":numbered:\n" +
-               "== MODULE NAME Lab\n" +
-               "\n" +
-               ".Goals\n" +
-               "After completing this lab, you should understand the following XXXX key concepts:\n" +
-               "\n" +
-               "* Concept 1\n" +
-               "* Concept 2\n" +
-               "* Concept n\n" +
-               "    \n" +
-               ".Lab Assets\n" +
-               "The lab exercises and solutions are available in the following zip archives:\n" +
-               "\n" +
-               "* link:lab_assets.zip[]\n" +
-               "* link:lab_assets_solution.zip[]\n" +
-               "\n" +
-               "...\n" +
-               "\n" +
-               "ifdef::showscript[]\n" +
-               "// tag::snippet[]\n" +
-               "// end::snippet[]\n" +
-               "endif::[]\n"
-
-    COVER_TXT = ":noheader: true\n" +
-                "\n" +
-                "== Cover\n" +
-                "\n" +
-                "image::image/xxx.png[]"
-
-    OBJECTIVES_TXT = "== Module Topics\n" +
-                     "\n" +
-                     "ifdef::audioscript[]\n" +
-                     "audio::audio/mXXpYY_objectives.mp3[]\n" +
-                     "endif::[]\n" +
-                     "\n" +
-                     "By completing this module you will learn about the following topics:\n" +
-                     "\n" +
-                     "  ** Blabla\n" +
-                     "\n" +
-                     "ifdef::showscript[]\n" +
-                     "// tag::snippet[]\n" +
-                     "\n" +
-                     "== Module Topics\n" +
-                     "\n" +
-                     "ifdef::audioscript[]\n" +
-                     "audio::audio/mXXpYY_objectives.mp3[]\n" +
-                     "endif::[]\n" +
-                     "\n" +
-                     "* This module introduces ...\n" +
-                     "// end::snippet[]\n" +
-                     "endif::[]\n"
-
-    HEADER_INDEX = ":data-uri:\n" +
-        ":icons: font\n" +
-        ":iconfont-remote:\n" +
-        ":iconfont-cdn: http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css\n" +
-        ":last-update-label!:\n" +
-        ":revealjs_display_slide_number: true\n" +
-        ":revealjs_history: true\n" +
-        ":revealjs_vertical_alignment: false\n" +
-        ":toc: left\n"
 
     LEVEL_1 = '= '
 
@@ -223,7 +149,6 @@ module Hyla
     # Returns the final configuration Hash.
     def self.parse(override)
 
-
       # Extract Asciidoctor attributes received from hyla command line '-a key=value,key=value'
       # Convert them to a Hash of attributes 'attributes' => { 'backend' => html5 ... }
       # Assign hash to override[:attributes]
@@ -282,6 +207,21 @@ module Hyla
       YAML.safe_load_file(filename)
     end
 
+    #
+    # Retrieve asciidoctor attributes
+    # Could be an Arrays of Strings key=value,key=value
+    # or
+    # Could be a Hash (DEFAULTS, CONFIG_File)
+    def self.extract_attributes(attributes)
+      result = attributes.split(',')
+      attributes = Hash.new
+      result.each do |entry|
+        words = entry.split('=')
+        attributes[words[0]] = words[1]
+      end
+      return attributes
+    end
+
     # Public: Turn all keys into string
     #
     # Return a copy of the hash where all its keys are strings
@@ -316,20 +256,17 @@ module Hyla
       }
     end
 
-    #
-    # Retrieve asciidoctor attributes
-    # Could be an Arrays of Strings key=value,key=value
-    # or
-    # Could be a Hash (DEFAULTS, CONFIG_File)
-    def self.extract_attributes(attributes)
-      result = attributes.split(',')
-      attributes = Hash.new
-      result.each do |entry|
-        words = entry.split('=')
-        attributes[words[0]] = words[1]
-      end
-      return attributes
-    end
+    ASSESSMENT_TXT = File.open(self.resources + '/course/assessment.txt','r').read
+
+    LABS_TXT = File.open(self.resources + '/course/labinstructions.txt','r').read
+
+    HEADER_INDEX = File.open(self.resources + '/course/header_index.txt','r').read
+
+    FOOTER_TXT = File.open(self.resources + '/course/footer.txt','r').read
+
+    COVER_TXT = File.open(self.resources + '/course/cover.txt','r').read
+
+    OBJECTIVES_TXT = File.open(self.resources + '/course/objectives.txt','r').read
 
   end # Class Configuration
 end # module Hyla

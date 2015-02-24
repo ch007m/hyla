@@ -468,6 +468,14 @@ module Hyla
             lab_f.puts Configuration::LABS_TXT
             lab_f.close
 
+            #
+            # Add the assessment.txt file
+            #
+            f_name = 'assessment.txt'
+            assessment_f = File.new(f_name, 'w')
+            assessment_f.puts Configuration::ASSESSMENT_TXT
+            assessment_f.close
+
             # Move to next line record
             next
           end

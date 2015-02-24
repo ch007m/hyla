@@ -19,8 +19,9 @@ module Hyla
             @out_dir = options[:destination]
             @project_name = options[:project_name] if options[:project_name]
             @project_name = 'My Project' if !options[:project_name]
+            @image_path = options[:image_path] if options[:image_path]
 
-            self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name)
+            self.table_of_content_to_asciidoc(@toc_file, @out_dir, @project_name, @image_path)
 
           when 'adoc2html'
 
@@ -92,35 +93,11 @@ module Hyla
             out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
             file_name = options[:cover_file]
             image_name = options[:cover_image]
+            course_name = options[:course_name]
+            module_name = options[:module_name]
+            bg_image_path = options[:image_path]
 
-            # Configure Slim engine
-            slim_file = Configuration::cover_template
-            slim_tmpl = File.read(slim_file)
-            template = Slim::Template.new(:pretty => true) { slim_tmpl }
-
-            # Do the Rendering HTML
-            parameters = {:course_name => options[:course_name],
-                          :module_name => options[:module_name],
-                          :image_path => options[:image_path]}
-            res = template.render(Object.new, parameters)
-
-            unless Dir.exist? out_dir
-              FileUtils.mkdir_p out_dir
-            end
-
-            Dir.chdir(out_dir) do
-              out_file = File.new(file_name, 'w')
-              out_file.puts res
-              out_file.puts "\n"
-
-              # Do the Rendering Image
-              kit = IMGKit.new(res, quality: 90, width: 950, height: 750)
-              kit.to_img(:png)
-              kit.to_file(image_name)
-
-              # Convert HTML to Image
-              # system ("wkhtmltoimage -f 'png' #{file_name} #{image_name}")
-            end
+            self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path)
 
           else
             Hyla.logger.error ">> Unknow rendering"
@@ -143,6 +120,50 @@ module Hyla
           else
             return [Configuration::backends, 'slim', 'html5'] * '/'
         end
+      end
+
+      #
+      # Cover Function
+      # Create a png file using the HTML generated with the Slim cover template
+      #
+      def self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path)
+
+        unless Dir.exist? out_dir
+          FileUtils.mkdir_p out_dir
+        end
+
+        # Configure Slim engine
+        slim_file = Configuration::cover_template
+        slim_tmpl = File.read(slim_file)
+        template = Slim::Template.new(:pretty => true) { slim_tmpl }
+
+        # Replace underscore with space
+        course_name = course_name.gsub('_',' ')
+        # Replace underscore with space, next digits & space with nothing & Capitalize
+        module_name = module_name.gsub('_',' ').gsub(/^\d{1,2}\s/,'').capitalize
+
+        Hyla.logger.debug "Module name : " + module_name
+
+        # Do the HTML Rendering
+        parameters = {:course_name => course_name,
+                      :module_name => module_name,
+                      :image_path => bg_image_path}
+        res = template.render(Object.new, parameters)
+
+        #
+        # Create the cover file and do the rendering of the image
+        #
+        Dir.chdir(out_dir) do
+          out_file = File.new(file_name, 'w')
+          out_file.puts res
+          out_file.puts "\n"
+
+          # Do the Rendering Image
+          kit = IMGKit.new(res, quality: 90, width: 950, height: 750)
+          kit.to_img(:png)
+          kit.to_file(image_name)
+        end
+
       end
 
       #
@@ -292,7 +313,7 @@ module Hyla
       # @param [Directory where asciidoc files will be generated] out_dir
       # @param [Project name used to create parent of index files] project_name
       #
-      def self.table_of_content_to_asciidoc(toc_file, out_dir, project_name)
+      def self.table_of_content_to_asciidoc(toc_file, out_dir, project_name, image_path)
 
         Hyla.logger.info '>> Project Name : ' + project_name + ' <<'
 
@@ -391,9 +412,29 @@ module Hyla
             @index += 1
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_cover' + Configuration::ADOC_EXT
+            Hyla.logger.debug '>> Directory name : ' + dir_name.to_s.gsub('_',' ')
+            rep_txt = Configuration::COVER_TXT.gsub(/xxx\.png/,dir_name + '.png')
+            Hyla.logger.debug "Replaced by : " + rep_txt
             cover_f = File.new(f_name, 'w')
-            cover_f.puts Configuration::COVER_TXT
+            cover_f.puts rep_txt
             cover_f.close
+
+            #
+            # Use the filename & generate the cover image
+            #
+            out_dir = 'image'
+            file_name = dir_name + '.html'
+            image_name = dir_name + '.png'
+            course_name = @project_name
+            module_name= dir_name
+            bg_image_path = image_path
+            Hyla.logger.debug '>> Out Directory : ' + out_dir.to_s
+            Hyla.logger.debug '>> Image name : ' + image_name.to_s
+            Hyla.logger.debug '>> Course Name  : ' + course_name.to_s
+            Hyla.logger.debug '>> Module Name  : ' + module_name.to_s
+            Hyla.logger.debug '>> Bg Image  : ' + bg_image_path.to_s
+
+            self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path)
 
             #
             # Include cover file to index
@@ -445,18 +486,20 @@ module Hyla
               # Add Footer_text to the file created
               #
               @previous_f.puts Configuration::FOOTER_TXT
-
               @previous_f.close
             end
 
             #
             # Replace special characters from the title before to generate the file name
             # Convert Uppercase to lowercase
-            # Convention : m letter followed by module number, letter p & a number 01, 02, ..., 0n, next the title & .Adoc extension
-            # Example : m01p01_mytitle.adoc, m01p02_anothertitle.adoc
             #
             f_name = remove_special_chars(3, line).downcase
 
+            #
+            # Create the prefix for the file
+            # Convention : m letter followed by module number, letter p & a number 01, 02, ..., 0n, next the title & .adoc extension
+            # Example : m01p01_mytitle.adoc, m01p02_anothertitle.adoc
+            #
             @index += 1
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name + Configuration::ADOC_EXT

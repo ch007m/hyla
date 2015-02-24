@@ -102,7 +102,7 @@ module Hyla
                 "\n" +
                 "== Cover\n" +
                 "\n" +
-                "image::image:xxx.png[]"
+                "image::image/xxx.png[]"
 
     OBJECTIVES_TXT = "== Module Topics\n" +
                      "\n" +

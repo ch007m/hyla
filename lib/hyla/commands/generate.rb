@@ -418,6 +418,15 @@ module Hyla
             @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
             @index_file.puts "\n"
 
+            #
+            # Add the labinstructions.adoc file
+            #
+            f_name = 'labinstructions' + Configuration::ADOC_EXT
+            lab_f = File.new(f_name, 'w')
+            lab_f.puts Configuration::HEADER_TXT
+            lab_f.puts Configuration::LABS_TXT
+            lab_f.close
+
             # Move to next line record
             next
           end

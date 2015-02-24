@@ -75,6 +75,29 @@ module Hyla
         "// end::snippet[]\n" +
         "endif::[]\n"
 
+    LABS_TXT = ":numbered:\n" +
+               "== MODULE NAME Lab\n" +
+               "\n" +
+               ".Goals\n" +
+               "After completing this lab, you should understand the following XXXX key concepts:\n" +
+               "\n" +
+               "* Concept 1\n" +
+               "* Concept 2\n" +
+               "* Concept n\n" +
+               "    \n" +
+               ".Lab Assets\n" +
+               "The lab exercises and solutions are available in the following zip archives:\n" +
+               "\n" +
+               "* link:lab_assets.zip[]\n" +
+               "* link:lab_assets_solution.zip[]\n" +
+               "\n" +
+               "...\n" +
+               "\n" +
+               "ifdef::showscript[]\n" +
+               "// tag::snippet[]\n" +
+               "// end::snippet[]\n" +
+               "endif::[]\n"
+
     COVER_TXT = ":noheader: true\n" +
                 "\n" +
                 "== Cover\n" +

@@ -447,8 +447,12 @@ module Hyla
             #
             @index += 1
             file_index = sprintf('%02d', @index)
-            f_name = 'm' + @module_key + 'p' + file_index + '_objectives' + Configuration::ADOC_EXT
-            rep_txt = Configuration::OBJECTIVES_TXT.gsub(/xxx\.mp3/,f_name)
+            f_name = 'm' + @module_key + 'p' + file_index + '_objectives'
+
+            rep_txt = Configuration::OBJECTIVES_TXT.gsub(/xxx\.mp3/,f_name + '.mp3')
+
+            f_name = f_name + Configuration::ADOC_EXT
+
             objectives_f = File.new(f_name, 'w')
             objectives_f.puts Configuration::HEADER_TXT
             objectives_f.puts rep_txt
@@ -511,9 +515,11 @@ module Hyla
             #
             @index += 1
             file_index = sprintf('%02d', @index)
-            f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name + Configuration::ADOC_EXT
+            f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name
 
-            Hyla.logger.info '   # File created : ' + f_name.to_s
+            rep_txt = Configuration::AUDIO_TXT.gsub(/xxx\.mp3/,f_name + '.mp3')
+
+            f_name = f_name + Configuration::ADOC_EXT
 
             #
             # Create File and add configuration HEADER_TXT
@@ -521,6 +527,8 @@ module Hyla
             @new_f = File.new(f_name, 'w')
             @new_f.puts Configuration::HEADER_TXT
             @new_f.puts "\n"
+
+            Hyla.logger.info '   # File created : ' + f_name.to_s
 
             @previous_f = @new_f
 
@@ -533,7 +541,20 @@ module Hyla
           # Add Content to file if it exists and line does not start with characters to be skipped
           #
           if !@new_f.nil? and !line.start_with?(Configuration::SKIP_CHARACTERS)
-            @new_f.puts line
+            #
+            # Add audio text after the name of the title
+            #
+            #  ifdef::audioscript[]
+            #    audio::audio/m01p03_why_use_messaging[]
+            #  endif::[]
+            #
+            if line.start_with?('==')
+              @new_f.puts line
+              @new_f.puts "\n"
+              @new_f.puts rep_txt
+            else
+              @new_f.puts line
+            end
           end
 
         end
@@ -641,13 +662,15 @@ module Hyla
       end
 
       #
-      # Remove space, dot, ampersand characters from the String
+      # Remove space, dot, ampersand, hyphen, parenthesis characters from the String
       # at a position specified
       #
       def self.remove_special_chars(pos, text)
         return text[pos, text.length].strip.gsub(/\s/, '_')
         .gsub('.', '')
         .gsub('&', '')
+        .gsub('-', '')
+        .gsub(/\(|\)/, '')
         .gsub('__', '_')
       end
 

@@ -61,7 +61,7 @@ module Hyla
     #                 "endif::[]\n"
 
 
-    HEADER_TXT = "// Asciidoctor attributes\n\n"
+    HEADER_TXT = "// Asciidoctor attributes\n"
 
     LEVEL_1 = '= '
 
@@ -267,6 +267,8 @@ module Hyla
     COVER_TXT = File.open(self.resources + '/course/cover.txt','r').read
 
     OBJECTIVES_TXT = File.open(self.resources + '/course/objectives.txt','r').read
+
+    AUDIO_TXT = File.open(self.resources + '/course/audio.txt','r').read
 
   end # Class Configuration
 end # module Hyla

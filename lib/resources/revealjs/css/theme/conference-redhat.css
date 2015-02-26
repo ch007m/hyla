@@ -16,6 +16,7 @@
 
 /*********************************************
  * GLOBAL STYLES
+ * Feb 26, CHM : Reduce font-size from 32px to 30px
  *********************************************/
 body {
     background: white;
@@ -24,7 +25,7 @@ body {
 
 .reveal {
     font-family: 'liberation';
-    font-size: 32px;
+    font-size: 30px;
     font-weight: normal;
     letter-spacing: -0.02em;
     /* Color used within paragraphs - text */

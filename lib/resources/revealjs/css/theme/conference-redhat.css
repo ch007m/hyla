@@ -1,5 +1,11 @@
-/********************************************
- * FONTS
+/*********************************************
+ *
+ * RedHat GPE Conference theme
+ *
+ *********************************************/
+
+ /********************************************
+ * LIBERATION FONTS
  *********************************************/
 @font-face {
     font-family: 'liberation';
@@ -7,10 +13,6 @@
     font-weight: normal;
     font-style: normal;
 }
-
-/**
- * RedHat GPE Conference theme
- */
 
 /*********************************************
  * GLOBAL STYLES
@@ -169,10 +171,6 @@ body {
 .reveal .slide-number {
     color: darkblue; }
 
-/***********************************************
- * Modified for RedHat Style
- ***********************************************/
-
 /*********************************************
  * ScrollBar
  *********************************************/
@@ -199,9 +197,33 @@ body {
     text-align: right;
 }
 
+/*********************************************
+ * Copyright Footer
+ *********************************************/
+.footer {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50px;
+    font-family: 'liberation';
+    font-size: 15px;
+    color: #aeb3b6;
+    text-align: center;
+}
+
+/******************************************
+ * Fill screen to 100% & align text on left
+ ******************************************/
 .reveal .slides {
     text-align: left;
+    top: 370px;
 }
+
+/******************************************
+ * Asciidoctor Table style
+ ******************************************/
 
 table thead th, table tfoot th { font-weight: bold; }
 /*
@@ -217,27 +239,26 @@ th.tableblock.valign-top, td.tableblock.valign-top { vertical-align: top; }
 th.tableblock.valign-bottom, td.tableblock.valign-bottom { vertical-align: bottom; }
 th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }
 
-/*
- Used for <strong>text</strong> enclosed in <li> tag
- & color
-*/
+/**************************************************************
+ * Used for <strong>text</strong> enclosed in <li> tag & color
+ **************************************************************/
 li strong {
 /*    color: #268bd2;*/
     color: #C1100C;
     font-weight: bold;
 }
 
-/*
-  Trick to avoid to define [square] or [circle] for each item of an unordered list
-  and solve issue that we have here as we have nested lists
-*/
+/*********************************************************************************
+ * Trick to avoid to define [square] or [circle] for each item of an unordered list
+ * and solve issue that we have here as we have nested lists
+ *********************************************************************************/
 ul li {list-style-type:square;}
 ul li li {list-style-type:disc;}
 ul li li li {list-style-type:circle;}
 
-/*
+/**************************************************************
  * .reveal i must be overrided to let to use Font Awesome
- */
+ **************************************************************/
 .reveal i.fa {
     font-family: 'FontAwesome';
     font-style: normal;
@@ -292,11 +313,11 @@ ul li li li {list-style-type:circle;}
     text-align: center;
 }
 
-/*
- First Page - Background Red
- Title H2 Strong - white
- Paragraph class - white
- */
+/**************************************************************
+ * First Page - Background Red
+ * Title H2 Strong - white
+ * Paragraph class - white
+ **************************************************************/
 .reveal h2 strong {
     color: #ffffff;
 }

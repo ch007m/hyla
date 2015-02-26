@@ -1,11 +1,13 @@
-/*
- * My Moon theme customised from moon.css
- */
+/*********************************************
+ * Moon theme customised from moon.css
+ *********************************************/
+
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
-/**
+
+/*********************************************
  * Solarized Dark theme for reveal.js.
  * Author: Achim Staebler
- */
+ *********************************************/
 @font-face {
     font-family: 'League Gothic';
     src: url("../../lib/font/league_gothic-webfont.eot");
@@ -13,9 +15,9 @@
     font-weight: normal;
     font-style: normal; }
 
-/**
+/*********************************************
  * Solarized colors by Ethan Schoonover
- */
+ *********************************************/
 html * {
     color-profile: sRGB;
     rendering-intent: auto; }
@@ -244,9 +246,9 @@ ul li li li {list-style-type:circle;}
 .reveal i.conum:after { content: attr(data-value); }
 .reveal i.conum:not([data-value]):empty { display: none; }
 
-/*
+/*********************************************
  * .reveal i must be overrided to let to use Font Awesome
- */
+ *********************************************/
 .reveal i.fa{
     font-family: 'FontAwesome';
     font-style: normal;

@@ -138,9 +138,9 @@ module Hyla
         template = Slim::Template.new(:pretty => true) { slim_tmpl }
 
         # Replace underscore with space
-        course_name = course_name.gsub('_',' ')
+        course_name = course_name.gsub('_', ' ')
         # Replace underscore with space, next digits & space with nothing & Capitalize
-        module_name = module_name.gsub('_',' ').gsub(/^\d{1,2}\s/,'').capitalize
+        module_name = module_name.gsub('_', ' ').gsub(/^\d{1,2}\s/, '').capitalize
 
         Hyla.logger.debug "Module name : " + module_name
 
@@ -207,9 +207,9 @@ module Hyla
         files = Dir[current_dir + "/**/*.{" + extensions + "}"].reject { |f| f =~ /\/#{excludes}\// }
 
         #
-        # Check if companion parameter is defined
+        # Check if snippet parameter is defined
         # as we have to modify the AllSlides.txt file
-        # containing as tag name this value [tag=snippet]
+        # to include within the brackets this tag --> [tag=snippet]
         #
         if options[:snippet_content] == true
           files.each do |f|
@@ -266,8 +266,8 @@ module Hyla
         end
 
         #
-        # Check if companion parameter is defined
-        # and remove the companion tag from indexed files
+        # Check if snippet parameter is defined
+        # and remove the snippet tag from indexed files
         #
         if options[:snippet_content] == true
           files.each do |f|
@@ -412,8 +412,8 @@ module Hyla
             @index += 1
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_cover' + Configuration::ADOC_EXT
-            Hyla.logger.debug '>> Directory name : ' + dir_name.to_s.gsub('_',' ')
-            rep_txt = Configuration::COVER_TXT.gsub(/xxx\.png/,dir_name + '.png')
+            Hyla.logger.debug '>> Directory name : ' + dir_name.to_s.gsub('_', ' ')
+            rep_txt = Configuration::COVER_TXT.gsub(/xxx\.png/, dir_name + '.png')
             Hyla.logger.debug "Replaced by : " + rep_txt
             cover_f = File.new(f_name, 'w')
             cover_f.puts rep_txt
@@ -449,7 +449,7 @@ module Hyla
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_objectives'
 
-            rep_txt = Configuration::OBJECTIVES_TXT.gsub(/xxx\.mp3/,f_name + '.mp3')
+            rep_txt = Configuration::OBJECTIVES_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
 
             f_name = f_name + Configuration::ADOC_EXT
 
@@ -517,7 +517,7 @@ module Hyla
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name
 
-            rep_txt = Configuration::AUDIO_TXT.gsub(/xxx\.mp3/,f_name + '.mp3')
+            rep_txt = Configuration::AUDIO_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
 
             f_name = f_name + Configuration::ADOC_EXT
 
@@ -667,11 +667,11 @@ module Hyla
       #
       def self.remove_special_chars(pos, text)
         return text[pos, text.length].strip.gsub(/\s/, '_')
-        .gsub('.', '')
-        .gsub('&', '')
-        .gsub('-', '')
-        .gsub(/\(|\)/, '')
-        .gsub('__', '_')
+                   .gsub('.', '')
+                   .gsub('&', '')
+                   .gsub('-', '')
+                   .gsub(/\(|\)/, '')
+                   .gsub('__', '_')
       end
 
       #
@@ -726,18 +726,22 @@ module Hyla
       end
 
       #
-      # Add snippet tag to index file with extension .ad[]
-      # as this is not yet the case
+      # Modify the content of an index file if
+      # it contains include::file with extension .ad, .adoc or .asciidoc
+      # and add the tag snippet ([] --> [tag=snippet])
       #
       def self.add_tag_to_index_file(index_file)
-        content = File.read(index_file)
-        #
-        # Modify the content of an index file if
-        # it contains include::file with extension .ad, .adoc or .asciidoc
-        #
-        if content =~ /(\.ad)|(\.adoc)|(\.asciidoc)/
-          replace = content.gsub(/\[/, '[tag=' + Configuration::SNIPPET_TAG)
-          replace_content(index_file, replace)
+        if File.basename(index_file) == "AllSlides.txt" then
+          content = ""
+          File.readlines(index_file).each do |line|
+            if line =~ /^include::.*\[\]$/
+              replace = line.gsub(/\[/, '[tag=' + Configuration::SNIPPET_TAG)
+              content = content.to_s + replace
+            else
+              content = content.to_s + line
+            end
+          end
+          replace_content(index_file, content)
         end
       end
 
@@ -745,14 +749,17 @@ module Hyla
       # Remove snippet tag from index file
       #
       def self.remove_tag_from_index_file(index_file)
-        content = File.read(index_file)
-        #
-        # Modify the content of an index file if
-        # it contains include::file with extension .ad, .adoc or .asciidoc
-        #
-        if content =~ /(\.ad)|(\.adoc)|(\.asciidoc)/
-          replace = content.gsub('[tag=' + Configuration::SNIPPET_TAG, '[')
-          replace_content(index_file, replace)
+        if File.basename(index_file) == "AllSlides.txt" then
+          content = ""
+          File.readlines(index_file).each do |line|
+            if line =~ /^include::.*\[tag\=.*\]$/
+              replace = line.gsub('[tag=' + Configuration::SNIPPET_TAG, '[')
+              content = content.to_s + replace
+            else
+              content = content.to_s + line
+            end
+          end
+          replace_content(index_file, content)
         end
       end
 
@@ -760,10 +767,10 @@ module Hyla
       # Replace content of a File
       #
       def self.replace_content(f, content)
-        File.open(f, "w") { |f| f.puts content } if !content.empty?
+        File.open(f, "w") { |out| out << content } if !content.empty?
       end
 
-      #
+
       # Check mandatory options
       #
       def self.check_mandatory_option?(key, value)

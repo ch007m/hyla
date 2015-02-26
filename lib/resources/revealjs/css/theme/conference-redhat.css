@@ -215,10 +215,11 @@ body {
 
 /******************************************
  * Fill screen to 100% & align text on left
+ # Feb 26, CHM : Changed top: 370px to 500px otherwise the text is mixed with header image
  ******************************************/
 .reveal .slides {
     text-align: left;
-    top: 370px;
+    top: 500px;
 }
 
 /******************************************

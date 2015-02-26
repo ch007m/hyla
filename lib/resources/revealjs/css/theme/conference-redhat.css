@@ -1,23 +1,92 @@
 /*********************************************
  *
- * RedHat GPE Conference theme
+ * RedHat Conference Theme customized from GPE & RevealJS
  *
  *********************************************/
 
- /********************************************
+/*********************************************
  * LIBERATION FONTS
  *********************************************/
 @font-face {
     font-family: 'liberation';
-    src: url(../../lib/font/liberation_sans-regular.ttf) format('truetype');
+    src: url("../../lib/font/liberation_sans-regular.ttf") format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'liberation';
+    src: url("../../lib/font/liberation_sans-bold.ttf") format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'liberation';
+    src: url("../../lib/font/liberation_sans-bolditalic.ttf") format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'liberation';
+    src: url("../../lib/font/liberation_sans-italic.ttf") format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/*********************************************
+ * ScrollBar
+ * Feb 24, ART: Changed the height of the scrollbar from 450 600
+ * Feb 24, ART: Changed the padding from 10 20 20 20 to 5 10 10 10
+ * Feb 24, ART: Changed the margin from 20px 0 0 to 5px 0 0
+ *********************************************/
+.scrollbar {
+    border: 1px solid #eee;
+    height: 600px;
+    overflow: scroll;
+    margin: 5px 0 0;
+    padding: 5px 10px 10px 10px;
+}
+
+/*********************************************
+ * Corporate Logo Header Image
+ * Feb 26, CHM: Changed the height from 80px to 0px
+ *********************************************/
+.header {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 0px;
+    font-family: 'liberation';
+    font-size: 20px;
+    text-align: center;
+}
+
+/*********************************************
+ * Copyright Footer
+ * Feb 24, ART: Changed to footer height from 80 to 40
+ *********************************************/
+.footer {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40px;
+    font-family: 'liberation';
+    font-size: 20px;
+    text-align: center;
+}
+
 /*********************************************
  * GLOBAL STYLES
- * Feb 26, CHM : Reduce font-size from 32px to 30px
- *********************************************/
+ * Feb 24, ART:  added a border to the body, attempting to see how the margin is being used.
+ * Feb 24, ART:  added a border to the reveal section, attempting to see how the margin is being used.
+  * Feb 26, CHM : Reduce font-size from 32px to 30px
+  *********************************************/
 body {
     background: white;
     background-color: white;
@@ -25,7 +94,7 @@ body {
 
 .reveal {
     font-family: 'liberation';
-    font-size: 30px;
+    font-size: 28px;
     font-weight: normal;
     letter-spacing: -0.02em;
     /* Color used within paragraphs - text */

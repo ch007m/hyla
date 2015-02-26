@@ -144,7 +144,7 @@ body {
     text-shadow: none; }
 
 /***************************************************
- * Feb 26, ART: Font Size 2em andwidth: 900px added
+ * Feb 26, ART: Font Size 2em and width: 900px added
  **************************************************/
 .reveal h1 {
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
@@ -160,22 +160,28 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-    color: darkblue;
+/*    color: darkblue;*/
+    color: #C1100C;
     text-decoration: none;
     -webkit-transition: color .15s ease;
     -moz-transition: color .15s ease;
     -ms-transition: color .15s ease;
     -o-transition: color .15s ease;
-    transition: color .15s ease; }
+    transition: color .15s ease;
+}
 
 .reveal a:not(.image):hover {
-    color: #0000f1;
+    /*color: #0000f1;*/
+    color: #C1100C;
     text-shadow: none;
-    border: none; }
+    border: none;
+}
 
 .reveal .roll span:after {
     color: #fff;
-    background: #00003f; }
+/*    background: #00003f;*/
+    background: #C1100C;
+}
 
 /*********************************************
  * IMAGES

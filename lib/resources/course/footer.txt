@@ -1,5 +1,5 @@
 ifdef::showscript[]
-tag::snippet[]
+//tag:snippet[]
 
 == TITLE
 
@@ -7,5 +7,5 @@ ifdef::includeaudio[]
 audio::audio/xxxx.mp3[]
 endif::[]
 
-end::snippet[]
+//end::snippet[]
 endif::[]

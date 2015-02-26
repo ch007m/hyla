@@ -218,7 +218,7 @@ body {
  ******************************************/
 .reveal .slides {
     text-align: left;
-    top: 400px;
+    top: 350px;
 }
 
 /******************************************
@@ -350,6 +350,6 @@ ul li li li {list-style-type:circle;}
  **************************************************************/
 .cover {
     position: absolute;
-    top:-100px;
+    top: 5px;
     text-align: center;
 }

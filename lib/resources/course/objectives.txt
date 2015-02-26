@@ -11,7 +11,7 @@ By completing this module you will learn about the following topics:
   * Item 2
 
 ifdef::showscript[]
-// tag::snippet[]
+tag::snippet[]
 
 == Module Topics
 
@@ -20,5 +20,5 @@ audio::audio/xxx_objectives.mp3[]
 endif::[]
 
 * This module introduces ...
-// end::snippet[]
+end::snippet[]
 endif::[]

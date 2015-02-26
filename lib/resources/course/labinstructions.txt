@@ -17,6 +17,6 @@ The lab exercises and solutions are available in the following zip archives:
 ...
 
 ifdef::showscript[]\n"
-// tag::snippet[]
-// end::snippet[]
+tag::snippet[]
+end::snippet[]
 endif::[]

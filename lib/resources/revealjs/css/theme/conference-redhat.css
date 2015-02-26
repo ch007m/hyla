@@ -332,9 +332,24 @@ ul li li li {list-style-type:circle;}
     color: #ffffff;
 }
 
+/**************************************************************
+ * To be verified if we are using it with first page of the slides of a conference
+
+    .cover {
+        position:absolute;
+        top:150px;
+        left:10px;
+        right:10px;
+        }
+
+ */
+
+/**************************************************************
+ * Style used to display the cover picture full screen
+ * Add this tag [.cover] before the picture of the cover page
+ **************************************************************/
 .cover {
-    position:absolute;
-    top:150px;
-    left:10px;
-    right:10px;
+    position: absolute;
+    top:-100px;
+    text-align: center;
 }

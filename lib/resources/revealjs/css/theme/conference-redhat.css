@@ -207,17 +207,17 @@ body {
     height: 50px;
     font-family: 'liberation';
     font-size: 15px;
-    color: *aeb3b6;
+    color: #aeb3b6;
     text-align: center;
 }
 
 /******************************************
  * Fill screen to 100% & align text on left
- * Feb 26, CHM : Changed top: 370px to 500px otherwise the text is mixed with header image
+ * Feb 26, CHM : Changed top: 370px to 450px otherwise the text is mixed with header image
  ******************************************/
 .reveal .slides {
     text-align: left;
-    top: 500px;
+    top: 450px;
 }
 
 /******************************************

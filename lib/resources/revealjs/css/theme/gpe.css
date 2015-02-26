@@ -2,15 +2,14 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 
 /**
- * A simple theme for reveal.js presentations, similar
- * to the default theme. The accent color is darkblue.
+ * GPE Style customized from RevealJS Style ()
  *
  * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
  * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
  */
 
-/********************************************
- * FONTS
+/*********************************************
+ * LIBERATION FONTS
  *********************************************/
 @font-face {
     font-family: 'liberation';
@@ -39,7 +38,6 @@
     font-weight: normal;
     font-style: italic;
 }
-
 
 /*********************************************
  * ScrollBar
@@ -98,12 +96,16 @@ body {
     color: black;
 }
 
-/*.reveal .slides {
-    margin-top: 80px;
-}*/
-
 .reveal section {
     text-align: left;
+}
+
+/******************************************
+ * Fill screen to 100% & align text on left
+ ******************************************/
+.reveal .slides {
+    text-align: left;
+    top: 370px;
 }
 
 ::selection {
@@ -248,4 +250,5 @@ body {
  * SLIDE NUMBER
  *********************************************/
 .reveal .slide-number {
-    color: darkblue; }
+    color: darkblue;
+}

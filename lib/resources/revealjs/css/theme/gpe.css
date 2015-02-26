@@ -41,17 +41,21 @@
 
 /*********************************************
  * ScrollBar
+ * Feb 24, ART: Changed the height of the scrollbar from 450 600
+ * Feb 24, ART: Changed the padding from 10 20 20 20 to 5 10 10 10
+ * Feb 24, ART: Changed the margin from 20px 0 0 to 5px 0 0
  *********************************************/
 .scrollbar {
     border: 1px solid #eee;
-    height: 450px;
+    height: 600px;
     overflow: scroll;
-    margin: 20px 0 0;
-    padding: 10px 20px 20px 20px;
+    margin: 5px 0 0;
+    padding: 5px 10px 10px 10px;
 }
 
 /*********************************************
  * Corporate Logo Header Image
+ * Feb 26, CHM: Changed the height from 80px to 0px
  *********************************************/
 .header {
     position: absolute;
@@ -59,7 +63,7 @@
     left: 0;
     right: 0;
     top: 0;
-    height: 80px;
+    height: 0px;
     font-family: 'liberation';
     font-size: 20px;
     text-align: center;
@@ -67,6 +71,7 @@
 
 /*********************************************
  * Copyright Footer
+ * Feb 24, ART: Changed to footer height from 80 to 40
  *********************************************/
 .footer {
     position: absolute;
@@ -74,7 +79,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 80px;
+    height: 40px;
     font-family: 'liberation';
     font-size: 20px;
     text-align: center;
@@ -82,6 +87,8 @@
 
 /*********************************************
  * GLOBAL STYLES
+ * Feb 24, ART:  added a border to the body, attempting to see how the margin is being used.
+ * Feb 24, ART:  added a border to the reveal section, attempting to see how the margin is being used.
  *********************************************/
 body {
     background: white;
@@ -96,22 +103,26 @@ body {
     color: black;
 }
 
+::selection {
+    color: white;
+    background: rgba(0, 0, 0, 0.99);
+    text-shadow: none; }
+
+/*********************************************
+  * TODO - To be verifed if we use it or not
+  *******************************************/
 .reveal section {
     text-align: left;
 }
 
 /******************************************
  * Fill screen to 100% & align text on left
+ * Feb 26, CHM : Add top: 370px to fill the screen to 100%
  ******************************************/
 .reveal .slides {
     text-align: left;
     top: 370px;
 }
-
-::selection {
-    color: white;
-    background: rgba(0, 0, 0, 0.99);
-    text-shadow: none; }
 
 /*********************************************
  * HEADERS
@@ -132,8 +143,13 @@ body {
     text-transform: none;
     text-shadow: none; }
 
+/***************************************************
+ * Feb 26, ART: Font Size 2em andwidth: 900px added
+ **************************************************/
 .reveal h1 {
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+    font-size: 2em;
+    width:900px;
 }
 
 .reveal h2 {

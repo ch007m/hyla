@@ -222,7 +222,7 @@ body {
 }
 
 /******************************************
- * Asciidoctor Table style
+ * Asciidoctor Table style rendering
  ******************************************/
 
 table thead th, table tfoot th { font-weight: bold; }
@@ -240,7 +240,8 @@ th.tableblock.valign-bottom, td.tableblock.valign-bottom { vertical-align: botto
 th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }
 
 /**************************************************************
- * Used for <strong>text</strong> enclosed in <li> tag & color
+ * By default, it is not possible to display text in Bold or within <li>> tag
+ * Here is a trick to support that <strong>text</strong> enclosed in <li> tag & color
  **************************************************************/
 li strong {
 /*    color: #268bd2;*/
@@ -256,9 +257,10 @@ ul li {list-style-type:square;}
 ul li li {list-style-type:disc;}
 ul li li li {list-style-type:circle;}
 
-/**************************************************************
- * .reveal i must be overrided to let to use Font Awesome
- **************************************************************/
+/*******************************************************************
+ * .reveal i must be override in order to be able to use Asciidoctor and
+ * Font Awesome icons for NOTE, WARNING, REMARK, ....
+ *******************************************************************/
 .reveal i.fa {
     font-family: 'FontAwesome';
     font-style: normal;
@@ -266,7 +268,7 @@ ul li li li {list-style-type:circle;}
 }
 
 /*********************************************
- * Callout
+ * Support asciidoctor callout
  *********************************************/
 .reveal i.conum {
     display: inline-block;
@@ -286,12 +288,19 @@ ul li li li {list-style-type:circle;}
 .reveal i.conum:after { content: attr(data-value); }
 .reveal i.conum:not([data-value]):empty { display: none; }
 
-
+/****************************************************
+ * Increase size of a paragraph block
+ * Improve content readability
+ ****************************************************/
 .paragraph p {
     display:block;
     line-height: 1.3;
 }
 
+/****************************************************
+ * Include a new line when the slide contains &nbps;
+ * Improve content readability
+ ****************************************************/
 .newline:before {
     content: '\A';
     white-space:pre;

@@ -184,6 +184,7 @@ body {
 
 /*********************************************
  * Corporate Logo Header Image
+ # Feb 26, CHM : Changed text-align right to center
  *********************************************/
 .header {
     position: absolute;
@@ -194,7 +195,7 @@ body {
     height: 80px;
     font-family: 'liberation';
     font-size: 20px;
-    text-align: right;
+    text-align: center;
 }
 
 /*********************************************

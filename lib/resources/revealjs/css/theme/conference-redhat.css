@@ -173,10 +173,11 @@ body {
 
 /*********************************************
  * ScrollBar
+ * Feb 26, CHM : Increase height from 450 to 480px
  *********************************************/
 .scrollbar {
     border: 1px solid #eee;
-    height: 450px;
+    height: 480px;
     overflow: scroll;
     margin: 20px 0 0;
     padding: 10px 20px 20px 20px;
@@ -184,7 +185,7 @@ body {
 
 /*********************************************
  * Corporate Logo Header Image
- # Feb 26, CHM : Changed text-align right to center
+ * Feb 26, CHM : Changed text-align right to center
  *********************************************/
 .header {
     position: absolute;
@@ -210,13 +211,13 @@ body {
     height: 50px;
     font-family: 'liberation';
     font-size: 15px;
-    color: #aeb3b6;
+    color: *aeb3b6;
     text-align: center;
 }
 
 /******************************************
  * Fill screen to 100% & align text on left
- # Feb 26, CHM : Changed top: 370px to 500px otherwise the text is mixed with header image
+ * Feb 26, CHM : Changed top: 370px to 500px otherwise the text is mixed with header image
  ******************************************/
 .reveal .slides {
     text-align: left;
@@ -293,6 +294,7 @@ ul li li li {list-style-type:circle;}
 /****************************************************
  * Increase size of a paragraph block
  * Improve content readability
+ * Feb 26, CHM : Remove white color
  ****************************************************/
 .paragraph p {
     display:block;
@@ -330,10 +332,6 @@ ul li li li {list-style-type:circle;}
  * Paragraph class - white
  **************************************************************/
 .reveal h2 strong {
-    color: #ffffff;
-}
-
-.paragraph {
     color: #ffffff;
 }
 

@@ -16,7 +16,11 @@ The lab exercises and solutions are available in the following zip archives:
 
 ...
 
-ifdef::showscript[]"
-//tag:snippet[]
+ifdef::showscript[]
+[.notes]
+****
+//tag::snippet[]
+
 //end::snippet[]
+****
 endif::[]

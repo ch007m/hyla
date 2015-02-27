@@ -1,5 +1,7 @@
 ifdef::showscript[]
-//tag:snippet[]
+[.notes]
+****
+//tag::snippet[]
 
 == TITLE
 
@@ -8,4 +10,5 @@ audio::audio/xxx.mp3[]
 endif::[]
 
 //end::snippet[]
+****
 endif::[]

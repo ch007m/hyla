@@ -12,6 +12,11 @@ destination: generated_content # or . or ~/Hyla or generated_content
 style: liberation
 
 #
+# Show snippet tag content
+#
+snippet_content: false # Change the value to true if you would like to generate the HTML content for the text wrapped around tag::[snippet] & end::snippet[]
+
+#
 # Asciidoctor and attributes options
 #
 backend: html5
@@ -24,8 +29,19 @@ attributes:
    # header_image_path: # Co(Un)mment this line and add image path location when required
    # nofooter: true # Co(Un)mment this line when you don't want to see the footer - black line
    # noheader: true # Co(Un)mment this line when you don't want to see the header section
-   revealjs_theme: # theme to be used default, ...
-   # showscript: true # Co(Un)mment this line when you want to display scripts for instructors
+
+   # showscript: true # Co(Un)mment this line when you want to display notes for instructors
+   # audioscript: true # Co(Un)mment this line when you want to include the audio html tag
+
+   # Attributes required for slideshow
+   revealjs_theme: default # theme to be used default for revealjs slideshow : solarized, beige, blood, conference, default, moon, night, serif, simple, sky, solarized
+   revealjs_transition: fade # default/cube/page/concave/zoom/linear/fade/none
+   revealjs_history : true # To include the slide link into the url
+   # revealjs_vertical_alignment: true
+   revealjs_display_slide_number: true # display the number of the slide bottom of the screen
+   scrollbar: true # Support scrollbar into the browser for the slides
+   slideshow: true # Attribute that we use to include/remove titles, cover for revealjs
+
 # end asciidoctor attributes
 
 #

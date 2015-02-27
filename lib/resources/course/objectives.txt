@@ -16,7 +16,7 @@ ifdef::showscript[]
 == Module Topics
 
 ifdef::audioscript[]
-audio::audio/xxx_objectives.mp3[]
+audio::audio/xxx.mp3[]
 endif::[]
 
 * This module introduces ...

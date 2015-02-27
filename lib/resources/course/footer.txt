@@ -4,7 +4,7 @@ ifdef::showscript[]
 == TITLE
 
 ifdef::includeaudio[]
-audio::audio/xxxx.mp3[]
+audio::audio/xxx.mp3[]
 endif::[]
 
 //end::snippet[]

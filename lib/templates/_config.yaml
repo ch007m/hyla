@@ -24,6 +24,14 @@ attributes:
    source-highlighter: coderay
    linkcss!: true
    data-uri: true
+
+   # Font Icons - http://fortawesome.github.io/Font-Awesome/icons/
+   arrow-left: <i class="fa fa-arrow-right"></i>
+   arrow-right: <i class="fa fa-arrow-right"></i>
+   icons: font
+   iconfont-remote: true
+   iconfont-cdn: http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css
+
    # stylesdir: path_of_the_styles directory
    # footer_copyright: # Co(Un)mment this line and add Copyright Text when required
    # header_image_path: # Co(Un)mment this line and add image path location when required

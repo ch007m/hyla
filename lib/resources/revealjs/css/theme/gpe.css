@@ -249,7 +249,35 @@ body {
     transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
 
 /*********************************************
- * Callout
+ * SLIDE NUMBER
+ *********************************************/
+.reveal .slide-number {
+    color: darkblue;
+}
+
+/*********************************************************************************
+ * Trick to avoid to define [square] or [circle] for each item of an unordered list
+ * and solve issue that we have here as we have nested lists
+ * Feb 27, CHM : Added
+ *********************************************************************************/
+ul li {list-style-type:square;}
+ul li li {list-style-type:disc;}
+ul li li li {list-style-type:circle;}
+
+/*******************************************************************
+ * .reveal i must be override in order to be able to use Asciidoctor and
+ * Font Awesome icons for NOTE, WARNING, REMARK, ....
+ * Feb, CHM: Added
+ *******************************************************************/
+.reveal i.fa {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-size: 100%;
+}
+
+/*********************************************
+ * Support asciidoctor callout
+ * Feb 27, CHM: Added
  *********************************************/
 .reveal i.conum {
     display: inline-block;
@@ -269,9 +297,3 @@ body {
 .reveal i.conum:after { content: attr(data-value); }
 .reveal i.conum:not([data-value]):empty { display: none; }
 
-/*********************************************
- * SLIDE NUMBER
- *********************************************/
-.reveal .slide-number {
-    color: darkblue;
-}

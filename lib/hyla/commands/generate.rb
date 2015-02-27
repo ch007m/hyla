@@ -498,7 +498,8 @@ module Hyla
               #
               # Add Footer_text to the file created
               #
-              @previous_f.puts Configuration::FOOTER_TXT
+              rep_txt = Configuration::FOOTER_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
+              @previous_f.puts rep_txt
               @previous_f.close
             end
 
@@ -519,21 +520,21 @@ module Hyla
 
             rep_txt = Configuration::AUDIO_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
 
-            f_name = f_name + Configuration::ADOC_EXT
+            f_asciidoc_name = f_name + Configuration::ADOC_EXT
 
             #
             # Create File and add configuration HEADER_TXT
             #
-            @new_f = File.new(f_name, 'w')
+            @new_f = File.new(f_asciidoc_name, 'w')
             @new_f.puts Configuration::HEADER_TXT
             @new_f.puts "\n"
 
-            Hyla.logger.info '   # File created : ' + f_name.to_s
+            Hyla.logger.info '   # File created : ' + f_asciidoc_name.to_s
 
             @previous_f = @new_f
 
             # Include file to index
-            @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
+            @index_file.puts Configuration::INCLUDE_PREFIX + f_asciidoc_name + Configuration::INCLUDE_SUFFIX
             @index_file.puts "\n"
           end
 

@@ -260,6 +260,8 @@ module Hyla
 
     LABS_TXT = File.open(self.resources + '/course/labinstructions.txt','r').read
 
+    INDEX = File.open(self.resources + '/course/index.txt','r').read
+
     HEADER_INDEX = File.open(self.resources + '/course/header_index.txt','r').read
 
     FOOTER_TXT = File.open(self.resources + '/course/footer.txt','r').read

@@ -377,7 +377,7 @@ module Hyla
 
             #
             # Create an index file
-            # It is used to include files belonging to a module and will be used for SlideShows
+            # It is used to include files belonging to a module and will be used for SlideShow
             # The file created contains a title (= Dir Name) and header with attributes
             #
             @index_file = create_index_file_withoutprefix(dir_name, Configuration::LEVEL_1)
@@ -691,6 +691,7 @@ module Hyla
       #
       # Create ascidoc index file
       # containing references to asciidoc files part of a module
+      # TODO : Not longer used -> can be removed
       #
       def self.create_index_file_withprefix(file_name, level)
         n_file_name = file_name + Configuration::INDEX_SUFFIX
@@ -719,8 +720,13 @@ module Hyla
         # TODO - until now we cannot use level 0 for parent/children files
         # even if doctype: book
         # This is why the level for each index file title is '=='
-        index_file.puts '== ' + file_name
+
+        rep_txt = Configuration::INDEX.gsub(/xxx/, file_name)
+        index_file.puts rep_txt
         index_file.puts "\n"
+
+#
+        # index_file.puts "\n"
 
         index_file
       end

@@ -2,7 +2,7 @@
 == MODULE NAME Lab
 
 .Goals
-After completing this lab, you should understand the following XXXX key concepts:
+After completing this lab, you should understand the following XXX key concepts:
 
 * Concept 1
 * Concept 2
@@ -16,7 +16,7 @@ The lab exercises and solutions are available in the following zip archives:
 
 ...
 
-ifdef::showscript[]\n"
+ifdef::showscript[]"
 //tag:snippet[]
 //end::snippet[]
 endif::[]

@@ -1,5 +1,13 @@
 :noheader: true
 
-== Cover
+// No title should be displayed for Slideshow presentation as the cover picture already content the text
+ifdef::slideshow[]
+== &nbsp;
+endif::[]
 
+ifndef::slideshow[]
+== Cover
+endif::[]
+
+[.cover]
 image::image/xxx.png[]

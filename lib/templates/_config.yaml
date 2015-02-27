@@ -40,7 +40,7 @@ attributes:
    # revealjs_vertical_alignment: true
    revealjs_display_slide_number: true # display the number of the slide bottom of the screen
    scrollbar: true # Support scrollbar into the browser for the slides
-   slideshow: true # Attribute that we use to include/remove titles, cover for revealjs
+   slideshow: true # Attribute that we use to include/remove title cover for revealjs
 
 # end asciidoctor attributes
 

@@ -44,10 +44,11 @@
  * Feb 24, ART: Changed the height of the scrollbar from 450 600
  * Feb 24, ART: Changed the padding from 10 20 20 20 to 5 10 10 10
  * Feb 24, ART: Changed the margin from 20px 0 0 to 5px 0 0
+ * Mar 02, CHM: Increase height from 600 to 670px
  *********************************************/
 .scrollbar {
     border: 1px solid #eee;
-    height: 600px;
+    height: 670px;
     overflow: scroll;
     margin: 5px 0 0;
     padding: 5px 10px 10px 10px;
@@ -134,9 +135,7 @@ body {
 .reveal h5,
 .reveal h6 {
     margin: 0 0 20px 0;
-    /*color: black;*/
     color: #3E4349;
-    /*font-family: "News Cycle", Impact, sans-serif;*/
     font-family: 'liberation';
     line-height: 0.9em;
     letter-spacing: 0.02em;
@@ -160,7 +159,6 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-/*    color: darkblue;*/
     color: #C1100C;
     text-decoration: none;
     -webkit-transition: color .15s ease;
@@ -171,7 +169,6 @@ body {
 }
 
 .reveal a:not(.image):hover {
-    /*color: #0000f1;*/
     color: #C1100C;
     text-shadow: none;
     border: none;
@@ -179,7 +176,6 @@ body {
 
 .reveal .roll span:after {
     color: #fff;
-/*    background: #00003f;*/
     background: #C1100C;
 }
 
@@ -189,7 +185,6 @@ body {
 .reveal section img {
     margin: 15px 0px;
     background: rgba(255, 255, 255, 0.12);
-    /*border: 4px solid black;*/
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
     -webkit-transition: all .2s linear;
     -moz-transition: all .2s linear;
@@ -199,7 +194,6 @@ body {
 
 .reveal a:hover img {
     background: rgba(255, 255, 255, 0.2);
-    /*border-color: darkblue;*/
     border-color: #C1100C;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
@@ -297,12 +291,20 @@ ul li li li {list-style-type:circle;}
 .reveal i.conum:after { content: attr(data-value); }
 .reveal i.conum:not([data-value]):empty { display: none; }
 
-/******************************************
+/*******************************************************
  * Asciidoctor Table style rendering
- * Feb 27, CHM: Added
- ******************************************/
+ * Feb 27, CHM: Added & Refactor to display the borders
+ ******************************************************/
 table thead th, table tfoot th { font-weight: bold; }
-table.tableblock.grid-all { border-collapse: separate; border-spacing: 1px; -webkit-border-radius: 4px; border-radius: 4px; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; }
+table.tableblock.grid-all {
+    border-collapse: separate;
+    border-spacing: 10px;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: #dddddd;
+    border-style: solid;
+}
+tr:nth-of-type(even)		{ background-color: #f9f9f9; }
 table.tableblock.frame-topbot, table.tableblock.frame-none { border-left: 0; border-right: 0; }
 table.tableblock.frame-sides, table.tableblock.frame-none { border-top: 0; border-bottom: 0; }
 table.tableblock td .paragraph:last-child p > p:last-child, table.tableblock th > p:last-child, table.tableblock td > p:last-child { margin-bottom: 0; }
@@ -319,8 +321,6 @@ th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middl
  * Feb 27, CHM: Added
  **************************************************************/
 li strong {
-    /*    color: #268bd2;*/
     color: #C1100C;
     font-weight: bold;
 }
-

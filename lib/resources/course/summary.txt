@@ -1,0 +1,27 @@
+
+== Summary
+
+ifdef::includeaudio[]
+audio::audio/xxx.mp3[]
+endif::[]
+
+This module introduced you to the following topics:
+
+** Item 1
+** Item 2
+** Item 3
+
+ifdef::showscript[]
+[.notes]
+****
+//tag::snippet[]
+
+== Summary
+
+This module addressed questions about ...
+
+//end::snippet[]
+****
+endif::[]
+
+

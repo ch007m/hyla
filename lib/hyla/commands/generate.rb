@@ -347,10 +347,11 @@ module Hyla
         # Create index file of all index files
         @project_index_file = self.create_index_file_withoutprefix(project_name, Configuration::LEVEL_1)
 
-
+        @module_key = ""
+        
         # File iteration
         f.each do |line|
-
+          
           #
           # Check level 1
           # Create a directory where its name corresponds to 'Title Level 1' &
@@ -358,6 +359,23 @@ module Hyla
           # replaced ' ' by '_'
           #
           if line[/^=\s/]
+
+            # We will create a summary.adoc file when the previous module has been populated
+            if @module_key != ""
+
+              @index += 1
+              file_index = sprintf('%02d', @index)
+              f_name = 'm' + @module_key + 'p' + file_index + '_summary'
+
+              rep_txt = Configuration::SUMMARY_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
+
+              f_name = f_name + Configuration::ADOC_EXT
+
+              summary_f = File.new(f_name, 'w')
+              summary_f.puts Configuration::HEADER_TXT
+              summary_f.puts rep_txt
+              summary_f.close
+            end
 
             #
             # Create the Directory name for the module and next the files
@@ -498,7 +516,7 @@ module Hyla
               #
               # Add Footer_text to the file created
               #
-              rep_txt = Configuration::FOOTER_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
+              rep_txt = Configuration::FOOTER_TXT.gsub(/xxx\.mp3/, @previous_f.to_s + '.mp3')
               @previous_f.puts rep_txt
               @previous_f.close
             end
@@ -559,7 +577,7 @@ module Hyla
           end
 
         end
-
+        
       end
 
 =begin

@@ -270,6 +270,8 @@ module Hyla
 
     OBJECTIVES_TXT = File.open(self.resources + '/course/objectives.txt','r').read
 
+    SUMMARY_TXT = File.open(self.resources + '/course/summary.txt','r').read
+
     AUDIO_TXT = File.open(self.resources + '/course/audio.txt','r').read
 
   end # Class Configuration

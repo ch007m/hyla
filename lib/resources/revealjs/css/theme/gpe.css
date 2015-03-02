@@ -294,6 +294,7 @@ ul li li li {list-style-type:circle;}
 /*******************************************************
  * Asciidoctor Table style rendering
  * Feb 27, CHM: Added & Refactor to display the borders
+ * Mar 02, CHM: Add caption to display the Table title with a different style, color
  ******************************************************/
 table thead th, table tfoot th { font-weight: bold; }
 table.tableblock.grid-all {
@@ -308,6 +309,7 @@ tr:nth-of-type(even)		{ background-color: #f9f9f9; }
 table.tableblock.frame-topbot, table.tableblock.frame-none { border-left: 0; border-right: 0; }
 table.tableblock.frame-sides, table.tableblock.frame-none { border-top: 0; border-bottom: 0; }
 table.tableblock td .paragraph:last-child p > p:last-child, table.tableblock th > p:last-child, table.tableblock td > p:last-child { margin-bottom: 0; }
+table.tableblock > caption { line-height: 1.4; color: #C1100C; margin-top: 0.2em; margin-bottom: 0.5em; overflow: visible; max-width: 0; white-space: nowrap; display: table-caption}
 th.tableblock.halign-left, td.tableblock.halign-left { text-align: left; }
 th.tableblock.halign-right, td.tableblock.halign-right { text-align: right; }
 th.tableblock.halign-center, td.tableblock.halign-center { text-align: center; }
@@ -316,7 +318,7 @@ th.tableblock.valign-bottom, td.tableblock.valign-bottom { vertical-align: botto
 th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }
 
 /**************************************************************
- * By default, it is not possible to display text in Bold or within <li>> tag
+ * By default, it is not possible to display text in Bold, ... within <li>> tag
  * Here is a trick to support that <strong>text</strong> enclosed in <li> tag & color
  * Feb 27, CHM: Added
  **************************************************************/

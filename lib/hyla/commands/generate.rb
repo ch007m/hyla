@@ -318,7 +318,8 @@ module Hyla
         Hyla.logger.info '>> Project Name : ' + project_name + ' <<'
 
         # Open file & parse it
-        f = File.open(toc_file, 'r')
+        f = f = File.open(toc_file, 'r')
+        f_scan_occurences = File.open(toc_file, 'r')
 
         # Expand File Path
         @out_dir = File.expand_path out_dir
@@ -347,7 +348,11 @@ module Hyla
         # Create index file of all index files
         @project_index_file = self.create_index_file_withoutprefix(project_name, Configuration::LEVEL_1)
 
-        @module_key = ""
+        # Count ho many modules we have
+        @modules = f_scan_occurences.read.scan(/^=\s/).size
+        f_scan_occurences.close
+        
+        @counter = 0
         
         # File iteration
         f.each do |line|
@@ -359,24 +364,17 @@ module Hyla
           # replaced ' ' by '_'
           #
           if line[/^=\s/]
+            
+            # Increase counter. We will use it later to add the summary 
+            @counter+=1
 
-            # We will create a summary.adoc file when the previous module has been populated
-            if @module_key != ""
-
-              @index += 1
-              file_index = sprintf('%02d', @index)
-              f_name = 'm' + @module_key + 'p' + file_index + '_summary'
-
-              rep_txt = Configuration::SUMMARY_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
-
-              f_name = f_name + Configuration::ADOC_EXT
-
-              summary_f = File.new(f_name, 'w')
-              summary_f.puts Configuration::HEADER_TXT
-              summary_f.puts rep_txt
-              summary_f.close
+            #
+            # Add the summary.adoc file
+            #
+            if @counter > 1
+              self.generate_summary_page()
             end
-
+            
             #
             # Create the Directory name for the module and next the files
             # The special characters are removed from the string
@@ -577,6 +575,13 @@ module Hyla
           end
 
         end
+
+        #
+        # Add the summary.adoc file
+        #
+        if @counter == @modules
+          self.generate_summary_page()
+        end
         
       end
 
@@ -604,6 +609,21 @@ module Hyla
         Hyla.logger.info ">> PDF file generated and saved : #{pdf_file_name} "
       end
 =end
+
+      def self.generate_summary_page()
+        @index += 1
+        file_index = sprintf('%02d', @index)
+        f_name = 'm' + @module_key + 'p' + file_index + '_summary'
+
+        rep_txt = Configuration::SUMMARY_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
+
+        f_name = f_name + Configuration::ADOC_EXT
+
+        summary_f = File.new(f_name, 'w')
+        summary_f.puts Configuration::HEADER_TXT
+        summary_f.puts rep_txt
+        summary_f.close
+      end
 
       def self.html_to_pdf(file_name, source, destination, footer_text, header_html_path, cover_path)
 

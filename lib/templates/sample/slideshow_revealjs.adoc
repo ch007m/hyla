@@ -162,8 +162,8 @@ You can override background transitions per slide by using +++[data-background-t
 
 == Table
 
-.A Table
-[cols="35,65",width="90"]
+.Example
+[cols="50,50",width="90"]
 |===
 ^|*Header1*
 ^|*Header2*

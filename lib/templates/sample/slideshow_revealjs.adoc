@@ -160,6 +160,40 @@ Pass reveal.js the +++backgroundTransition: 'slide'+++ config argument to make b
 
 You can override background transitions per slide by using +++[data-background-transition="slide"].
 
+== Table
+
+.A Table
+[cols="35,65",width="90"]
+|===
+^|*Header1*
+^|*Header2*
+
+|Entry First Line 1
+|Entry First Line 2
+
+|Entry Second Line 1
+|Entry Second Line 2
+
+|Entry Last Line 1
+|Entry Last Line 2
+
+|===
+
+== Admonition
+
+== Admonition
+
+NOTE: NOTE.  Lorem ipsum dolor sit amet, consectetur adipiscing.
+
+WARNING: WARNING.  Lorem ipsum dolor sit amet, consectetur adipiscing.
+
+IMPORTANT: IMPORTANT.  Lorem ipsum dolor sit amet, consectetur adipiscing.
+
+TIP: TIP.  Lorem ipsum dolor sit amet, consectetur adipiscing.
+
+CAUTION: CAUTION.  Lorem ipsum dolor sit amet, consectetur adipiscing.
+
+
 == Clever Quotes
 
 These guys come in two forms, inline: ``__The nice thing about standards is that there are so many to choose from

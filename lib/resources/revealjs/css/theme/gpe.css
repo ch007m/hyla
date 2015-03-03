@@ -333,29 +333,9 @@ ul li li li {
  * Asciidoctor Table style rendering
  * Feb 27, CHM: Added & Refactor to display the borders
  * Mar 02, CHM: Add caption to display the Table title with a different style, color
+ * Mar 03, CHM: Improve style to be compliant with Redhat styles
  ******************************************************/
-/*table thead th, table tfoot th { font-weight: bold; }
-table.tableblock.grid-all {
-    border-collapse: separate;
-    border-spacing: 10px;
-    border-radius: 8px;
-    border-width: 2px;
-    border-color: #dddddd;
-    border-style: solid;
-}
-tr:nth-of-type(even)		{ background-color: #f9f9f9; }
-table.tableblock.frame-topbot, table.tableblock.frame-none { border-left: 0; border-right: 0; }
-table.tableblock.frame-sides, table.tableblock.frame-none { border-top: 0; border-bottom: 0; }
-table.tableblock td .paragraph:last-child p > p:last-child, table.tableblock th > p:last-child, table.tableblock td > p:last-child { margin-bottom: 0; }
-table.tableblock > caption { line-height: 1.4; color: #C1100C; margin-top: 0.2em; margin-bottom: 0.5em; overflow: visible; max-width: 0; white-space: nowrap; display: table-caption}
-th.tableblock.halign-left, td.tableblock.halign-left { text-align: left; }
-th.tableblock.halign-right, td.tableblock.halign-right { text-align: right; }
-th.tableblock.halign-center, td.tableblock.halign-center { text-align: center; }
-th.tableblock.valign-top, td.tableblock.valign-top { vertical-align: top; }
-th.tableblock.valign-bottom, td.tableblock.valign-bottom { vertical-align: bottom; }
-th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }*/
-
-.reveal section table.tableblock, table.tableblock td {
+table.tableblock, table.tableblock td {
     border-style: solid;
     border-color: rgb(183, 188, 190);
     border-width: 0.99px;

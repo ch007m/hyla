@@ -181,8 +181,6 @@ You can override background transitions per slide by using +++[data-background-t
 
 == Admonition
 
-== Admonition
-
 NOTE: NOTE.  Lorem ipsum dolor sit amet, consectetur adipiscing.
 
 WARNING: WARNING.  Lorem ipsum dolor sit amet, consectetur adipiscing.

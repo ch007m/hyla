@@ -319,7 +319,7 @@ ul li li li {list-style-type:circle;}
     padding-left: 1.125em;
     padding-right: 1.25em;
     border-left: 1px solid #dddddd;
-    color: #6f6f6f;
+    color: #d3d3d3;
     font-size: 20px;
     font-style: normal;
 }
@@ -333,10 +333,10 @@ ul li li li {list-style-type:circle;}
     cursor: default;
 }
 
+/* NOTE */
 .admonitionblock td.icon .icon-note:before {
     content: "\f05a";
-    color: #005498;
-    color: #003f72;
+    color: #3BCA3A;
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
@@ -351,8 +351,8 @@ ul li li li {list-style-type:circle;}
 .admonitionblock td.icon .icon-tip:before {
     content: "\f0eb";
     font-family: FontAwesome;
-    text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
-    color: #111;
+    text-shadow: 1px 1px 2px rgba(244, 243, 138, 1.1);
+    color: #1B1B1B;
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;
@@ -379,7 +379,7 @@ ul li li li {list-style-type:circle;}
 
 .admonitionblock td.icon .icon-caution:before {
     content: "\f06d";
-    color: #bf3400;
+    color: #ef6f16;
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;
@@ -394,7 +394,7 @@ ul li li li {list-style-type:circle;}
 .admonitionblock td.icon .icon-important:before {
     content: "\f06a";
     font-family: FontAwesome;
-    color: #bf0000;
+    color: #ea0000;
     font-style: normal;
     font-weight: normal;
     text-decoration: inherit;

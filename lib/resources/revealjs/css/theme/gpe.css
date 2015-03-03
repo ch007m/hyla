@@ -419,6 +419,11 @@ li strong {
     border: 0;
     background: none;
     width: 100%;
+    padding: 5px 0px;
+}
+
+.admonitionblock > table tr {
+
 }
 
 .admonitionblock > table td.icon {
@@ -440,6 +445,8 @@ li strong {
     padding-right: 1.25em;
     border-left: 1px solid #dddddd;
     color: #6f6f6f;
+    font-size: 20px;
+    font-style: normal;
 }
 
 .admonitionblock > table td.content > :last-child > :last-child {
@@ -462,7 +469,7 @@ li strong {
     font-size: 46px;
     padding-right: 0.5em;
     position: relative;
-    top: 20px;
+    top: 10px;
     left: 0;
 }
 
@@ -477,7 +484,7 @@ li strong {
     font-size: 46px;
     padding-right: 0.5em;
     position: relative;
-    top: 20px;
+    top: 10px;
     left: 0;
 }
 
@@ -491,7 +498,7 @@ li strong {
     font-size: 46px;
     padding-right: 0.5em;
     position: relative;
-    top: 20px;
+    top: 10px;
     left: 0;
 }
 
@@ -505,7 +512,7 @@ li strong {
     font-size: 46px;
     padding-right: 0.5em;
     position: relative;
-    top: 20px;
+    top: 10px;
     left: 0;
 }
 
@@ -519,6 +526,6 @@ li strong {
     font-size: 46px;
     padding-right: 0.5em;
     position: relative;
-    top: 20px;
+    top: 10px;
     left: 0;
 }

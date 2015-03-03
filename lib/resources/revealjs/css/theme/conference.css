@@ -9,7 +9,7 @@
  * Author: Achim Staebler
  *********************************************/
 @font-face {
-    font-family: 'League Gothic';
+    font-family: "League Gothic";
     src: url("../../lib/font/league_gothic-webfont.eot");
     src: url("../../lib/font/league_gothic-webfont.eot?#iefix") format("embedded-opentype"), url("../../lib/font/league_gothic-webfont.woff") format("woff"), url("../../lib/font/league_gothic-webfont.ttf") format("truetype"), url("../../lib/font/league_gothic-webfont.svg#LeagueGothicRegular") format("svg");
     font-weight: normal;
@@ -197,13 +197,52 @@ body {
     text-align: left;
 }
 
+/*******************************************
+*
+********************************************/
+table.tableblock, table.tableblock td, table.tableblock tr { ffont-family: "Lato", sans-serif;  ; font-size: 26px; }
 table thead th, table tfoot th { font-weight: bold; }
-/*
-table.tableblock.grid-all { border-collapse: separate; border-spacing: 1px; -webkit-border-radius: 4px; border-radius: 4px; border-top: 1px solid #dddddd; border-bottom: 1px solid #dddddd; }
-*/
+
+table.tableblock, table.tableblock td {
+    border-style: solid;
+    border-color: rgb(183, 188, 190);
+    border-width: 0.99px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    padding: 10px;
+}
+
+table.tableblock > caption {
+    line-height: 1.4;
+    color: #f5f5f5;
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+    overflow: visible;
+    max-width: 0;
+    white-space: nowrap;
+    display: table-caption;
+}
+
+table.tableblock tr:first-child td {
+    background-color: #34495E;
+    text-align: left;
+    padding: 10px;
+    color: #f5ee74;
+    font-size: 24px;
+}
+
+table.tableblock td {
+    background: #34495E;
+    color: #FCF8FF;
+}
+
+/*table.tableblock tr:nth-child(odd) {
+    background: rgb(238, 238, 238);
+}*/
 table.tableblock.frame-topbot, table.tableblock.frame-none { border-left: 0; border-right: 0; }
 table.tableblock.frame-sides, table.tableblock.frame-none { border-top: 0; border-bottom: 0; }
 table.tableblock td .paragraph:last-child p > p:last-child, table.tableblock th > p:last-child, table.tableblock td > p:last-child { margin-bottom: 0; }
+
 th.tableblock.halign-left, td.tableblock.halign-left { text-align: left; }
 th.tableblock.halign-right, td.tableblock.halign-right { text-align: right; }
 th.tableblock.halign-center, td.tableblock.halign-center { text-align: center; }

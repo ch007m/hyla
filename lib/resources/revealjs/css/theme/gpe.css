@@ -107,7 +107,8 @@ body {
 ::selection {
     color: white;
     background: rgba(0, 0, 0, 0.99);
-    text-shadow: none; }
+    text-shadow: none;
+}
 
 /*********************************************
   * TODO - To be verified if we use it or not
@@ -140,7 +141,8 @@ body {
     line-height: 0.9em;
     letter-spacing: 0.02em;
     text-transform: none;
-    text-shadow: none; }
+    text-shadow: none;
+}
 
 /***************************************************
  * Feb 26, ART: Font Size 2em and width: 900px added
@@ -148,7 +150,7 @@ body {
 .reveal h1 {
     text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
     font-size: 2em;
-    width:900px;
+    width: 900px;
 }
 
 .reveal h2 {
@@ -190,49 +192,60 @@ body {
     -moz-transition: all .2s linear;
     -ms-transition: all .2s linear;
     -o-transition: all .2s linear;
-    transition: all .2s linear; }
+    transition: all .2s linear;
+}
 
 .reveal a:hover img {
     background: rgba(255, 255, 255, 0.2);
     border-color: #C1100C;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
 
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
-    border-right-color: #C1100C; }
+    border-right-color: #C1100C;
+}
 
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
-    border-left-color: #C1100C; }
+    border-left-color: #C1100C;
+}
 
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
-    border-bottom-color: #C1100C; }
+    border-bottom-color: #C1100C;
+}
 
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
-    border-top-color: #C1100C; }
+    border-top-color: #C1100C;
+}
 
 .reveal .controls div.navigate-left.enabled:hover {
-    border-right-color: #0000f1; }
+    border-right-color: #0000f1;
+}
 
 .reveal .controls div.navigate-right.enabled:hover {
-    border-left-color: #0000f1; }
+    border-left-color: #0000f1;
+}
 
 .reveal .controls div.navigate-up.enabled:hover {
-    border-bottom-color: #0000f1; }
+    border-bottom-color: #0000f1;
+}
 
 .reveal .controls div.navigate-down.enabled:hover {
-    border-top-color: #0000f1; }
+    border-top-color: #0000f1;
+}
 
 /*********************************************
  * PROGRESS BAR
  *********************************************/
 .reveal .progress {
-    background: rgba(0, 0, 0, 0.2); }
+    background: rgba(0, 0, 0, 0.2);
+}
 
 .reveal .progress span {
     background: darkblue;
@@ -240,7 +253,8 @@ body {
     -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
     -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
     -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
-    transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985); }
+    transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
 
 /*********************************************
  * SLIDE NUMBER
@@ -254,9 +268,17 @@ body {
  * and solve issue that we have here as we have nested lists
  * Feb 27, CHM : Added
  *********************************************************************************/
-ul li {list-style-type:square;}
-ul li li {list-style-type:disc;}
-ul li li li {list-style-type:circle;}
+ul li {
+    list-style-type: square;
+}
+
+ul li li {
+    list-style-type: disc;
+}
+
+ul li li li {
+    list-style-type: circle;
+}
 
 /*******************************************************************
  * .reveal i must be override in order to be able to use Asciidoctor and
@@ -280,23 +302,39 @@ ul li li li {list-style-type:circle;}
     -webkit-border-radius: 100px;
     border-radius: 100px;
     text-align: center;
-    width: 25px; height: 25px; font-size: 14px;
+    width: 25px;
+    height: 25px;
+    font-size: 14px;
     font-weight: bold;
     line-height: 25px;
     font-style: normal;
-    position: relative; top: -2px;letter-spacing: -2px;
+    position: relative;
+    top: -2px;
+    letter-spacing: -2px;
 }
-.reveal i.conum * { color: white !important; }
-.reveal i.conum + b { display: none; }
-.reveal i.conum:after { content: attr(data-value); }
-.reveal i.conum:not([data-value]):empty { display: none; }
+
+.reveal i.conum * {
+    color: white !important;
+}
+
+.reveal i.conum + b {
+    display: none;
+}
+
+.reveal i.conum:after {
+    content: attr(data-value);
+}
+
+.reveal i.conum:not([data-value]):empty {
+    display: none;
+}
 
 /*******************************************************
  * Asciidoctor Table style rendering
  * Feb 27, CHM: Added & Refactor to display the borders
  * Mar 02, CHM: Add caption to display the Table title with a different style, color
  ******************************************************/
-table thead th, table tfoot th { font-weight: bold; }
+/*table thead th, table tfoot th { font-weight: bold; }
 table.tableblock.grid-all {
     border-collapse: separate;
     border-spacing: 10px;
@@ -315,7 +353,67 @@ th.tableblock.halign-right, td.tableblock.halign-right { text-align: right; }
 th.tableblock.halign-center, td.tableblock.halign-center { text-align: center; }
 th.tableblock.valign-top, td.tableblock.valign-top { vertical-align: top; }
 th.tableblock.valign-bottom, td.tableblock.valign-bottom { vertical-align: bottom; }
-th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }
+th.tableblock.valign-middle, td.tableblock.valign-middle { vertical-align: middle; }*/
+
+.reveal section table.tableblock, table.tableblock td {
+    border-style: solid;
+    border-color: rgb(183, 188, 190);
+    border-width: 0.99px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    padding: 5px;
+}
+
+table.tableblock > caption {
+    line-height: 1.4;
+    color: #333333;
+    margin-top: 0.2em;
+    margin-bottom: 0.5em;
+    overflow: visible;
+    max-width: 0;
+    white-space: nowrap;
+    display: table-caption
+}
+
+table.tableblock tr:first-child td {
+    background-color: #a70000;
+    text-align: left;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+}
+
+table.tableblock tr:nth-child(even) {
+    background: white;
+}
+
+table.tableblock tr:nth-child(odd) {
+    background: rgb(238, 238, 238);
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+    text-align: left;
+}
+
+th.tableblock.halign-right, td.tableblock.halign-right {
+    text-align: right;
+}
+
+th.tableblock.halign-center, td.tableblock.halign-center {
+    text-align: center;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+    vertical-align: top;
+}
+
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+    vertical-align: bottom;
+}
+
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+    vertical-align: middle;
+}
 
 /**************************************************************
  * By default, it is not possible to display text in Bold, ... within <li>> tag
@@ -328,24 +426,58 @@ li strong {
 }
 
 /**************************************************************
- * Admonition Asciidoctor 
+ * Admonition Asciidoctor
  *
  * Mar 03, CHM: Added
  **************************************************************/
-.admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .mathblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { text-align: left; font-weight: bold; }
-.admonitionblock > table { border: 0; background: none; width: 100%; }
-.admonitionblock > table td.icon { text-align: center; width: 80px; }
-.admonitionblock > table td.icon img { max-width: none; }
-.admonitionblock > table td.icon .title { font-weight: bold; text-transform: uppercase; }
-.admonitionblock > table td.content { padding-left: 1.125em; padding-right: 1.25em; border-left: 1px solid #dddddd; color: #6f6f6f; }
-.admonitionblock > table td.content > :last-child > :last-child { margin-bottom: 0; }
-.admonitionblock td.icon [class^="icon-"]:before { text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); cursor: default; }
+.admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .mathblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
+    text-align: left;
+    font-weight: bold;
+}
+
+.admonitionblock > table {
+    border: 0;
+    background: none;
+    width: 100%;
+}
+
+.admonitionblock > table td.icon {
+    text-align: center;
+    width: 80px;
+}
+
+.admonitionblock > table td.icon img {
+    max-width: none;
+}
+
+.admonitionblock > table td.icon .title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.admonitionblock > table td.content {
+    padding-left: 1.125em;
+    padding-right: 1.25em;
+    border-left: 1px solid #dddddd;
+    color: #6f6f6f;
+}
+
+.admonitionblock > table td.content > :last-child > :last-child {
+    margin-bottom: 0;
+}
+
+.admonitionblock td.icon [class^="icon-"]:before {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
 .admonitionblock td.icon .icon-note:before {
     content: "\f05a";
     color: #005498;
     color: #003f72;
     font-family: FontAwesome;
-    font-style: normal;  font-weight: normal;
+    font-style: normal;
+    font-weight: normal;
     text-decoration: inherit;
     font-size: 46px;
     padding-right: 0.5em;
@@ -353,12 +485,14 @@ li strong {
     top: 20px;
     left: 0;
 }
+
 .admonitionblock td.icon .icon-tip:before {
     content: "\f0eb";
     font-family: FontAwesome;
     text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
     color: #111;
-    font-style: normal;  font-weight: normal;
+    font-style: normal;
+    font-weight: normal;
     text-decoration: inherit;
     font-size: 46px;
     padding-right: 0.5em;
@@ -366,11 +500,13 @@ li strong {
     top: 20px;
     left: 0;
 }
+
 .admonitionblock td.icon .icon-warning:before {
     content: "\f071";
     color: #bf6900;
     font-family: FontAwesome;
-    font-style: normal;  font-weight: normal;
+    font-style: normal;
+    font-weight: normal;
     text-decoration: inherit;
     font-size: 46px;
     padding-right: 0.5em;
@@ -378,11 +514,13 @@ li strong {
     top: 20px;
     left: 0;
 }
+
 .admonitionblock td.icon .icon-caution:before {
     content: "\f06d";
     color: #bf3400;
     font-family: FontAwesome;
-    font-style: normal;  font-weight: normal;
+    font-style: normal;
+    font-weight: normal;
     text-decoration: inherit;
     font-size: 46px;
     padding-right: 0.5em;
@@ -390,11 +528,13 @@ li strong {
     top: 20px;
     left: 0;
 }
+
 .admonitionblock td.icon .icon-important:before {
     content: "\f06a";
     font-family: FontAwesome;
     color: #bf0000;
-    font-style: normal;  font-weight: normal;
+    font-style: normal;
+    font-weight: normal;
     text-decoration: inherit;
     font-size: 46px;
     padding-right: 0.5em;

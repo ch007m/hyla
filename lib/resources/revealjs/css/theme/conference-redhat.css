@@ -369,10 +369,28 @@ li strong {
 /*********************************************************************************
  * Trick to avoid to define [square] or [circle] for each item of an unordered list
  * and solve issue that we have here as we have nested lists
+ * Feb 27, CHM : Added
+ * Mar 04 2015, CHM: Add red colors & square, disc & circle
  *********************************************************************************/
-ul li {list-style-type:square;}
-ul li li {list-style-type:disc;}
-ul li li li {list-style-type:circle;}
+.reveal ul li p, ul li li p, ul li li p {
+    color: black;
+    list-style:none;
+}
+
+.reveal ul li {
+    list-style-type: square;
+    color: #a70000;
+}
+
+.reveal ul li li {
+    list-style-type: disc;
+    color: #a70000;
+}
+
+.reveal ul li li li {
+    list-style-type: circle;
+    color: #a70000;
+}
 
 /*******************************************************************
  * .reveal i must be override in order to be able to use Asciidoctor and
@@ -458,17 +476,6 @@ ul li li li {list-style-type:circle;}
     color: #ffffff;
 }
 
-/**************************************************************
- * To be verified if we are using it with first page of the slides of a conference
-
-    .cover {
-        position:absolute;
-        top:150px;
-        left:10px;
-        right:10px;
-        }
-
- */
 
 /**************************************************************
  * Style used to display the cover picture full screen

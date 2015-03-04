@@ -426,6 +426,18 @@ li strong {
 }
 
 /**************************************************************
+ * Override Revealjs Pre class
+ * Mar 04 2015, CHM : Change width from 90% to 100% and margin to reduce size of the box hightlighted
+ *************************************************************/
+.reveal pre {
+    width: 100%;
+}
+.listingblock .content {
+    margin-right: 50px;
+    padding-right: 50px;
+}
+
+/**************************************************************
  * Admonition Asciidoctor
  *
  * Mar 03, CHM: Added

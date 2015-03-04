@@ -278,6 +278,7 @@ body {
  * Trick to avoid to define [square] or [circle] for each item of an unordered list
  * and solve issue that we have here as we have nested lists
  * Feb 27, CHM : Added
+ * Mar 04 2015, CHM: Add red colors & square, disc & circle
  *********************************************************************************/
 ul li {
     list-style-type: square;
@@ -290,6 +291,48 @@ ul li li {
 ul li li li {
     list-style-type: circle;
 }
+
+
+
+/*.reveal ul li, ul li li, ul li li {
+    color: black;
+    list-style:none;
+}
+
+.reveal ul {
+    margin-left: 0px; *//* Remove margin added by reveal css *//*
+}
+
+.reveal ul p {
+    display: inline;
+}
+
+.reveal ul li:before {
+*//*    list-style-type: square;*//*
+    content: '\f0c8';
+    font-family: FontAwesome;
+    color: #a70000;
+    font-size:0.45em;
+    padding: 15px 15px 15px 0px;
+}
+
+.reveal ul li li:before {
+*//*    list-style-type: circle filled;*//*
+    content: '\f111';
+    font-family: FontAwesome;
+    color: #a70000;
+    font-size:0.45em;
+    padding: 15px 15px 15px 0px;
+}
+
+.reveal ul li li li:before {
+*//*    list-style-type: circle line;*//*
+    content: '\f10c';
+    font-family: FontAwesome;
+    color: #a70000;
+    font-size:0.45em;
+    padding: 15px 15px 15px 0px;
+}*/
 
 /*******************************************************************
  * .reveal i must be override in order to be able to use Asciidoctor and

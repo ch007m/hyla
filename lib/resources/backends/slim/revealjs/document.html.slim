@@ -47,8 +47,8 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         - else
           style=Asciidoctor::HTML5.pygments_stylesheet(attr 'pygments-style')
     - when 'highlightjs'
-      link rel='stylesheet' href="#{attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0'}/styles/#{attr 'highlightjs-theme', 'default'}.min.css"
-      script src="#{attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.0'}/highlight.min.js"
+      link rel='stylesheet' href="#{attr :highlightjsdir, 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4'}/styles/#{attr 'highlightjs-theme', 'default'}.min.css"
+      script src="#{attr :highlightjsdir, 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4'}/highlight.min.js"
       script hljs.initHighlightingOnLoad()
     - when 'prettify'
       link rel='stylesheet' href="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/#{attr 'prettify-theme', 'prettify'}.min.css"

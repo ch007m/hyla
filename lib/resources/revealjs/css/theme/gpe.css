@@ -2,7 +2,7 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 
 /**
- * GPE Style customized from RevealJS Style ()
+ * GPE Style customized from RevealJS Styl
  *
  * This theme is Copyright (C) 2012 Owen Versteeg, https://github.com/StereotypicalApps. It is MIT licensed.
  * reveal.js is Copyright (C) 2011-2012 Hakim El Hattab, http://hakim.se
@@ -52,6 +52,17 @@
     overflow: scroll;
     margin: 5px 0 0;
     padding: 5px 10px 10px 10px;
+}
+
+/**************************************************************
+ * Style used to display the cover picture full screen
+ * Add this tag [.cover] before the picture of the cover page
+ * Mar 04 2015, CHM: Initial
+ **************************************************************/
+.cover {
+    position: absolute;
+    top: 20px;
+    text-align: center;
 }
 
 /*********************************************

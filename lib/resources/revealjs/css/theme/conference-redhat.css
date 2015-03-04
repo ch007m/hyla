@@ -408,7 +408,8 @@ li strong {
 .reveal i.conum {
     display: inline-block;
     color: white !important;
-    background-color: #222222;
+    /*    background-color: #222222;*/
+    background-color: #c50000;
     -webkit-border-radius: 100px;
     border-radius: 100px;
     text-align: center;

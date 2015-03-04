@@ -191,7 +191,6 @@ TIP: TIP.  Lorem ipsum dolor sit amet, consectetur adipiscing.
 
 CAUTION: CAUTION.  Lorem ipsum dolor sit amet, consectetur adipiscing.
 
-
 == Clever Quotes
 
 These guys come in two forms, inline: ``__The nice thing about standards is that there are so many to choose from

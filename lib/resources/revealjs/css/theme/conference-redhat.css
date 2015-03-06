@@ -602,9 +602,10 @@ ol.lowergreek { list-style-type: lower-greek; }
     left: 0;
 }
 
+/* Use a more yellow lighter color */
 .admonitionblock td.icon .icon-warning:before {
     content: "\f071";
-    color: #bf6900;
+    color: #e0de4a;
     font-family: FontAwesome;
     font-style: normal;
     font-weight: normal;

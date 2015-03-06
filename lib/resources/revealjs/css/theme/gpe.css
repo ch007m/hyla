@@ -500,6 +500,11 @@ ol.lowergreek { list-style-type: lower-greek; }
     font-style: normal;
 }
 
+/* Override the color for the list */
+.admonitionblock > table td.content ul li, .admonitionblock > table td.content ol li, .admonitionblock > table td.content ol p, .admonitionblock > table td.content ul p {
+    color: #6f6f6f;
+}
+
 .admonitionblock > table td.content > :last-child > :last-child {
     margin-bottom: 0;
 }

@@ -237,19 +237,19 @@ body {
 }
 
 .reveal .controls div.navigate-left.enabled:hover {
-    border-right-color: #0000f1;
+    border-right-color: #ef6f16;
 }
 
 .reveal .controls div.navigate-right.enabled:hover {
-    border-left-color: #0000f1;
+    border-left-color: #ef6f16;
 }
 
 .reveal .controls div.navigate-up.enabled:hover {
-    border-bottom-color: #0000f1;
+    border-bottom-color: #ef6f16;
 }
 
 .reveal .controls div.navigate-down.enabled:hover {
-    border-top-color: #0000f1;
+    border-up-color: #ef6f16;
 }
 
 /*********************************************

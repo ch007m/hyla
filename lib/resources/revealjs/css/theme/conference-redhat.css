@@ -143,8 +143,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-/*    color: darkblue;*/
-    color: #C1100C;
+    color: #a70000;
     text-decoration: none;
     -webkit-transition: color .15s ease;
     -moz-transition: color .15s ease;
@@ -154,16 +153,14 @@ body {
 }
 
 .reveal a:not(.image):hover {
-    /*color: #0000f1;*/
-    color: #C1100C;
+    color: #a70000;
     text-shadow: none;
     border: none;
 }
 
 .reveal .roll span:after {
     color: #fff;
-/*    background: #00003f;*/
-    background: #C1100C;
+    background: #a70000;
 }
 
 /*********************************************
@@ -182,8 +179,7 @@ body {
 
 .reveal a:hover img {
     background: rgba(255, 255, 255, 0.2);
-    /*border-color: darkblue;*/
-    border-color: #C1100C;
+    border-color: #a70000;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.55); }
 
 /*********************************************
@@ -361,8 +357,7 @@ th.tableblock.valign-middle, td.tableblock.valign-middle {
  * Here is a trick to support that <strong>text</strong> enclosed in <li> tag & color
  **************************************************************/
 li strong {
-/*    color: #268bd2;*/
-    color: #C1100C;
+    color: #a70000;
     font-weight: bold;
 }
 
@@ -408,8 +403,7 @@ li strong {
 .reveal i.conum {
     display: inline-block;
     color: white !important;
-    /*    background-color: #222222;*/
-    background-color: #c50000;
+    background-color:  #a70000;
     -webkit-border-radius: 100px;
     border-radius: 100px;
     text-align: center;
@@ -488,6 +482,28 @@ li strong {
     margin-right: 50px;
     padding-right: 50px;
 }
+
+/****************
+ * Override Revealjs ordered list
+ * Mar 06 2016, CHM : Numbers displayed were cut
+ ****************/
+.reveal ol {
+    margin-left: 40px;
+}
+
+ol.arabic { list-style-type: decimal; }
+
+ol.decimal { list-style-type: decimal-leading-zero; }
+
+ol.loweralpha { list-style-type: lower-alpha; }
+
+ol.upperalpha { list-style-type: upper-alpha; }
+
+ol.lowerroman { list-style-type: lower-roman; }
+
+ol.upperroman { list-style-type: upper-roman; }
+
+ol.lowergreek { list-style-type: lower-greek; }
 
 /**************************************************************
  * Style used to display the cover picture full screen

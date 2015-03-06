@@ -218,7 +218,7 @@ body {
 }
 
 .reveal .controls div.navigate-down.enabled:hover {
-    border-up-color: #ef6f16;
+    border-top-color: #ef6f16;
 }
 
 /*********************************************

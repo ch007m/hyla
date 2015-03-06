@@ -45,11 +45,11 @@
  * Feb 24, ART: Changed the padding from 10 20 20 20 to 5 10 10 10
  * Feb 24, ART: Changed the margin from 20px 0 0 to 5px 0 0
  * Mar 02, CHM: Increase height from 600 to 670px
+ * Mar 06, CHM: Change overflow from scroll to auto
  *********************************************/
 .scrollbar {
     border: 1px solid #eee;
     height: 670px;
-    /*overflow: scroll;*/
     overflow: auto;
     margin: 5px 0 0;
     padding: 5px 10px 10px 10px;

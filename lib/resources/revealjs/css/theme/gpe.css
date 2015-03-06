@@ -49,7 +49,8 @@
 .scrollbar {
     border: 1px solid #eee;
     height: 670px;
-    overflow: scroll;
+    /*overflow: scroll;*/
+    overflow: auto;
     margin: 5px 0 0;
     padding: 5px 10px 10px 10px;
 }

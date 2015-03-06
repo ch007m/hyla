@@ -355,6 +355,7 @@ body {
  * Feb 27, CHM: Added & Refactor to display the borders
  * Mar 02, CHM: Add caption to display the Table title with a different style, color
  * Mar 03, CHM: Improve style to be compliant with Redhat styles
+ * Mar 06, CHM: Add a noredheader class to avoid to display the first line in red of a table containing images, ..
  ******************************************************/
 table.tableblock, table.tableblock td {
     border-style: solid;
@@ -376,12 +377,16 @@ table.tableblock > caption {
     display: table-caption
 }
 
-table.tableblock tr:first-child td {
+table.tableblock:not(.noredheader) tr:first-child td {
     background-color: #a70000;
     text-align: left;
     padding: 10px;
     color: white;
     font-size: 24px;
+}
+
+table.tableblock.noredheader tr:first-child td {
+    background-color: #EEEEEE;
 }
 
 table.tableblock tr:nth-child(even) {

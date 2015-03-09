@@ -71,15 +71,16 @@ And then execute:
 
 == For Developer's only
 
-    Clone Git project locally, move to Hyla directory and execute the following commands
-    gem build hyla.gemspec
-    sudo gem install hyla-1.0.x.gem -l
+    Clone Git project locally, move to Hyla directory and execute the following command to build the project
+    rake build
 
-== To publish Hyla to Gem Repo
+== To publish Hyla Gem to your local repo
 
-    gem build hyla.gemspec
-    gem install hyla-1.0.x.gem -l
-    gem push hyla-1.0.x.gem
+    rake install
+    
+== To push to the gems ruby HTTP Server
+
+    rake deploy
 
 == To delete a release pushed to RubyGems (= yank)
 

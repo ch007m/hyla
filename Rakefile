@@ -15,7 +15,7 @@ def name
 end
 
 def version
-  line = File.read("lib/#{name}.rb")[/^\s*VERSION\s*=\s*.*/]
+  line = File.read("lib/hyla/project.rb")[/^\s*VERSION\s*=\s*.*/]
   line.match(/.*VERSION\s*=\s*['"](.*)['"]/)[1]
 end
 
@@ -49,12 +49,23 @@ task :test do
   ruby "test/my_test.rb"
 end
 
-task :build1 do
+# Build the Gem
+task :build do
   system "gem build #{gemspec_file}"
 end
 
-# Build project
-task :build2 => :gemspec do
+# Build the Gem & deploy it locally
+task :install => :build do
+  system "gem install #{gem_file} -l"
+end
+
+# Build the Gem, install it locally & push it
+task :deploy => :install do
+  system "gem push #{gem_file}"
+end
+
+# Build the Gem and move it under the pkg directory
+task :build_pkg => :gemspec do
   sh "mkdir -p pkg"
   sh "gem build #{gemspec_file}"
   sh "mv #{gem_file} pkg"

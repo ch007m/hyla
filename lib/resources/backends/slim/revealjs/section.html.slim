@@ -3,7 +3,7 @@
   div style="position:absolute; top:150px; left:10px; right:10px;"
     section id=@id class=(attr 'data-state') data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(attr 'data-background') data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
       h2=title
-      - if attr? :scrollbar
+      - if (attr? :scrollbar) || (attr? :revealjs_scrollbar)
         .scrollbar
           =content
       - else
@@ -11,7 +11,7 @@
 - else
   section id=@id class=(attr 'data-state') data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(attr 'data-background') data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-transition=(attr 'data-background-transition')
     h2=title
-    - if attr? :scrollbar
+    - if (attr? :scrollbar) || (attr? :revealjs_scrollbar)
       .scrollbar
         =content
     - else

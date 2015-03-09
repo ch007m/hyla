@@ -577,9 +577,21 @@ ol.lowergreek { list-style-type: lower-greek; }
     margin-bottom: 0;
 }
 
+.admonitionblock > table td.icon {
+    vertical-align: middle;
+}
+
 .admonitionblock td.icon [class^="icon-"]:before {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     cursor: default;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    font-size: 46px;
+    padding-right: 0.5em;
+    position: relative;
+    left: 0;
+    top: 5px;
 }
 
 .admonitionblock td.icon .icon-note:before {
@@ -587,14 +599,6 @@ ol.lowergreek { list-style-type: lower-greek; }
     color: #005498;
     color: #003f72;
     font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    font-size: 46px;
-    padding-right: 0.5em;
-    position: relative;
-    top: 10px;
-    left: 0;
 }
 
 .admonitionblock td.icon .icon-tip:before {
@@ -602,55 +606,23 @@ ol.lowergreek { list-style-type: lower-greek; }
     font-family: FontAwesome;
     text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
     color: #111;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    font-size: 46px;
-    padding-right: 0.5em;
-    position: relative;
-    top: 10px;
-    left: 0;
 }
 
 /* Use a more yellow lighter color */
 .admonitionblock td.icon .icon-warning:before {
     content: "\f071";
-    color: #e0de4a;
+    color: #EFEF0C;
     font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    font-size: 46px;
-    padding-right: 0.5em;
-    position: relative;
-    top: 10px;
-    left: 0;
 }
 
 .admonitionblock td.icon .icon-caution:before {
     content: "\f06d";
     color: #bf3400;
     font-family: FontAwesome;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    font-size: 46px;
-    padding-right: 0.5em;
-    position: relative;
-    top: 10px;
-    left: 0;
 }
 
 .admonitionblock td.icon .icon-important:before {
     content: "\f06a";
     font-family: FontAwesome;
     color: #bf0000;
-    font-style: normal;
-    font-weight: normal;
-    text-decoration: inherit;
-    font-size: 46px;
-    padding-right: 0.5em;
-    position: relative;
-    top: 10px;
-    left: 0;
 }

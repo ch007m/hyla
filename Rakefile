@@ -15,7 +15,7 @@ def name
 end
 
 def version
-  line = File.read("lib/hyla/project.rb")[/^\s*VERSION\s*=\s*.*/]
+  line = File.read("lib/#{name}/project.rb")[/^\s*VERSION\s*=\s*.*/]
   line.match(/.*VERSION\s*=\s*['"](.*)['"]/)[1]
 end
 
@@ -41,13 +41,13 @@ Rake::TestTask.new do |t|
   t.libs << 'test'
 end
 
-desc "Run tests"
-task :default => :test
-
 # Simple Test case
 task :test do
   ruby "test/my_test.rb"
 end
+
+desc "Run tests"
+task :default => :test
 
 # Build the Gem
 task :build do

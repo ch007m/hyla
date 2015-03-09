@@ -88,14 +88,13 @@ And then execute:
 
 == To create a release, generate a tagged release and publish it to Gem Repo
 
-    gem build hyla.gemspec
-    gem install hyla-1.0.7.pre.x.gem
+    rake install
     git commit -m "Release Hyla 1.0.7.pre.x" -a
     git push
     git tag -a hyla-1.0.7.pre.x -m "Release hyla 1.0.7.pre.x"
     git push origin hyla-1.0.7.pre.x
 
-    gem push hyla-1.0.7.pre.x.gem
+    rake deploy
 
 == Usage
 

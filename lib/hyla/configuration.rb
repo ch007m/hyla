@@ -3,7 +3,7 @@ module Hyla
 
     attr_reader :HEADER, :INDEX_SUFFIX, :HEADER_INDEX, :INCLUDE_PREFIX, :INCLUDE_SUFFIX, :LEVEL_1, :LEVEL_2, :SKIP_CHARACTERS,
                 :ADOC_EXT, :PREFIX_ARTEFACT, :YAML_CONFIG_FILE_NAME, :DEFAULTS,
-                :templates, :cover_template, :samples, :resources, :styles, :fonts, :backends
+                :templates, :cover_template, :samples, :resources, :styles, :fonts, :backends, :assets
 
     DEFAULTS = {
         'source' => Dir.pwd,
@@ -109,6 +109,13 @@ module Hyla
     #
     def self.fonts
       File.expand_path(FONTS, File.dirname(__FILE__))
+    end
+
+    #
+    # Assets Location
+    #
+    def self.assets
+      File.expand_path(ASSETS, File.dirname(__FILE__))
     end
 
     #
@@ -241,6 +248,8 @@ module Hyla
         result
       }
     end
+    
+    ASSETS = '../../lib/assets'
 
     TEMPLATES = '../../lib/templates'
 

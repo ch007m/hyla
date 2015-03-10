@@ -85,12 +85,13 @@ task :default => :test
 task :compass do
   puts "\n## Compiling Sass"
 
-  path = Gem.loaded_specs['font-awesome-sass'].full_gem_path + "/assets/stylesheets"
-
+  # path = Gem.loaded_specs['font-awesome-sass'].full_gem_path + "/assets/stylesheets"
+  
   #Go to the compass project directory
   Dir.chdir File.join(sass_assets, "sass") do |dir|
     puts "Sass dir : #{dir}"
-    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -s #{style} -I #{path}"
+    # -s #{style} -I #{path}
+    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' "
   end
 end
 

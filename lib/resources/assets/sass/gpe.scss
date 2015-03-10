@@ -1,11 +1,22 @@
-$debug-configuration: true;
-/* Using Compass Font-Face
-@import "compass/css3/font-face";*/
-/* Import font Awesome Fonts */
-/*@import "font-awesome-compass";
-@import "font-awesome";*/
+/* $debug-configuration: true; */
 
-@import url(http://red-hat-overpass-fonts.s3.amazonaws.com/overpass.css);
+/*
+ * NOT USED ANYMORE - Using Compass Font-Face
+ * @import "compass/css3/font-face";
+ */
+
+/* 
+ * NOT USED ANYMORE -  Import font Awesome Fonts using the gem installed
+ * @import "font-awesome-compass";
+ * @import "font-awesome";
+*/
+
+/*
+ * @import url(http://red-hat-overpass-fonts.s3.amazonaws.com/overpass.css);
+ */
+
+@import "overpass"; /* Font Overpass */
+@import "fontawesome/font-awesome"; /* Font Awesome icons */
 
 /*@include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
         "liberationSans-Bold.ttf",

@@ -42,7 +42,7 @@ require 'imgkit'
 require 'hyla/logger'
 require 'hyla/core_ext'
 require 'hyla/command'
-require 'hyla/resource'
+require 'hyla/configuration'
 require 'hyla/websocket'
 require 'hyla/logger'
 

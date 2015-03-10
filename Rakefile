@@ -58,22 +58,9 @@ def default_compilation_style
   'compressed'
 end
 
-#def sass_config
-#  [sass_assets, "config.rb"] *'/'
-#end
-
-#############################################################################
-#
-# Prerequisites & args
-#
-#############################################################################
-# task :with_defaults, :arg1 do |t, args|
-#   args.with_defaults(:arg1 => :default_compilation_style)
-#   puts "Args with defaults were: #{args}"
-# end
-
 #
 # Compass Style Values to generate the CSS file : nested, expanded, compact, compressed
+#
 
 style = ENV["STYLE"] || "nested"
 
@@ -94,6 +81,19 @@ end
 desc "Run tests"
 task :default => :test
 
+# Generate CSS files
+task :compass do
+  puts "\n## Compiling Sass"
+
+  path = Gem.loaded_specs['font-awesome-sass'].full_gem_path + "/assets/stylesheets"
+
+  #Go to the compass project directory
+  Dir.chdir File.join(sass_assets, "sass") do |dir|
+    puts "Sass dir : #{dir}"
+    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -s #{style} -I #{path}"
+  end
+end
+
 # Build the Gem
 task :build do
   system "gem build #{gemspec_file}"
@@ -102,19 +102,6 @@ end
 # Build the Gem & deploy it locally
 task :install => :build do
   system "gem install #{gem_file} -l"
-end
-
-# Generate CSS files
-task :compass do
-  puts "\n## Compiling Sass"
-
-  path = Gem.loaded_specs['font-awesome-sass'].full_gem_path + "/assets/stylesheets"
-  
-  #Go to the compass project directory
-  Dir.chdir File.join(sass_assets, "sass") do |dir|
-    puts "Sass dir : #{dir}"
-    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -s #{style} -I #{path}"
-  end
 end
 
 # Build the Gem, install it locally & push it

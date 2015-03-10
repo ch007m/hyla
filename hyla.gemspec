@@ -6,7 +6,7 @@ require 'hyla/project'
 Gem::Specification.new do |s|
   s.name          = 'hyla'
   s.version       = Hyla::VERSION
-  s.authors       = ["Charles Mouliard"]
+  s.authors       = ["Charles Moulliard"]
   s.email         = ["ch007m@gmail.com"]
   s.description   = Hyla::DESCRIPTION
   s.summary       = Hyla::SUMMARY

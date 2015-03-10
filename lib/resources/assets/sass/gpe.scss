@@ -15,8 +15,10 @@
  * @import url(http://red-hat-overpass-fonts.s3.amazonaws.com/overpass.css);
  */
 
+@import "compass/reset";
 @import "overpass"; /* Font Overpass */
 @import "fontawesome/font-awesome"; /* Font Awesome icons */
+
 
 /*@include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
         "liberationSans-Bold.ttf",

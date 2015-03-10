@@ -20,6 +20,8 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler', '~> 1.5'
   s.add_development_dependency 'rake', '~> 10.1'
+  s.add_development_dependency 'font-awesome-sass','~> 4.3'
+  s.add_development_dependency 'compass', '~> 1.0'
   s.add_development_dependency 'sass', '~> 3.4'
 
   #  Ruby command-line executables

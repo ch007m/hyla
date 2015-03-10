@@ -1,5 +1,9 @@
+$debug-configuration: true;
 /* Using Compass Font-Face */
-@import "compass/css3";
+@import "compass/css3/font-face";
+/* Import font Awesome Fonts */
+@import "font-awesome-compass";
+@import "font-awesome";
 
 @include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
         "liberationSans-Bold.ttf",

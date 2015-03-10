@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency 'bundler', '~> 1.5'
   s.add_development_dependency 'rake', '~> 10.1'
-  s.add_development_dependency 'sass', '~> 3.4.13'
+  s.add_development_dependency 'sass', '~> 3.4'
 
   #  Ruby command-line executables
   # Add pry before

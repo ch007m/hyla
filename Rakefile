@@ -3,7 +3,7 @@ require 'rake'
 require 'rake/testtask'
 require 'bundler/version'
 require 'sass'
-require 'hyla/configuration'
+require './lib/hyla/configuration'
 
 $LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
 
@@ -33,12 +33,13 @@ def gem_file
   "#{name}-#{version}.gem"
 end
 
-def assets
-  Hyla::Configuration.new.assets
+def sass_assets
+  Hyla::Configuration.assets
 end
 
+
 def sass_config
-  [Hyla::Configuration.new.assets, "/config.rb"] *'/'
+  [sass_assets, "config.rb"] *'/'
 end
 
 #############################################################################
@@ -70,13 +71,12 @@ end
 
 # Generate CSS files
 task :compass_compressed do
-  puts "\n## Compiling Sass"
-    #Go to the compass project directory
-    Dir.chdir File.join(assets,"sass") do |dir|
-
-      puts "Sass Config file : #{sass_config}"
-    end
+  puts "\n## Compiling Sass - #{sass_config}"
+  #Go to the compass project directory
+  Dir.chdir File.join(sass_assets, "sass") do |dir|
+    system "compass compile -c #{sass_config}"
   end
+end
 
 # Build the Gem, install it locally & push it
 task :deploy => :install do

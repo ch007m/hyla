@@ -76,6 +76,7 @@ module Hyla
 
     YAML_CONFIG_FILE_NAME = '_config.yaml'
 
+
     #
     # Cover Slim Template
     #
@@ -249,7 +250,7 @@ module Hyla
       }
     end
     
-    ASSETS = '../../lib/assets'
+    ASSETS = '../../lib/resources/assets'
 
     TEMPLATES = '../../lib/templates'
 

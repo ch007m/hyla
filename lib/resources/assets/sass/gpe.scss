@@ -1,11 +1,13 @@
 $debug-configuration: true;
-/* Using Compass Font-Face */
-@import "compass/css3/font-face";
+/* Using Compass Font-Face
+@import "compass/css3/font-face";*/
 /* Import font Awesome Fonts */
-@import "font-awesome-compass";
-@import "font-awesome";
+/*@import "font-awesome-compass";
+@import "font-awesome";*/
 
-@include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
+@import url(http://red-hat-overpass-fonts.s3.amazonaws.com/overpass.css);
+
+/*@include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
         "liberationSans-Bold.ttf",
         "liberationSans-Italic.ttf",
         "liberationSans-BoldItalic.ttf"));
@@ -13,11 +15,11 @@ $debug-configuration: true;
 @include font-face('Overpass', font-files("Overpass_Regular.ttf",
         "Overpass_Bold.ttf",
         "Overpass_Light.ttf",
-        "Overpass_Regular.ttf"));
+        "Overpass_Regular.ttf"));*/
 
 /*$var-family-name: 'Liberation Sans';*/
 $family-name: 'Overpass';
-$font-stack: $family-name, 'Liberation Sans, Open Sans', sans-serif;
+$font-stack: $family-name, 'Liberation Sans', 'Open Sans', sans-serif;
 $red-color: #a70000;
 
 body {
@@ -62,7 +64,7 @@ body {
   right: 0;
   top: 0;
   height: 0px;
-  font-family: 'liberation';
+  font-family: $font-stack;
   font-size: 20px;
   text-align: center;
 }
@@ -78,7 +80,7 @@ body {
   right: 0;
   bottom: 0;
   height: 40px;
-  font-family: 'liberation';
+  font-family: $font-stack;
   font-size: 20px;
   text-align: center;
 }
@@ -94,7 +96,7 @@ body {
 }
 
 .reveal {
-  font-family: 'liberation';
+  font-family: $font-stack;
   font-size: 28px;
   font-weight: normal;
   letter-spacing: -0.02em;
@@ -135,7 +137,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #3E4349;
-  font-family: 'liberation';
+  font-family: $font-stack;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;

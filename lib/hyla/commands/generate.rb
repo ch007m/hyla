@@ -224,14 +224,14 @@ module Hyla
           Hyla.logger.debug ">>       Relative path: #{relative_path}"
           adoc_file_paths << relative_path
 
-          # Get asciidoc file name
+          # Get asciidoctor file name
           file_name_processed = path_to_adoc_file.basename
 
           #
           # Create destination dir relative to the path calculated
           #
-          html_dir = @destination + '/' + File.dirname(relative_path)
-          Hyla.logger.info ">>        Dir of html: #{html_dir}"
+          html_dir = [@destination, File.dirname(relative_path)] * '/'
+          Hyla.logger.debug ">>        Dir of html: #{html_dir}"
           FileUtils.mkdir_p html_dir
 
           # Copy Fonts
@@ -300,8 +300,10 @@ module Hyla
       # Copy resources to target dir
       def self.cp_resources_to_dir(path, resource)
         source = [Configuration::resources, resource] * '/'
-        destination = [path, resource] * '/'
-        FileUtils.cp_r source, destination
+        # destination = [path, resource] * '/'
+        destination = path
+        Hyla.logger.debug ">>        Copy resource from Source dir: #{source} --> destination dir: #{destination}"
+        FileUtils.cp_r source, destination, :verbose => false
       end
 
       #

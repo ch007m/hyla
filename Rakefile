@@ -1,11 +1,12 @@
+libdir = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
+
 require 'rubygems'
 require 'rake'
 require 'rake/testtask'
 require 'bundler/version'
 require 'sass'
-require './lib/hyla/configuration'
-
-$LOAD_PATH.unshift File.expand_path("../lib", __FILE__)
+require 'hyla/configuration'
 
 #############################################################################
 #

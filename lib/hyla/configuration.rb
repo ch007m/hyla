@@ -252,6 +252,8 @@ module Hyla
     
     ASSETS = '../../lib/resources/assets'
 
+    FONTS = '../../lib/resources/assets/fonts'
+
     TEMPLATES = '../../lib/templates'
 
     RESOURCES = '../../lib/resources'
@@ -259,8 +261,6 @@ module Hyla
     SAMPLES = '../../lib/templates/sample'
 
     STYLES = '../../lib/resources/styles'
-
-    FONTS = '../../lib/resources/fonts'
 
     BACKENDS = '../../lib/resources/backends'
 

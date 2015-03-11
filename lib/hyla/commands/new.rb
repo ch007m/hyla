@@ -9,16 +9,17 @@ This is an empty Asciidoctor readme file.
 
 To create **asciidoc(tor)** content, more info is available http://asciidoctor.org/docs/user-manual[here]
 
-Otherwise, you can add content to this newly project created using this hyla command :
+Otherwise, you can add content to this newly project created using the hyla add command :
 
-  hyla add --t asciidoc --a xxx  --d pathToProjectCreated
+  hyla add --t asciidoc --a CONTENT  --d PathToProjectCreated
 
-where xxx can be article, book, source, audio, video, ...
+where CONTENT can be an article, book, source, audio, video, table
 EOS
 
       def self.process(args, options = {})
 
-        out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
+        # out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
+        out_dir = args.first;
 
         #
         # Calculate project path (rel/absolute)
@@ -84,7 +85,7 @@ EOS
       # with just a readme.adoc file and yaml config file
       def self.create_blank_project(path)
         Dir.chdir(path) do
-          f = File.open('readme.ad', 'w')
+          f = File.open('readme.adoc', 'w')
           f.puts @readme_content
         end
       end

@@ -18,8 +18,8 @@ program :description, Hyla::DESCRIPTION
 default_command :default
 
 def add_build_options(c)
-  c.option '-c','--config CONFIG_FILE', String, 'Custom configuration file'
-  c.option '-V','--verbose', 'Print verbose output.'
+  c.option '-c', '--config CONFIG_FILE', String, 'Custom configuration file'
+  c.option '-V', '--verbose', 'Print verbose output.'
 end
 
 def add_common_options(c)
@@ -28,26 +28,31 @@ def add_common_options(c)
 end
 
 #
-# Creates a new Hyla project using a template or blank to the PATH specified
+# Creates a new Hyla project using a template which is a collection of asciidoctor files
+# or create a blank project to the PATH specified as argument on the command line
 #
 command :new do |c|
-  c.syntax = 'hyla new [options]'
+  c.syntax = 'hyla new [options] <PATH>'
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
-  c.option '-f','--force', 'Force creation even if PATH already exists'
-  c.option '-b','--blank', 'Creates project but with empty files'
-  c.option '--t','--template_type [TEMPLATE_TYPE]', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
+  c.description = 'Example : hyla new -b /path/to/myProject'
+  c.option '-f', '--force', 'Force creation even if PATH already exists'
+  c.option '-b', '--blank', 'Creates project directory containing the YAML config file and a simple readme.ad file'
+  c.option '--t', '--template_type [TEMPLATE_TYPE]', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
 
-  add_common_options(c)
-  add_build_options(c)
+  c.option '-V', '--verbose', 'Print verbose output.'
 
   c.action do |args, options|
-    config = Hyla::Configuration.parse(options.__hash__)
-    Hyla::Commands::New.process(args, config)
+    if args.first.nil?
+      puts "Please specify the PATH where the project should be created."
+    else
+      config = Hyla::Configuration.parse(options.__hash__)
+      Hyla::Commands::New.process(args, config)
+    end
   end
 end
 
 #
-# Creates a new file from an artefact within an existing project
+# Creates a new file from an artifact within an existing project
 #
 command :add do |c|
   c.syntax = 'hyla add [options]'

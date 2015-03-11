@@ -71,6 +71,7 @@ end
 #
 
 style = ENV["STYLE"] || "nested"
+tag_release = ENV["TAG_RELEASE"] || "#{name}-#{version}"
 
 #############################################################################
 #
@@ -110,7 +111,7 @@ task :compass do
 end
 
 # Build the Gem
-task :build do
+task :build => :gemspec do
   system "gem build #{gemspec_file}"
 end
 
@@ -122,6 +123,18 @@ end
 # Build the Gem, install it locally & push it
 task :deploy => :install do
   system "gem push #{gem_file}"
+end
+
+# Tag the release 
+task :tag_release do
+  system "git tag -a #{name}-#{version} -m 'Release of hyla #{version}'"
+  system "git push origin #{name}-#{version}"
+end
+
+task :tag_delete do
+  p "Tag to be removed: #{tag_release}"
+  sh "git tag -d #{tag_release}"
+  sh "git push origin :#{tag_release}"
 end
 
 # Build the Gem and move it under the pkg directory

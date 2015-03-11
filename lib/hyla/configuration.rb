@@ -254,13 +254,13 @@ module Hyla
 
     FONTS = '../../lib/resources/assets/fonts'
 
+    STYLES = '../../lib/resources/assets/styles'
+
     TEMPLATES = '../../lib/templates'
 
     RESOURCES = '../../lib/resources'
 
     SAMPLES = '../../lib/templates/sample'
-
-    STYLES = '../../lib/resources/styles'
 
     BACKENDS = '../../lib/resources/backends'
 

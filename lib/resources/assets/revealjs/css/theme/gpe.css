@@ -639,6 +639,7 @@ ol.lowergreek {
   cursor: default;
   font-style: normal;
   font-weight: normal;
+  font-family: FontAwesome;
   text-decoration: inherit;
   font-size: 46px;
   padding-right: 0.5em;
@@ -647,40 +648,35 @@ ol.lowergreek {
   top: 5px;
 }
 
-/* line 553, ../gpe.scss */
+/* line 554, ../gpe.scss */
 .admonitionblock td.icon .icon-note:before {
   content: "\f05a";
   color: #005498;
   color: #003f72;
-  font-family: FontAwesome;
 }
 
 /* line 560, ../gpe.scss */
 .admonitionblock td.icon .icon-tip:before {
   content: "\f0eb";
-  font-family: FontAwesome;
   text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
   color: #111;
 }
 
 /* Use a more yellow lighter color */
-/* line 568, ../gpe.scss */
+/* line 567, ../gpe.scss */
 .admonitionblock td.icon .icon-warning:before {
   content: "\f071";
   color: #EFEF0C;
-  font-family: FontAwesome;
 }
 
-/* line 574, ../gpe.scss */
+/* line 572, ../gpe.scss */
 .admonitionblock td.icon .icon-caution:before {
   content: "\f06d";
   color: #bf3400;
-  font-family: FontAwesome;
 }
 
-/* line 580, ../gpe.scss */
+/* line 577, ../gpe.scss */
 .admonitionblock td.icon .icon-important:before {
   content: "\f06a";
-  font-family: FontAwesome;
   color: #bf0000;
 }

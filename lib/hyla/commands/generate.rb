@@ -299,7 +299,7 @@ module Hyla
       #
       # Copy resources to target dir
       def self.cp_resources_to_dir(path, resource)
-        source = [Configuration::resources, resource] * '/'
+        source = [Configuration::assets, resource] * '/'
         # destination = [path, resource] * '/'
         destination = path
         Hyla.logger.debug ">>        Copy resource from Source dir: #{source} --> destination dir: #{destination}"

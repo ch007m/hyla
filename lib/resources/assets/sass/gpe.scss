@@ -542,6 +542,7 @@ ol.lowergreek {
   cursor: default;
   font-style: normal;
   font-weight: normal;
+  font-family: FontAwesome;
   text-decoration: inherit;
   font-size: 46px;
   padding-right: 0.5em;
@@ -554,12 +555,10 @@ ol.lowergreek {
   content: "\f05a";
   color: #005498;
   color: #003f72;
-  font-family: FontAwesome;
 }
 
 .admonitionblock td.icon .icon-tip:before {
   content: "\f0eb";
-  font-family: FontAwesome;
   text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
   color: #111;
 }
@@ -568,17 +567,14 @@ ol.lowergreek {
 .admonitionblock td.icon .icon-warning:before {
   content: "\f071";
   color: #EFEF0C;
-  font-family: FontAwesome;
 }
 
 .admonitionblock td.icon .icon-caution:before {
   content: "\f06d";
   color: #bf3400;
-  font-family: FontAwesome;
 }
 
 .admonitionblock td.icon .icon-important:before {
   content: "\f06a";
-  font-family: FontAwesome;
   color: #bf0000;
 }

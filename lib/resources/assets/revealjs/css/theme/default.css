@@ -146,3 +146,124 @@ body {
  *********************************************/
 .reveal .slide-number {
   color: #13daec; }
+
+/*******************************************************************
+ * .reveal i must be override in order to be able to use Asciidoctor and
+ * Font Awesome icons for NOTE, WARNING, REMARK, ....
+ *******************************************************************/
+.reveal i.fa {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-size: 100%;
+}
+
+/**************************************************************
+ * Admonition Asciidoctor
+ *
+ * Mar 03, CHM: Added
+ **************************************************************/
+/* line 492, ../gpe.scss */
+.admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .mathblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
+    text-align: left;
+    font-weight: bold;
+}
+
+/* line 497, ../gpe.scss */
+.admonitionblock > table {
+    border: 0;
+    background: none;
+    width: 100%;
+    padding: 5px 0px;
+}
+
+/* line 504, ../gpe.scss */
+.admonitionblock > table td.icon {
+    text-align: center;
+    width: 80px;
+}
+
+/* line 509, ../gpe.scss */
+.admonitionblock > table td.icon img {
+    max-width: none;
+}
+
+/* line 513, ../gpe.scss */
+.admonitionblock > table td.icon .title {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* line 518, ../gpe.scss */
+.admonitionblock > table td.content {
+    padding-left: 1.125em;
+    padding-right: 1.25em;
+    border-left: 1px solid #dddddd;
+    color: #f4f4f4;
+    font-size: 20px;
+    font-style: normal;
+}
+
+/* Override the color for the list */
+/* line 528, ../gpe.scss */
+.admonitionblock > table td.content ul li, .admonitionblock > table td.content ol li, .admonitionblock > table td.content ol p, .admonitionblock > table td.content ul p {
+    color: #f4f4f4;
+}
+
+/* line 532, ../gpe.scss */
+.admonitionblock > table td.content > :last-child > :last-child {
+    margin-bottom: 0;
+}
+
+/* line 536, ../gpe.scss */
+.admonitionblock > table td.icon {
+    vertical-align: middle;
+}
+
+/* line 540, ../gpe.scss */
+.admonitionblock td.icon [class^="icon-"]:before {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    cursor: default;
+    font-style: normal;
+    font-weight: normal;
+    font-family: FontAwesome;
+    text-decoration: inherit;
+    font-size: 46px;
+    padding-right: 0.5em;
+    position: relative;
+    left: 0;
+    top: 5px;
+}
+
+/* line 553, ../gpe.scss */
+.admonitionblock td.icon .icon-note:before {
+    content: "\f05a";
+    color: #005498;
+    color: #003f72;
+}
+
+/* line 560, ../gpe.scss */
+.admonitionblock td.icon .icon-tip:before {
+    content: "\f0eb";
+    text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
+    color: #111;
+}
+
+/* Use a more yellow lighter color */
+/* line 568, ../gpe.scss */
+.admonitionblock td.icon .icon-warning:before {
+    content: "\f071";
+    color: #bf6900;
+}
+
+/* line 574, ../gpe.scss */
+.admonitionblock td.icon .icon-caution:before {
+    content: "\f06d";
+    color: #bf3400;
+}
+
+/* line 580, ../gpe.scss */
+.admonitionblock td.icon .icon-important:before {
+    content: "\f06a";
+    color: #bf0000;
+}
+

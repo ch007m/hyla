@@ -179,6 +179,27 @@ You can override background transitions per slide by using +++[data-background-t
 
 |===
 
+[data-background=#8c4738]
+== Font Icons
+
+* Font Awesome icon +fa-arrow-left+ : {icon-arrow-left}
+* Font Awesome icon +fa-arrow-right+ :  {icon-arrow-right}
+* Font Awesome icon +fa-exclamation+ {icon-exclamation-mark}
+* Font Awesome icon +fa-question+ {icon-question-mark}
+
+[TIP]
+====
+We have defined as asciidoctor attributes the different icons to be used under the yaml config file of Hyla
+
+- icon-arrow-left: `<i class="fa fa-arrow-left"></i>`
+- icon-arrow-right: `<i class="fa fa-arrow-right"></i>`
+- icon-exclamation-mark: `<i class="fa fa-exclamation"></i>`
+- icon-question-mark: `<i class="fa fa-question"></i>`
+
+The list could be extended with new Font icons. Please refer to the list of the icons available http://fortawesome.github.io/Font-Awesome/icons/[here].
+====
+
+[data-background=#8c4738]
 == Admonition
 
 NOTE: NOTE.  Lorem ipsum dolor sit amet, consectetur adipiscing.

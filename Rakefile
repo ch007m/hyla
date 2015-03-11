@@ -55,11 +55,11 @@ def sass_assets
 end
 
 def revealjs_css_theme_assets
-  [Hyla::Configuration.resources, 'revealjs', 'css', 'theme'] * '/'
+  [Hyla::Configuration.assets, 'revealjs', 'css', 'theme'] * '/'
 end
 
 def revealjs_css_vendor_assets
-  [Hyla::Configuration.resources, 'revealjs', 'lib', 'css'] * '/'
+  [Hyla::Configuration.assets, 'revealjs', 'lib', 'css'] * '/'
 end
 
 def default_compilation_style

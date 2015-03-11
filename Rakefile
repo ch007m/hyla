@@ -54,8 +54,12 @@ def sass_assets
   Hyla::Configuration.assets
 end
 
-def revealjs_css_assets
+def revealjs_css_theme_assets
   [Hyla::Configuration.resources, 'revealjs', 'css', 'theme'] * '/'
+end
+
+def revealjs_css_vendor_assets
+  [Hyla::Configuration.resources, 'revealjs', 'lib', 'css'] * '/'
 end
 
 def default_compilation_style
@@ -99,8 +103,8 @@ task :compass do
 
     # Copy css to RevealJS theme
     # p revealjs_css_assets
-    system "cp -r styles/*.css #{revealjs_css_assets}"
-    
+    system "cp styles/gpe.css #{revealjs_css_theme_assets}"
+    system "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
   end
   
 end

@@ -1,3 +1,8 @@
+## SASS/Compass
+**/lib/resources/assets/.sass-cache/
+**/lib/resources/assets/sass/.sass-cache/
+**/lib/resources/assets/sass/styles
+
 *.gem
 *.rbc
 *.lock

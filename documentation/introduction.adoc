@@ -39,15 +39,11 @@ hyla will include 'awestruct'
 
 The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
-//
-// Prerequisites section
-//
-include::documentation/prerequisites.adoc[]
+== Developer
 
-//
-// Developer
-//
-include::documentation/developer.adoc[]
+* link:documentation/prerequisites.adoc[Prerequisites]
+* link:documentation/developer.adoc["How to install, build the gem"]
+* Using a Docker container
 
 == Usage
 

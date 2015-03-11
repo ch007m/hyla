@@ -41,7 +41,7 @@ The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[f
 == Developer
 
 * link:documentation/prerequisites.adoc[Prerequisites]
-* link:documentation/developer.adoc[How to install, build the gem]
+* link:documentation/developer.adoc["How to install, build the gem"]
 * Using a Docker container
 
 == Usage

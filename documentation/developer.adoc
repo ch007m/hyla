@@ -1,0 +1,48 @@
+== Installation
+
+The latest source code is located in the {sources}[Hyla git repository] on GitHub. Hyla can be installed via the +gem+ command, bundler.
+
+Use `gem install` command to deploy Hyla :
+
+    $ gem install hyla -y
+
+NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required
+
+An alternative is to create a Gemfile and add this line :
+
+    gem 'hyla'
+
+And then execute:
+
+    $ bundle
+
+**Or** install it yourself as:
+
+    $ gem install hyla -v 1.0.7.pre.x
+
+== For Developer's only
+
+    Clone Git project locally, move to Hyla directory and execute the following command to build the project
+    rake build
+
+== To publish Hyla Gem to your local repo
+
+    rake install
+
+== To push to the gems ruby HTTP Server
+
+    rake deploy
+
+== To delete a release pushed to RubyGems (= yank)
+
+    gem yank hyla -v 1.0.x
+
+== To create a release, generate a tagged release and publish it to Gem Repo
+
+    rake install
+    git commit -m "Release Hyla 1.0.7.pre.x" -a
+    git push
+    git tag -a hyla-1.0.7.pre.x -m "Release hyla 1.0.7.pre.x"
+    git push origin hyla-1.0.7.pre.x
+
+    rake deploy

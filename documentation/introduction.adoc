@@ -39,56 +39,15 @@ hyla will include 'awestruct'
 
 The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
-== Prerequisites
+//
+// Prerequisites section
+//
+include:documentation/prerequisites.adoc[]
 
-- https://github.com/sstephenson/ruby-build#readme[rbenv-build] which let you to deploy a pre-compiled version of Ruby
-- https://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby
-- https://www.ruby-lang.org/en/[Ruby] 1.9.3-p484
-- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
-- http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-[How do I install and use the browser extensions for LiveReload].
-Be sure to enable the option “Allow access to file URLs” checkbox in Tools > Extensions > LiveReload after installation of Chrome Extension.
-
-image::image/access_local_file.png[Access Local File,650,150]
-
-== Dependencies
-
-- https://github.com/hakimel/reveal.js[RevealJS] - Version 2.6.1
-
-== Installation
-
-Use `gem install` command to deploy Hyla :
-
-    $ gem install hyla -y -v 1.0.x
-
-NOTE : The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required
-
-NOTE : The option `-v` tells to gem installer to deploy a specific version / release. The release number will depend on the version available (1.0.1, 1.0.2, ...)
-
-An alternative is to create a Gemfile and add this line :
-
-    gem 'hyla'
-
-And then execute:
-
-    $ bundle
-
-**Or** install it yourself as:
-
-    $ gem install hyla -v _version_
-
-where _version_ should be 1.0.2, 1.0.x
-
-== For Developer's only
-
-    Clone Git project locally, move to Hyla directory and execute the following commands
-    gem build hyla.gemspec
-    gem install hyla-1.0.x -l
-
-== To publish Hyla to Gem Repo
-
-    gem build hyla.gemspec
-    gem install hyla-1.0.x.gem -l
-    gem push hyla-1.0.x.gem
+//
+// Developer
+//
+include:documentation/developer.adoc[]
 
 == Usage
 

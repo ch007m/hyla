@@ -38,63 +38,15 @@ hyla will include 'awestruct'
 
 The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
-== Prerequisites
+// 
+// Prerequisites section
+//
+include:documentation/prerequisites.adoc[]
 
-- https://github.com/sstephenson/ruby-build#readme[rbenv-build] which let you to deploy a pre-compiled version of Ruby
-- https://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby
-- https://www.ruby-lang.org/en/[Ruby] 1.9.3-p484
-- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
-- http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-[How do I install and use the browser extensions for LiveReload].
-Be sure to enable the option “Allow access to file URLs” checkbox in Tools > Extensions > LiveReload after installation of Chrome Extension.
-
-== Installation
-
-The latest source code is located in the {sources}[Hyla git repository] on GitHub. Hyla can be installed via the +gem+ command, bundler.
-
-Use `gem install` command to deploy Hyla :
-
-    $ gem install hyla -y
-    
-NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required 
-
-An alternative is to create a Gemfile and add this line :
-
-    gem 'hyla'
-
-And then execute:
-
-    $ bundle
-
-**Or** install it yourself as:
-
-    $ gem install hyla -v 1.0.7.pre.x
-
-== For Developer's only
-
-    Clone Git project locally, move to Hyla directory and execute the following command to build the project
-    rake build
-
-== To publish Hyla Gem to your local repo
-
-    rake install
-    
-== To push to the gems ruby HTTP Server
-
-    rake deploy
-
-== To delete a release pushed to RubyGems (= yank)
-
-    gem yank hyla -v 1.0.x
-
-== To create a release, generate a tagged release and publish it to Gem Repo
-
-    rake install
-    git commit -m "Release Hyla 1.0.7.pre.x" -a
-    git push
-    git tag -a hyla-1.0.7.pre.x -m "Release hyla 1.0.7.pre.x"
-    git push origin hyla-1.0.7.pre.x
-
-    rake deploy
+//
+// Developer
+//
+include:documentation/developer.adoc[]
 
 == Usage
 
@@ -113,7 +65,7 @@ More info about options and commands available can be find by running the `comma
 
 == Documentation
 
-The `hyla` documentation is available at the link:documentation/introduction.adoc[following address]
+The `hyla` documentation is available at this link:documentation/introduction.adoc[address]
 
 == Copyright and Licensing
 

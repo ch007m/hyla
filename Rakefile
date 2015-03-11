@@ -111,7 +111,7 @@ task :compass do
 end
 
 # Build the Gem
-task :build => :gemspec do
+task :build do
   system "gem build #{gemspec_file}"
 end
 

@@ -82,18 +82,18 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 
 == 1. Create a Blank Project (with or without --force option)
 
-    hyla new --blank -d ~/hyla/MyBlankProject
-    hyla new --blank -d ~/hyla/MyBlankProject --force
+    hyla new --blank ~/hyla/MyBlankProject
+    hyla new -b ~/hyla/MyBlankProject -f
 
-== 2. Create a Blank Project without _config.yaml config file, add artefact
+== 2. Create a Blank Project without _config.yaml config file, add artifact
 
 - Clean and create a MyBlankProject (= directory) using --force option
 
     cd ~/hyla
     rm -rf MyBlankProject/
-    hyla new --blank -d MyBlankProject
+    hyla new -b MyBlankProject -f
 
-- Create Asciidoc files from samples (book, article, image, audio, ...)
+- Create Asciidoc files from templates (book, article, image, audio, ...)
 
     hyla add --t asciidoc -a article -d ~/hyla/MyBlankProject
     hyla add --t asciidoc -a book -d ~/hyla/MyBlankProject
@@ -111,7 +111,7 @@ Using hyla we will create a new project (= directory) and add artefacts (article
     rm -rf MyBlankProject/
 
     # Create a Blank project but containing the yaml config file
-    hyla new --blank -d MyBlankProject
+    hyla new -b MyBlankProject
 
     cd MyBlankProject
 
@@ -156,13 +156,13 @@ Using hyla we will create a new project (= directory) and add artefacts (article
 === 1. Create a project using a template (training)
 
     cd ~/hyla
-    hyla new --t training -d MyTrainingProject
+    hyla new --t training MyTrainingProject
 
     // TODO Refactor Training Exercises Template
-    hyla new --t training-exercises -d MyTrainingExercisesProject
+    hyla new --t training-exercises MyTrainingExercisesProject
 
     // TODO - Add images
-    hyla new --t book -d MyBookProject
+    hyla new --t book MyBookProject
 
 === 2. Generate content and watch it
 
@@ -273,7 +273,7 @@ Hyla command in another Terminal
 
     rm -rf  ~/hyla/MyDeckSlideShow
     cd ~/hyla
-    hyla new -b -d MyDeckSlideShow
+    hyla new -b MyDeckSlideShow
 
    hyla add --t slideshow -a deckjs -d MyDeckSlideShow
    hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html
@@ -287,7 +287,7 @@ Hyla command in another Terminal
 
     rm -rf ~/hyla/MyRevealSlideShow
     cd ~/hyla
-    hyla new --blank -d MyRevealSlideShow
+    hyla new -b MyRevealSlideShow
 
     hyla add --t slideshow -a revealjs -d MyRevealSlideShow
 
@@ -295,9 +295,6 @@ Hyla command in another Terminal
 
     hyla generate --backend revealjs -s . -d generated_content -r adoc2html
 
-    open http://localhost:4000/hyla/slideshow_revealjs.html &
-
-    hyla serve -P 4000 -H localhost -b /hyla/ -d generated_content/
 
 == 7. Generate a PDF
 
@@ -308,7 +305,7 @@ libraries https://github.com/pdfkit/pdfkit[pdfkit] and https://github.com/wkhtml
 
     cd ~/hyla
     rm -rf MyPdfroject/
-    hyla new -b -d MyPdfProject --force
+    hyla new -b MyPdfProject --force
     cd MyPdfProject
 
 - Create Asciidoc file from sample (book)
@@ -364,7 +361,7 @@ Two new options are required to process the request on the command line or using
 
     cd ~/hyla
     rm -rf MyEmailProject/
-    hyla new -b -d MyEmailProject --force
+    hyla new -b MyEmailProject --force
     cd MyEmailProject
 
 - Add an asciidoc file (report, doc, book, article)

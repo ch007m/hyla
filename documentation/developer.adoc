@@ -1,4 +1,9 @@
-== Installation
+:homepage: http://github.com/cmoulliard/hyla
+:docs: https://github.com/cmoulliard/hyla/blob/master/documentation/introduction.adoc
+:sources: https://github.com/cmoulliard/hyla
+:issues: https://github.com/cmoulliard/hyla/issues/
+
+== Install using the gem
 
 The latest source code is located in the {sources}[Hyla git repository] on GitHub. Hyla can be installed via the +gem+ command, bundler.
 
@@ -20,12 +25,16 @@ And then execute:
 
     $ gem install hyla -v 1.0.7.pre.x
 
-== For Developer's only
+== Build the project
 
-    Clone Git project locally, move to Hyla directory and execute the following command to build the project
+In order to build the Hyla project, we recommend that you clone the project locally (or to fork the project), next you move to the project cloned
+and finally, run the following command :
+    
     rake build
 
-== To publish Hyla Gem to your local repo
+This command will create a gem of the project
+
+== To publish the Hyla Gem to your machine
 
     rake install
 

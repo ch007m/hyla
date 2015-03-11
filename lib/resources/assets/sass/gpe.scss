@@ -23,12 +23,14 @@
  */
 
 /* $debug-configuration: true; */
-
-@import "compass/reset";
 @import "overpass"; /* Font Overpass */
 @import "liberation"; /* Font Liberation */
-@import "font-awesome"; /* Font Awesome icons */
 
+/* 
+ * We dont import the css content of font-awesome hre
+ * as it will added to the HTML of the slideshow as a local/remote resource
+ *  @import "font-awesome"; 
+ */ 
 
 /*$var-family-name: 'Liberation Sans';*/
 $fonts: 'Liberation Sans', 'Overpass', 'Open Sans', sans-serif;

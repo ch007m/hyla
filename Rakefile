@@ -54,6 +54,10 @@ def sass_assets
   Hyla::Configuration.assets
 end
 
+def revealjs_css_assets
+  [Hyla::Configuration.resources, 'revealjs', 'css', 'theme'] * '/'
+end
+
 def default_compilation_style
   'compressed'
 end
@@ -92,7 +96,13 @@ task :compass do
     puts "Sass dir : #{dir}"
     # -s #{style} -I #{path}
     system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' "
+
+    # Copy css to RevealJS theme
+    # p revealjs_css_assets
+    system "cp -r styles/*.css #{revealjs_css_assets}"
+    
   end
+  
 end
 
 # Build the Gem

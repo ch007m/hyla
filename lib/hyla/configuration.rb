@@ -266,23 +266,23 @@ module Hyla
 
     COVER_TEMPLATE = '../../lib/resources/cover.slim'
 
-    ASSESSMENT_TXT = File.open(self.resources + '/course/assessment.txt','r').read
+    ASSESSMENT_TXT = File.open(self.templates + '/course/assessment.txt','r').read
 
-    LABS_TXT = File.open(self.resources + '/course/labinstructions.txt','r').read
+    LABS_TXT = File.open(self.templates + '/course/labinstructions.txt','r').read
 
-    INDEX = File.open(self.resources + '/course/index.txt','r').read
+    INDEX = File.open(self.templates + '/course/index.txt','r').read
 
-    HEADER_INDEX = File.open(self.resources + '/course/header_index.txt','r').read
+    HEADER_INDEX = File.open(self.templates + '/course/header_index.txt','r').read
 
-    FOOTER_TXT = File.open(self.resources + '/course/footer.txt','r').read
+    FOOTER_TXT = File.open(self.templates + '/course/footer.txt','r').read
 
-    COVER_TXT = File.open(self.resources + '/course/cover.txt','r').read
+    COVER_TXT = File.open(self.templates + '/course/cover.txt','r').read
 
-    OBJECTIVES_TXT = File.open(self.resources + '/course/objectives.txt','r').read
+    OBJECTIVES_TXT = File.open(self.templates + '/course/objectives.txt','r').read
 
-    SUMMARY_TXT = File.open(self.resources + '/course/summary.txt','r').read
+    SUMMARY_TXT = File.open(self.templates + '/course/summary.txt','r').read
 
-    AUDIO_TXT = File.open(self.resources + '/course/audio.txt','r').read
+    AUDIO_TXT = File.open(self.templates + '/course/audio.txt','r').read
 
   end # Class Configuration
 end # module Hyla

@@ -42,12 +42,12 @@ The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[f
 //
 // Prerequisites section
 //
-include:documentation/prerequisites.adoc[]
+include::documentation/prerequisites.adoc[]
 
 //
 // Developer
 //
-include:documentation/developer.adoc[]
+include::documentation/developer.adoc[]
 
 == Usage
 

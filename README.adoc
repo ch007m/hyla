@@ -38,16 +38,6 @@ hyla will include 'awestruct'
 
 The Hyla project name comes from an arboreal http://en.wikipedia.org/wiki/Hyla[frog] living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.
 
-// 
-// Prerequisites section
-//
-include::documentation/prerequisites.adoc[]
-
-//
-// Developer
-//
-include::documentation/developer.adoc[]
-
 == Usage
 
 Open a terminal and move to the folder where you would like to create a new project or develop an existing. As Hyla is command line tool, it will be used with one of the following commands :

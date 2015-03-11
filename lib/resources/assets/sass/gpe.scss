@@ -1,10 +1,17 @@
-/* $debug-configuration: true; */
-
 /*
  * NOT USED ANYMORE - Using Compass Font-Face
  * @import "compass/css3/font-face";
- */
+ * @include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
+        "liberationSans-Bold.ttf",
+        "liberationSans-Italic.ttf",
+        "liberationSans-BoldItalic.ttf"));
 
+   @include font-face('Overpass', font-files("Overpass_Regular.ttf",
+        "Overpass_Bold.ttf",
+        "Overpass_Light.ttf",
+        "Overpass_Regular.ttf"));
+*/
+ 
 /* 
  * NOT USED ANYMORE -  Import font Awesome Fonts using the gem installed
  * @import "font-awesome-compass";
@@ -15,28 +22,20 @@
  * @import url(http://red-hat-overpass-fonts.s3.amazonaws.com/overpass.css);
  */
 
+/* $debug-configuration: true; */
+
 @import "compass/reset";
 @import "overpass"; /* Font Overpass */
+@import "liberation"; /* Font Liberation */
 @import "fontawesome/font-awesome"; /* Font Awesome icons */
 
 
-/*@include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
-        "liberationSans-Bold.ttf",
-        "liberationSans-Italic.ttf",
-        "liberationSans-BoldItalic.ttf"));
-
-@include font-face('Overpass', font-files("Overpass_Regular.ttf",
-        "Overpass_Bold.ttf",
-        "Overpass_Light.ttf",
-        "Overpass_Regular.ttf"));*/
-
 /*$var-family-name: 'Liberation Sans';*/
-$family-name: 'Overpass';
-$font-stack: $family-name, 'Liberation Sans', 'Open Sans', sans-serif;
+$fonts: 'Liberation Sans', 'Overpass', 'Open Sans', sans-serif;
 $red-color: #a70000;
 
 body {
-  font-family: $font-stack;
+  font-family: $fonts;
 }
 
 /*********************************************
@@ -77,7 +76,7 @@ body {
   right: 0;
   top: 0;
   height: 0px;
-  font-family: $font-stack;
+  font-family: $fonts;
   font-size: 20px;
   text-align: center;
 }
@@ -93,7 +92,7 @@ body {
   right: 0;
   bottom: 0;
   height: 40px;
-  font-family: $font-stack;
+  font-family: $fonts;
   font-size: 20px;
   text-align: center;
 }
@@ -109,7 +108,7 @@ body {
 }
 
 .reveal {
-  font-family: $font-stack;
+  font-family: $fonts;
   font-size: 28px;
   font-weight: normal;
   letter-spacing: -0.02em;
@@ -150,7 +149,7 @@ body {
 .reveal h6 {
   margin: 0 0 20px 0;
   color: #3E4349;
-  font-family: $font-stack;
+  font-family: $fonts;
   line-height: 0.9em;
   letter-spacing: 0.02em;
   text-transform: none;

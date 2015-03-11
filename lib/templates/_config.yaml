@@ -32,7 +32,7 @@ attributes:
    # Font Icons attributes
    # This list can be extended to use the fa-icon that you want
    #
-   icon-arrow-left: <i class="fa fa-arrow-right"></i>
+   icon-arrow-left: <i class="fa fa-arrow-left"></i>
    icon-arrow-right: <i class="fa fa-arrow-right"></i>
    icon-exclamation-mark: <i class="fa fa-exclamation"></i>
    icon-question-mark: <i class="fa fa-question"></i>

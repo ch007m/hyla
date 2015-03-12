@@ -3,6 +3,8 @@
 **/lib/resources/assets/sass/.sass-cache/
 **/lib/resources/assets/sass/styles
 
+gh-pages/
+
 *.gem
 *.rbc
 *.lock

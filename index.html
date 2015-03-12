@@ -742,9 +742,9 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <ul class="sectlevel2">
 <li><a href="#_prerequisites">Prerequisites</a></li>
 <li><a href="#_install_the_gem">Install the gem</a></li>
+<li><a href="#_build_the_project_from_the_code">Build the project from the code</a></li>
 </ul>
 </li>
-<li><a href="#_build_the_project_from_the_code">Build the project from the code</a></li>
 <li><a href="#_usage">Usage</a></li>
 <li><a href="#_scenario">Scenario</a></li>
 <li>
@@ -815,8 +815,8 @@ Be sure to enable the option “Allow access to file URLs” checkbox in Tools &
 :issues: <a href="https://github.com/cmoulliard/hyla/issues/">https://github.com/cmoulliard/hyla/issues/</a></p></li></ul></div></div>
 <div class="sect2"><h3 id="_install_the_gem"><a class="anchor" href="#_install_the_gem"></a>Install the gem</h3><div class="paragraph"><p>Use <code>gem install</code> command to deploy Hyla :</p></div>
 <div class="literalblock"><div class="content"><pre>$ gem install hyla -y</pre></div></div>
-<div class="paragraph"><p>NOTE :  The option <code>-y</code> will tell to rubyGems to deploy the gem but also the dependencies required</p></div></div></div></div>
-<div class="sect1"><h2 id="_build_the_project_from_the_code"><a class="anchor" href="#_build_the_project_from_the_code"></a>Build the project from the code</h2><div class="sectionbody"><div class="ulist"><ul><li><p>Generate the gem</p></li></ul></div>
+<div class="paragraph"><p>NOTE :  The option <code>-y</code> will tell to rubyGems to deploy the gem but also the dependencies required</p></div></div>
+<div class="sect2"><h3 id="_build_the_project_from_the_code"><a class="anchor" href="#_build_the_project_from_the_code"></a>Build the project from the code</h3><div class="ulist"><ul><li><p>Generate the gem</p></li></ul></div>
 <div class="paragraph"><p>In order to build the Hyla project, we recommend that you clone the project locally (or fork it) {sources}[from the Hyla git repository], next you move to the project cloned
 and finally, run the following command :</p></div>
 <div class="literalblock"><div class="content"><pre>rake build</pre></div></div>
@@ -826,7 +826,7 @@ git commit -m "Release Hyla 1.0.x" -a
 git push
 git tag -a hyla-1.0.x -m "Release hyla 1.0.x"
 git push origin hyla-1.0.x</pre></div></div>
-<div class="literalblock"><div class="content"><pre>rake deploy</pre></div></div></li><li><p>To delete a release pushed to RubyGems (= yank)</p><div class="literalblock"><div class="content"><pre>gem yank hyla -v 1.0.x</pre></div></div></li></ul></div></div></div>
+<div class="literalblock"><div class="content"><pre>rake deploy</pre></div></div></li><li><p>To delete a release pushed to RubyGems (= yank)</p><div class="literalblock"><div class="content"><pre>gem yank hyla -v 1.0.x</pre></div></div></li></ul></div></div></div></div>
 <div class="sect1"><h2 id="_usage"><a class="anchor" href="#_usage"></a>Usage</h2><div class="sectionbody"><div class="paragraph"><p>Open a terminal and move to the folder where you would like to create a new project or develop an existing. As Hyla is command line tool, it will be used with one of the following commands :</p></div>
 <div class="literalblock"><div class="content"><pre>create               Creates a new file from asciidoc artefacts for an existing project
 generate             Generate modules and asciidoc files from an asciidoc Table Of Content file

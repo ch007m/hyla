@@ -3,7 +3,7 @@
 :sources: https://github.com/cmoulliard/hyla
 :issues: https://github.com/cmoulliard/hyla/issues/
 
-== Install the gem
+=== Install the gem
 
 Use `gem install` command to deploy Hyla :
 
@@ -11,7 +11,7 @@ Use `gem install` command to deploy Hyla :
 
 NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required
 
-== Build the project from the code 
+=== Build the project from the code
 
 * Generate the gem
 

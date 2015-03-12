@@ -30,6 +30,7 @@ attributes:
    safe: unsafe
    
    toc: right
+   toclevel: 4
 
    # Font Icons - http://fortawesome.github.io/Font-Awesome/icons/
    icon-arrow-left: <i class="fa fa-arrow-right"></i>

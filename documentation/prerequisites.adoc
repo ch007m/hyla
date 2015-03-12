@@ -1,4 +1,4 @@
-== Prerequisites
+=== Prerequisites
 
 - https://github.com/sstephenson/ruby-build#readme[rbenv-build] which let you to deploy a pre-compiled version of Ruby
 - https://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby

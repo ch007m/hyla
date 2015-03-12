@@ -144,7 +144,7 @@ task :publish do
   puts "Checking for gh-pages dir..."
   unless File.exist?("./gh-pages")
     puts "Creating gh-pages dir..."
-    sh "git clone git@github.com:cmoulliard/hyla gh-pages"
+    sh "git clone git@github.com:cmoulliard/hyla.git gh-pages"
   end
 
   # Ensure latest gh-pages branch history.

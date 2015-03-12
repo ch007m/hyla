@@ -736,30 +736,30 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 .CodeRay .change .change { color: #66f; }
 .CodeRay .head .head { color: #f4f; }
 </style></head><body class="book toc2 toc-right"><div id="header"><div id="toc" class="toc2"><div id="toctitle">Table of Contents</div><ul class="sectlevel1">
-<li><a href="#_introduction">Introduction</a></li>
-<li><a href="#_developer">Developer</a></li>
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_developer">2. Developer</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#_prerequisites">Prerequisites</a></li>
-<li><a href="#_install_the_gem">Install the gem</a></li>
-<li><a href="#_build_the_project_from_the_code">Build the project from the code</a></li>
+<li><a href="#_prerequisites">2.1. Prerequisites</a></li>
+<li><a href="#_install_the_gem">2.2. Install the gem</a></li>
+<li><a href="#_build_the_project_from_the_code">2.3. Build the project from the code</a></li>
 </ul>
 </li>
-<li><a href="#_technical_writer">Technical writer</a></li>
-<li><a href="#_scenari">Scenari</a></li>
+<li><a href="#_technical_writer">3. Technical writer</a></li>
+<li><a href="#_scenario">4. Scenario</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#_delete_temp_directory">Delete Temp directory</a></li>
-<li><a href="#_blank_project_artifacts">Blank Project &amp; Artifacts</a></li>
-<li><a href="#_project_from_template">Project from Template</a></li>
-<li><a href="#_table_of_content_to_asciidoc">Table Of Content To asciidoc</a></li>
-<li><a href="#_5_server_content_locally_http_server">5. Server content locally - HTTP Server</a></li>
-<li><a href="#_generate_a_slideshow">Generate a Slideshow</a></li>
-<li><a href="#_generate_a_pdf">Generate a PDF</a></li>
-<li><a href="#_send_email">Send Email</a></li>
+<li><a href="#_delete_temp_directory">4.1. Delete Temp directory</a></li>
+<li><a href="#_blank_project_artifacts">4.2. Blank Project &amp; Artifacts</a></li>
+<li><a href="#_project_from_template">4.3. Project from Template</a></li>
+<li><a href="#_table_of_content_to_asciidoc">4.4. Table Of Content To asciidoc</a></li>
+<li><a href="#_5_server_content_locally_http_server">4.5. 5. Server content locally - HTTP Server</a></li>
+<li><a href="#_generate_a_slideshow">4.6. Generate a Slideshow</a></li>
+<li><a href="#_generate_a_pdf">4.7. Generate a PDF</a></li>
+<li><a href="#_send_email">4.8. Send Email</a></li>
 </ul>
 </li>
-</ul></div></div><div id="content"><div class="sect1"><h2 id="_introduction"><a class="anchor" href="#_introduction"></a>Introduction</h2><div class="sectionbody"><div class="paragraph"><p><span class="image left"><img src="https://raw.github.com/cmoulliard/hyla/master/documentation/image/hyla_frog.jpg" alt="Hyla" width="100" height="100"></span> <strong>Hyla</strong> is a Ruby command line tool to create a new
+</ul></div></div><div id="content"><div class="sect1"><h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2><div class="sectionbody"><div class="paragraph"><p><span class="image left"><img src="https://raw.github.com/cmoulliard/hyla/master/documentation/image/hyla_frog.jpg" alt="Hyla" width="100" height="100"></span> <strong>Hyla</strong> is a Ruby command line tool to create a new
 documentation/training/blog/static web site project, add artefacts (articles, blog, audio, video, content, code source, &#8230;), render it in HTML, SlideShow, &#8230; using asciidoc(tor) as markup language.</p></div>
 <div class="paragraph"><p>Until now, hyla looks like asciidoctor client but is is more similar to Jekyll on the principle but here we support <em>asciidoc, asciidoctor</em> formats and not markdown.</p></div>
 <div class="paragraph"><p>The tool allows to :</p></div>
@@ -775,16 +775,16 @@ to finally build a documentation/training/blog &#8230;.</p></div>
 hyla will reuse stylesheets created from <em>asciidoctor-stylesheet-factory</em> and <em>asciidoctor-backends</em> for HTML5, RevealJS, DeckJS, DockBook &#8230;
 hyla will include <em>awestruct</em></p></div>
 <div class="paragraph"><p>The Hyla project name comes from an arboreal <a href="http://en.wikipedia.org/wiki/Hyla">frog</a> living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.</p></div></div></div>
-<div class="sect1"><h2 id="_developer"><a class="anchor" href="#_developer"></a>Developer</h2><div class="sectionbody"><div class="sect2"><h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h3><div class="ulist"><ul><li><p><a href="https://github.com/sstephenson/ruby-build#readme">rbenv-build</a> which let you to deploy a pre-compiled version of Ruby</p></li><li><p><a href="https://github.com/sstephenson/rbenv">rbenv</a> to manage different versions of Ruby</p></li><li><p><a href="https://www.ruby-lang.org/en/">Ruby</a> 1.9.3-p484</p></li><li><p><a href="http://guides.rubygems.org/">RubyGems</a> to install Ruby Applications</p></li><li><p><a href="http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-">How do I install and use the browser extensions for LiveReload</a>.
+<div class="sect1"><h2 id="_developer"><a class="anchor" href="#_developer"></a>2. Developer</h2><div class="sectionbody"><div class="sect2"><h3 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>2.1. Prerequisites</h3><div class="ulist"><ul><li><p><a href="https://github.com/sstephenson/ruby-build#readme">rbenv-build</a> which let you to deploy a pre-compiled version of Ruby</p></li><li><p><a href="https://github.com/sstephenson/rbenv">rbenv</a> to manage different versions of Ruby</p></li><li><p><a href="https://www.ruby-lang.org/en/">Ruby</a> 1.9.3-p484</p></li><li><p><a href="http://guides.rubygems.org/">RubyGems</a> to install Ruby Applications</p></li><li><p><a href="http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-">How do I install and use the browser extensions for LiveReload</a>.
 Be sure to enable the option “Allow access to file URLs” checkbox in Tools &gt; Extensions &gt; LiveReload after installation of Chrome Extension.
 :homepage: <a href="http://github.com/cmoulliard/hyla">http://github.com/cmoulliard/hyla</a>
 :docs: <a href="https://github.com/cmoulliard/hyla/blob/master/documentation/introduction.adoc">https://github.com/cmoulliard/hyla/blob/master/documentation/introduction.adoc</a>
 :sources: <a href="https://github.com/cmoulliard/hyla">https://github.com/cmoulliard/hyla</a>
 :issues: <a href="https://github.com/cmoulliard/hyla/issues/">https://github.com/cmoulliard/hyla/issues/</a></p></li></ul></div></div>
-<div class="sect2"><h3 id="_install_the_gem"><a class="anchor" href="#_install_the_gem"></a>Install the gem</h3><div class="paragraph"><p>Use <code>gem install</code> command to deploy Hyla :</p></div>
+<div class="sect2"><h3 id="_install_the_gem"><a class="anchor" href="#_install_the_gem"></a>2.2. Install the gem</h3><div class="paragraph"><p>Use <code>gem install</code> command to deploy Hyla :</p></div>
 <div class="literalblock"><div class="content"><pre>$ gem install hyla -y</pre></div></div>
 <div class="paragraph"><p>NOTE :  The option <code>-y</code> will tell to rubyGems to deploy the gem but also the dependencies required</p></div></div>
-<div class="sect2"><h3 id="_build_the_project_from_the_code"><a class="anchor" href="#_build_the_project_from_the_code"></a>Build the project from the code</h3><div class="ulist"><ul><li><p>Generate the gem</p></li></ul></div>
+<div class="sect2"><h3 id="_build_the_project_from_the_code"><a class="anchor" href="#_build_the_project_from_the_code"></a>2.3. Build the project from the code</h3><div class="ulist"><ul><li><p>Generate the gem</p></li></ul></div>
 <div class="paragraph"><p>In order to build the Hyla project, we recommend that you clone the project locally (or fork it) {sources}[from the Hyla git repository], next you move to the project cloned
 and finally, run the following command :</p></div>
 <div class="literalblock"><div class="content"><pre>rake build</pre></div></div>
@@ -795,7 +795,7 @@ git push
 git tag -a hyla-1.0.x -m "Release hyla 1.0.x"
 git push origin hyla-1.0.x</pre></div></div>
 <div class="literalblock"><div class="content"><pre>rake deploy</pre></div></div></li><li><p>To delete a release pushed to RubyGems (= yank)</p><div class="literalblock"><div class="content"><pre>gem yank hyla -v 1.0.x</pre></div></div></li></ul></div></div></div></div>
-<div class="sect1"><h2 id="_technical_writer"><a class="anchor" href="#_technical_writer"></a>Technical writer</h2><div class="sectionbody"><div class="paragraph"><p>Open a terminal and move to the folder where you would like to create a new project or develop an existing. As Hyla is command line tool, it will be used with one of the following commands :</p></div>
+<div class="sect1"><h2 id="_technical_writer"><a class="anchor" href="#_technical_writer"></a>3. Technical writer</h2><div class="sectionbody"><div class="paragraph"><p>Open a terminal and move to the folder where you would like to create a new project or develop an existing. As Hyla is command line tool, it will be used with one of the following commands :</p></div>
 <div class="literalblock"><div class="content"><pre>create               Creates a new file from asciidoc artefacts for an existing project
 generate             Generate modules and asciidoc files from an asciidoc Table Of Content file
 help                 Display global or [command] help documentation.
@@ -804,8 +804,8 @@ serve                Serve locally your site
 watch                Watch directories for any change, add or file deleted and render document (HTML5)</pre></div></div>
 <div class="paragraph"><p>More info about options and commands available can be find by running the <code>command line tool</code></p></div>
 <div class="literalblock"><div class="content"><pre>hyla --help</pre></div></div></div></div>
-<div class="sect1"><h2 id="_scenari"><a class="anchor" href="#_scenari"></a>Scenari</h2><div class="sectionbody"><div class="paragraph"><p>The following scenario describes how we can can setup a project using one of the option proposed by Hyla : Create, Generate, Watch, &#8230;</p></div>
-<div class="sect2"><h3 id="_delete_temp_directory"><a class="anchor" href="#_delete_temp_directory"></a>Delete Temp directory</h3><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyBlankProject/
+<div class="sect1"><h2 id="_scenario"><a class="anchor" href="#_scenario"></a>4. Scenario</h2><div class="sectionbody"><div class="paragraph"><p>The following scenario describes how we can can setup a project using one of the option proposed by Hyla : Create, Generate, Watch, &#8230;</p></div>
+<div class="sect2"><h3 id="_delete_temp_directory"><a class="anchor" href="#_delete_temp_directory"></a>4.1. Delete Temp directory</h3><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyBlankProject/
 rm -rf ~/hyla/MyBookProject
 rm -rf ~/hyla/MyPdfProject/
 rm -rf ~/hyla/MyTocProject/
@@ -814,10 +814,10 @@ rm -rf ~/hyla/MyTrainingExercisesProject/
 rm -rf ~/hyla/MyDeckSlideShow/
 rm -rf ~/hyla/MyRevealSlideShow/
 rm -rf ~/hyla/MyEmailProject/</pre></div></div></div>
-<div class="sect2"><h3 id="_blank_project_artifacts"><a class="anchor" href="#_blank_project_artifacts"></a>Blank Project &amp; Artifacts</h3><div class="paragraph"><p>Using hyla we will create a new project (= directory) and add artifacts (article, audio, video, image, source, table)</p></div>
-<div class="sect3"><h4 id="_create_a_blank_project_with_or_without_force_option"><a class="anchor" href="#_create_a_blank_project_with_or_without_force_option"></a>Create a Blank Project (with or without --force option)</h4><div class="literalblock"><div class="content"><pre>hyla new --blank ~/hyla/MyBlankProject
+<div class="sect2"><h3 id="_blank_project_artifacts"><a class="anchor" href="#_blank_project_artifacts"></a>4.2. Blank Project &amp; Artifacts</h3><div class="paragraph"><p>Using hyla we will create a new project (= directory) and add artifacts (article, audio, video, image, source, table)</p></div>
+<div class="sect3"><h4 id="_create_a_blank_project_with_or_without_force_option"><a class="anchor" href="#_create_a_blank_project_with_or_without_force_option"></a>4.2.1. Create a Blank Project (with or without --force option)</h4><div class="literalblock"><div class="content"><pre>hyla new --blank ~/hyla/MyBlankProject
 hyla new -b ~/hyla/MyBlankProject -f</pre></div></div></div>
-<div class="sect3"><h4 id="_create_a_blank_project_without_config_yaml_config_file_add_artifact"><a class="anchor" href="#_create_a_blank_project_without_config_yaml_config_file_add_artifact"></a>Create a Blank Project without _config.yaml config file, add artifact</h4><div class="ulist"><ul><li><p>Clean and create a MyBlankProject (= directory) using --force option</p><div class="literalblock"><div class="content"><pre>cd ~/hyla
+<div class="sect3"><h4 id="_create_a_blank_project_without_config_yaml_config_file_add_artifact"><a class="anchor" href="#_create_a_blank_project_without_config_yaml_config_file_add_artifact"></a>4.2.2. Create a Blank Project without _config.yaml config file, add artifact</h4><div class="ulist"><ul><li><p>Clean and create a MyBlankProject (= directory) using --force option</p><div class="literalblock"><div class="content"><pre>cd ~/hyla
 rm -rf MyBlankProject/
 hyla new -b MyBlankProject -f</pre></div></div></li><li><p>Create Asciidoc files from templates (book, article, image, audio, &#8230;)</p><div class="literalblock"><div class="content"><pre>hyla add --t asciidoc -a article -d ~/hyla/MyBlankProject
 hyla add --t asciidoc -a book -d ~/hyla/MyBlankProject
@@ -826,7 +826,7 @@ hyla add --t asciidoc -a audio -d ~/hyla/MyBlankProject
 hyla add --t asciidoc -a video -d ~/hyla/MyBlankProject
 hyla add --t asciidoc -a source -d ~/hyla/MyBlankProject
 hyla add --t asciidoc -a table -d ~/hyla/MyBlankProject</pre></div></div></li></ul></div></div>
-<div class="sect3"><h4 id="_create_a_blank_project_using_config_yaml_config_file_add_artefacts"><a class="anchor" href="#_create_a_blank_project_using_config_yaml_config_file_add_artefacts"></a>Create a Blank Project using _config.yaml config file, add artefacts</h4><div class="ulist"><ul><li><p>Clean up project and create a MyBlankProject (= directory) using --force option</p><div class="literalblock"><div class="content"><pre>cd ~/hyla
+<div class="sect3"><h4 id="_create_a_blank_project_using_config_yaml_config_file_add_artefacts"><a class="anchor" href="#_create_a_blank_project_using_config_yaml_config_file_add_artefacts"></a>4.2.3. Create a Blank Project using _config.yaml config file, add artefacts</h4><div class="ulist"><ul><li><p>Clean up project and create a MyBlankProject (= directory) using --force option</p><div class="literalblock"><div class="content"><pre>cd ~/hyla
 rm -rf MyBlankProject/</pre></div></div>
 <div class="literalblock"><div class="content"><pre># Create a Blank project but containing the yaml config file
 hyla new -b MyBlankProject</pre></div></div>
@@ -837,28 +837,28 @@ hyla add --a audio
 hyla add --a video
 hyla add --a source
 hyla add --a table</pre></div></div></li></ul></div></div>
-<div class="sect3"><h4 id="_generate_html_content_of_an_existing_project_asciidoc_2_html"><a class="anchor" href="#_generate_html_content_of_an_existing_project_asciidoc_2_html"></a>Generate HTML Content of an existing project (asciidoc 2 html)</h4><div class="literalblock"><div class="content"><pre>hyla generate -r adoc2html -s ~/hyla/MyBlankProject/ -d ~/hyla/MyBlankProject/generated_content</pre></div></div></div>
-<div class="sect3"><h4 id="_generate_html_content_of_an_existing_project_asciidoc_2_html_with_a_different_style"><a class="anchor" href="#_generate_html_content_of_an_existing_project_asciidoc_2_html_with_a_different_style"></a>Generate HTML Content of an existing project (asciidoc 2 html) with a different style</h4><div class="literalblock"><div class="content"><pre>Styles available : liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems</pre></div></div>
+<div class="sect3"><h4 id="_generate_html_content_of_an_existing_project_asciidoc_2_html"><a class="anchor" href="#_generate_html_content_of_an_existing_project_asciidoc_2_html"></a>4.2.4. Generate HTML Content of an existing project (asciidoc 2 html)</h4><div class="literalblock"><div class="content"><pre>hyla generate -r adoc2html -s ~/hyla/MyBlankProject/ -d ~/hyla/MyBlankProject/generated_content</pre></div></div></div>
+<div class="sect3"><h4 id="_generate_html_content_of_an_existing_project_asciidoc_2_html_with_a_different_style"><a class="anchor" href="#_generate_html_content_of_an_existing_project_asciidoc_2_html_with_a_different_style"></a>4.2.5. Generate HTML Content of an existing project (asciidoc 2 html) with a different style</h4><div class="literalblock"><div class="content"><pre>Styles available : liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla generate -r adoc2html -s ~/hyla/MyBlankProject/ -d ~/hyla/MyBlankProject/generated_content --style liberation
 hyla generate -r adoc2html -s ~/hyla/MyBlankProject/ -d ~/hyla/MyBlankProject/generated_content --style github
 hyla generate -r adoc2html -s ~/hyla/MyBlankProject/ -d ~/hyla/MyBlankProject/generated_content --style foundation</pre></div></div></div>
-<div class="sect3"><h4 id="_generate_html_content_within_project"><a class="anchor" href="#_generate_html_content_within_project"></a>Generate HTML Content within project</h4><div class="literalblock"><div class="content"><pre>hyla generate -r adoc2html -s . -d generated_content</pre></div></div></div>
-<div class="sect3"><h4 id="_generate_html_content_within_project_using_config_file"><a class="anchor" href="#_generate_html_content_within_project_using_config_file"></a>Generate HTML Content within project &amp; using Config File</h4><div class="literalblock"><div class="content"><pre>As destination directory is not longer '.' (which is the case when we add artefacts using `hyla add` command, then we must change the destination directory to `generated_content`. the original file is
+<div class="sect3"><h4 id="_generate_html_content_within_project"><a class="anchor" href="#_generate_html_content_within_project"></a>4.2.6. Generate HTML Content within project</h4><div class="literalblock"><div class="content"><pre>hyla generate -r adoc2html -s . -d generated_content</pre></div></div></div>
+<div class="sect3"><h4 id="_generate_html_content_within_project_using_config_file"><a class="anchor" href="#_generate_html_content_within_project_using_config_file"></a>4.2.7. Generate HTML Content within project &amp; using Config File</h4><div class="literalblock"><div class="content"><pre>As destination directory is not longer '.' (which is the case when we add artefacts using `hyla add` command, then we must change the destination directory to `generated_content`. the original file is
 still available as it will backup by ruby</pre></div></div>
 <div class="literalblock"><div class="content"><pre>ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
 hyla generate
 hyla generate -y foundation</pre></div></div></div></div>
-<div class="sect2"><h3 id="_project_from_template"><a class="anchor" href="#_project_from_template"></a>Project from Template</h3><div class="sect3"><h4 id="_create_a_project_using_a_template_training"><a class="anchor" href="#_create_a_project_using_a_template_training"></a>Create a project using a template (training)</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla
+<div class="sect2"><h3 id="_project_from_template"><a class="anchor" href="#_project_from_template"></a>4.3. Project from Template</h3><div class="sect3"><h4 id="_create_a_project_using_a_template_training"><a class="anchor" href="#_create_a_project_using_a_template_training"></a>4.3.1. Create a project using a template (training)</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla
 hyla new --t training MyTrainingProject</pre></div></div>
 <div class="literalblock"><div class="content"><pre>// TODO Refactor Training Exercises Template
 hyla new --t training-exercises MyTrainingExercisesProject</pre></div></div>
 <div class="literalblock"><div class="content"><pre>// TODO - Add images
 hyla new --t book MyBookProject</pre></div></div></div>
-<div class="sect3"><h4 id="_generate_content_and_watch_it"><a class="anchor" href="#_generate_content_and_watch_it"></a>Generate content and watch it</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTrainingProject
+<div class="sect3"><h4 id="_generate_content_and_watch_it"><a class="anchor" href="#_generate_content_and_watch_it"></a>4.3.2. Generate content and watch it</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTrainingProject
 ruby -i.bak -pe 'sub(%r{destination: .},"destination: generated_content")' _config.yaml
 hyla generate</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla watch -s ~/hyla/MyTrainingProject/ -d ~/hyla/MyTrainingProject/generated_content</pre></div></div></div></div>
-<div class="sect2"><h3 id="_table_of_content_to_asciidoc"><a class="anchor" href="#_table_of_content_to_asciidoc"></a>Table Of Content To asciidoc</h3><div class="sect3"><h4 id="_generate_an_asciidoctor_project_from_a_table_of_content"><a class="anchor" href="#_generate_an_asciidoctor_project_from_a_table_of_content"></a>Generate an asciidoctor project from a Table of Content</h4><div class="paragraph"><p>The entry point of a Documentation site, Training, Publication or Book will consist most of the time to create
+<div class="sect2"><h3 id="_table_of_content_to_asciidoc"><a class="anchor" href="#_table_of_content_to_asciidoc"></a>4.4. Table Of Content To asciidoc</h3><div class="sect3"><h4 id="_generate_an_asciidoctor_project_from_a_table_of_content"><a class="anchor" href="#_generate_an_asciidoctor_project_from_a_table_of_content"></a>4.4.1. Generate an asciidoctor project from a Table of Content</h4><div class="paragraph"><p>The entry point of a Documentation site, Training, Publication or Book will consist most of the time to create
 a Table Of Content which is a collection of modules with chapters that we will develop. As this process to elaborate
 the structure of the project will consume lot of time/effort, Hyla will simplify your life as it allows from a TOC file</p></div>
 <div class="literalblock"><div class="content"><pre>= A. Introduction module
@@ -895,7 +895,7 @@ hyla generate -r adoc2html -s ~/hyla/MyTocProject/ -d ~/hyla/MyTocProject/genera
 as a WebSocket server is exposed for the browser. To watch files and let&#8217;s asciidoctor to render them, simply open a terminal and provide as
  parameter the source directory containing the files to be watched.</p></div>
 <div class="literalblock"><div class="content"><pre>hyla watch -s ~/hyla/MyTocProject/ -d ~/hyla/MyTocProject/generated_content</pre></div></div></div>
-<div class="sect3"><h4 id="_generate_an_asciidoctor_project_from_a_table_of_content_using_yaml_config_file_and_watch_content"><a class="anchor" href="#_generate_an_asciidoctor_project_from_a_table_of_content_using_yaml_config_file_and_watch_content"></a>Generate an asciidoctor project from a Table of Content using YAML config file and watch content</h4><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyTocProject
+<div class="sect3"><h4 id="_generate_an_asciidoctor_project_from_a_table_of_content_using_yaml_config_file_and_watch_content"><a class="anchor" href="#_generate_an_asciidoctor_project_from_a_table_of_content_using_yaml_config_file_and_watch_content"></a>4.4.2. Generate an asciidoctor project from a Table of Content using YAML config file and watch content</h4><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyTocProject
 cd ~/hyla
 hyla new --blank MyTocProject
 cd MyTocProject
@@ -905,27 +905,27 @@ hyla generate --r toc2adoc</pre></div></div>
 # subl _config.yaml
 hyla generate -r adoc2html</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla watch -s ~/hyla/MyTocProject/ -d generated_content</pre></div></div></div>
-<div class="sect3"><h4 id="_generate_a_deckjs_slideshow_for_a_module"><a class="anchor" href="#_generate_a_deckjs_slideshow_for_a_module"></a>Generate a DeckJS Slideshow for a module</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTocProject
+<div class="sect3"><h4 id="_generate_a_deckjs_slideshow_for_a_module"><a class="anchor" href="#_generate_a_deckjs_slideshow_for_a_module"></a>4.4.3. Generate a DeckJS Slideshow for a module</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTocProject
 hyla generate --backend deckjs -s  A_Introduction_module/ -d A_Introduction_module/generated_content -r index2html</pre></div></div></div>
-<div class="sect3"><h4 id="_generate_a_deckjs_slideshow_for_a_project_all_the_toc"><a class="anchor" href="#_generate_a_deckjs_slideshow_for_a_project_all_the_toc"></a>Generate a DeckJS Slideshow for a Project (all the TOC)</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTocProject
+<div class="sect3"><h4 id="_generate_a_deckjs_slideshow_for_a_project_all_the_toc"><a class="anchor" href="#_generate_a_deckjs_slideshow_for_a_project_all_the_toc"></a>4.4.4. Generate a DeckJS Slideshow for a Project (all the TOC)</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTocProject
 hyla generate --backend deckjs -s  . -d generated_content -r index2html</pre></div></div></div></div>
-<div class="sect2"><h3 id="_5_server_content_locally_http_server"><a class="anchor" href="#_5_server_content_locally_http_server"></a>5. Server content locally - HTTP Server</h3><div class="paragraph"><p>To simplify your life, a simple HTTP Server can be started by Hyla and will allow to consult/browse HTML files generated. In this case, start this
+<div class="sect2"><h3 id="_5_server_content_locally_http_server"><a class="anchor" href="#_5_server_content_locally_http_server"></a>4.5. 5. Server content locally - HTTP Server</h3><div class="paragraph"><p>To simplify your life, a simple HTTP Server can be started by Hyla and will allow to consult/browse HTML files generated. In this case, start this
 Hyla command in another Terminal</p></div>
 <div class="literalblock"><div class="content"><pre>hyla serve -P 4000 -H localhost -b /hyla/ --out_dir ~/hyla/MyTrainingProject/generated_content/</pre></div></div></div>
-<div class="sect2"><h3 id="_generate_a_slideshow"><a class="anchor" href="#_generate_a_slideshow"></a>Generate a Slideshow</h3><div class="sect3"><h4 id="_deckjs"><a class="anchor" href="#_deckjs"></a>DeckJS</h4><div class="literalblock"><div class="content"><pre>rm -rf  ~/hyla/MyDeckSlideShow
+<div class="sect2"><h3 id="_generate_a_slideshow"><a class="anchor" href="#_generate_a_slideshow"></a>4.6. Generate a Slideshow</h3><div class="sect3"><h4 id="_deckjs"><a class="anchor" href="#_deckjs"></a>4.6.1. DeckJS</h4><div class="literalblock"><div class="content"><pre>rm -rf  ~/hyla/MyDeckSlideShow
 cd ~/hyla
 hyla new -b MyDeckSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla add --t slideshow -a deckjs -d MyDeckSlideShow
 hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html</pre></div></div></div>
-<div class="sect3"><h4 id="_different_deckjs_style_options"><a class="anchor" href="#_different_deckjs_style_options"></a>Different DeckJS Style options</h4><div class="literalblock"><div class="content"><pre>hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=swiss,deckjs_transition=fade
+<div class="sect3"><h4 id="_different_deckjs_style_options"><a class="anchor" href="#_different_deckjs_style_options"></a>4.6.2. Different DeckJS Style options</h4><div class="literalblock"><div class="content"><pre>hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=swiss,deckjs_transition=fade
 hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide</pre></div></div></div>
-<div class="sect3"><h4 id="_revealjs"><a class="anchor" href="#_revealjs"></a>RevealJS</h4><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyRevealSlideShow
+<div class="sect3"><h4 id="_revealjs"><a class="anchor" href="#_revealjs"></a>4.6.3. RevealJS</h4><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyRevealSlideShow
 cd ~/hyla
 hyla new -b MyRevealSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla add --t slideshow -a revealjs -d MyRevealSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>cd MyRevealSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla generate --backend revealjs -s . -d generated_content -r adoc2html</pre></div></div></div></div>
-<div class="sect2"><h3 id="_generate_a_pdf"><a class="anchor" href="#_generate_a_pdf"></a>Generate a PDF</h3><div class="paragraph"><p>A PDF document can be created using the rendering option <code>html2pdf</code>. To render the HTML file, Hyla uses the following Ruby
+<div class="sect2"><h3 id="_generate_a_pdf"><a class="anchor" href="#_generate_a_pdf"></a>4.7. Generate a PDF</h3><div class="paragraph"><p>A PDF document can be created using the rendering option <code>html2pdf</code>. To render the HTML file, Hyla uses the following Ruby
 libraries <a href="https://github.com/pdfkit/pdfkit">pdfkit</a> and <a href="https://github.com/wkhtmltopdf/wkhtmltopdf">wkhtmltopdf</a>.</p></div>
 <div class="ulist"><ul><li><p>Clean and create a MyPdfProject (= directory)</p><div class="literalblock"><div class="content"><pre>cd ~/hyla
 rm -rf MyPdfroject/
@@ -934,7 +934,7 @@ cd MyPdfProject</pre></div></div></li><li><p>Create Asciidoc file from sample (b
 ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: ./generated_content/pdf")' _config.yaml</pre></div></div></li><li><p>We will generate the PDF file for the image and book</p><div class="literalblock"><div class="content"><pre>hyla generate -f asciidoc_book.html
 hyla generate -f asciidoc_image.html</pre></div></div></li><li><p>Result can be opened and viewed</p><div class="literalblock"><div class="content"><pre>open generated_content/pdf/asciidoc_book.pdf
 open generated_content/pdf/asciidoc_image.pdf</pre></div></div></li></ul></div></div>
-<div class="sect2"><h3 id="_send_email"><a class="anchor" href="#_send_email"></a>Send Email</h3><div class="paragraph"><p>An email can be created using as attachment an HTML file based on the information, parameters provided into the
+<div class="sect2"><h3 id="_send_email"><a class="anchor" href="#_send_email"></a>4.8. Send Email</h3><div class="paragraph"><p>An email can be created using as attachment an HTML file based on the information, parameters provided into the
 _config.yaml file. These parameters will allow to populate the email message and add as attachment the HTML
 file generated from an asciidoc file.</p></div>
 <div class="literalblock"><div class="content"><pre>email_attributes:

@@ -1,28 +1,13 @@
 libdir = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 
-#require 'compass'
-#require 'compass/sass_compiler'
-
-# Dir["#{dir}/*.scss"].select do | f |
-#   p "File : #{f}"
-#   Compass.add_configuration({
-#                                 :sass_dir => '.',
-#                                 :css_dir => 'styles',
-#                                 :fonts_dir => 'fonts',
-#                                 :output_style => :compressed
-#                             }, 'alwaysmin' # A name for the configuration, can be anything you want
-#   )
-#   Compass.sass_compiler.compile(f.to_s, '#{f.to_s}.css')
-# end
-
 require 'rubygems'
 require 'rake'
 require 'rake/testtask'
-require 'bundler/version'
+# require 'bundler/version'
 require 'sass'
 require 'hyla/configuration'
-require 'font-awesome-sass'
+# require 'font-awesome-sass'
 
 #############################################################################
 #
@@ -100,12 +85,17 @@ task :compass do
   Dir.chdir File.join(sass_assets, "sass") do |dir|
     puts "Sass dir : #{dir}"
     # -s #{style} -I #{path}
-    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' "
+    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' --sourcemap"
 
     # Copy css to RevealJS theme
     # p revealjs_css_assets
-    system "cp styles/gpe.css #{revealjs_css_theme_assets}"
-    system "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
+    sh "cp styles/gpe.css #{revealjs_css_theme_assets}"
+    sh "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
+
+    # sh "cp gpe.scss #{revealjs_css_theme_assets}"
+    # sh "cp styles/gpe.css.map #{revealjs_css_theme_assets}"
+    # sh "cp styles/font-awesome.css.map #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css.map"
+    
   end
   
 end
@@ -131,15 +121,61 @@ task :tag_release do
   system "git push origin #{name}-#{version}"
 end
 
+desc "Delete the git tag"
 task :tag_delete do
   p "Tag to be removed: #{tag_release}"
   sh "git tag -d #{tag_release}"
   sh "git push origin :#{tag_release}"
 end
 
-# Build the Gem and move it under the pkg directory
+desc "Build the Gem and move it under the pkg directory"
 task :build_pkg => :gemspec do
   sh "mkdir -p pkg"
   sh "gem build #{gemspec_file}"
   sh "mv #{gem_file} pkg"
+end
+
+#
+# Generate doc for gh-pages
+#
+desc "Commit the local site to the gh-pages branch and publish to GitHub Pages"
+task :publish do
+  # Ensure the gh-pages dir exists so we can generate into it.
+  puts "Checking for gh-pages dir..."
+  unless File.exist?("./gh-pages")
+    puts "Creating gh-pages dir..."
+    sh "git clone git@github.com:cmoulliard/hyla gh-pages"
+  end
+
+  # Ensure latest gh-pages branch history.
+  Dir.chdir('gh-pages') do
+    sh "git checkout --orphan gh-pages"
+    sh "git pull origin gh-pages"
+  end
+
+  # Proceed to purge all files in case we removed a file in this release.
+  puts "Cleaning gh-pages directory..."
+  purge_exclude = %w[
+      gh-pages/.
+      gh-pages/..
+      gh-pages/.git
+      gh-pages/.gitignore
+    ]
+  FileList["gh-pages/{*,.*}"].exclude(*purge_exclude).each do |path|
+    sh "rm -rf #{path}"
+  end
+
+  # Copy site to gh-pages dir.
+  puts "Building site into gh-pages branch..."
+  # Call Hyla
+
+  # Commit and push.
+  # puts "Committing and pushing to GitHub Pages..."
+  # sha = `git rev-parse HEAD`.strip
+  # Dir.chdir('gh-pages') do
+  #   sh "git add ."
+  #   sh "git commit --allow-empty -m 'Updating to #{sha}.'"
+  #   sh "git push origin gh-pages"
+  # end
+  puts 'Done.'
 end

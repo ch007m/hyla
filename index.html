@@ -738,6 +738,9 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 </style></head><body class="book toc2 toc-right"><div id="header"><div id="toc" class="toc2"><div id="toctitle">Table of Contents</div><ul class="sectlevel1">
 <li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_developer">Developer</a></li>
+<li><a href="#_prerequisites">Prerequisites</a></li>
+<li><a href="#_install_the_gem">Install the gem</a></li>
+<li><a href="#_build_the_project_from_the_code">Build the project from the code</a></li>
 <li><a href="#_usage">Usage</a></li>
 <li><a href="#_scenario">Scenario</a></li>
 <li>
@@ -800,7 +803,27 @@ to finally build a documentation/training/blog &#8230;.</p></div>
 hyla will reuse stylesheets created from <em>asciidoctor-stylesheet-factory</em> and <em>asciidoctor-backends</em> for HTML5, RevealJS, DeckJS, DockBook &#8230;
 hyla will include <em>awestruct</em></p></div>
 <div class="paragraph"><p>The Hyla project name comes from an arboreal <a href="http://en.wikipedia.org/wiki/Hyla">frog</a> living in equatorial regions of Europe, Asia or Americas. Its name was inspired by the companion of Hercule (Hylas) in Greek mythology.</p></div></div></div>
-<div class="sect1"><h2 id="_developer"><a class="anchor" href="#_developer"></a>Developer</h2><div class="sectionbody"><div class="ulist"><ul><li><p><a href="prerequisites.adoc">Prerequisites</a></p></li><li><p><a href="developer.adoc">How to install, build the gem</a></p></li><li><p>Using a Docker container</p></li></ul></div></div></div>
+<div class="sect1"><h2 id="_developer"><a class="anchor" href="#_developer"></a>Developer</h2><div class="sectionbody"></div></div>
+<div class="sect1"><h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2><div class="sectionbody"><div class="ulist"><ul><li><p><a href="https://github.com/sstephenson/ruby-build#readme">rbenv-build</a> which let you to deploy a pre-compiled version of Ruby</p></li><li><p><a href="https://github.com/sstephenson/rbenv">rbenv</a> to manage different versions of Ruby</p></li><li><p><a href="https://www.ruby-lang.org/en/">Ruby</a> 1.9.3-p484</p></li><li><p><a href="http://guides.rubygems.org/">RubyGems</a> to install Ruby Applications</p></li><li><p><a href="http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-">How do I install and use the browser extensions for LiveReload</a>.
+Be sure to enable the option “Allow access to file URLs” checkbox in Tools &gt; Extensions &gt; LiveReload after installation of Chrome Extension.
+:homepage: <a href="http://github.com/cmoulliard/hyla">http://github.com/cmoulliard/hyla</a>
+:docs: <a href="https://github.com/cmoulliard/hyla/blob/master/documentation/introduction.adoc">https://github.com/cmoulliard/hyla/blob/master/documentation/introduction.adoc</a>
+:sources: <a href="https://github.com/cmoulliard/hyla">https://github.com/cmoulliard/hyla</a>
+:issues: <a href="https://github.com/cmoulliard/hyla/issues/">https://github.com/cmoulliard/hyla/issues/</a></p></li></ul></div></div></div>
+<div class="sect1"><h2 id="_install_the_gem"><a class="anchor" href="#_install_the_gem"></a>Install the gem</h2><div class="sectionbody"><div class="paragraph"><p>Use <code>gem install</code> command to deploy Hyla :</p></div>
+<div class="literalblock"><div class="content"><pre>$ gem install hyla -y</pre></div></div>
+<div class="paragraph"><p>NOTE :  The option <code>-y</code> will tell to rubyGems to deploy the gem but also the dependencies required</p></div></div></div>
+<div class="sect1"><h2 id="_build_the_project_from_the_code"><a class="anchor" href="#_build_the_project_from_the_code"></a>Build the project from the code</h2><div class="sectionbody"><div class="ulist"><ul><li><p>Generate the gem</p></li></ul></div>
+<div class="paragraph"><p>In order to build the Hyla project, we recommend that you clone the project locally (or fork it) {sources}[from the Hyla git repository], next you move to the project cloned
+and finally, run the following command :</p></div>
+<div class="literalblock"><div class="content"><pre>rake build</pre></div></div>
+<div class="paragraph"><p>This command will create a gem of the project</p></div>
+<div class="ulist"><ul><li><p>To install theGem to your machine, run this command</p><div class="literalblock"><div class="content"><pre>rake install</pre></div></div></li><li><p>If you would like to change the scss files, styles and regenerate the css, use this command</p><div class="literalblock"><div class="content"><pre>rake compass</pre></div></div></li><li><p>To publish the gem to the RubyGems Web Server, use this command</p><div class="literalblock"><div class="content"><pre>rake deploy</pre></div></div></li><li><p>To create a build, generate a git tag and publish it to the Gem Repo</p><div class="literalblock"><div class="content"><pre>rake install
+git commit -m "Release Hyla 1.0.x" -a
+git push
+git tag -a hyla-1.0.x -m "Release hyla 1.0.x"
+git push origin hyla-1.0.x</pre></div></div>
+<div class="literalblock"><div class="content"><pre>rake deploy</pre></div></div></li><li><p>To delete a release pushed to RubyGems (= yank)</p><div class="literalblock"><div class="content"><pre>gem yank hyla -v 1.0.x</pre></div></div></li></ul></div></div></div>
 <div class="sect1"><h2 id="_usage"><a class="anchor" href="#_usage"></a>Usage</h2><div class="sectionbody"><div class="paragraph"><p>Open a terminal and move to the folder where you would like to create a new project or develop an existing. As Hyla is command line tool, it will be used with one of the following commands :</p></div>
 <div class="literalblock"><div class="content"><pre>create               Creates a new file from asciidoc artefacts for an existing project
 generate             Generate modules and asciidoc files from an asciidoc Table Of Content file

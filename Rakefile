@@ -150,7 +150,6 @@ task :publish do
   # Ensure latest gh-pages branch history.
   Dir.chdir('gh-pages') do
     sh "git checkout --orphan gh-pages"
-    sh "git pull origin gh-pages"
   end
 
   # Proceed to purge all files in case we removed a file in this release.

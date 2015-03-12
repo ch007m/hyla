@@ -753,10 +753,9 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#_blank_project_artifacts">4.2. Blank Project &amp; Artifacts</a></li>
 <li><a href="#_project_from_template">4.3. Project from Template</a></li>
 <li><a href="#_table_of_content_to_asciidoc">4.4. Table Of Content To asciidoc</a></li>
-<li><a href="#_5_server_content_locally_http_server">4.5. 5. Server content locally - HTTP Server</a></li>
-<li><a href="#_generate_a_slideshow">4.6. Generate a Slideshow</a></li>
-<li><a href="#_generate_a_pdf">4.7. Generate a PDF</a></li>
-<li><a href="#_send_email">4.8. Send Email</a></li>
+<li><a href="#_generate_a_slideshow">4.5. Generate a Slideshow</a></li>
+<li><a href="#_generate_a_pdf">4.6. Generate a PDF</a></li>
+<li><a href="#_send_email">4.7. Send Email</a></li>
 </ul>
 </li>
 </ul></div></div><div id="content"><div class="sect1"><h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2><div class="sectionbody"><div class="paragraph"><p><span class="image left"><img src="https://raw.github.com/cmoulliard/hyla/master/documentation/image/hyla_frog.jpg" alt="Hyla" width="100" height="100"></span> <strong>Hyla</strong> is a Ruby command line tool to create a new
@@ -908,24 +907,24 @@ hyla generate -r adoc2html</pre></div></div>
 <div class="sect3"><h4 id="_generate_a_deckjs_slideshow_for_a_module"><a class="anchor" href="#_generate_a_deckjs_slideshow_for_a_module"></a>4.4.3. Generate a DeckJS Slideshow for a module</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTocProject
 hyla generate --backend deckjs -s  A_Introduction_module/ -d A_Introduction_module/generated_content -r index2html</pre></div></div></div>
 <div class="sect3"><h4 id="_generate_a_deckjs_slideshow_for_a_project_all_the_toc"><a class="anchor" href="#_generate_a_deckjs_slideshow_for_a_project_all_the_toc"></a>4.4.4. Generate a DeckJS Slideshow for a Project (all the TOC)</h4><div class="literalblock"><div class="content"><pre>cd ~/hyla/MyTocProject
-hyla generate --backend deckjs -s  . -d generated_content -r index2html</pre></div></div></div></div>
-<div class="sect2"><h3 id="_5_server_content_locally_http_server"><a class="anchor" href="#_5_server_content_locally_http_server"></a>4.5. 5. Server content locally - HTTP Server</h3><div class="paragraph"><p>To simplify your life, a simple HTTP Server can be started by Hyla and will allow to consult/browse HTML files generated. In this case, start this
+hyla generate --backend deckjs -s  . -d generated_content -r index2html</pre></div></div></div>
+<div class="sect3"><h4 id="_server_content_locally_http_server"><a class="anchor" href="#_server_content_locally_http_server"></a>4.4.5. Server content locally - HTTP Server</h4><div class="paragraph"><p>To simplify your life, a simple HTTP Server can be started by Hyla and will allow to consult/browse HTML files generated. In this case, start this
 Hyla command in another Terminal</p></div>
-<div class="literalblock"><div class="content"><pre>hyla serve -P 4000 -H localhost -b /hyla/ --out_dir ~/hyla/MyTrainingProject/generated_content/</pre></div></div></div>
-<div class="sect2"><h3 id="_generate_a_slideshow"><a class="anchor" href="#_generate_a_slideshow"></a>4.6. Generate a Slideshow</h3><div class="sect3"><h4 id="_deckjs"><a class="anchor" href="#_deckjs"></a>4.6.1. DeckJS</h4><div class="literalblock"><div class="content"><pre>rm -rf  ~/hyla/MyDeckSlideShow
+<div class="literalblock"><div class="content"><pre>hyla serve -P 4000 -H localhost -b /hyla/ --out_dir ~/hyla/MyTrainingProject/generated_content/</pre></div></div></div></div>
+<div class="sect2"><h3 id="_generate_a_slideshow"><a class="anchor" href="#_generate_a_slideshow"></a>4.5. Generate a Slideshow</h3><div class="sect3"><h4 id="_deckjs"><a class="anchor" href="#_deckjs"></a>4.5.1. DeckJS</h4><div class="literalblock"><div class="content"><pre>rm -rf  ~/hyla/MyDeckSlideShow
 cd ~/hyla
 hyla new -b MyDeckSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla add --t slideshow -a deckjs -d MyDeckSlideShow
 hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html</pre></div></div></div>
-<div class="sect3"><h4 id="_different_deckjs_style_options"><a class="anchor" href="#_different_deckjs_style_options"></a>4.6.2. Different DeckJS Style options</h4><div class="literalblock"><div class="content"><pre>hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=swiss,deckjs_transition=fade
+<div class="sect3"><h4 id="_different_deckjs_style_options"><a class="anchor" href="#_different_deckjs_style_options"></a>4.5.2. Different DeckJS Style options</h4><div class="literalblock"><div class="content"><pre>hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=swiss,deckjs_transition=fade
 hyla generate --backend deckjs -s  ~/hyla/MyDeckSlideShow -d ~/hyla/MyDeckSlideShow/generated_content -r adoc2html -a deckjs_theme=web-2.0,deckjs_transition=horizontal-slide</pre></div></div></div>
-<div class="sect3"><h4 id="_revealjs"><a class="anchor" href="#_revealjs"></a>4.6.3. RevealJS</h4><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyRevealSlideShow
+<div class="sect3"><h4 id="_revealjs"><a class="anchor" href="#_revealjs"></a>4.5.3. RevealJS</h4><div class="literalblock"><div class="content"><pre>rm -rf ~/hyla/MyRevealSlideShow
 cd ~/hyla
 hyla new -b MyRevealSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla add --t slideshow -a revealjs -d MyRevealSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>cd MyRevealSlideShow</pre></div></div>
 <div class="literalblock"><div class="content"><pre>hyla generate --backend revealjs -s . -d generated_content -r adoc2html</pre></div></div></div></div>
-<div class="sect2"><h3 id="_generate_a_pdf"><a class="anchor" href="#_generate_a_pdf"></a>4.7. Generate a PDF</h3><div class="paragraph"><p>A PDF document can be created using the rendering option <code>html2pdf</code>. To render the HTML file, Hyla uses the following Ruby
+<div class="sect2"><h3 id="_generate_a_pdf"><a class="anchor" href="#_generate_a_pdf"></a>4.6. Generate a PDF</h3><div class="paragraph"><p>A PDF document can be created using the rendering option <code>html2pdf</code>. To render the HTML file, Hyla uses the following Ruby
 libraries <a href="https://github.com/pdfkit/pdfkit">pdfkit</a> and <a href="https://github.com/wkhtmltopdf/wkhtmltopdf">wkhtmltopdf</a>.</p></div>
 <div class="ulist"><ul><li><p>Clean and create a MyPdfProject (= directory)</p><div class="literalblock"><div class="content"><pre>cd ~/hyla
 rm -rf MyPdfroject/
@@ -934,7 +933,7 @@ cd MyPdfProject</pre></div></div></li><li><p>Create Asciidoc file from sample (b
 ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: ./generated_content/pdf")' _config.yaml</pre></div></div></li><li><p>We will generate the PDF file for the image and book</p><div class="literalblock"><div class="content"><pre>hyla generate -f asciidoc_book.html
 hyla generate -f asciidoc_image.html</pre></div></div></li><li><p>Result can be opened and viewed</p><div class="literalblock"><div class="content"><pre>open generated_content/pdf/asciidoc_book.pdf
 open generated_content/pdf/asciidoc_image.pdf</pre></div></div></li></ul></div></div>
-<div class="sect2"><h3 id="_send_email"><a class="anchor" href="#_send_email"></a>4.8. Send Email</h3><div class="paragraph"><p>An email can be created using as attachment an HTML file based on the information, parameters provided into the
+<div class="sect2"><h3 id="_send_email"><a class="anchor" href="#_send_email"></a>4.7. Send Email</h3><div class="paragraph"><p>An email can be created using as attachment an HTML file based on the information, parameters provided into the
 _config.yaml file. These parameters will allow to populate the email message and add as attachment the HTML
 file generated from an asciidoc file.</p></div>
 <div class="literalblock"><div class="content"><pre>email_attributes:

@@ -1,4 +1,0 @@
-== Audio
-
-audio::../audio/ocean_waves.mp3[options="autoplay,loop"]
-

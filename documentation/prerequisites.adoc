@@ -1,8 +1,0 @@
-== Prerequisites
-
-- https://github.com/sstephenson/ruby-build#readme[rbenv-build] which let you to deploy a pre-compiled version of Ruby
-- https://github.com/sstephenson/rbenv[rbenv] to manage different versions of Ruby
-- https://www.ruby-lang.org/en/[Ruby] 1.9.3-p484
-- http://guides.rubygems.org/[RubyGems] to install Ruby Applications
-- http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-[How do I install and use the browser extensions for LiveReload].
-Be sure to enable the option “Allow access to file URLs” checkbox in Tools > Extensions > LiveReload after installation of Chrome Extension.

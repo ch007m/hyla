@@ -1,7 +1,0 @@
-QUESTIONBANKCODE|QUESTIONCODE|QUESTIONTYPE|QUESTIONTEXT|QUESTIONTEXTFORMAT|QUESTIONFEEDBACK|OPTION|RIGHTOPTION|OPTIONFEEDBACK|ISCORRECT|OPTIONWEIGHT|ISCASESENSITIVE|RANDOMIZEOPTIONS|STATUS
-OPENTEST|OPENTEST0101|1|Which of the following is not a Red Hat JBoss supported product?|||JBoss BPM Suite|||0|0|||
-OPENTEST|OPENTEST0101|1|Which of the following is not a Red Hat JBoss supported product?|||JBoss Enterprise Application Platform|||0|0|||
-OPENTEST|OPENTEST0101|1|Which of the following is not a Red Hat JBoss supported product?|||Hibernate|||1|100|||
-OPENTEST|OPENTEST0101|1|Which of the following is not a Red Hat JBoss supported product?|||JBoss Data Grid|||0|0|||
-OPENTEST|OPENTEST0102|5|The Red Hat Global Partner Enablement Team is cool?|||TRUE|||1|100|||
-OPENTEST|OPENTEST0102|5|The Red Hat Global Partner Enablement Team is cool?|||FALSE|||0|0|||

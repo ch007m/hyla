@@ -1,3 +1,0 @@
-ifdef::audioscript[]
-audio::audio/xxx.mp3[]
-endif::[]

@@ -21,9 +21,15 @@ attributes:
    linkcss!: true
    data-uri: true
    allow-uri-read: true
+   linkattrs: true
+   sectanchors: true
+   setlinks: true
    last-update-label!:
+   
    stylesdir: /Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/hyla-1.0.7.pre.3/lib/resources/assets/styles
    safe: unsafe
+   
+   toc: left
 
    # Font Icons - http://fortawesome.github.io/Font-Awesome/icons/
    icon-arrow-left: <i class="fa fa-arrow-right"></i>

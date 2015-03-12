@@ -85,7 +85,8 @@ task :compass do
   Dir.chdir File.join(sass_assets, "sass") do |dir|
     puts "Sass dir : #{dir}"
     # -s #{style} -I #{path}
-    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' --sourcemap"
+    # To generate the sourcemap --> --sourcemap
+    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.'"
 
     # Copy css to RevealJS theme
     # p revealjs_css_assets

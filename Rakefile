@@ -149,7 +149,8 @@ task :publish do
 
   # Ensure latest gh-pages branch history.
   Dir.chdir('gh-pages') do
-    sh "git checkout --orphan gh-pages"
+    sh "git checkout gh-pages"
+    sh "git pull origin gh-pages"
   end
 
   # Proceed to purge all files in case we removed a file in this release.
@@ -166,7 +167,9 @@ task :publish do
 
   # Copy site to gh-pages dir.
   puts "Building site into gh-pages branch..."
-  # Call Hyla
+  
+  # Generate HTML site using hyla
+  sh "hyla generate -c config.yaml"
 
   # Commit and push.
   # puts "Committing and pushing to GitHub Pages..."

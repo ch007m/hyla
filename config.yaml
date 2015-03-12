@@ -1,0 +1,47 @@
+#
+# Common options
+#
+source: documentation
+destination: gh-pages # or . or ~/Hyla or generated_content
+# end common options
+
+#
+# Styles
+# Supported :  liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
+#
+style: asciidoctor
+
+#
+# Snippet Content
+#
+snippet_content: false
+
+#
+# Asciidoctor and attributes options
+#
+backend: html5
+doctype: book
+attributes:
+   source-highlighter: coderay
+   linkcss!: true
+   data-uri: true
+   allow-uri-read: true
+   last-update-label!:
+   stylesdir: /Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/hyla-1.0.7.pre.3/lib/resources/assets/styles
+   safe: unsafe
+
+   # Font Icons - http://fortawesome.github.io/Font-Awesome/icons/
+   icon-arrow-left: <i class="fa fa-arrow-right"></i>
+   icon-arrow-right: <i class="fa fa-arrow-right"></i>
+   icon-exclamation-mark: <i class="fa fa-exclamation"></i>
+   icon-question-mark: <i class="fa fa-question"></i>
+
+   icons: font
+   iconfont-remote: true
+   iconfont-cdn: http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css
+
+   footer_copyright: Copyright ©2015 Charles Moulliard - Hyla # Copyright Text
+   nofooter: true
+
+# end asciidoctor attributes
+rendering: index2html

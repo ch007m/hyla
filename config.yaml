@@ -12,11 +12,6 @@ destination: gh-pages # or . or ~/Hyla or generated_content
 style: asciidoctor
 
 #
-# Snippet Content
-#
-snippet_content: false
-
-#
 # Asciidoctor and attributes options
 #
 backend: html5
@@ -44,4 +39,4 @@ attributes:
    nofooter: true
 
 # end asciidoctor attributes
-rendering: index2html
+rendering: adoc2html

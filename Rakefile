@@ -191,3 +191,14 @@ task :publish do
    end
   puts 'Done.'
 end
+
+desc 'Say Hello'
+task :hello, [:msg1, :msg2] do |t, args|
+  unless args.msg1
+    fail "Msg1 is mandatory"
+  end
+  msg1 = args[:msg1]
+  msg2 = args[:msg2] || "Man"
+  puts msg1.upcase + '!'
+  puts msg2.downcase + '!'
+end

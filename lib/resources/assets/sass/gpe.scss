@@ -283,26 +283,30 @@ body {
  * and solve issue that we have here as we have nested lists
  * Feb 27, CHM : Added
  * Mar 04 2015, CHM: Add red colors & square, disc & circle
+ * Mar 13 2015, CHM: Change color to black and revert square, disc & circle
  *********************************************************************************/
+/* line 287, ../gpe.scss */
 .reveal ul li p, ul li li p, ul li li p {
   color: black;
   list-style: none;
-
 }
 
+/* line 293, ../gpe.scss */
 .reveal ul li {
-  list-style-type: square;
-  color: $red-color;
-}
-
-.reveal ul li li {
   list-style-type: disc;
-  color: $red-color;
+  color: black;
 }
 
+/* line 298, ../gpe.scss */
+.reveal ul li li {
+  list-style-type: square;
+  color: black;
+}
+
+/* line 303, ../gpe.scss */
 .reveal ul li li li {
   list-style-type: circle;
-  color: $red-color;
+  color: black;
 }
 
 /*******************************************************************

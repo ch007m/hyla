@@ -150,7 +150,7 @@ module Hyla
 
         # Do the HTML Rendering
         parameters = {:course_name => course_name,
-                      :module_name => module_name
+                      :module_name => module_name,
                       :image_path => bg_image_path }
         res = template.render(Object.new, parameters)
 

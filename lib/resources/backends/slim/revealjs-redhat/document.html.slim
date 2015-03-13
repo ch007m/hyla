@@ -15,9 +15,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"
     meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" 
 
-    link href="lib/css/gpe2.css" rel="stylesheet"
-    link href="lib/css/offline-v2.css" rel="stylesheet"
-    link href="lib/css/theme-output.css" rel="stylesheet"
+    link href="revealjs-redhat/lib/css/offline-v2.css" rel="stylesheet"
+    link href="revealjs-redhat/lib/css/theme-output.css" rel="stylesheet"
+    link href="revealjs-redhat/lib/css/gpe2.css" rel="stylesheet"
 
     //  - if attr? :revealjs_theme
     //    link rel='stylesheet' href='revealjs/css/theme/#{attr :revealjs_theme}.css' id='theme'
@@ -74,11 +74,11 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       // Any section element inside of this container is displayed as a slide
       .slides
         =content
-    - if attr? :footer_copyright
-      .footer
-        =attr :footer_copyright
-    script src="lib/js/head.min.js"
-    script src="lib/js/reveal.min.js"
+    //- if attr? :footer_copyright
+    //  .footer
+    //    =attr :footer_copyright
+    script src="revealjs-redhat/lib/js/head.min.js"
+    script src="revealjs-redhat/lib/js/reveal.min.js"
     javascript:
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration

@@ -109,15 +109,15 @@ body {
  * Mar 13 2015, CHM : Add footer-cover to override the color for cover slide
  ******************************************************/
 /* line 77, ../gpe2.scss */
-.footer {
+.reveal .footer {
   position: absolute;
   margin: 0 auto;
   left: 0;
   right: 0;
   bottom: -130px;
-  height: 40px;
+  height: 80px;
   font-family: "Overpass", "Liberation Sans", "Open Sans", sans-serif;
-  font-size: 20px;
+  font-size: 14px;
   text-align: center;
 }
 

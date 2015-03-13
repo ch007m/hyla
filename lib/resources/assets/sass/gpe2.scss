@@ -74,15 +74,15 @@ body {
  * Feb 24, ART: Changed to footer height from 80 to 40
  * Mar 13 2015, CHM : Add footer-cover to override the color for cover slide
  ******************************************************/
-.footer {
+.reveal .footer {
   position: absolute;
   margin: 0 auto;
   left: 0;
   right: 0;
-    bottom: -130px;
-  height: 40px;
+  bottom: -130px;
+  height: 80px;
   font-family: $fonts;
-  font-size: 20px;
+  font-size: 14px;
   text-align: center;
 }
 

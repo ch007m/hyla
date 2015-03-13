@@ -39,6 +39,10 @@ def sass_assets
   Hyla::Configuration.assets
 end
 
+def revealjs_redhat_css_theme_assets
+  [Hyla::Configuration.assets, 'revealjs-redhat', 'lib', 'css'] * '/'
+end
+
 def revealjs_css_theme_assets
   [Hyla::Configuration.assets, 'revealjs', 'css', 'theme'] * '/'
 end
@@ -92,6 +96,10 @@ task :compass do
     # p revealjs_css_assets
     sh "cp styles/gpe.css #{revealjs_css_theme_assets}"
     sh "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
+
+    sh "cp styles/gpe2.css #{revealjs_redhat_css_theme_assets}"
+    sh "cp styles/font-awesome.css #{revealjs_redhat_css_theme_assets}/font-awesome-4.3.0.css"
+    
 
     # sh "cp gpe.scss #{revealjs_css_theme_assets}"
     # sh "cp styles/gpe.css.map #{revealjs_css_theme_assets}"

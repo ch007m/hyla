@@ -1,0 +1,15 @@
+- if @id == "cover-logo"
+  .sl-block data-block-type="image" style="min-width: 30px; min-height: 30px; width: 211.706666666667px; height: 68px; left: 80px; top: -150px;" class=role
+    .sl-block-content class=role
+      img data-src=image_uri(attr :target)
+- else
+  .imageblock(id=@id class=[@style,role]
+    style=[("text-align: #{attr :align}" if attr? :align),("float: #{attr :float}" if attr? :float)].compact.join('; '))
+    .content
+      - if attr? :link
+        a.image href=(attr :link)
+          img src=image_uri(attr :target) alt=(attr :alt) width=(attr :width) height=(attr :height)
+      - else
+        img src=image_uri(attr :target) alt=(attr :alt) width=(attr :width) height=(attr :height)
+    - if title?
+      .title=captioned_title

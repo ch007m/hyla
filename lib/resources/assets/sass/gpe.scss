@@ -23,11 +23,12 @@
  */
 
 /* $debug-configuration: true; */
-@import "overpass"; /* Font Overpass */
-@import "liberation"; /* Font Liberation */
+
+@import "overpass";
+@import "liberation";
 
 /* 
- * We dont import the css content of font-awesome hre
+ * We dont import the css content of font-awesome here
  * as it will added to the HTML of the slideshow as a local/remote resource
  *  @import "font-awesome"; 
  */ 

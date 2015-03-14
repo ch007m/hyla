@@ -85,6 +85,13 @@ module Hyla
     end
 
     #
+    # Cover Slim Template
+    #
+    def self.covers
+      File.expand_path(COVERS, File.dirname(__FILE__))
+    end
+
+    #
     # Templates Location
     #
     def self.templates
@@ -256,6 +263,8 @@ module Hyla
 
     STYLES = '../../lib/resources/assets/styles'
 
+    COVERS = '../../lib/resources/assets/cover'
+
     TEMPLATES = '../../lib/templates'
 
     RESOURCES = '../../lib/resources'
@@ -264,7 +273,7 @@ module Hyla
 
     BACKENDS = '../../lib/resources/backends'
 
-    COVER_TEMPLATE = '../../lib/resources/cover.slim'
+    COVER_TEMPLATE = '../../lib/resources/assets/cover/new_cover.slim'
 
     ASSESSMENT_TXT = File.open(self.templates + '/course/assessment.txt','r').read
 

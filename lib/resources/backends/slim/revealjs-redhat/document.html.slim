@@ -168,14 +168,4 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
          // TODO : Add a parameter to enable/disbale REMOTE
          // { src: 'revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
        });
-       if (SLConfig.deck.notes) {
-         [].forEach.call(document.querySelectorAll('.reveal .slides section'), function (slide) {
-
-           var value = SLConfig.deck.notes[slide.getAttribute('data-id')];
-           if (value && typeof value === 'string') {
-             slide.setAttribute('data-notes', value);
-           }
-
-         });
-       }
 

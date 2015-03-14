@@ -39,6 +39,10 @@ def sass_assets
   Hyla::Configuration.assets
 end
 
+def revealjs_redhat_css_theme_assets
+  [Hyla::Configuration.assets, 'revealjs-redhat', 'lib', 'css'] * '/'
+end
+
 def revealjs_css_theme_assets
   [Hyla::Configuration.assets, 'revealjs', 'css', 'theme'] * '/'
 end
@@ -80,7 +84,7 @@ task :compass do
   puts "\n## Compiling Sass"
 
   # path = Gem.loaded_specs['font-awesome-sass'].full_gem_path + "/assets/stylesheets"
-  
+
   #Go to the compass project directory
   Dir.chdir File.join(sass_assets, "sass") do |dir|
     puts "Sass dir : #{dir}"
@@ -93,12 +97,16 @@ task :compass do
     sh "cp styles/gpe.css #{revealjs_css_theme_assets}"
     sh "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
 
+    sh "cp styles/gpe2.css #{revealjs_redhat_css_theme_assets}"
+    sh "cp styles/font-awesome.css #{revealjs_redhat_css_theme_assets}/font-awesome-4.3.0.css"
+
+
     # sh "cp gpe.scss #{revealjs_css_theme_assets}"
     # sh "cp styles/gpe.css.map #{revealjs_css_theme_assets}"
     # sh "cp styles/font-awesome.css.map #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css.map"
-    
+
   end
-  
+
 end
 
 # Build the Gem
@@ -168,18 +176,27 @@ task :publish do
 
   # Copy site to gh-pages dir.
   puts "Building site into gh-pages branch..."
-  
+
   # Generate HTML site using hyla
   sh "hyla generate -c config.yaml"
 
   # Commit and push.
   puts "Committing and pushing to GitHub Pages..."
   sha = `git rev-parse HEAD`.strip
-  
+
   Dir.chdir('gh-pages') do
-     sh "git add ."
-     sh "git commit --allow-empty -m 'Updating to #{sha}.'"
-     sh "git push origin gh-pages"
-   end
+    sh "git add ."
+    sh "git commit --allow-empty -m 'Updating to #{sha}.'"
+    sh "git push origin gh-pages"
+  end
   puts 'Done.'
+end
+
+desc 'Say Hello'
+task :hello, [:msg1, :msg2] do |t, args|
+  msg1 = args.msg1 or
+      fail "Msg1 is mandatory"
+  msg2 = args[:msg2] || "Man"
+  puts msg1.upcase + '!'
+  puts msg2.downcase + '!'
 end

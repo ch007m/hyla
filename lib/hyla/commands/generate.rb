@@ -115,6 +115,8 @@ module Hyla
             return [Configuration::backends, 'haml', 'deckjs'] * '/'
           when 'revealjs'
             return [Configuration::backends, 'slim', 'revealjs'] * '/'
+          when 'revealjs-redhat'
+            return [Configuration::backends, 'slim', 'revealjs-redhat'] * '/'
           when 'html5'
             return [Configuration::backends, 'slim', 'html5'] * '/'
           else
@@ -142,13 +144,17 @@ module Hyla
         # Replace underscore with space, next digits & space with nothing & Capitalize
         module_name = module_name.gsub('_', ' ').gsub(/^\d{1,2}\s/, '').capitalize
 
+        # f_html = File.read(Configuration::covers + '/cover.html')
+
         Hyla.logger.debug "Module name : " + module_name
 
         # Do the HTML Rendering
         parameters = {:course_name => course_name,
                       :module_name => module_name,
-                      :image_path => bg_image_path}
+                      :image_path => bg_image_path }
         res = template.render(Object.new, parameters)
+
+        # res = f_html
 
         #
         # Create the cover file and do the rendering of the image
@@ -159,7 +165,8 @@ module Hyla
           out_file.puts "\n"
 
           # Do the Rendering Image
-          kit = IMGKit.new(res, quality: 90, width: 950, height: 750)
+          kit = IMGKit.new(res, quality: 100, width: 1280, height: 800)
+
           kit.to_img(:png)
           kit.to_file(image_name)
         end
@@ -246,6 +253,8 @@ module Hyla
               self.cp_resources_to_dir(File.dirname(html_dir), 'deck.js')
             when 'revealjs'
               self.cp_resources_to_dir(File.dirname(html_dir), 'revealjs')
+            when 'revealjs-redhat'
+              self.cp_resources_to_dir(File.dirname(html_dir), 'revealjs-redhat')
           end
 
           #

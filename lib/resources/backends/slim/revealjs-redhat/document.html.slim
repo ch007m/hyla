@@ -1,7 +1,4 @@
-- slide_vertical_alignment = (attr? :revealjs_vertical_alignment) ? (attr :revealjs_vertical_alignment) : false
-- browser_history = (attr? :revealjs_history) ? (attr :revealjs_history) : false
-- display_slide_number = (attr? :revealjs_display_slide_number) ? (attr :revealjs_display_slide_number) : false
-- transition = (attr? :revealjs_transition) ? (attr :revealjs_transition) : 'default'
+- revealjsdir = (attr :revealjsdir, 'revealjs-redhat')
 doctype 5
 html lang=(attr :lang, 'en' unless attr? :nolang)
   head
@@ -17,15 +14,10 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
 
     link href="revealjs-redhat/lib/css/offline-v2.css" rel="stylesheet"
     link href="revealjs-redhat/lib/css/theme-output.css" rel="stylesheet"
-    link href="revealjs-redhat/lib/css/gpe2.css" rel="stylesheet"
-
-    //  - if attr? :revealjs_theme
-    //    link rel='stylesheet' href='revealjs/css/theme/#{attr :revealjs_theme}.css' id='theme'
-    //  - elsif attr? :revealjs_customtheme
-    //    link rel='stylesheet' href='#{attr :revealjs_customtheme}' id='theme'
-    //  - else
-    //    link rel='stylesheet' href='revealjs/css/theme/gpe.css' id='theme'
-
+    - if attr? :revealjs_customtheme
+      link rel='stylesheet' href=(attr :revealjs_customtheme) id='theme'
+    - else
+      link rel='stylesheet' href='#{revealjsdir}/lib/css/#{attr 'revealjs_theme', 'league'}.css' id='theme'
     - if attr? :icons, 'font'
       - if attr? 'iconfont-remote'
         link rel='stylesheet' href=(attr 'iconfont-cdn', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
@@ -74,9 +66,6 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       // Any section element inside of this container is displayed as a slide
       .slides
         =content
-    //- if attr? :footer_copyright
-    //  .footer
-    //    =attr :footer_copyright
     script src="revealjs-redhat/lib/js/head.min.js"
     script src="revealjs-redhat/lib/js/reveal.min.js"
     javascript:
@@ -84,55 +73,63 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       // https://github.com/hakimel/reveal.js#configuration
       Reveal.initialize({
 
-        // Display controls in the bottom right corner
-        controls: true,
+        controls: #{attr 'revealjs_controls', 'true'},
         // Display a presentation progress bar
-        progress: true,
+        progress: #{attr 'revealjs_progress', 'true'},
+        // Display the page number of the current slide
+        slideNumber: #{attr 'revealjs_slidenumber', 'true'},
         // Push each slide change to the browser history
-        history: true,
-        // Enable keyboard shortcuts for navigation - NOT_USED (slides.com)
-        keyboard: true,
-        // Enable the slide overview mode - NOT_USED (slides.com)
-        overview: true,
+        history: #{attr 'revealjs_history', 'true'},
+        // Enable keyboard shortcuts for navigation
+        keyboard: #{attr 'revealjs_keyboard', 'true'},
+        // Enable the slide overview mode
+        overview: #{attr 'revealjs_overview', 'true'},
         // Vertical centering of slides
-        center: false,
+        center: #{attr 'revealjs_center', 'false'},
+        // Enables touch navigation on devices with touch input
+        touch: #{attr 'revealjs_touch', 'true'},
         // Loop the presentation
-        loop: false,
+        loop: #{attr 'revealjs_loop', 'false'},
         // Change the presentation direction to be RTL
-        rtl: false,
-
+        rtl: #{attr 'revealjs_rtl', 'false'},
+        // Turns fragments on and off globally
+        fragments: #{attr 'revealjs_fragments', 'true'},
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: #{attr 'revealjs_embedded', 'false'},
         // Number of milliseconds between automatically proceeding to the
         // next slide, disabled when set to 0, this value can be overwritten
         // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-        autoSlideStoppable: true, // USED (slides.com)
-
+        autoSlide: #{attr 'revealjs_autoslide', 0},
+        // Stop auto-sliding after user input
+        autoSlideStoppable: #{attr 'revealjs_autoslidestoppable', 'true'},
         // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-        // Apply a 3D roll to links on hover
-        rollingLinks: true,
+        mouseWheel: #{attr 'revealjs_mousewheel', 'false'},
+        // Hides the address bar on mobile devices
+        hideAddressBar: #{attr 'revealjs_hideaddressbar', 'true'},
+        // Opens links in an iframe preview overlay
+        previewLinks: #{attr 'revealjs_previewlinks', 'false'},
+        // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+        transition: Reveal.getQueryHash().transition || '#{attr 'revealjs_transition', 'none'}',
+        // Transition speed (e.g., default, fast, slow)
+        transitionSpeed: '#{attr 'revealjs_transitionspeed', 'default'}',
+        // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+        backgroundTransition: '#{attr 'revealjs_backgroundtransition', 'fade'}',
+        // Number of slides away from the current that are visible
+        viewDistance: #{attr 'revealjs_viewdistance', 3},
+        // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+        parallaxBackgroundImage: '#{attr 'revealjs_parallaxbackgroundimage', ''}',
+        // Parallax background size in CSS syntax (e.g., "2100px 900px")
+        parallaxBackgroundSize: '#{attr 'revealjs_parallaxbackgroundsize', ''}',
+        // Optional libraries used to extend on reveal.js
 
         margin: 0.2, // NOT_USED (slides.com)
 
-        // Display for each slide a number - NOT_USED (slides.com)
-        slideNumber: true,
-
-        // Transition speed
-        transitionSpeed: 'slow', // default/fast/slow - NOT_USED (slides.com)
-
-        // Transition style for full page backgrounds
-        backgroundTransition: 'default', // default/linear
-
-        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-
-        // Transition style
-        transition: Reveal.getQueryHash().transition || 'slide', // default/slide/cube/page/concave/zoom/linear/fade/none
+        // Theme (e.g., beige, black, blood, league, moon, night, serif, simple, sky, solarized, white)
+        // NOTE setting the theme in the config no longer works in reveal.js 3.x
+        theme: Reveal.getQueryHash().theme || '#{attr 'revealjs_theme', 'gpe'}',
 
         notes: {},
-
-        // Parallax scrolling
-        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg', - NOT_USED (slides.com)
-        // parallaxBackgroundSize: '2100px 900px', - NOT_USED (slides.com)
 
         // Optional libraries used to extend on reveal.js
         dependencies: [

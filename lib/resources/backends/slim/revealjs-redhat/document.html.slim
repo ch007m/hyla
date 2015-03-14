@@ -49,15 +49,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       script src="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/prettify.min.js"
       script document.addEventListener('DOMContentLoaded', prettyPrint)
 
-    // If the query includes 'print-pdf', use the PDF print sheet
-    // javascript:
-    //   if( window.location.search.match( /print-pdf/gi ) ) {
-    //       var link = document.createElement( 'link' );
-    //       link.rel = 'stylesheet';
-    //       link.type = 'text/css';
-    //       link.href = 'revealjs/css/print/pdf.css';
-    //       document.getElementsByTagName( 'head' )[0].appendChild( link );
-    //   }
+  // If the query includes 'print-pdf', use the PDF print sheet
+  javascript:
+    document.write( '<link rel="stylesheet" href="#{revealjsdir}/lib/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
   body class="theme-font-overpass"
     .reveal
       // - if attr? :header_image_path
@@ -134,17 +128,17 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         // Optional libraries used to extend on reveal.js
         dependencies: [
           {
-            src: 'revealjs-redhat/plugin/markdown/marked.js', condition: function () {
+            src: 'revealjs-redhat/lib/plugin/markdown/marked.js', condition: function () {
             return !!document.querySelector('[data-markdown]');
           }
           },
           {
-            src: 'revealjs-redhat/plugin/markdown/markdown.js', condition: function () {
+            src: 'revealjs-redhat/lib/plugin/markdown/markdown.js', condition: function () {
             return !!document.querySelector('[data-markdown]');
           }
           },
           {
-            src: 'revealjs-redhat/plugin/highlight/highlight.js', async: true, condition: function () {
+            src: 'revealjs-redhat/lib/plugin/highlight/highlight.js', async: true, condition: function () {
             return !!document.querySelector('pre code');
           },
             callback: function () {
@@ -152,17 +146,17 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
             }
           },
           { // DOES NOT WORK ANYMORE
-            src: 'revealjs-redhat/plugin/zoom-js/zoom.js', async: true, condition: function () {
+            src: 'revealjs-redhat/lib/plugin/zoom-js/zoom.js', async: true, condition: function () {
             return !!document.body.classList;
           }
           },
           {
-            src: 'revealjs-redhat/plugin/notes/notes.js', async: true, condition: function () {
+            src: 'revealjs-redhat/lib/plugin/notes/notes.js', async: true, condition: function () {
             return !!document.body.classList;
           }
           }
         ]
-         // TODO : Add a parameter to enable/disbale REMOTE
+         // TODO : Add a parameter to enable/disable REMOTE
          // { src: 'revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
        });
 

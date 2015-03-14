@@ -1,21 +1,23 @@
-- copyright = "Copyright ©2015 RedHat."
+- copyright = (attr :revealjs_footer_copyright, false)
 section id=@id class=(attr 'data-state') style=("float: #{attr :float}" if attr? :float) data-transition=(attr 'data-transition') data-transition-speed=(attr 'data-transition-speed') data-background=(attr 'data-background') data-background-image=(attr 'data-background-image') data-background-color=(attr 'data-background-color') data-background-size=(attr 'data-background-size') data-background-repeat=(attr 'data-background-repeat') data-background-position=(attr 'data-background-position') data-background-transition=(attr 'data-background-transition')
   h2=title
   - if (attr? :scrollbar) || (attr? :revealjs_scrollbar)
     .scrollbar
       =content
-      - if "#{@id}".start_with?("cover")
-        div class="footer footer-cover"
-          =copyright
-      - else
-        div class="footer"
-          =copyright
+      - if copyright
+        - if "#{@id}".start_with?("cover")
+          div class="footer footer-cover"
+            =copyright
+        - else
+          div class="footer"
+            =copyright
   - else
     =content.chomp
       =content
-      - if "#{@id}".start_with?("cover")
-        div class="footer footer-cover"
-          =copyright
-      - else
-        div class="footer"
-          =copyright
+      - if copyright
+        - if "#{@id}".start_with?("cover")
+          div class="footer footer-cover"
+            =copyright
+        - else
+          div class="footer"
+            =copyright

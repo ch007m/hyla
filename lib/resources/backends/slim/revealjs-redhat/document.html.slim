@@ -12,17 +12,17 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"
     meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" 
 
-    link href="revealjs-redhat/lib/css/offline-v2.css" rel="stylesheet"
-    link href="revealjs-redhat/lib/css/theme-output.css" rel="stylesheet"
+    link href="#{revealjsdir}/lib/css/offline-v2.css" rel="stylesheet"
+    link href="#{revealjsdir}/lib/css/theme-output.css" rel="stylesheet"
     - if attr? :revealjs_customtheme
       link rel='stylesheet' href=(attr :revealjs_customtheme) id='theme'
     - else
-      link rel='stylesheet' href='#{revealjsdir}/lib/css/#{attr 'revealjs_theme', 'league'}.css' id='theme'
+      link rel='stylesheet' href='#{revealjsdir}/lib/css/#{attr 'revealjs_theme', 'gpe'}.css' id='theme'
     - if attr? :icons, 'font'
       - if attr? 'iconfont-remote'
         link rel='stylesheet' href=(attr 'iconfont-cdn', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
       - else
-        link rel='stylesheet' href=normalize_web_path("#{attr 'iconfont-name', 'font-awesome'}.css", (attr :revealjs_vendor_stylesdir, 'revealjs-redhat/lib/css/'))
+        link rel='stylesheet' href=normalize_web_path("#{attr 'iconfont-name', 'font-awesome'}.css", (attr :revealjs_vendor_stylesdir, '#{revealjsdir}/lib/css/'))
 
     // For syntax highlighting
     // link href="revealjs/lib/css/zenburn.css" rel="stylesheet"
@@ -60,8 +60,8 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       // Any section element inside of this container is displayed as a slide
       .slides
         =content
-    script src="revealjs-redhat/lib/js/head.min.js"
-    script src="revealjs-redhat/lib/js/reveal.min.js"
+    script src="#{revealjsdir}/lib/js/head.min.js"
+    script src="#{revealjsdir}/lib/js/reveal.min.js"
     javascript:
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration
@@ -128,17 +128,17 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         // Optional libraries used to extend on reveal.js
         dependencies: [
           {
-            src: 'revealjs-redhat/lib/plugin/markdown/marked.js', condition: function () {
+            src: '#{revealjsdir}/lib/plugin/markdown/marked.js', condition: function () {
             return !!document.querySelector('[data-markdown]');
           }
           },
           {
-            src: 'revealjs-redhat/lib/plugin/markdown/markdown.js', condition: function () {
+            src: '#{revealjsdir}/lib/plugin/markdown/markdown.js', condition: function () {
             return !!document.querySelector('[data-markdown]');
           }
           },
           {
-            src: 'revealjs-redhat/lib/plugin/highlight/highlight.js', async: true, condition: function () {
+            src: '#{revealjsdir}/lib/plugin/highlight/highlight.js', async: true, condition: function () {
             return !!document.querySelector('pre code');
           },
             callback: function () {
@@ -146,12 +146,12 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
             }
           },
           { // DOES NOT WORK ANYMORE
-            src: 'revealjs-redhat/lib/plugin/zoom-js/zoom.js', async: true, condition: function () {
+            src: '#{revealjsdir}/lib/plugin/zoom-js/zoom.js', async: true, condition: function () {
             return !!document.body.classList;
           }
           },
           {
-            src: 'revealjs-redhat/lib/plugin/notes/notes.js', async: true, condition: function () {
+            src: '#{revealjsdir}/lib/plugin/notes/notes.js', async: true, condition: function () {
             return !!document.body.classList;
           }
           }

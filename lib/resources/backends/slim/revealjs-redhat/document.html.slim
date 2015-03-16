@@ -14,15 +14,15 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
 
     link href="#{revealjsdir}/lib/css/offline-v2.css" rel="stylesheet"
     link href="#{revealjsdir}/lib/css/theme-output.css" rel="stylesheet"
-    - if attr? :revealjs_customtheme
-      link rel='stylesheet' href=(attr :revealjs_customtheme) id='theme'
-    - else
-      link rel='stylesheet' href='#{revealjsdir}/lib/css/#{attr 'revealjs_theme', 'gpe'}.css' id='theme'
     - if attr? :icons, 'font'
       - if attr? 'iconfont-remote'
         link rel='stylesheet' href=(attr 'iconfont-cdn', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')
       - else
-        link rel='stylesheet' href=normalize_web_path("#{attr 'iconfont-name', 'font-awesome'}.css", (attr :revealjs_vendor_stylesdir, '#{revealjsdir}/lib/css/'))
+        link rel='stylesheet' href=(attr :revealjs_vendor_stylesdir, "#{revealjsdir}/lib/css/#{attr 'iconfont-name', 'font-awesome'}.css'")
+    - if attr? :revealjs_customtheme
+      link rel='stylesheet' href=(attr :revealjs_customtheme) id='theme'
+    - else
+      link rel='stylesheet' href='#{revealjsdir}/lib/css/#{attr 'revealjs_theme', 'gpe'}.css' id='theme'
 
     // For syntax highlighting
     // link href="revealjs/lib/css/zenburn.css" rel="stylesheet"

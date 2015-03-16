@@ -137,7 +137,7 @@ task :tag_delete do
 end
 
 desc "Build the Gem and move it under the pkg directory"
-task :build_pkg => :gemspec do
+task :build_pkg do
   sh "mkdir -p pkg"
   sh "gem build #{gemspec_file}"
   sh "mv #{gem_file} pkg"

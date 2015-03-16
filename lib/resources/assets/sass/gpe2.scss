@@ -467,10 +467,11 @@ li strong {
 
 /****************
  * Override Revealjs ordered list
- * Mar 06 2016, CHM : Numbers displayed were cut
+ * Mar 06 2015, CHM : Numbers displayed were cut
+ * Mar 16 2015, CHM : Change margin left for font overlap otherwise it is cut
  ****************/
 .reveal ol {
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
 ol.arabic {

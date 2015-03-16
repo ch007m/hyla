@@ -551,44 +551,45 @@ li strong {
 
 /****************
  * Override Revealjs ordered list
- * Mar 06 2016, CHM : Numbers displayed were cut
+ * Mar 06 2015, CHM : Numbers displayed were cut
+ * Mar 16 2015, CHM : Change margin left for font overlap otherwise it is cut
  ****************/
-/* line 472, ../gpe2.scss */
+/* line 473, ../gpe2.scss */
 .reveal ol {
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
-/* line 476, ../gpe2.scss */
+/* line 477, ../gpe2.scss */
 ol.arabic {
   list-style-type: decimal;
 }
 
-/* line 480, ../gpe2.scss */
+/* line 481, ../gpe2.scss */
 ol.decimal {
   list-style-type: decimal-leading-zero;
 }
 
-/* line 484, ../gpe2.scss */
+/* line 485, ../gpe2.scss */
 ol.loweralpha {
   list-style-type: lower-alpha;
 }
 
-/* line 488, ../gpe2.scss */
+/* line 489, ../gpe2.scss */
 ol.upperalpha {
   list-style-type: upper-alpha;
 }
 
-/* line 492, ../gpe2.scss */
+/* line 493, ../gpe2.scss */
 ol.lowerroman {
   list-style-type: lower-roman;
 }
 
-/* line 496, ../gpe2.scss */
+/* line 497, ../gpe2.scss */
 ol.upperroman {
   list-style-type: upper-roman;
 }
 
-/* line 500, ../gpe2.scss */
+/* line 501, ../gpe2.scss */
 ol.lowergreek {
   list-style-type: lower-greek;
 }
@@ -598,13 +599,13 @@ ol.lowergreek {
  *
  * Mar 03, CHM: Added
  **************************************************************/
-/* line 509, ../gpe2.scss */
+/* line 510, ../gpe2.scss */
 .admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .mathblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
   text-align: left;
   font-weight: bold;
 }
 
-/* line 514, ../gpe2.scss */
+/* line 515, ../gpe2.scss */
 .admonitionblock > table {
   border: 0;
   background: none;
@@ -612,24 +613,24 @@ ol.lowergreek {
   padding: 5px 0px;
 }
 
-/* line 521, ../gpe2.scss */
+/* line 522, ../gpe2.scss */
 .admonitionblock > table td.icon {
   text-align: center;
   width: 80px;
 }
 
-/* line 526, ../gpe2.scss */
+/* line 527, ../gpe2.scss */
 .admonitionblock > table td.icon img {
   max-width: none;
 }
 
-/* line 530, ../gpe2.scss */
+/* line 531, ../gpe2.scss */
 .admonitionblock > table td.icon .title {
   font-weight: bold;
   text-transform: uppercase;
 }
 
-/* line 535, ../gpe2.scss */
+/* line 536, ../gpe2.scss */
 .admonitionblock > table td.content {
   padding-left: 1.125em;
   padding-right: 1.25em;
@@ -640,22 +641,22 @@ ol.lowergreek {
 }
 
 /* Override the color for the list */
-/* line 545, ../gpe2.scss */
+/* line 546, ../gpe2.scss */
 .admonitionblock > table td.content ul li, .admonitionblock > table td.content ol li, .admonitionblock > table td.content ol p, .admonitionblock > table td.content ul p {
   color: #6f6f6f;
 }
 
-/* line 549, ../gpe2.scss */
+/* line 550, ../gpe2.scss */
 .admonitionblock > table td.content > :last-child > :last-child {
   margin-bottom: 0;
 }
 
-/* line 553, ../gpe2.scss */
+/* line 554, ../gpe2.scss */
 .admonitionblock > table td.icon {
   vertical-align: middle;
 }
 
-/* line 557, ../gpe2.scss */
+/* line 558, ../gpe2.scss */
 .admonitionblock td.icon [class^="icon-"]:before {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   cursor: default;
@@ -670,14 +671,14 @@ ol.lowergreek {
   top: 5px;
 }
 
-/* line 571, ../gpe2.scss */
+/* line 572, ../gpe2.scss */
 .admonitionblock td.icon .icon-note:before {
   content: "\f05a";
   color: #005498;
   color: #003f72;
 }
 
-/* line 577, ../gpe2.scss */
+/* line 578, ../gpe2.scss */
 .admonitionblock td.icon .icon-tip:before {
   content: "\f0eb";
   text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
@@ -685,19 +686,19 @@ ol.lowergreek {
 }
 
 /* Use a more yellow lighter color */
-/* line 584, ../gpe2.scss */
+/* line 585, ../gpe2.scss */
 .admonitionblock td.icon .icon-warning:before {
   content: "\f071";
   color: #EFEF0C;
 }
 
-/* line 589, ../gpe2.scss */
+/* line 590, ../gpe2.scss */
 .admonitionblock td.icon .icon-caution:before {
   content: "\f06d";
   color: #bf3400;
 }
 
-/* line 594, ../gpe2.scss */
+/* line 595, ../gpe2.scss */
 .admonitionblock td.icon .icon-important:before {
   content: "\f06a";
   color: #bf0000;

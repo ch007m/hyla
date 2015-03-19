@@ -54,7 +54,8 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       link rel='stylesheet' href="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/#{attr 'prettify-theme', 'prettify'}.min.css"
       script src="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/prettify.min.js"
       script document.addEventListener('DOMContentLoaded', prettyPrint)
-
+    - if attr? :script
+      script type='text/javascript' href=normalize_web_path((attr :script), (attr :scriptsdir, ''))
     // If the query includes 'print-pdf', use the PDF print sheet
     javascript:
       if( window.location.search.match( /print-pdf/gi ) ) {

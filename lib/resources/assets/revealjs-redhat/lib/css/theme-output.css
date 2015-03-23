@@ -160,8 +160,9 @@
     font-size: 3em;
 }
 
+/* Change Font Size from 2em to 1.5em */
 .reveal .slides > section h2 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 300;
     letter-spacing: .15em;
     line-height: 1.15em;

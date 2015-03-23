@@ -273,7 +273,9 @@ module Hyla
 
     BACKENDS = '../../lib/resources/backends'
 
-    COVER_TEMPLATE = '../../lib/resources/assets/cover/new_cover.slim'
+    COVER_TEMPLATE = '../../lib/resources/assets/cover/cover.slim'
+    
+    NEW_COVER_TEMPLATE = '../../lib/resources/assets/cover/new_cover.slim'
 
     ASSESSMENT_TXT = File.open(self.templates + '/course/assessment.txt','r').read
 

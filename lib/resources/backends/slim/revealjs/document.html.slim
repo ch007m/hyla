@@ -2,6 +2,7 @@
 - browser_history = (attr? :revealjs_history) ? (attr :revealjs_history) : false
 - display_slide_number = (attr? :revealjs_display_slide_number) ? (attr :revealjs_display_slide_number) : false
 - transition = (attr? :revealjs_transition) ? (attr :revealjs_transition) : 'default'
+- revealjsdir = (attr :revealjsdir, 'revealjs')
 doctype 5
 html lang=(attr :lang, 'en' unless attr? :nolang)
   head
@@ -30,9 +31,6 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       - else
         link rel='stylesheet' href=normalize_web_path("#{attr 'iconfont-name', 'font-awesome'}.css", (attr :revealjs_vendor_stylesdir, 'revealjs/lib/css/'))
 
-    // For syntax highlighting
-    link href="revealjs/lib/css/zenburn.css" rel="stylesheet"
-
     - case attr 'source-highlighter'
     - when 'coderay'
       - if (attr 'coderay-css', 'class') == 'class'
@@ -47,7 +45,10 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         - else
           style=Asciidoctor::HTML5.pygments_stylesheet(attr 'pygments-style')
     - when 'highlightjs'
-      link rel='stylesheet' href="#{attr :highlightjsdir, 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4'}/styles/#{attr 'highlightjs-theme', 'default'}.min.css"
+      - if attr? 'highlightjs-remote'
+        link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/#{attr 'highlightjs-theme', 'default'}.min.css"
+      - else
+        link rel='stylesheet' href="#{attr :revealjsdir}/lib/css/highlightjs/#{attr 'highlightjs-theme', 'default'}.min.css"
       script src="#{attr :highlightjsdir, 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4'}/highlight.min.js"
       script hljs.initHighlightingOnLoad()
     - when 'prettify'

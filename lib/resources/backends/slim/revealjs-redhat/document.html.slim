@@ -24,9 +24,6 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
     - else
       link rel='stylesheet' href='#{revealjsdir}/lib/css/#{attr 'revealjs_theme', 'gpe'}.css' id='theme'
 
-    // For syntax highlighting
-    // link href="revealjs/lib/css/zenburn.css" rel="stylesheet"
-
     - case attr 'source-highlighter'
     - when 'coderay'
       - if (attr 'coderay-css', 'class') == 'class'
@@ -41,7 +38,10 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         - else
           style=Asciidoctor::HTML5.pygments_stylesheet(attr 'pygments-style')
     - when 'highlightjs'
-      link rel='stylesheet' href="#{attr :highlightjsdir, 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4'}/styles/#{attr 'highlightjs-theme', 'default'}.min.css"
+      - if attr? 'highlightjs-remote'
+        link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/#{attr 'highlightjs-theme', 'default'}.min.css"
+      - else
+        link rel='stylesheet' href="#{attr :revealjsdir}/lib/css/highlightjs/#{attr 'highlightjs-theme', 'default'}.min.css"
     - when 'prettify'
       link rel='stylesheet' href="#{attr :prettifydir, 'https://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/#{attr 'prettify-theme', 'prettify'}.min.css"
       script src="#{attr :prettifydir, 'https://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/prettify.min.js"

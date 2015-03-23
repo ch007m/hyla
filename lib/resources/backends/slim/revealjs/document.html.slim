@@ -54,8 +54,6 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
       link rel='stylesheet' href="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/#{attr 'prettify-theme', 'prettify'}.min.css"
       script src="#{attr :prettifydir, 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298'}/prettify.min.js"
       script document.addEventListener('DOMContentLoaded', prettyPrint)
-    - if attr? :script
-      script type='text/javascript' href=normalize_web_path((attr :script), (attr :scriptsdir, ''))
     // If the query includes 'print-pdf', use the PDF print sheet
     javascript:
       if( window.location.search.match( /print-pdf/gi ) ) {
@@ -78,6 +76,12 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         =attr :footer_copyright
     script src="revealjs/lib/js/head.min.js"
     script src="revealjs/js/reveal.min.js"
+    - if attr? :script
+      script src="#{attr :scriptsdir, ''}/#{attr :script}"
+    - if attr? :scripts
+      - scripts = (attr :scripts)
+      - scripts.split(',').each do |script|
+        script src="#{attr :scriptsdir, ''}/#{script.strip}"
     javascript:
       // Full list of configuration options available here:
       // https://github.com/hakimel/reveal.js#configuration

@@ -96,8 +96,9 @@ module Hyla
             course_name = options[:course_name]
             module_name = options[:module_name]
             bg_image_path = options[:image_path]
+            tool = options[:tool] || 'imgkit'
 
-            self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path)
+            self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool)
 
           else
             Hyla.logger.error ">> Unknow rendering"
@@ -128,47 +129,49 @@ module Hyla
       # Cover Function
       # Create a png file using the HTML generated with the Slim cover template
       #
-      def self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path)
+      def self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool)
 
         unless Dir.exist? out_dir
           FileUtils.mkdir_p out_dir
         end
 
-        # Configure Slim engine
-        slim_file = Configuration::cover_template
-        slim_tmpl = File.read(slim_file)
-        template = Slim::Template.new(:pretty => true) { slim_tmpl }
+        case tool
+          when 'imgkit'
+            # Configure Slim engine
+            slim_file = Configuration::cover_template
+            slim_tmpl = File.read(slim_file)
+            template = Slim::Template.new(:pretty => true) { slim_tmpl }
 
-        # Replace underscore with space
-        course_name = course_name.gsub('_', ' ')
-        # Replace underscore with space, next digits & space with nothing & Capitalize
-        module_name = module_name.gsub('_', ' ').gsub(/^\d{1,2}\s/, '').capitalize
+            # Replace underscore with space
+            course_name = course_name.gsub('_', ' ')
+            # Replace underscore with space, next digits & space with nothing & Capitalize
+            module_name = module_name.gsub('_', ' ').gsub(/^\d{1,2}\s/, '').capitalize
 
-        # f_html = File.read(Configuration::covers + '/cover.html')
+            Hyla.logger.debug "Module name : " + module_name
+            Hyla.logger.info "Curent directory : #{Dir.pwd}"
 
-        Hyla.logger.debug "Module name : " + module_name
+            # Use slim template & render the HTML
+            parameters = {:course_name => course_name,
+                          :module_name => module_name,
+                          :image_path => bg_image_path }
+            res = template.render(Object.new, parameters)
+            #
+            # Create the cover file and do the rendering of the image
+            #
+            Dir.chdir(out_dir) do
+              out_file = File.new(file_name, 'w')
+              out_file.puts res
+              out_file.puts "\n"
 
-        # Do the HTML Rendering
-        parameters = {:course_name => course_name,
-                      :module_name => module_name,
-                      :image_path => bg_image_path }
-        res = template.render(Object.new, parameters)
+              # Do the Rendering Image
+              kit = IMGKit.new(res, quality: 100, width: 1280, height: 800)
 
-        # res = f_html
-
-        #
-        # Create the cover file and do the rendering of the image
-        #
-        Dir.chdir(out_dir) do
-          out_file = File.new(file_name, 'w')
-          out_file.puts res
-          out_file.puts "\n"
-
-          # Do the Rendering Image
-          kit = IMGKit.new(res, quality: 100, width: 1280, height: 800)
-
-          kit.to_img(:png)
-          kit.to_file(image_name)
+              kit.to_img(:png)
+              kit.to_file(image_name)
+            end
+            
+          when 'wkhtmltopdf'  
+            
         end
 
       end

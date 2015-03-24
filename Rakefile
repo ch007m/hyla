@@ -111,22 +111,22 @@ task :compass do
 
 end
 
-# Build the Gem
+desc "Build the Gem"
 task :build do
   system "gem build #{gemspec_file}"
 end
 
-# Build the Gem & deploy it locally
+desc "Build the Gem & deploy it locally"
 task :install => :build do
   system "gem install #{gem_file} -l"
 end
 
-# Build the Gem, install it locally & push it
+desc "Build the Gem, install it locally & push it"
 task :deploy => :install do
   system "gem push #{gem_file}"
 end
 
-# Tag the release 
+desc "Tag Hyla release to github repo"
 task :tag_release do
   system "git tag -a #{name}-#{version} -m 'Release of hyla #{version}'"
   system "git push origin #{name}-#{version}"
@@ -194,11 +194,11 @@ task :publish do
   puts 'Done.'
 end
 
-desc 'Say Hello'
-task :hello, [:msg1, :msg2] do |t, args|
-  msg1 = args.msg1 or
-      fail "Msg1 is mandatory"
-  msg2 = args[:msg2] || "Man"
-  puts msg1.upcase + '!'
-  puts msg2.downcase + '!'
-end
+# desc 'Say Hello'
+# task :hello, [:msg1, :msg2] do |t, args|
+#   msg1 = args.msg1 or
+#       fail "Msg1 is mandatory"
+#   msg2 = args[:msg2] || "Man"
+#   puts msg1.upcase + '!'
+#   puts msg2.downcase + '!'
+# end

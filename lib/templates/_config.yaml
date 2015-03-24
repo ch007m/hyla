@@ -74,6 +74,20 @@ attributes:
    revealjs_cover_image: image/1156515-Logo_RH_RGB_Reverse.png
    revealjs_footer_copyright: "Copyright ©2015 Red Hat, Inc."
    
+   # Factor of the display size that should remain empty around the content
+   revealjs_margin: 0.2
+   
+   # The "normal" size of the presentation, aspect ratio will be preserved
+   # when the presentation is scaled to fit different resolutions. Can be
+   # specified using percentage units.
+   revealjs_width: 960
+   revealjs_height: 700
+   
+   # Bounds for smallest/largest possible scale to apply to content
+   revealjs_minscale: .2
+   revealjs_maxscale: 1
+   
+   
    slideshow: true # Attribute that we use to include/remove title cover for revealjs
 
 # end asciidoctor attributes

@@ -119,11 +119,11 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
          // Apply a 3D roll to links on hover
          rollingLinks: true,
 
-         margin: '#{attr 'revealjs_margin', 0.2}',
-         width: '#{attr 'revealjs_width', 960}',
-         height: '#{attr 'revealjs_height', 700}',
-         minScale: '#{attr 'revealjs_minscale', .2}',
-         maxScale: '#{attr 'revealjs_maxscale', 1}',
+         margin: #{attr 'revealjs_margin', 0.2},
+         width: #{attr 'revealjs_width', 960},
+         height: #{attr 'revealjs_height', 700},
+         minScale: #{attr 'revealjs_minscale', 0.2},
+         maxScale: #{attr 'revealjs_maxscale', 1},
 
          // Display the page number of the current slide
          slideNumber: #{attr 'revealjs_slidenumber', 'true'},

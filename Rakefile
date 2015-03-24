@@ -98,6 +98,9 @@ task :compass do
     sh "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
 
     sh "cp styles/gpe2.css #{revealjs_redhat_css_theme_assets}/gpe.css"
+    sh "cp styles/theme-v2-liberation.css #{revealjs_redhat_css_theme_assets}/theme-v2-liberation.css"
+    sh "cp styles/theme-v2-overpass.css #{revealjs_redhat_css_theme_assets}/theme-v2-overpass.css"
+    sh "cp styles/theme-output.css #{revealjs_redhat_css_theme_assets}/theme-output.css"
     sh "cp styles/font-awesome.css #{revealjs_redhat_css_theme_assets}/font-awesome-4.3.0.css"
 
     # sh "cp gpe.scss #{revealjs_css_theme_assets}"

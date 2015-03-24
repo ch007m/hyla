@@ -19,11 +19,14 @@ snippet_content: false # Change the value to true if you would like to generate 
 #
 # Asciidoctor and attributes options
 #
-backend: html5
+backend: html5 # or revealjs-redhat, revealjs (old gpe style)
 attributes:
-   source-highlighter: coderay
+   source-highlighter: highlightjs # prettify, pygments, coderay, highlightjs
+   highlightjs-theme: sunburst
    linkcss!: true
    data-uri: true
+   scripts: jquery-1.11.2.min.js,gpe.js #
+   scriptsdir: revealjs-redhat/lib/js # TO BE USED FOR REVEALJS-REDHAT BACKEND
 
    # Fonts Awesome based Icons - http://fortawesome.github.io/Font-Awesome/icons/
    icons: font 
@@ -61,12 +64,15 @@ attributes:
    # 
    # Attributes used for RevealJS slideshow
    #
-   revealjs_theme: default # theme to be used default for revealjs slideshow : solarized, beige, blood, conference, default, moon, night, serif, simple, sky, solarized
-   revealjs_transition: fade # default/cube/page/concave/zoom/linear/fade/none
+   revealjsdir: 'revealjs' # dir available : revealjs OR revealjs-redhat (new RedHat branding)
+   revealjs_theme: gpe # GPE OR # default, solarized, beige, blood, conference, default, moon, night, serif, simple, sky, solarized
+   revealjs_transition: none # default/cube/page/concave/zoom/linear/fade/none
    revealjs_history : true # To include the slide link into the url
-   # revealjs_vertical_alignment: true
    revealjs_display_slide_number: true # display the number of the slide bottom of the screen
-   revealjs_scrollbar: true # Support scrollbar into the browser for the slides
+   revealjs_scrollbar: true # Support scrollbar's browser for the slides
+   revealjs_slideshow: true # Attribute that we use to include/remove title cover for revealjs
+   revealjs_cover_image: image/1156515-Logo_RH_RGB_Reverse.png
+   revealjs_footer_copyright: "Copyright ©2015 Red Hat, Inc."
    
    slideshow: true # Attribute that we use to include/remove title cover for revealjs
 

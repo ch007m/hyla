@@ -133,10 +133,12 @@ task :tag_release do
 end
 
 desc "Delete the git tag"
-task :tag_delete do
-  p "Tag to be removed: #{tag_release}"
-  sh "git tag -d #{tag_release}"
-  sh "git push origin :#{tag_release}"
+task :tag_delete, [:version] do |t, args|
+  version = args.version or
+       fail "version is mandatory"
+  p "Tag to be removed: #{version}"
+  sh "git tag -d #{version}"
+  sh "git push origin :#{version}"
 end
 
 desc "Build the Gem and move it under the pkg directory"

@@ -80,10 +80,11 @@ body {
 /******************************************
  * Fill screen to 100% & align text on left
  * Feb 26, CHM : Add top: 370px to fill the screen to 100%
- * Mar 24 3015, CHM : Remove top due to cutoff with safari, firefox
+ * Mar 24 3015, CHM : Remove top due to cutoff with safari, firefox & add margin-top
  ******************************************/
 .reveal .slides {
   text-align: left;
+  margin-top: 15px;
 }
 
 

@@ -9,6 +9,9 @@
 /* $fonts: 'Overpass', 'Liberation Sans', 'Open Sans', sans-serif; */
 $fonts: 'Liberation Sans', 'Overpass', 'Open Sans', sans-serif;
 $red-color: #a70000;
+$scrollbar-height: 600px;
+$footer-bottom: -25%;
+$slides-margin-top: 15px;
 
 /*********************************************
  * GLOBAL STYLES
@@ -84,7 +87,7 @@ body {
  ******************************************/
 .reveal .slides {
   text-align: left;
-  margin-top: 15px;
+  margin-top: $slides-margin-top;
 }
 
 
@@ -98,7 +101,7 @@ body {
  *********************************************/
 .scrollbar {
   border: 1px solid #eee;
-  height: 600px;
+  height: $scrollbar-height;
   overflow: auto;
   margin: 5px 0 0;
   padding: 5px 10px 10px 10px;
@@ -142,7 +145,7 @@ body {
   margin: 0 auto;
   left: 0;
   right: 0;
-  bottom: -20%;
+  bottom: $footer-bottom;
   height: 80px;
   font-family: $fonts;
   font-size: 14px;
@@ -154,7 +157,7 @@ body {
   margin: 0 auto;
   left: 0;
   right: 0;
-  bottom: -15%;
+  bottom: $footer-bottom;
   height: 80px;
   font-family: "Overpass", "Liberation Sans", "Open Sans", sans-serif;
   font-size: 14px;

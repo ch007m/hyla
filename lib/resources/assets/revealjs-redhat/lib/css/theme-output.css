@@ -166,13 +166,14 @@
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* line 151, ../theme-output.scss */
+/* Change Letter Spacing from .061em to -0.02em */
+/* line 152, ../theme-output.scss */
 .reveal .slides > section {
   text-align: left;
-  letter-spacing: .061em;
+  letter-spacing: -0.02em;
 }
 
-/* line 156, ../theme-output.scss */
+/* line 157, ../theme-output.scss */
 .reveal .slides > section h1 {
   line-height: 1em;
   font-weight: 700;
@@ -180,16 +181,16 @@
   font-size: 3em;
 }
 
-/* Change Font Size from 2em to 1.5em */
-/* line 164, ../theme-output.scss */
+/* Change Font Size & letter spacing */
+/* line 165, ../theme-output.scss */
 .reveal .slides > section h2 {
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: 300;
-  letter-spacing: .15em;
+  letter-spacing: .02em;
   line-height: 1.15em;
 }
 
-/* line 171, ../theme-output.scss */
+/* line 172, ../theme-output.scss */
 .reveal .slides > section h3 {
   font-weight: 700;
   font-size: 1em;
@@ -197,30 +198,30 @@
   line-height: 1.25em;
 }
 
-/* line 178, ../theme-output.scss */
+/* line 179, ../theme-output.scss */
 .reveal .slides > section p {
   margin-bottom: .5em;
 }
 
-/* line 182, ../theme-output.scss */
+/* line 183, ../theme-output.scss */
 .reveal .slides > section blockquote {
   font-style: normal;
   box-shadow: none;
 }
 
-/* line 187, ../theme-output.scss */
+/* line 188, ../theme-output.scss */
 .reveal .progress {
   /*    position: ;*/
   background-color: transparent;
 }
 
-/* line 192, ../theme-output.scss */
+/* line 193, ../theme-output.scss */
 .reveal .progress span {
   background-color: #5e6a71;
   /*    opacity: .;*/
 }
 
-/* line 197, ../theme-output.scss */
+/* line 198, ../theme-output.scss */
 .reveal .absolute-element svg {
   position: absolute;
   top: 0;
@@ -230,18 +231,18 @@
   height: 100% !important;
 }
 
-/* line 206, ../theme-output.scss */
+/* line 207, ../theme-output.scss */
 .reveal .icon.stroked {
   width: 282px;
   height: 282px;
 }
 
-/* line 211, ../theme-output.scss */
+/* line 212, ../theme-output.scss */
 .reveal .icon.stroked.icon-arrow path {
   stroke-width: 4px !important;
 }
 
-/* line 215, ../theme-output.scss */
+/* line 216, ../theme-output.scss */
 .reveal .icon.stroked path {
   fill: none;
   stroke-width: 1.5px;
@@ -253,54 +254,54 @@
   stroke: #5e6a71;
 }
 
-/* line 226, ../theme-output.scss */
+/* line 227, ../theme-output.scss */
 .reveal .icon.stroked path.long {
   stroke-dasharray: 420, 420;
   transition: 2.5s all ease;
 }
 
-/* line 231, ../theme-output.scss */
+/* line 232, ../theme-output.scss */
 .reveal .icon.stroked path.longer {
   stroke-dasharray: 512, 512;
   transition: 2.5s all ease;
 }
 
-/* line 236, ../theme-output.scss */
+/* line 237, ../theme-output.scss */
 .reveal .icon.stroked path.short {
   stroke-dasharray: 90, 90;
   transition: 5s all ease;
 }
 
-/* line 241, ../theme-output.scss */
+/* line 242, ../theme-output.scss */
 .reveal .icon.stroked path.shortest {
   stroke-dasharray: 5, 5;
   transition: 2s all ease;
 }
 
-/* line 246, ../theme-output.scss */
+/* line 247, ../theme-output.scss */
 .reveal .icon.stroked path.round {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-/* line 251, ../theme-output.scss */
+/* line 252, ../theme-output.scss */
 .reveal .icon.stroked path.virtual {
   transition: .5s all ease;
   stroke-dasharray: 1.1, 3;
   stroke-linecap: round;
 }
 
-/* line 257, ../theme-output.scss */
+/* line 258, ../theme-output.scss */
 .reveal .icon.stroked path.dashed {
   stroke-dasharray: 3, 3;
 }
 
-/* line 261, ../theme-output.scss */
+/* line 262, ../theme-output.scss */
 .reveal .icon.stroked path.hand {
   stroke-linecap: round;
 }
 
-/* line 265, ../theme-output.scss */
+/* line 266, ../theme-output.scss */
 .reveal .present path.virtual {
   -webkit-animation: virtual-outline 60s infinite linear;
   -moz-animation: virtual-outline 60s infinite linear;
@@ -331,39 +332,39 @@
     stroke-dashoffset: 512;
   }
 }
-/* line 298, ../theme-output.scss */
+/* line 299, ../theme-output.scss */
 .reveal a {
   box-shadow: 0 0.066666em;
 }
 
-/* line 302, ../theme-output.scss */
+/* line 303, ../theme-output.scss */
 .reveal.overview section.present {
   border: 12px solid white !important;
   box-shadow: 0 0 0 10px #ffffff, inset 0 0 0 6px rgba(0, 0, 0, 0.2);
 }
 
-/* line 307, ../theme-output.scss */
+/* line 308, ../theme-output.scss */
 .reveal .rh-pattern {
   width: 256px;
   height: 256px;
 }
 
-/* line 312, ../theme-output.scss */
+/* line 313, ../theme-output.scss */
 .reveal .rh-pattern path {
   transition: all .5s ease;
 }
 
-/* line 316, ../theme-output.scss */
+/* line 317, ../theme-output.scss */
 .reveal .future .rh-pattern path {
   stroke-dasharray: 0, 85 !important;
 }
 
-/* line 320, ../theme-output.scss */
+/* line 321, ../theme-output.scss */
 .reveal .present .rh-pattern path {
   stroke-dasharray: 80, 0 !important;
 }
 
-/* line 324, ../theme-output.scss */
+/* line 325, ../theme-output.scss */
 .reveal div[data-block-type="snippet"] > .sl-block-content > svg,
 .reveal div[data-block-type="snippet"] .icon,
 .reveal div[data-block-type="snippet"] .product {
@@ -376,7 +377,7 @@
   height: 100%;
 }
 
-/* line 336, ../theme-output.scss */
+/* line 337, ../theme-output.scss */
 .reveal div[data-block-type="snippet"] .icon {
   top: -15%;
   right: -15%;
@@ -386,24 +387,24 @@
   height: 130%;
 }
 
-/* line 345, ../theme-output.scss */
+/* line 346, ../theme-output.scss */
 .reveal div[data-block-type="snippet"] {
   min-width: 60px !important;
   min-height: 40px !important;
 }
 
-/* line 350, ../theme-output.scss */
+/* line 351, ../theme-output.scss */
 .reveal div[data-block-type="text"] {
   font-size: 20px;
 }
 
-/* line 354, ../theme-output.scss */
+/* line 355, ../theme-output.scss */
 .reveal .triangle-element,
 .reveal .triangle-element * {
   user-select: none;
 }
 
-/* line 359, ../theme-output.scss */
+/* line 360, ../theme-output.scss */
 .reveal .has-light-background .closing-logo.logotype path {
   fill: #000000 !important;
 }
@@ -463,7 +464,7 @@
     transform: scale(1) translate(30%);
   }
 }
-/* line 423, ../theme-output.scss */
+/* line 424, ../theme-output.scss */
 .reveal .present .closing-logo.icon {
   -webkit-animation: closing-animation 1.5s 1;
   -moz-animation: closing-animation 1.5s 1;
@@ -471,7 +472,7 @@
   animation: closing-animation 1.5s 1;
 }
 
-/* line 430, ../theme-output.scss */
+/* line 431, ../theme-output.scss */
 .reveal .present .closing-logo.logotype {
   -webkit-animation: closing-text-animation 1.8s 1;
   -moz-animation: closing-text-animation 1.8s 1;
@@ -564,42 +565,42 @@
     -webkit-transform: none;
   }
 }
-/* line 527, ../theme-output.scss */
+/* line 528, ../theme-output.scss */
 .reveal .brand-pattern-paths path,
 .reveal .pattern-path {
   stroke-width: 1;
   fill: none;
 }
 
-/* line 533, ../theme-output.scss */
+/* line 534, ../theme-output.scss */
 .reveal .brand-pattern-paths path {
   fill: none !important;
 }
 
-/* line 537, ../theme-output.scss */
+/* line 538, ../theme-output.scss */
 .reveal pattern {
   patterntransform: scale(2) !important;
 }
 
-/* line 541, ../theme-output.scss */
+/* line 542, ../theme-output.scss */
 .reveal pattern.normal use {
   stroke: #5e6a71;
   fill: none;
 }
 
-/* line 546, ../theme-output.scss */
+/* line 547, ../theme-output.scss */
 .reveal pattern.light use {
   stroke: #fff !important;
   fill: none;
 }
 
-/* line 551, ../theme-output.scss */
+/* line 552, ../theme-output.scss */
 .reveal pattern.dark use {
   stroke: #000 !important;
   fill: none;
 }
 
-/* line 556, ../theme-output.scss */
+/* line 557, ../theme-output.scss */
 .reveal .brand-pattern {
   min-width: 40px;
   min-height: 40px;
@@ -612,129 +613,129 @@
   height: 100%;
 }
 
-/* line 568, ../theme-output.scss */
+/* line 569, ../theme-output.scss */
 .reveal .brand-pattern path,
 .reveal .brand-pattern rect {
   width: 100% !important;
   height: 100%;
 }
 
-/* line 574, ../theme-output.scss */
+/* line 575, ../theme-output.scss */
 .reveal .brand-pattern.corporate {
   fill: url(#pattern-corporate);
 }
 
-/* line 578, ../theme-output.scss */
+/* line 579, ../theme-output.scss */
 .reveal .brand-pattern.storage {
   fill: url(#pattern-storage);
 }
 
-/* line 582, ../theme-output.scss */
+/* line 583, ../theme-output.scss */
 .reveal .brand-pattern.infrastructure {
   fill: url(#pattern-infrastructure);
 }
 
-/* line 586, ../theme-output.scss */
+/* line 587, ../theme-output.scss */
 .reveal .brand-pattern.cloud-infrastructure {
   fill: url(#pattern-cloud-infrastructure);
 }
 
-/* line 590, ../theme-output.scss */
+/* line 591, ../theme-output.scss */
 .reveal .brand-pattern.development {
   fill: url(#pattern-development);
 }
 
-/* line 594, ../theme-output.scss */
+/* line 595, ../theme-output.scss */
 .reveal .brand-pattern.business-process {
   fill: url(#pattern-business-process);
 }
 
-/* line 598, ../theme-output.scss */
+/* line 599, ../theme-output.scss */
 .reveal .brand-pattern.cloud-development {
   fill: url(#pattern-cloud-development);
 }
 
-/* line 602, ../theme-output.scss */
+/* line 603, ../theme-output.scss */
 .reveal .brand-pattern.development {
   fill: url(#pattern-development);
 }
 
-/* line 606, ../theme-output.scss */
+/* line 607, ../theme-output.scss */
 .reveal .brand-pattern.business-process {
   fill: url(#pattern-business-process);
 }
 
-/* line 610, ../theme-output.scss */
+/* line 611, ../theme-output.scss */
 .reveal .brand-pattern.cloud-development {
   fill: url(#pattern-cloud-development);
 }
 
-/* line 614, ../theme-output.scss */
+/* line 615, ../theme-output.scss */
 .reveal .brand-pattern.services {
   fill: url(#pattern-services);
 }
 
-/* line 618, ../theme-output.scss */
+/* line 619, ../theme-output.scss */
 .reveal .brand-pattern.partners {
   fill: url(#pattern-partners);
 }
 
-/* line 622, ../theme-output.scss */
+/* line 623, ../theme-output.scss */
 .reveal .brand-pattern.community {
   fill: url(#pattern-community);
 }
 
-/* line 626, ../theme-output.scss */
+/* line 627, ../theme-output.scss */
 .reveal #pattern-corporate-2 use {
   stroke: #dd0000;
 }
 
-/* line 630, ../theme-output.scss */
+/* line 631, ../theme-output.scss */
 .reveal #pattern-corporate use {
   stroke: #cc0000;
 }
 
-/* line 634, ../theme-output.scss */
+/* line 635, ../theme-output.scss */
 .reveal #pattern-storage use {
   stroke: #ec7a08;
 }
 
-/* line 638, ../theme-output.scss */
+/* line 639, ../theme-output.scss */
 .reveal #pattern-infrastructure-path {
   stroke: #0088ce;
 }
 
-/* line 642, ../theme-output.scss */
+/* line 643, ../theme-output.scss */
 .reveal #pattern-cloud-infrastructure use {
   stroke: #0088ce;
 }
 
-/* line 646, ../theme-output.scss */
+/* line 647, ../theme-output.scss */
 .reveal #pattern-development use {
   stroke: #3f9c35;
 }
 
-/* line 650, ../theme-output.scss */
+/* line 651, ../theme-output.scss */
 .reveal #pattern-cloud-development use {
   stroke: #3f9c35;
 }
 
-/* line 654, ../theme-output.scss */
+/* line 655, ../theme-output.scss */
 .reveal #pattern-business-process use {
   stroke: #3f9c35;
 }
 
-/* line 658, ../theme-output.scss */
+/* line 659, ../theme-output.scss */
 .reveal #pattern-partners use {
   stroke: #005172;
 }
 
-/* line 662, ../theme-output.scss */
+/* line 663, ../theme-output.scss */
 .reveal #pattern-services use {
   stroke: #5e6a71;
 }
 
-/* line 666, ../theme-output.scss */
+/* line 667, ../theme-output.scss */
 .reveal section,
 .reveal .slide-background {
   -webkit-backface-visibility: hidden;
@@ -742,7 +743,7 @@
   backface-visibility: hidden;
 }
 
-/* line 673, ../theme-output.scss */
+/* line 674, ../theme-output.scss */
 .reveal .slides > section.transition-slide,
 .reveal .slides > section.transition-slide + section.future,
 .reveal .slides > section.transition-slide + section.present,
@@ -752,12 +753,12 @@
   transition: all 1s ease !important;
 }
 
-/* line 682, ../theme-output.scss */
+/* line 683, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-slide {
   opacity: 1;
 }
 
-/* line 686, ../theme-output.scss */
+/* line 687, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-slide.past {
   z-index: 99;
   -webkit-transform: translate(-100%, 0);
@@ -765,7 +766,7 @@
   transform: translate(-100%, 0);
 }
 
-/* line 693, ../theme-output.scss */
+/* line 694, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-slide.future,
 .reveal .backgrounds > .slide-background.transition-slide.present + .slide-background.future {
   -webkit-transform: translate(100%, 0);
@@ -773,7 +774,7 @@
   transform: translate(100%, 0);
 }
 
-/* line 700, ../theme-output.scss */
+/* line 701, ../theme-output.scss */
 .reveal .slides > section.transition-slide.past {
   z-index: 99;
   -webkit-transform: translate(-150%, 0);
@@ -781,7 +782,7 @@
   transform: translate(-150%, 0);
 }
 
-/* line 707, ../theme-output.scss */
+/* line 708, ../theme-output.scss */
 .reveal .slides > section.transition-slide.future,
 .reveal .slides > section.transition-slide.future + section {
   -webkit-transform: translate(150%, 0);
@@ -789,7 +790,7 @@
   transform: translate(150%, 0);
 }
 
-/* line 714, ../theme-output.scss */
+/* line 715, ../theme-output.scss */
 .reveal .slides > section.transition-slide-up,
 .reveal .slides > section.transition-slide-up + section.future,
 .reveal .slides > section.transition-slide-up + section.present,
@@ -798,12 +799,12 @@
   transition: all 1s ease !important;
 }
 
-/* line 722, ../theme-output.scss */
+/* line 723, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-slide-up {
   opacity: 1;
 }
 
-/* line 726, ../theme-output.scss */
+/* line 727, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-slide-up.past {
   z-index: 99;
   -webkit-transform: translate(0, -100%);
@@ -811,7 +812,7 @@
   transform: translate(0, -100%);
 }
 
-/* line 733, ../theme-output.scss */
+/* line 734, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-slide-up.future,
 .reveal .backgrounds > .slide-background.transition-slide-up.present + .slide-background.future {
   -webkit-transform: translate(0, 100%);
@@ -819,7 +820,7 @@
   transform: translate(0, 100%);
 }
 
-/* line 740, ../theme-output.scss */
+/* line 741, ../theme-output.scss */
 .reveal .slides > section.transition-slide-up.past {
   z-index: 99;
   -webkit-transform: translate(0, -150%);
@@ -827,7 +828,7 @@
   transform: translate(0, -150%);
 }
 
-/* line 747, ../theme-output.scss */
+/* line 748, ../theme-output.scss */
 .reveal .slides > section.transition-slide-up.future,
 .reveal .slides > section.transition-slide-up.present + section {
   -webkit-transform: translate(0, 150%);
@@ -835,7 +836,7 @@
   transform: translate(0, 150%);
 }
 
-/* line 754, ../theme-output.scss */
+/* line 755, ../theme-output.scss */
 .reveal .slides > section.transition-zoom-in,
 .reveal .slides > section.transition-zoom-in + section.future,
 .reveal .slides > section.transition-zoom-in + section.present,
@@ -846,7 +847,7 @@
   transition: all 1s ease !important;
 }
 
-/* line 764, ../theme-output.scss */
+/* line 765, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-zoom-in.past {
   opacity: 0 !important;
   -webkit-transform: scale(1.5);
@@ -854,7 +855,7 @@
   transform: scale(1.5);
 }
 
-/* line 771, ../theme-output.scss */
+/* line 772, ../theme-output.scss */
 .reveal .backgrounds > .slide-background.transition-zoom-in.future,
 .reveal .backgrounds > .slide-background.transition-zoom-in.present + .slide-background.future {
   opacity: 0 !important;
@@ -863,18 +864,18 @@
   transform: scale(0.01);
 }
 
-/* line 779, ../theme-output.scss */
+/* line 780, ../theme-output.scss */
 .reveal.past {
   z-index: -1;
   opacity: 0 !important;
 }
 
-/* line 784, ../theme-output.scss */
+/* line 785, ../theme-output.scss */
 .reveal.present + .slide-background.future {
   z-index: 99;
 }
 
-/* line 788, ../theme-output.scss */
+/* line 789, ../theme-output.scss */
 .reveal .slides > section.transition-zoom-in.past {
   z-index: 99;
   -webkit-transform: scale(1.5);
@@ -882,7 +883,7 @@
   transform: scale(1.5);
 }
 
-/* line 795, ../theme-output.scss */
+/* line 796, ../theme-output.scss */
 .reveal .slides > section.transition-zoom-in.future {
   -webkit-transform: scale(0.1);
   -ms-transform: scale(0.1);
@@ -933,7 +934,7 @@
     stroke-dashoffset: 90;
   }
 }
-/* line 853, ../theme-output.scss */
+/* line 854, ../theme-output.scss */
 .reveal .present .animate.icon.stroked path,
 .reveal .present .animate .icon.stroked path,
 .reveal .fragment .icon.stroked path {
@@ -943,7 +944,7 @@
   display: none;
 }
 
-/* line 862, ../theme-output.scss */
+/* line 863, ../theme-output.scss */
 .reveal .present .animate.icon.stroked path.long,
 .reveal .present .animate .icon.stroked path.long,
 .reveal .fragment.visible .icon.stroked path.long {
@@ -954,7 +955,7 @@
   animation: icon-animation-long 3.5s 0.5s 1;
 }
 
-/* line 872, ../theme-output.scss */
+/* line 873, ../theme-output.scss */
 .reveal .present .animate.icon.stroked path.short,
 .reveal .present .animate .icon.stroked path.short,
 .reveal .fragment.visible .icon.stroked path.short {
@@ -964,12 +965,12 @@
   animation: icon-animation-short 3.5s 0.5s 1 !important;
 }
 
-/* line 881, ../theme-output.scss */
+/* line 882, ../theme-output.scss */
 .reveal .triangle-element {
   transition: all 0.4s cubic-bezier(0.21, 0.9, 0.55, 1) 5s;
 }
 
-/* line 885, ../theme-output.scss */
+/* line 886, ../theme-output.scss */
 .reveal:hover .triangle-element {
   transition: all 1s cubic-bezier(0.21, 0.9, 0.55, 1.16) 0s !important;
   top: 100% !important;
@@ -977,37 +978,37 @@
   opacity: 0.95;
 }
 
-/* line 892, ../theme-output.scss */
+/* line 893, ../theme-output.scss */
 .reveal .has-dark-background .only-dark {
   display: none;
 }
 
-/* line 896, ../theme-output.scss */
+/* line 897, ../theme-output.scss */
 .reveal .has-light-background .only-light {
   display: none;
 }
 
-/* line 900, ../theme-output.scss */
+/* line 901, ../theme-output.scss */
 .reveal .thinner .icon.stroked path {
   stroke-width: 1px !important;
 }
 
-/* line 904, ../theme-output.scss */
+/* line 905, ../theme-output.scss */
 .reveal .thinnest .icon.stroked path {
   stroke-width: 0.05em !important;
 }
 
-/* line 908, ../theme-output.scss */
+/* line 909, ../theme-output.scss */
 .reveal .thicker .icon.stroked path {
   stroke-width: 3px !important;
 }
 
-/* line 912, ../theme-output.scss */
+/* line 913, ../theme-output.scss */
 .reveal .thickest .icon.stroked path {
   stroke-width: 4px !important;
 }
 
-/* line 916, ../theme-output.scss */
+/* line 917, ../theme-output.scss */
 .reveal .angle {
   -ms-transform: rotate(-45deg);
   -moz-transform: rotate(-45deg);
@@ -1015,7 +1016,7 @@
   transform: rotate(-45deg);
 }
 
-/* line 923, ../theme-output.scss */
+/* line 924, ../theme-output.scss */
 .reveal .skewed {
   transition: all 1s cubic-bezier(0.13, 0.81, 0.08, 1);
   -moz-transform: skew(-45deg, 0);
@@ -1024,26 +1025,26 @@
   transform: skew(-45deg, 0);
 }
 
-/* line 931, ../theme-output.scss */
+/* line 932, ../theme-output.scss */
 .reveal .future .skewed {
   margin-left: -800%;
   opacity: 0;
 }
 
-/* line 936, ../theme-output.scss */
+/* line 937, ../theme-output.scss */
 .reveal .past .skewed {
   margin-left: 800%;
   opacity: 0;
 }
 
-/* line 941, ../theme-output.scss */
+/* line 942, ../theme-output.scss */
 .reveal .item-label,
 .reveal .item-box {
   letter-spacing: 0em;
   font-weight: 500;
 }
 
-/* line 947, ../theme-output.scss */
+/* line 948, ../theme-output.scss */
 .reveal .epic-content-box {
   height: 100%;
   width: 100%;
@@ -1054,25 +1055,25 @@
   left: 0;
 }
 
-/* line 957, ../theme-output.scss */
+/* line 958, ../theme-output.scss */
 .reveal .has-dark-background .epic-content-box {
   box-shadow: inset 0 0 0.51em rgba(0, 0, 0, 0.25), 0 0.05em 0.05em rgba(255, 255, 255, 0.1);
   background-color: rgba(0, 0, 0, 0.15);
 }
 
-/* line 962, ../theme-output.scss */
+/* line 963, ../theme-output.scss */
 .reveal .has-light-background .epic-content-box {
   box-shadow: inset 0 0 0.2em rgba(255, 255, 255, 0.5), 0 0.06666em 0.555em 0 rgba(0, 0, 0, 0.12);
 }
 
-/* line 966, ../theme-output.scss */
+/* line 967, ../theme-output.scss */
 .reveal .has-dark-background h1,
 .reveal .has-dark-background h2,
 .reveal .has-dark-background h3 {
   text-shadow: 0 0.05em 0.2em rgba(0, 0, 0, 0.2);
 }
 
-/* line 972, ../theme-output.scss */
+/* line 973, ../theme-output.scss */
 .reveal .controls {
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
@@ -1081,21 +1082,21 @@
   right: 1%;
 }
 
-/* line 980, ../theme-output.scss */
+/* line 981, ../theme-output.scss */
 .reveal .controls {
   opacity: 0 !important;
   transition: all .5s ease 4.8s;
   transform: scale(0.4);
 }
 
-/* line 986, ../theme-output.scss */
+/* line 987, ../theme-output.scss */
 .reveal:hover .controls {
   transform: scale(1);
   opacity: 1 !important;
   transition: all .5s ease 0s;
 }
 
-/* line 992, ../theme-output.scss */
+/* line 993, ../theme-output.scss */
 .reveal .slides > section.present.in-3d-appear,
 .reveal .backgrounds > .slide-background.present.in-3d-appear {
   -moz-animation: slide-3d-appear 2s ease 1;
@@ -1139,7 +1140,7 @@
     transform-origin: top;
   }
 }
-/* line 1038, ../theme-output.scss */
+/* line 1039, ../theme-output.scss */
 .reveal .backgrounds {
   transition-property: height;
   transition-duration: 1s;
@@ -1147,14 +1148,14 @@
   transform-style: preserve-3d;
 }
 
-/* line 1045, ../theme-output.scss */
+/* line 1046, ../theme-output.scss */
 .reveal .complex-logo {
   min-height: 70px;
   min-width: 70px;
   width: 100%;
 }
 
-/* line 1051, ../theme-output.scss */
+/* line 1052, ../theme-output.scss */
 .reveal .complex-logo,
 .reveal .complex-logo svg,
 .reveal .complex-logo > div {
@@ -1167,7 +1168,7 @@
   height: 100%;
 }
 
-/* line 1063, ../theme-output.scss */
+/* line 1064, ../theme-output.scss */
 .reveal .complex-logo > div.line-icon,
 .reveal .complex-logo svg > div.line-icon,
 .reveal .complex-logo > div > div.line-icon,
@@ -1177,76 +1178,76 @@
   transform-origin: 12% 50%;
 }
 
-/* line 1072, ../theme-output.scss */
+/* line 1073, ../theme-output.scss */
 .reveal .animated .complex-logo div {
   transition: all .5s ease;
 }
 
-/* line 1076, ../theme-output.scss */
+/* line 1077, ../theme-output.scss */
 .reveal .animated .complex-logo div.line-icon {
   transition-delay: 2s;
 }
 
-/* line 1080, ../theme-output.scss */
+/* line 1081, ../theme-output.scss */
 .reveal .animated .complex-logo div.line-icon path {
   transition: all 1s ease .52s;
   stroke-dasharray: 100, 10;
 }
 
-/* line 1085, ../theme-output.scss */
+/* line 1086, ../theme-output.scss */
 .reveal .animated .complex-logo div.event-name {
   transition-delay: 1s;
 }
 
-/* line 1089, ../theme-output.scss */
+/* line 1090, ../theme-output.scss */
 .reveal .animated .complex-logo div.location {
   transition-delay: 1.4s;
 }
 
-/* line 1093, ../theme-output.scss */
+/* line 1094, ../theme-output.scss */
 .reveal .future .animated .complex-logo > div {
   transition: none;
 }
 
-/* line 1097, ../theme-output.scss */
+/* line 1098, ../theme-output.scss */
 .reveal .future .animated .complex-logo > div.line-icon path {
   stroke-dasharray: 0, 100;
   transition: none;
 }
 
-/* line 1102, ../theme-output.scss */
+/* line 1103, ../theme-output.scss */
 .reveal .future .animated .complex-logo {
   /*.line-icon{transform:rotate(30deg); opacity:0;}*/
 }
 
-/* line 1107, ../theme-output.scss */
+/* line 1108, ../theme-output.scss */
 .reveal .future .animated .complex-logo .logomark {
   transform: translate(0, -20%);
 }
 
-/* line 1111, ../theme-output.scss */
+/* line 1112, ../theme-output.scss */
 .reveal .future .animated .complex-logo .location {
   transform: translate(0, 0.5em);
   opacity: 0;
 }
 
-/* line 1116, ../theme-output.scss */
+/* line 1117, ../theme-output.scss */
 .reveal .future .animated .complex-logo .event-name {
   opacity: 0;
   transform: translate(-0.6em, 0);
 }
 
-/* line 1121, ../theme-output.scss */
+/* line 1122, ../theme-output.scss */
 .reveal svg path {
   fill: currentcolor;
 }
 
-/* line 1125, ../theme-output.scss */
+/* line 1126, ../theme-output.scss */
 .reveal .lowercase {
   text-transform: lowercase;
 }
 
-/* line 1129, ../theme-output.scss */
+/* line 1130, ../theme-output.scss */
 .reveal .pop-in.fragment {
   -webkit-transform: scale(0.2);
   -moz-transform: scale(0.2);
@@ -1265,7 +1266,7 @@
   animation-delay: 0.66s;
 }
 
-/* line 1147, ../theme-output.scss */
+/* line 1148, ../theme-output.scss */
 .reveal .pop-in.fragment.visible {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -1274,12 +1275,12 @@
   transform: scale(1);
 }
 
-/* line 1155, ../theme-output.scss */
+/* line 1156, ../theme-output.scss */
 .reveal .pop-in.fragment.current-fragment {
   color: #c22;
 }
 
-/* line 1159, ../theme-output.scss */
+/* line 1160, ../theme-output.scss */
 .reveal .grow-width {
   -webkit-transition: all 0.5s ease 0.2s;
   -moz-transition: all 0.5s ease 0.2s;
@@ -1288,7 +1289,7 @@
   transition: all 0.5s ease 0.2s;
 }
 
-/* line 1167, ../theme-output.scss */
+/* line 1168, ../theme-output.scss */
 .reveal .future .grow-width {
   width: 0% !important;
   -webkit-transition: none;
@@ -1298,7 +1299,7 @@
   transition: none;
 }
 
-/* line 1176, ../theme-output.scss */
+/* line 1177, ../theme-output.scss */
 .reveal .stampit {
   -webkit-transition: all 1s cubic-bezier(0.79, 0.53, 0.46, 1.3) 1s;
   -moz-transition: all 1s cubic-bezier(0.79, 0.53, 0.46, 1.3) 1s;
@@ -1307,7 +1308,7 @@
   transition: all 1s cubic-bezier(0.79, 0.53, 0.46, 1.3) 1s;
 }
 
-/* line 1184, ../theme-output.scss */
+/* line 1185, ../theme-output.scss */
 .reveal .future .stampit {
   -webkit-transform: rotate(-12deg) scale(2);
   -moz-transform: rotate(-12deg) scale(2);
@@ -1322,101 +1323,101 @@
   opacity: 0;
 }
 
-/* line 1198, ../theme-output.scss */
+/* line 1199, ../theme-output.scss */
 .reveal .headshot img {
   border-radius: 50%;
   border: 4px solid #c00 !important;
 }
 
-/* line 1203, ../theme-output.scss */
+/* line 1204, ../theme-output.scss */
 .reveal .condensed {
   letter-spacing: 0.02em;
 }
 
-/* line 1207, ../theme-output.scss */
+/* line 1208, ../theme-output.scss */
 .reveal .condensed li {
   margin-bottom: 1em;
 }
 
-/* line 1211, ../theme-output.scss */
+/* line 1212, ../theme-output.scss */
 .reveal .has-light-background .sl-block .has-dark-background > svg.redhat-logo .logotext {
   fill: #ffffff !important;
 }
 
-/* line 1215, ../theme-output.scss */
+/* line 1216, ../theme-output.scss */
 .reveal .has-light-background .sl-block .reversed.redhat-logo .logotext,
 .reveal .has-light-background .sl-block .reversed .redhat-logo .logotext,
 .reveal .has-light-background .sl-block .has-dark-background > .redhat-logo .logotext {
   fill: #ffffff !important;
 }
 
-/* line 1221, ../theme-output.scss */
+/* line 1222, ../theme-output.scss */
 .reveal .has-dark-background .sl-block .reversed.redhat-logo .logotext,
 .reveal .has-dark-background .sl-block .reversed .redhat-logo .logotext,
 .reveal .has-dark-background .sl-block .has-light-background > .redhat-logo .logotext {
   fill: #000000 !important;
 }
 
-/* line 1227, ../theme-output.scss */
+/* line 1228, ../theme-output.scss */
 .reveal .has-dark-background .has-light-background .logo .only-dark path,
 .reveal .has-light-background .mono.redhat-logo path {
   fill: #000000 !important;
 }
 
-/* line 1232, ../theme-output.scss */
+/* line 1233, ../theme-output.scss */
 .reveal .has-dark-background .mono.redhat-logo path {
   fill: #ffffff;
 }
 
-/* line 1236, ../theme-output.scss */
+/* line 1237, ../theme-output.scss */
 .reveal .has-dark-background .logo .only-dark {
   display: block;
 }
 
-/* line 1240, ../theme-output.scss */
+/* line 1241, ../theme-output.scss */
 .reveal .has-light-background .logo .only-light {
   display: block;
 }
 
-/* line 1244, ../theme-output.scss */
+/* line 1245, ../theme-output.scss */
 .reveal .has-light-background .logo .only-dark {
   display: none;
 }
 
-/* line 1248, ../theme-output.scss */
+/* line 1249, ../theme-output.scss */
 .reveal .has-dark-background .logo .only-light {
   display: none;
 }
 
-/* line 1252, ../theme-output.scss */
+/* line 1253, ../theme-output.scss */
 .reveal .has-light-background .reversed svg path {
   fill: #ffffff !important;
 }
 
-/* line 1256, ../theme-output.scss */
+/* line 1257, ../theme-output.scss */
 .reveal .has-dark-background .reversed svg path {
   fill: currentcolor !important;
 }
 
-/* line 1260, ../theme-output.scss */
+/* line 1261, ../theme-output.scss */
 .reveal .has-dark-background .has-light-background .logo .only-light,
 .reveal .has-dark-background .reversed .logo .only-dark {
   display: block;
 }
 
-/* line 1265, ../theme-output.scss */
+/* line 1266, ../theme-output.scss */
 .reveal .has-light-background .has-dark-background .logo .only-dark,
 .reveal .has-light-background .logo .only-light {
   display: block;
 }
 
-/* line 1270, ../theme-output.scss */
+/* line 1271, ../theme-output.scss */
 .reveal .has-light-background .has-dark-background .redhat-logo .only-dark,
 .reveal .has-light-background .redhat-logo .only-light {
   fill: #ffffff !important;
 }
 
-/* line 1275, ../theme-output.scss */
+/* line 1276, ../theme-output.scss */
 .reveal .has-light-background .has-dark-background .logo .only-light,
 .reveal .has-light-background .logo .only-dark,
 .reveal .has-dark-background .has-light-background .logo .only-dark,
@@ -1424,7 +1425,7 @@
   display: none;
 }
 
-/* line 1282, ../theme-output.scss */
+/* line 1283, ../theme-output.scss */
 .reveal .future .fade-up,
 .reveal .future .fade-down,
 .reveal .future .fade-left,
@@ -1436,7 +1437,7 @@
   filter: alpha(opacity=0);
 }
 
-/* line 1293, ../theme-output.scss */
+/* line 1294, ../theme-output.scss */
 .reveal .future .fade-up,
 .reveal .fade-up.fragment {
   -webkit-transform: translate(0, 2em);
@@ -1446,7 +1447,7 @@
   filter: alpha(opacity=0);
 }
 
-/* line 1302, ../theme-output.scss */
+/* line 1303, ../theme-output.scss */
 .reveal .future .fade-down,
 .reveal .fade-down.fragment {
   -webkit-transform: translate(0, -2em);
@@ -1456,7 +1457,7 @@
   filter: alpha(opacity=0);
 }
 
-/* line 1311, ../theme-output.scss */
+/* line 1312, ../theme-output.scss */
 .reveal .future .fade-left,
 .reveal .fade-left.fragment {
   -webkit-transform: translate(2em, 0);
@@ -1466,7 +1467,7 @@
   filter: alpha(opacity=0);
 }
 
-/* line 1320, ../theme-output.scss */
+/* line 1321, ../theme-output.scss */
 .reveal .future .fade-right,
 .reveal .fade-right.fragment {
   -webkit-transform: translate(-2em, 0);
@@ -1476,7 +1477,7 @@
   filter: alpha(opacity=0);
 }
 
-/* line 1329, ../theme-output.scss */
+/* line 1330, ../theme-output.scss */
 .reveal .future .fade-zoom,
 .reveal .fade-zoom.fragment {
   -webkit-transform: scale(0.1);
@@ -1486,7 +1487,7 @@
   filter: alpha(opacity=0);
 }
 
-/* line 1338, ../theme-output.scss */
+/* line 1339, ../theme-output.scss */
 .reveal .present .fade-up,
 .reveal .present .fade-down,
 .reveal .present .fade-left,
@@ -1498,7 +1499,7 @@
   filter: alpha(opacity=100);
 }
 
-/* line 1349, ../theme-output.scss */
+/* line 1350, ../theme-output.scss */
 .reveal .present .fragment.visible.fade-up,
 .reveal .present .fragment.visible.fade-down,
 .reveal .present .fragment.visible.fade-left,

@@ -576,15 +576,16 @@ ol.lowergreek {
 /**************************************************************
  * Audio, pre tag, ...
  * Mar 23 2015, CHM: Added
+ * Mar 25 2015, CHM: Change font size to 28px;
  **************************************************************/
 .reveal .audioblock {
   padding: 15px 0px;
 }
 .reveal p, .reveal ol, .reveal ul, .reveal table, .reveal .colist td {
-  font-size: 0.85em;
+  font-size: 28px;
 }
 .reveal pre {
-  font-size: 0.7em;
+  font-size: 0.55em;
 }
 .reveal .listingblock {
   padding-bottom: 10px;

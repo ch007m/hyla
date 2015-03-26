@@ -55,12 +55,12 @@ EOS
         #
         # Create blank project
         # or copy sample project from template directory
-        #
+        #igs
         if options[:blank]
           create_blank_project new_project_path
 
           # Add yaml config file
-          FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', new_project_path
+          FileUtils.cp_r [Configuration::configs, Configuration::YAML_CONFIG_FILE_NAME] * '/', new_project_path
 
           # Copy styles
           FileUtils.cp_r Configuration::styles, new_project_path
@@ -100,7 +100,7 @@ EOS
         FileUtils.cp_r source, path
 
         # Add yaml config file
-        FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', path
+        FileUtils.cp_r [Configuration::configs, Configuration::YAML_CONFIG_FILE_NAME] * '/', path
       end
 
       #

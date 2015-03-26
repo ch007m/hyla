@@ -347,7 +347,7 @@ module Hyla
         end
 
         # Copy YAML Config file
-        FileUtils.cp_r [Configuration::templates, Configuration::YAML_CONFIG_FILE_NAME] * '/', @out_dir
+        FileUtils.cp_r [Configuration::configs, Configuration::YAML_CONFIG_FILE_NAME] * '/', @out_dir
 
         # Copy styles
         # FileUtils.cp_r Configuration::styles, @out_dir

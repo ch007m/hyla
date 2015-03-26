@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'font-awesome-sass','~> 4.3'
   s.add_development_dependency 'compass', '~> 1.0'
   s.add_development_dependency 'sass', '~> 3.4'
-  s.add_development_dependency 'rake-minify'
+  s.add_development_dependency 'rake-minify', '~> 0'
 
   #  Ruby command-line executables
   # Add pry before

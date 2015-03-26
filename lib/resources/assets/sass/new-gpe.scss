@@ -28,7 +28,6 @@ body {
   font-weight: normal;
   letter-spacing: -0.02em;
   color: black;
-
 }
 
 ::selection {
@@ -87,7 +86,7 @@ body {
  ******************************************/
 .reveal .slides {
   text-align: left;
-  margin-top: $slides-margin-top;
+  /* margin-top: $slides-margin-top; WE don't use it as the value is assigned by Revealjs */
 }
 
 

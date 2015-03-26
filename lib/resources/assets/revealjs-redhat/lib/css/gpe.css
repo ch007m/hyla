@@ -10,12 +10,12 @@
  * Feb 24, ART:  added a border to the body, attempting to see how the margin is being used.
  * Feb 24, ART:  added a border to the reveal section, attempting to see how the margin is being used.
  *********************************************/
-/* line 21, ../gpe2.scss */
+/* line 21, ../new-gpe.scss */
 body {
   font-family: "Liberation Sans", "Overpass", "Open Sans", sans-serif;
 }
 
-/* line 25, ../gpe2.scss */
+/* line 25, ../new-gpe.scss */
 .reveal {
   font-family: "Liberation Sans", "Overpass", "Open Sans", sans-serif;
   font-size: 28px;
@@ -24,7 +24,7 @@ body {
   color: black;
 }
 
-/* line 34, ../gpe2.scss */
+/* line 33, ../new-gpe.scss */
 ::selection {
   color: white;
   background: rgba(0, 0, 0, 0.99);
@@ -34,7 +34,7 @@ body {
 /*********************************************
  * HEADERS
  *********************************************/
-/* line 43, ../gpe2.scss */
+/* line 42, ../new-gpe.scss */
 .reveal h1,
 .reveal h2,
 .reveal h3,
@@ -53,7 +53,7 @@ body {
 /**************************************************************
  * Change color of the cover slide using class sl-block-content
  **************************************************************/
-/* line 61, ../gpe2.scss */
+/* line 60, ../new-gpe.scss */
 .reveal .sl-block-content h1,
 .reveal .sl-block-content h2,
 .reveal .sl-block-content h3,
@@ -66,14 +66,14 @@ body {
 /***************************************************
  * Feb 26, ART: Font Size 2em and width: 900px added
  **************************************************/
-/* line 73, ../gpe2.scss */
+/* line 72, ../new-gpe.scss */
 .reveal h1 {
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   font-size: 2em;
   width: 900px;
 }
 
-/* line 79, ../gpe2.scss */
+/* line 78, ../new-gpe.scss */
 .reveal h2 {
   font-size: 2em;
 }
@@ -83,10 +83,10 @@ body {
  * Feb 26, CHM : Add top: 370px to fill the screen to 100%
  * Mar 24 3015, CHM : Remove top due to cutoff with safari, firefox & add margin-top
  ******************************************/
-/* line 88, ../gpe2.scss */
+/* line 87, ../new-gpe.scss */
 .reveal .slides {
   text-align: left;
-  margin-top: 15px;
+  /* margin-top: $slides-margin-top; WE don't use it as the value is assigned by Revealjs */
 }
 
 /*********************************************
@@ -97,7 +97,7 @@ body {
  * Mar 02, CHM: Increase height from 600 to 670px
  * Mar 06, CHM: Change overflow from scroll to auto
  *********************************************/
-/* line 102, ../gpe2.scss */
+/* line 101, ../new-gpe.scss */
 .scrollbar {
   border: 1px solid #eee;
   height: 600px;
@@ -111,7 +111,7 @@ body {
  * Add this tag [.cover] before the picture of the cover page
  * Mar 04 2015, CHM: Initial
  **************************************************************/
-/* line 115, ../gpe2.scss */
+/* line 114, ../new-gpe.scss */
 .cover {
   position: absolute;
   top: 20px;
@@ -122,7 +122,7 @@ body {
  * Corporate Logo Header Image
  * Feb 26, CHM: Changed the height from 80px to 0px
  *********************************************/
-/* line 125, ../gpe2.scss */
+/* line 124, ../new-gpe.scss */
 .header {
   position: absolute;
   margin: 0 auto;
@@ -141,7 +141,7 @@ body {
  * Mar 13 2015, CHM : Add footer-cover to override the color for cover slide
  * Mar 24 2015, CHM : Remove hard coded px and use percentages
  ******************************************************/
-/* line 143, ../gpe2.scss */
+/* line 142, ../new-gpe.scss */
 .reveal .footer {
   position: absolute;
   margin: 0 auto;
@@ -154,7 +154,7 @@ body {
   text-align: center;
 }
 
-/* line 155, ../gpe2.scss */
+/* line 154, ../new-gpe.scss */
 .reveal .footer-cover {
   position: absolute;
   margin: 0 auto;
@@ -171,7 +171,7 @@ body {
 /*********************************************
  * LINKS
  *********************************************/
-/* line 171, ../gpe2.scss */
+/* line 170, ../new-gpe.scss */
 .reveal a:not(.image) {
   color: #a70000;
   text-decoration: none;
@@ -182,14 +182,14 @@ body {
   transition: color .15s ease;
 }
 
-/* line 182, ../gpe2.scss */
+/* line 181, ../new-gpe.scss */
 .reveal a:not(.image):hover {
   color: #a70000;
   text-shadow: none;
   border: none;
 }
 
-/* line 188, ../gpe2.scss */
+/* line 187, ../new-gpe.scss */
 .reveal .roll span:after {
   color: #fff;
   background: #a70000;
@@ -199,7 +199,7 @@ body {
  * IMAGES
  * Mar 13 2015, CHM : Remove the shadow box around the image
  *********************************************/
-/* line 197, ../gpe2.scss */
+/* line 196, ../new-gpe.scss */
 .reveal section img {
   margin: 15px 0px;
   -webkit-transition: all .2s linear;
@@ -209,7 +209,7 @@ body {
   transition: all .2s linear;
 }
 
-/* line 206, ../gpe2.scss */
+/* line 205, ../new-gpe.scss */
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
   border-color: #a70000;
@@ -219,46 +219,46 @@ body {
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
-/* line 215, ../gpe2.scss */
+/* line 214, ../new-gpe.scss */
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
   border-right-color: #C1100C;
 }
 
-/* line 220, ../gpe2.scss */
+/* line 219, ../new-gpe.scss */
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
   border-left-color: #C1100C;
 }
 
-/* line 225, ../gpe2.scss */
+/* line 224, ../new-gpe.scss */
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
   border-bottom-color: #C1100C;
 }
 
-/* line 230, ../gpe2.scss */
+/* line 229, ../new-gpe.scss */
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
   border-top-color: #C1100C;
 }
 
-/* line 235, ../gpe2.scss */
+/* line 234, ../new-gpe.scss */
 .reveal .controls div.navigate-left.enabled:hover {
   border-right-color: #ef6f16;
 }
 
-/* line 239, ../gpe2.scss */
+/* line 238, ../new-gpe.scss */
 .reveal .controls div.navigate-right.enabled:hover {
   border-left-color: #ef6f16;
 }
 
-/* line 243, ../gpe2.scss */
+/* line 242, ../new-gpe.scss */
 .reveal .controls div.navigate-up.enabled:hover {
   border-bottom-color: #ef6f16;
 }
 
-/* line 247, ../gpe2.scss */
+/* line 246, ../new-gpe.scss */
 .reveal .controls div.navigate-down.enabled:hover {
   border-top-color: #ef6f16;
 }
@@ -266,12 +266,12 @@ body {
 /*********************************************
  * PROGRESS BAR
  *********************************************/
-/* line 254, ../gpe2.scss */
+/* line 253, ../new-gpe.scss */
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
 }
 
-/* line 258, ../gpe2.scss */
+/* line 257, ../new-gpe.scss */
 .reveal .progress span {
   background: #a70000;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -284,7 +284,7 @@ body {
 /*********************************************
  * SLIDE NUMBER
  *********************************************/
-/* line 270, ../gpe2.scss */
+/* line 269, ../new-gpe.scss */
 .reveal .slide-number {
   color: darkblue;
 }
@@ -297,28 +297,28 @@ body {
  * Mar 13 2015, CHM: Change color to black and revert square, disc & circle
  *********************************************************************************/
 /* line 287, ../gpe.scss */
-/* line 282, ../gpe2.scss */
+/* line 281, ../new-gpe.scss */
 .reveal ul li p, ul li li p, ul li li p {
   color: black;
   list-style: none;
 }
 
 /* line 293, ../gpe.scss */
-/* line 288, ../gpe2.scss */
+/* line 287, ../new-gpe.scss */
 .reveal ul li {
   list-style-type: disc;
   color: black;
 }
 
 /* line 298, ../gpe.scss */
-/* line 294, ../gpe2.scss */
+/* line 293, ../new-gpe.scss */
 .reveal ul li li {
   list-style-type: square;
   color: black;
 }
 
 /* line 303, ../gpe.scss */
-/* line 300, ../gpe2.scss */
+/* line 299, ../new-gpe.scss */
 .reveal ul li li li {
   list-style-type: circle;
   color: black;
@@ -329,7 +329,7 @@ body {
  * Font Awesome icons for NOTE, WARNING, REMARK, ....
  * Feb, CHM: Added
  *******************************************************************/
-/* line 310, ../gpe2.scss */
+/* line 309, ../new-gpe.scss */
 .reveal i.fa {
   font-family: 'FontAwesome';
   font-style: normal;
@@ -340,7 +340,7 @@ body {
  * Support asciidoctor callout
  * Feb 27, CHM: Added
  *********************************************/
-/* line 320, ../gpe2.scss */
+/* line 319, ../new-gpe.scss */
 .reveal i.conum {
   display: inline-block;
   color: white !important;
@@ -359,22 +359,22 @@ body {
   letter-spacing: -2px;
 }
 
-/* line 338, ../gpe2.scss */
+/* line 337, ../new-gpe.scss */
 .reveal i.conum * {
   color: white !important;
 }
 
-/* line 342, ../gpe2.scss */
+/* line 341, ../new-gpe.scss */
 .reveal i.conum + b {
   display: none;
 }
 
-/* line 346, ../gpe2.scss */
+/* line 345, ../new-gpe.scss */
 .reveal i.conum:after {
   content: attr(data-value);
 }
 
-/* line 350, ../gpe2.scss */
+/* line 349, ../new-gpe.scss */
 .reveal i.conum:not([data-value]):empty {
   display: none;
 }
@@ -386,7 +386,7 @@ body {
  * Mar 03, CHM: Improve style to be compliant with Redhat styles
  * Mar 06, CHM: Add a noredheader class to avoid to display the first line in red of a table containing images, ..
  ******************************************************/
-/* line 361, ../gpe2.scss */
+/* line 360, ../new-gpe.scss */
 table.tableblock, table.tableblock td {
   border-style: solid;
   border-color: #b7bcbe;
@@ -396,7 +396,7 @@ table.tableblock, table.tableblock td {
   padding: 5px;
 }
 
-/* line 370, ../gpe2.scss */
+/* line 369, ../new-gpe.scss */
 table.tableblock > caption {
   line-height: 1.4;
   color: #333333;
@@ -408,7 +408,7 @@ table.tableblock > caption {
   display: table-caption;
 }
 
-/* line 381, ../gpe2.scss */
+/* line 380, ../new-gpe.scss */
 table.tableblock:not(.noredheader) tr:first-child td {
   background-color: #a70000;
   text-align: left;
@@ -417,47 +417,47 @@ table.tableblock:not(.noredheader) tr:first-child td {
   font-size: 24px;
 }
 
-/* line 389, ../gpe2.scss */
+/* line 388, ../new-gpe.scss */
 table.tableblock.noredheader tr:first-child td {
   background-color: #EEEEEE;
 }
 
-/* line 393, ../gpe2.scss */
+/* line 392, ../new-gpe.scss */
 table.tableblock tr:nth-child(even) {
   background: white;
 }
 
-/* line 397, ../gpe2.scss */
+/* line 396, ../new-gpe.scss */
 table.tableblock tr:nth-child(odd) {
   background: #eeeeee;
 }
 
-/* line 401, ../gpe2.scss */
+/* line 400, ../new-gpe.scss */
 th.tableblock.halign-left, td.tableblock.halign-left {
   text-align: left;
 }
 
-/* line 405, ../gpe2.scss */
+/* line 404, ../new-gpe.scss */
 th.tableblock.halign-right, td.tableblock.halign-right {
   text-align: right;
 }
 
-/* line 409, ../gpe2.scss */
+/* line 408, ../new-gpe.scss */
 th.tableblock.halign-center, td.tableblock.halign-center {
   text-align: center;
 }
 
-/* line 413, ../gpe2.scss */
+/* line 412, ../new-gpe.scss */
 th.tableblock.valign-top, td.tableblock.valign-top {
   vertical-align: top;
 }
 
-/* line 417, ../gpe2.scss */
+/* line 416, ../new-gpe.scss */
 th.tableblock.valign-bottom, td.tableblock.valign-bottom {
   vertical-align: bottom;
 }
 
-/* line 421, ../gpe2.scss */
+/* line 420, ../new-gpe.scss */
 th.tableblock.valign-middle, td.tableblock.valign-middle {
   vertical-align: middle;
 }
@@ -467,7 +467,7 @@ th.tableblock.valign-middle, td.tableblock.valign-middle {
  * Here is a trick to support that <strong>text</strong> enclosed in <li> tag & color
  * Feb 27, CHM: Added
  **************************************************************/
-/* line 430, ../gpe2.scss */
+/* line 429, ../new-gpe.scss */
 li strong {
   color: #a70000;
   font-weight: bold;
@@ -477,12 +477,12 @@ li strong {
  * Override Revealjs Pre class
  * Mar 04 2015, CHM : Change width from 90% to 100% and margin to reduce size of the box hightlighted
  *************************************************************/
-/* line 439, ../gpe2.scss */
+/* line 438, ../new-gpe.scss */
 .reveal pre {
   width: 100%;
 }
 
-/* line 443, ../gpe2.scss */
+/* line 442, ../new-gpe.scss */
 .listingblock .content {
   margin-right: 50px;
   padding-right: 50px;
@@ -493,42 +493,42 @@ li strong {
  * Mar 06 2015, CHM : Numbers displayed were cut
  * Mar 16 2015, CHM : Change margin left for font overlap otherwise it is cut
  ****************/
-/* line 453, ../gpe2.scss */
+/* line 452, ../new-gpe.scss */
 .reveal ol {
   margin-left: 50px;
 }
 
-/* line 457, ../gpe2.scss */
+/* line 456, ../new-gpe.scss */
 ol.arabic {
   list-style-type: decimal;
 }
 
-/* line 461, ../gpe2.scss */
+/* line 460, ../new-gpe.scss */
 ol.decimal {
   list-style-type: decimal-leading-zero;
 }
 
-/* line 465, ../gpe2.scss */
+/* line 464, ../new-gpe.scss */
 ol.loweralpha {
   list-style-type: lower-alpha;
 }
 
-/* line 469, ../gpe2.scss */
+/* line 468, ../new-gpe.scss */
 ol.upperalpha {
   list-style-type: upper-alpha;
 }
 
-/* line 473, ../gpe2.scss */
+/* line 472, ../new-gpe.scss */
 ol.lowerroman {
   list-style-type: lower-roman;
 }
 
-/* line 477, ../gpe2.scss */
+/* line 476, ../new-gpe.scss */
 ol.upperroman {
   list-style-type: upper-roman;
 }
 
-/* line 481, ../gpe2.scss */
+/* line 480, ../new-gpe.scss */
 ol.lowergreek {
   list-style-type: lower-greek;
 }
@@ -538,13 +538,13 @@ ol.lowergreek {
  *
  * Mar 03, CHM: Added
  **************************************************************/
-/* line 490, ../gpe2.scss */
+/* line 489, ../new-gpe.scss */
 .admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .mathblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
   text-align: left;
   font-weight: bold;
 }
 
-/* line 495, ../gpe2.scss */
+/* line 494, ../new-gpe.scss */
 .admonitionblock > table {
   border: 0;
   background: none;
@@ -552,24 +552,24 @@ ol.lowergreek {
   padding: 5px 0px;
 }
 
-/* line 502, ../gpe2.scss */
+/* line 501, ../new-gpe.scss */
 .admonitionblock > table td.icon {
   text-align: center;
   width: 80px;
 }
 
-/* line 507, ../gpe2.scss */
+/* line 506, ../new-gpe.scss */
 .admonitionblock > table td.icon img {
   max-width: none;
 }
 
-/* line 511, ../gpe2.scss */
+/* line 510, ../new-gpe.scss */
 .admonitionblock > table td.icon .title {
   font-weight: bold;
   text-transform: uppercase;
 }
 
-/* line 516, ../gpe2.scss */
+/* line 515, ../new-gpe.scss */
 .admonitionblock > table td.content {
   padding-left: 1.125em;
   padding-right: 1.25em;
@@ -580,22 +580,22 @@ ol.lowergreek {
 }
 
 /* Override the color for the list */
-/* line 526, ../gpe2.scss */
+/* line 525, ../new-gpe.scss */
 .admonitionblock > table td.content ul li, .admonitionblock > table td.content ol li, .admonitionblock > table td.content ol p, .admonitionblock > table td.content ul p {
   color: #6f6f6f;
 }
 
-/* line 530, ../gpe2.scss */
+/* line 529, ../new-gpe.scss */
 .admonitionblock > table td.content > :last-child > :last-child {
   margin-bottom: 0;
 }
 
-/* line 534, ../gpe2.scss */
+/* line 533, ../new-gpe.scss */
 .admonitionblock > table td.icon {
   vertical-align: middle;
 }
 
-/* line 538, ../gpe2.scss */
+/* line 537, ../new-gpe.scss */
 .admonitionblock td.icon [class^="icon-"]:before {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   cursor: default;
@@ -610,14 +610,14 @@ ol.lowergreek {
   top: 5px;
 }
 
-/* line 552, ../gpe2.scss */
+/* line 551, ../new-gpe.scss */
 .admonitionblock td.icon .icon-note:before {
   content: "\f05a";
   color: #005498;
   color: #003f72;
 }
 
-/* line 558, ../gpe2.scss */
+/* line 557, ../new-gpe.scss */
 .admonitionblock td.icon .icon-tip:before {
   content: "\f0eb";
   text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
@@ -625,19 +625,19 @@ ol.lowergreek {
 }
 
 /* Use a more yellow lighter color */
-/* line 565, ../gpe2.scss */
+/* line 564, ../new-gpe.scss */
 .admonitionblock td.icon .icon-warning:before {
   content: "\f071";
   color: #EFEF0C;
 }
 
-/* line 570, ../gpe2.scss */
+/* line 569, ../new-gpe.scss */
 .admonitionblock td.icon .icon-caution:before {
   content: "\f06d";
   color: #bf3400;
 }
 
-/* line 575, ../gpe2.scss */
+/* line 574, ../new-gpe.scss */
 .admonitionblock td.icon .icon-important:before {
   content: "\f06a";
   color: #bf0000;
@@ -648,22 +648,22 @@ ol.lowergreek {
  * Mar 23 2015, CHM: Added
  * Mar 25 2015, CHM: Change font size to 28px;
  **************************************************************/
-/* line 585, ../gpe2.scss */
+/* line 584, ../new-gpe.scss */
 .reveal .audioblock {
   padding: 15px 0px;
 }
 
-/* line 588, ../gpe2.scss */
+/* line 587, ../new-gpe.scss */
 .reveal p, .reveal ol, .reveal ul, .reveal table, .reveal .colist td {
   font-size: 28px;
 }
 
-/* line 591, ../gpe2.scss */
+/* line 590, ../new-gpe.scss */
 .reveal pre {
   font-size: 0.55em;
 }
 
-/* line 594, ../gpe2.scss */
+/* line 593, ../new-gpe.scss */
 .reveal .listingblock {
   padding-bottom: 10px;
 }

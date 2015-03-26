@@ -204,9 +204,11 @@ task :publish do
   puts 'Done.'
 end
 
-Rake::Minify.new(:minify_revealjs) do
-  dir("lib/resources/assets/revealjs-redhat/lib/js/debug") do # we specify only the source directory
-    add("lib/resources/assets/revealjs-redhat/lib/js/reveal.min.js", "reveal.js") # the output file name is full path
+Rake::Minify.new(:minifyjs) do
+  dir("lib/resources/assets/revealjs-redhat/lib/js/debug") do 
+    add("lib/resources/assets/revealjs-redhat/lib/js/reveal.min.js", "reveal.js") 
+    add("lib/resources/assets/revealjs-redhat/lib/js/head.min.js", "head.js")
+    add("lib/resources/assets/revealjs-redhat/lib/js/gpe.min.js", "gpe.js")
   end
 end
 

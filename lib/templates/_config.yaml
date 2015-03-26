@@ -25,7 +25,7 @@ attributes:
    highlightjs-theme: sunburst
    linkcss!: true
    data-uri: true
-   scripts: jquery-1.11.2.min.js,gpe.js #
+   scripts: jquery-1.11.2.min.js,gpe.min.js # List of scripts separated by a ','
    scriptsdir: revealjs-redhat/lib/js # TO BE USED FOR REVEALJS-REDHAT BACKEND
 
    # Fonts Awesome based Icons - http://fortawesome.github.io/Font-Awesome/icons/

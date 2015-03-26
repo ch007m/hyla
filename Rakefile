@@ -4,10 +4,9 @@ $LOAD_PATH.unshift(libdir) unless $LOAD_PATH.include?(libdir)
 require 'rubygems'
 require 'rake'
 require 'rake/testtask'
-# require 'bundler/version'
 require 'sass'
 require 'hyla/configuration'
-# require 'font-awesome-sass'
+require 'rake/minify'
 
 #############################################################################
 #
@@ -203,6 +202,12 @@ task :publish do
     sh "git push origin gh-pages"
   end
   puts 'Done.'
+end
+
+Rake::Minify.new(:minify_revealjs) do
+  dir("lib/resources/assets/revealjs-redhat/lib/js/debug") do # we specify only the source directory
+    add("lib/resources/assets/revealjs-redhat/lib/js/reveal.min.js", "reveal.js") # the output file name is full path
+  end
 end
 
 # desc 'Say Hello'

@@ -50,6 +50,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'tilt', '~> 1.4'
   s.add_runtime_dependency 'thor', '~> 0.18'
   s.add_runtime_dependency 'wkhtmltopdf-binary', '~> 0.9'
+  # s.add_runtime_dependency 'log4r', '~> 1.1'
+  
 
   # Colorize Text Terminal
   s.add_runtime_dependency 'colorator', '~> 0.1'

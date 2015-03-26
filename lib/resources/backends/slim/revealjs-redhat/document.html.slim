@@ -122,6 +122,9 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         // Optional libraries used to extend on reveal.js
 
         margin: #{attr 'revealjs_margin', 0.2},
+        marginTop: #{attr 'revealjs_margintop', 0}, // Percentage
+        marginLeft: #{attr 'revealjs_marginleft', 0}, // Percentage
+        
         width: #{attr 'revealjs_width', 960},
         height: #{attr 'revealjs_height', 700},
         minScale: #{attr 'revealjs_minscale', 0.2},

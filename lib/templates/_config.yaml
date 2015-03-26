@@ -75,7 +75,9 @@ attributes:
    revealjs_footer_copyright: "Copyright ©2015 Red Hat, Inc."
    
    # Factor of the display size that should remain empty around the content
-   revealjs_margin: 0.2
+   # revealjs_margin: 0.1
+   revealjs_margintop: '1%'
+   revealjs_marginleft: '5%'
    
    # The "normal" size of the presentation, aspect ratio will be preserved
    # when the presentation is scaled to fit different resolutions. Can be

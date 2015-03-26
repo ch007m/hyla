@@ -50,9 +50,7 @@ require 'hyla/logger'
 require_all 'hyla/commands'
 
 module Hyla
-
   def self.logger
     @logger ||= Logger.new
   end
-
 end

@@ -80,7 +80,15 @@ desc "Run tests"
 task :default => :test
 
 # Generate CSS files
-task :compass do
+task :compass, [:mode] do |t, args|
+  mode = args.mode || 'development'
+  
+  if mode == "development"
+     output_style = 'expanded'
+  else
+     output_style = 'compact'
+  end
+ 
   puts "\n## Compiling Sass"
 
   # path = Gem.loaded_specs['font-awesome-sass'].full_gem_path + "/assets/stylesheets"
@@ -90,21 +98,22 @@ task :compass do
     puts "Sass dir : #{dir}"
     # -s #{style} -I #{path}
     # To generate the sourcemap --> --sourcemap
-    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.'"
+    # puts "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -e #{mode} --output-style=#{output_style} --force"
+    system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -e #{mode} --output-style=#{output_style} --force"
 
     # Copy css to RevealJS theme
     # p revealjs_css_assets
-    sh "cp styles/gpe.css #{revealjs_css_theme_assets}"
+    sh "cp styles/old-gpe.css #{revealjs_css_theme_assets}"
     sh "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
 
-    sh "cp styles/gpe2.css #{revealjs_redhat_css_theme_assets}/gpe.css"
+    sh "cp styles/new-gpe.css #{revealjs_redhat_css_theme_assets}/gpe.css"
     sh "cp styles/theme-v2-liberation.css #{revealjs_redhat_css_theme_assets}/theme-v2-liberation.css"
     sh "cp styles/theme-v2-overpass.css #{revealjs_redhat_css_theme_assets}/theme-v2-overpass.css"
     sh "cp styles/theme-output.css #{revealjs_redhat_css_theme_assets}/theme-output.css"
     sh "cp styles/font-awesome.css #{revealjs_redhat_css_theme_assets}/font-awesome-4.3.0.css"
 
     # sh "cp gpe.scss #{revealjs_css_theme_assets}"
-    # sh "cp styles/gpe.css.map #{revealjs_css_theme_assets}"
+    # sh "cp styles/old-gpe.css.map #{revealjs_css_theme_assets}"
     # sh "cp styles/font-awesome.css.map #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css.map"
 
   end

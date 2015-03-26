@@ -122,8 +122,8 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
         // Optional libraries used to extend on reveal.js
 
         margin: #{attr 'revealjs_margin', 0.2},
-        marginTop: #{attr 'revealjs_margintop', 0}, // Percentage
-        marginLeft: #{attr 'revealjs_marginleft', 0}, // Percentage
+        marginTop: '#{attr 'revealjs_margintop', ''}', // Top position of the slide : percentage or px
+        marginLeft: '#{attr 'revealjs_marginleft', ''}', // Left position of the slide : percentage or px
         
         width: #{attr 'revealjs_width', 960},
         height: #{attr 'revealjs_height', 700},

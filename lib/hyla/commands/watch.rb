@@ -35,34 +35,34 @@ module Hyla
         # Detect files modified, deleted or added
         #
         callback = Proc.new do |modified, added, removed|
-          Hyla.logger.info "modified absolute path: #{modified}"
-          Hyla.logger.info "added absolute path: #{added}"
-          Hyla.logger.info "removed absolute path: #{removed}"
+          Hyla.logger2.info "modified absolute path: #{modified}"
+          Hyla.logger2.info "added absolute path: #{added}"
+          Hyla.logger2.info "removed absolute path: #{removed}"
 
           if !modified.nil? or !added.nil?
             modified.each do |modify|
-              Hyla.logger.info "File modified : #{modify}"
+              Hyla.logger2.info "File modified : #{modify}"
               call_asciidoctor(modify)
             end
 
             added.each do |add|
-              Hyla.logger.info "File added : #{add}"
+              Hyla.logger2.info "File added : #{add}"
               call_asciidoctor(add)
             end
 
           end
         end # callback
 
-        Hyla.logger.info ">> ... Starting\n"
-        Hyla.logger.info ">> Hyla has started to watch files in this dir : #{@opts[:watch_dir]}"
-        Hyla.logger.info ">> Results of rendering will be available here : #{@opts[:to_dir]}"
+        Hyla.logger2.info ">> ... Starting\n"
+        Hyla.logger2.info ">> Hyla has started to watch files in this dir : #{@opts[:watch_dir]}"
+        Hyla.logger2.info ">> Results of rendering will be available here : #{@opts[:to_dir]}"
 
         # TODO : Investigate issue with Thread pool is not running (Celluloid::Error)
         # when using a more recent version of guard listen
         listener = Listen.to!(@opts[:watch_dir], &callback)
 
         trap(:INT) {
-          Hyla.logger.info "Interrupt intercepted"
+          Hyla.logger2.info "Interrupt intercepted"
           Thread.kill(@t)
         }
       end
@@ -76,9 +76,9 @@ module Hyla
 
         if [".adoc",".ad",".asciidoc",".txt",".index"].include? @ext_name
 
-          Hyla.logger.info ">> Directory containing file(s) to be processed : #{dir_file}"
-          Hyla.logger.info ">> File to be processed : #{file_to_process}"
-          Hyla.logger.info ">> Extension of the file : #{@ext_name}"
+          Hyla.logger2.info ">> Directory containing file(s) to be processed : #{dir_file}"
+          Hyla.logger2.info ">> File to be processed : #{file_to_process}"
+          Hyla.logger2.info ">> Extension of the file : #{@ext_name}"
 
           # Generate File name
           # Rename xxx.adoc, xxx.asciidoc, xxx.ad, xxx.index to xxx.html
@@ -100,8 +100,8 @@ module Hyla
 
           @opts[:to_dir] = calc_dir
 
-          Hyla.logger.info ">> Directory of the file to be generated : #{calc_dir}"
-          Hyla.logger.debug ">> Asciidoctor options : #{@opts}"
+          Hyla.logger2.info ">> Directory of the file to be generated : #{calc_dir}"
+          Hyla.logger2.debug ">> Asciidoctor options : #{@opts}"
 
           # Render Asciidoc document
           Asciidoctor.render_file(f, @opts)
@@ -115,7 +115,7 @@ module Hyla
 
       def self.substract_watch_dir(file_dir, watched_dir)
         s = file_dir.sub(watched_dir, '')
-        Hyla.logger.info ">> Relative directory : #{s}"
+        Hyla.logger2.info ">> Relative directory : #{s}"
         s
       end
 

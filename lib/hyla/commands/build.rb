@@ -13,9 +13,9 @@ module Hyla
       def build(training, options)
         source = options['source']
         destination = options['destination']
-        Hyla.logger.info "Source: ", source
-        Hyla.logger.info "Destination: ", destination
-        print Hyla.logger.formatted_topic "Generating..."
+        Hyla.logger2.info "Source: ", source
+        Hyla.logger2.info "Destination: ", destination
+        print Hyla.logger2.formatted_topic "Generating..."
         self.process_training(training)
         puts "done."
       end
@@ -29,9 +29,9 @@ module Hyla
         training.process
       rescue Hyla::FatalException => e
         puts
-        Hyla.logger.error "ERROR:", "YOUR TRAINING COULD NOT BE BUILT:"
-        Hyla.logger.error "", "------------------------------------"
-        Hyla.logger.error "", e.message
+        Hyla.logger2.error "ERROR:", "YOUR TRAINING COULD NOT BE BUILT:"
+        Hyla.logger2.error "", "------------------------------------"
+        Hyla.logger2.error "", e.message
         exit(1)
       end
 

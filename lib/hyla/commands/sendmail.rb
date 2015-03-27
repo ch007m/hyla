@@ -74,7 +74,7 @@ module Hyla
 
         mail.delivery_method :smtp, parameters()
         mail.deliver!
-        Hyla.logger.info "Email send to SMTP server from #{sender} with this subject : #{subject}"
+        Hyla.logger2.info "Email send to SMTP server from #{sender} with this subject : #{subject}"
       end
 
       #

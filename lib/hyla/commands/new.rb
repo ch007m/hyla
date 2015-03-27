@@ -28,22 +28,22 @@ EOS
 
         if Dir.exist? new_project_path
 
-          Hyla.logger.debug("Dir exists: #{new_project_path}")
+          Hyla.logger2.debug("Dir exists: #{new_project_path}")
 
           # If force is selected, then we delete & recreate it to clean content
           if options[:force]
-            Hyla.logger.debug("Force option selected")
+            Hyla.logger2.debug("Force option selected")
             # DOES NOT WORK ON Mac OS X
             # FileUtils.rmdir(new_project_path)
             FileUtils.rm_rf new_project_path
             # Create Directory
             FileUtils.mkdir_p new_project_path
-            Hyla.logger.debug("Dir recreated")
+            Hyla.logger2.debug("Dir recreated")
           end
 
           # Preserve content if it exists
           if preserve_content?(new_project_path)
-            Hyla.logger.error "Conflict: ", "#{new_project_path} exists and is not empty."
+            Hyla.logger2.error "Conflict: #{new_project_path} exists and is not empty."
             exit(1)
           end
 
@@ -65,7 +65,7 @@ EOS
           # Copy styles
           FileUtils.cp_r Configuration::styles, new_project_path
 
-          Hyla.logger.info("Blank project created")
+          Hyla.logger2.info("Blank project created")
 
         else
           raise ArgumentError.new('You must specifiy a template type.') if options[:template_type].nil?
@@ -75,7 +75,7 @@ EOS
           # Copy styles
           FileUtils.cp_r Configuration::styles, new_project_path
 
-          Hyla.logger.info("Sample project created using template : #{options[:template_type]}")
+          Hyla.logger2.info("Sample project created using template : #{options[:template_type]}")
         end
 
       end

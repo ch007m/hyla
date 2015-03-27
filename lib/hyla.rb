@@ -22,7 +22,6 @@ require 'guard'
 require 'safe_yaml'
 require 'asciidoctor'
 require 'asciidoctor/backends/html5'
-# require 'asciidoctor/backends/_stylesheets'
 
 # Added to fix issue with Ruby 2.0 on Windows machine
 require 'em/pure_ruby'
@@ -45,12 +44,32 @@ require 'hyla/command'
 require 'hyla/configuration'
 require 'hyla/websocket'
 require 'hyla/logger'
+require 'hyla/logger2'
 
 # extensions
 require_all 'hyla/commands'
 
 module Hyla
+
   def self.logger
     @logger ||= Logger.new
+  end
+
+  def self.logger2
+    log_cfg ||=  $options[:log]
+
+    hyla_cfg = safe_load_file($options[:config]) if $options[:config]
+
+    mode ||= hyla_cfg['mode']
+    dirname ||= hyla_cfg['dirname']
+    logname ||= hyla_cfg['logname']
+    level ||= hyla_cfg['level']
+
+    $logger2 ||= Logger2.new(mode, log_cfg, dirname, logname, level)
+  end
+
+  def self.safe_load_file(filename)
+    f = File.expand_path(filename, $cmd_directory)
+    YAML.safe_load_file(f)
   end
 end

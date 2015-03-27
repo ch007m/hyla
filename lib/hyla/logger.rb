@@ -6,6 +6,7 @@ module Hyla
     INFO = 1
     WARN = 2
     ERROR = 3
+    FATAL = 4
 
     # Public: Create a new instance of Hyla's logger
     #

@@ -24,21 +24,21 @@ module Hyla
       end
 
       def reload_browser(paths = [])
-        Hyla.logger.info "Reloading browser: #{paths.join(' ')}"
+        Hyla.logger2.info "Reloading browser: #{paths.join(' ')}"
         paths.each do |path|
-          Hyla.logger.info(path)
+          Hyla.logger2.info(path)
           data = _data(path)
-          Hyla.logger.info(">> Data received : #{data}")
+          Hyla.logger2.info(">> Data received : #{data}")
           @@web_sockets.each { |ws| ws.send(MultiJson.encode(data)) }
         end
       end
 
       def reload_browser2(paths = [])
-        Hyla.logger.info "Reloading browser: #{paths.join(' ')}"
+        Hyla.logger2.info "Reloading browser: #{paths.join(' ')}"
         paths.each do |path|
-          Hyla.logger.info(path)
+          Hyla.logger2.info(path)
           data = 'hyla/development/'
-          Hyla.logger.info(">> Data received : #{data}")
+          Hyla.logger2.info(">> Data received : #{data}")
           @@web_sockets.each { |ws| ws.send(MultiJson.encode(data)) }
         end
       end
@@ -70,7 +70,7 @@ module Hyla
       end
 
       def _start_reactor
-        Hyla.logger.info "LiveReload is waiting for a browser to connect."
+        Hyla.logger2.info "LiveReload is waiting for a browser to connect."
         EventMachine.epoll
         EventMachine.run do
           EventMachine.start_server(@options[:host], @options[:port], @Websocket, {}) do |ws|
@@ -82,7 +82,7 @@ module Hyla
       end
 
       def _connect(ws)
-        Hyla.logger.info "Browser connected."
+        Hyla.logger2.info "Browser connected."
         ws.send MultiJson.encode(
                     command: 'hello',
                     protocols: ['http://livereload.com/protocols/official-7'],
@@ -90,18 +90,18 @@ module Hyla
                 )
         @@web_sockets << ws
       rescue
-        Hyla.logger.error $!
-        Hyla.logger.error $!.backtrace
+        Hyla.logger2.error $!
+        Hyla.logger2.error $!.backtrace
       end
 
       def _disconnect(ws)
-        Hyla.logger.info "Browser disconnected."
+        Hyla.logger2.info "Browser disconnected."
         @@web_sockets.delete(ws)
       end
 
       def _print_message(message)
         message = MultiJson.decode(message)
-        Hyla.logger.info "Browser URL: #{message['url']}" if message['command'] == 'url'
+        Hyla.logger2.info "Browser URL: #{message['url']}" if message['command'] == 'url'
       end
 
     end # class

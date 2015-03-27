@@ -6,6 +6,14 @@ destination: generated_content # or . or ~/Hyla or generated_content
 # end common options
 
 #
+# Logging
+#
+mode: production # Default value = production. Available : 'production', 'development"
+# level: 'INFO' # Values available : DEBUG, INFO, WARN, ERROR, FATAL. Default for production : 'WARN' and development 'DEBUG'
+dirname: /User/chmoulli/log # Directory to save the files
+logname: hyla.log # Name of the log file
+
+#
 # Styles
 # Supported :  liberation, asciidoctor, colony, foundation, foundation-lime, foundation-potion, github, golo, iconic, maker, readthedocs, riak, rocket-panda, rubygems
 #

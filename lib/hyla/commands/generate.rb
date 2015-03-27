@@ -11,7 +11,7 @@ module Hyla
 
           when 'toc2adoc'
 
-            Hyla.logger.info "Rendering : Table of Content to Asciidoc"
+            Hyla.logger2.info "Rendering : Table of Content to Asciidoc"
             self.check_mandatory_option?('-t / --toc', options[:toc])
             self.check_mandatory_option?('-d / --destination', options[:destination])
 
@@ -25,7 +25,7 @@ module Hyla
 
           when 'adoc2html'
 
-            Hyla.logger.info "Rendering : Asciidoc to HTML"
+            Hyla.logger2.info "Rendering : Asciidoc to HTML"
             self.check_mandatory_option?('-s / --source', options[:source])
             self.check_mandatory_option?('-d / --destination', options[:destination])
 
@@ -48,7 +48,7 @@ module Hyla
             self.asciidoc_to_html(@source, @destination, extensions, excludes, merged_options)
 
           when 'index2html'
-            Hyla.logger.info "Rendering : Asciidoctor Indexed Files to HTML"
+            Hyla.logger2.info "Rendering : Asciidoctor Indexed Files to HTML"
             self.check_mandatory_option?('-s / --source', options[:source])
             self.check_mandatory_option?('-d / --destination', options[:destination])
 
@@ -74,7 +74,7 @@ module Hyla
 
           when 'html2pdf'
 
-            Hyla.logger.info "Rendering : Generate PDF from HTML file"
+            Hyla.logger2.info "Rendering : Generate PDF from HTML file"
 
             source_dir = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
             out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
@@ -88,7 +88,7 @@ module Hyla
 
           when 'cover2png'
 
-            Hyla.logger.info "Rendering : Generate Cover HTML page & picture - format png"
+            Hyla.logger2.info "Rendering : Generate Cover HTML page & picture - format png"
 
             out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
             file_name = options[:cover_file]
@@ -101,7 +101,7 @@ module Hyla
             self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool)
 
           else
-            Hyla.logger.error ">> Unknow rendering"
+            Hyla.logger2.error ">> Unknow rendering"
             exit(1)
         end
       end
@@ -129,7 +129,7 @@ module Hyla
       # Cover Function
       # Create a png file using the HTML generated with the Slim cover template
       #
-      def self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool)
+      def self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool = imgkit)
 
         unless Dir.exist? out_dir
           FileUtils.mkdir_p out_dir
@@ -147,8 +147,8 @@ module Hyla
             # Replace underscore with space, next digits & space with nothing & Capitalize
             module_name = module_name.gsub('_', ' ').gsub(/^\d{1,2}\s/, '').capitalize
 
-            Hyla.logger.debug "Module name : " + module_name
-            Hyla.logger.info "Curent directory : #{Dir.pwd}"
+            Hyla.logger2.debug "Module name : " + module_name
+            Hyla.logger2.info "Curent directory : #{Dir.pwd}"
 
             # Use slim template & render the HTML
             parameters = {:course_name => course_name,
@@ -185,19 +185,19 @@ module Hyla
         source = File.expand_path source
         @destination = File.expand_path destination
 
-        Hyla.logger.info ">>       Source dir: #{source}"
-        Hyla.logger.info ">>  Destination dir: #{@destination}"
+        Hyla.logger2.info ">>       Source dir: #{source}"
+        Hyla.logger2.info ">>  Destination dir: #{@destination}"
 
         # Exit if source directory does not exist
         if !Dir.exist? source
-          Hyla.logger.error ">> Source directory does not exist"
+          Hyla.logger2.error ">> Source directory does not exist"
           exit(1)
         end
 
         # Move to source directory
         Dir.chdir(source)
         current_dir = Dir.pwd
-        Hyla.logger.info ">>       Current dir: #{current_dir}"
+        Hyla.logger2.info ">>       Current dir: #{current_dir}"
 
         #
         # Backup Asciidoctor attributes
@@ -231,7 +231,7 @@ module Hyla
           path_to_source = Pathname.new(source)
           path_to_adoc_file = Pathname.new(f)
           relative_path = path_to_adoc_file.relative_path_from(path_to_source).to_s
-          Hyla.logger.debug ">>       Relative path: #{relative_path}"
+          Hyla.logger2.debug ">>       Relative path: #{relative_path}"
           adoc_file_paths << relative_path
 
           # Get asciidoctor file name
@@ -241,7 +241,7 @@ module Hyla
           # Create destination dir relative to the path calculated
           #
           html_dir = [@destination, File.dirname(relative_path)] * '/'
-          Hyla.logger.debug ">>        Dir of html: #{html_dir}"
+          Hyla.logger2.debug ">>        Dir of html: #{html_dir}"
           FileUtils.mkdir_p html_dir
 
           # Copy Fonts
@@ -263,7 +263,7 @@ module Hyla
           #
           # Render asciidoc to HTML
           #
-          Hyla.logger.info ">> File to be rendered : #{file_name_processed}"
+          Hyla.logger2.info ">> File to be rendered : #{file_name_processed}"
 
           #
           # Convert asciidoc file name to html file name
@@ -289,7 +289,7 @@ module Hyla
 
         # No asciidoc files retrieved
         if adoc_file_paths.empty?
-          Hyla.logger.info "     >>   No asciidoc files retrieved."
+          Hyla.logger2.info "     >>   No asciidoc files retrieved."
           exit(1)
         end
 
@@ -314,7 +314,7 @@ module Hyla
         source = [Configuration::assets, resource] * '/'
         # destination = [path, resource] * '/'
         destination = path
-        Hyla.logger.debug ">>        Copy resource from Source dir: #{source} --> destination dir: #{destination}"
+        Hyla.logger2.debug ">>        Copy resource from Source dir: #{source} --> destination dir: #{destination}"
         FileUtils.cp_r source, destination, :verbose => false
       end
 
@@ -329,7 +329,7 @@ module Hyla
       #
       def self.table_of_content_to_asciidoc(toc_file, out_dir, project_name, image_path)
 
-        Hyla.logger.info '>> Project Name : ' + project_name + ' <<'
+        Hyla.logger2.info '>> Project Name : ' + project_name + ' <<'
 
         # Open file & parse it
         f = f = File.open(toc_file, 'r')
@@ -337,7 +337,7 @@ module Hyla
 
         # Expand File Path
         @out_dir = File.expand_path out_dir
-        Hyla.logger.info '>> Output directory : ' + out_dir + ' <<'
+        Hyla.logger2.info '>> Output directory : ' + out_dir + ' <<'
 
         #
         # Create destination directory if it does not exist
@@ -397,7 +397,7 @@ module Hyla
             new_dir = [@out_dir, dir_name].join('/')
             FileUtils.rm_rf new_dir
             FileUtils.mkdir new_dir
-            Hyla.logger.info '>> Directory created : ' + new_dir + ' <<'
+            Hyla.logger2.info '>> Directory created : ' + new_dir + ' <<'
 
             Dir.chdir(new_dir)
 
@@ -428,7 +428,7 @@ module Hyla
             #
             dir_name = File.basename(Dir.getwd)
             @module_key = dir_name.initial.rjust(2, '0')
-            Hyla.logger.info ">> Module key : #@module_key <<"
+            Hyla.logger2.info ">> Module key : #@module_key <<"
 
             #
             # Reset counter value used to generate file number
@@ -442,9 +442,9 @@ module Hyla
             @index += 1
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_cover' + Configuration::ADOC_EXT
-            Hyla.logger.debug '>> Directory name : ' + dir_name.to_s.gsub('_', ' ')
+            Hyla.logger2.debug '>> Directory name : ' + dir_name.to_s.gsub('_', ' ')
             rep_txt = Configuration::COVER_TXT.gsub(/xxx\.png/, dir_name + '.png')
-            Hyla.logger.debug "Replaced by : " + rep_txt
+            Hyla.logger2.debug "Replaced by : " + rep_txt
             cover_f = File.new(f_name, 'w')
             cover_f.puts rep_txt
             cover_f.close
@@ -458,13 +458,13 @@ module Hyla
             course_name = @project_name
             module_name= dir_name
             bg_image_path = image_path
-            Hyla.logger.debug '>> Out Directory : ' + out_dir.to_s
-            Hyla.logger.debug '>> Image name : ' + image_name.to_s
-            Hyla.logger.debug '>> Course Name  : ' + course_name.to_s
-            Hyla.logger.debug '>> Module Name  : ' + module_name.to_s
-            Hyla.logger.debug '>> Bg Image  : ' + bg_image_path.to_s
+            Hyla.logger2.debug '>> Out Directory : ' + out_dir.to_s
+            Hyla.logger2.debug '>> Image name : ' + image_name.to_s
+            Hyla.logger2.debug '>> Course Name  : ' + course_name.to_s
+            Hyla.logger2.debug '>> Module Name  : ' + module_name.to_s
+            Hyla.logger2.debug '>> Bg Image  : ' + bg_image_path.to_s
 
-            self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path)
+            self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool = nil)
 
             #
             # Include cover file to index
@@ -559,7 +559,7 @@ module Hyla
             @new_f.puts Configuration::HEADER_TXT
             @new_f.puts "\n"
 
-            Hyla.logger.info '   # File created : ' + f_asciidoc_name.to_s
+            Hyla.logger2.info '   # File created : ' + f_asciidoc_name.to_s
 
             @previous_f = @new_f
 
@@ -620,7 +620,7 @@ module Hyla
         # Save PDF to a file
         pdf_file_name = [destination, html_file_name.sub(/html|htm/, 'pdf')] * '/'
         kit.to_file(pdf_file_name)
-        Hyla.logger.info ">> PDF file generated and saved : #{pdf_file_name} "
+        Hyla.logger2.info ">> PDF file generated and saved : #{pdf_file_name} "
       end
 =end
 
@@ -698,7 +698,7 @@ module Hyla
         wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if footer_text
         wkhtml_cmd.concat " --cover '#@cover_path'" if @cover_path
         wkhtml_cmd.concat " --page-size #{size}"
-        Hyla.logger.debug "c #{wkhtml_cmd}"
+        Hyla.logger2.debug "c #{wkhtml_cmd}"
 
         Dir.chdir(source) do
           system "#{wkhtml_cmd}"
@@ -733,7 +733,7 @@ module Hyla
       #
       def self.check_slash_end(out_dir)
         last_char = out_dir.to_s[-1, 1]
-        Hyla.logger.info '>> Last char : ' + last_char
+        Hyla.logger2.info '>> Last char : ' + last_char
         if !last_char.equal? '/\//'
           temp_dir = out_dir.to_s
           out_dir = temp_dir + '/'
@@ -834,7 +834,7 @@ module Hyla
       #
       def self.check_mandatory_option?(key, value)
         if value.nil? or value.empty?
-          Hyla.logger.warn "Mandatory option missing: #{key}"
+          Hyla.logger2.warn "Mandatory option missing: #{key}"
           exit(1)
         else
           true

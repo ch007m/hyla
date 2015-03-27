@@ -2,15 +2,16 @@ log4r_config:
   # define all loggers ...
   loggers:
     - name      : production
-      level     : INFO
+      level     : INFO #"#{LOGGING_LEVEL}"
       trace     : 'false'
       outputters:
-        - stdout
+        - logfile
     - name      : development
-      level     : DEBUG
+      level     : INFO # "#{LOGGING_LEVEL}"
       trace     : 'true'
       outputters :
-        - datefile
+        - stdout
+        # - logfile
 
   # define all outputters (incl. formatters)
   outputters:
@@ -18,14 +19,14 @@ log4r_config:
       name     : stdout
       formatter:
         date_pattern: '%Y-%m-%d %H:%M:%S'
-        pattern     : '%d %l: #\{TEST\} %m '
+        pattern     : '%d %l: %m '
         type        : PatternFormatter
 
     - type     : DateFileOutputter
-      name     : datefile
-      dirname  : '/Users/chmoulli/Temp/Log'
-      filename : 'my_app.log' # notice the file extension is needed!
+      name     : logfile
+      dirname  : "#{DIRNAME}"
+      filename : "#{LOGNAME}" # notice the file extension is needed!
       formatter:
         date_pattern: '%H:%M:%S'
         pattern     : '%d %l: %m '
-        type        : PatternFormatter"
+        type        : PatternFormatter

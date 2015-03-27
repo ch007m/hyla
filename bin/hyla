@@ -17,8 +17,11 @@ program :description, Hyla::DESCRIPTION
 
 default_command :default
 
+$cmd_directory = Dir.getwd
+
 def add_build_options(c)
-  c.option '-c', '--config CONFIG_FILE', String, 'Custom configuration file'
+  c.option '-c', '--config CONFIG_FILE', String, 'Hyla Yaml configuration file'
+  c.option '-l', '--log LOG_YML_FILE', String, 'Log4r Yaml configuration file'
   c.option '-V', '--verbose', 'Print verbose output.'
 end
 
@@ -39,12 +42,13 @@ command :new do |c|
   c.option '-b', '--blank', 'Creates project directory containing the YAML config file and a simple readme.ad file'
   c.option '--t', '--template_type [TEMPLATE_TYPE]', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
 
-  c.option '-V', '--verbose', 'Print verbose output.'
+  add_build_options(c)
 
   c.action do |args, options|
     if args.first.nil?
       puts "Please specify the PATH where the project should be created."
     else
+      $options = options.__hash__
       config = Hyla::Configuration.parse(options.__hash__)
       Hyla::Commands::New.process(args, config)
     end
@@ -64,6 +68,7 @@ command :add do |c|
   add_build_options(c)
 
   c.action do |args, options|
+    $options = options.__hash__
     config = Hyla::Configuration.parse(options.__hash__)
     Hyla::Commands::Add.process(args, config)
   end
@@ -82,17 +87,19 @@ command :generate do |c|
   c.option '--t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
   c.option '-y', '--style [STYLE]', String, 'Stylesheet theme to be applied : asciidoctor, liberation, github, colony, foundation, ...'
   c.option '-a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'
-  c.option '-o', '--cover_image [PNG FILE NAME]', String, 'Name of the cover png image file generated'
   c.option '-s', '--snippet_content [FLAG TRUE or FALSE]', String, 'Flag used to generate HTML content using the // tag::snippet[].'
-  c.option '-n', '--course_name [COURSE NAME]', String, 'Name of the course'
-  c.option '-l', '--cover_file [HTML FILE NAME]', String, 'Name of the cover html image file generated'
-  c.option '-m', '--module_name [MODULE NAME]', String, 'Name of the module'
-  c.option '-i', '--image_path [BACKGROUND IMAGE]', String, 'Location of the file used as background'
+
+  c.option '--course_name [COURSE NAME]', String, 'Name of the course'
+  c.option '--cover_file [HTML FILE NAME]', String, 'Name of the cover html image file generated'
+  c.option '--cover_image [PNG FILE NAME]', String, 'Name of the cover png image file generated'
+  c.option '--module_name [MODULE NAME]', String, 'Name of the module'
+  c.option '--image_path [BACKGROUND IMAGE]', String, 'Location of the file used as background'
 
   add_common_options(c)
   add_build_options(c)
 
   c.action do |args, options|
+    $options = options.__hash__
     config = Hyla::Configuration.parse(options.__hash__)
     Hyla::Commands::Generate.process(args, config)
   end
@@ -111,6 +118,7 @@ command :watch do |c|
     # TODO Find if it is possible to watch files, generate HTML content - asciidoctor, expose content using HTTPServer and expose WebSocket - LiveReload
     # as they are started in 2 different threads, this is not possible with existing code
     # Hyla::Commands::Serve.process(args,options.__hash__)
+    $options = options.__hash__
     config = Hyla::Configuration.parse(options.__hash__)
     Hyla::Commands::Watch.process(args, config)
   end
@@ -131,6 +139,7 @@ command :serve do |c|
   add_build_options(c)
 
   c.action do |args, options|
+    $options = options.__hash__
     options.default :serving => true
     config = Hyla::Configuration.parse(options.__hash__)
     Hyla::Commands::Serve.process(args, config)
@@ -145,7 +154,7 @@ command :sendmail do |c|
   c.syntax = 'hyla sendmail [options]'
   c.description = 'Send as HTML Attachment an email to the SMTP Server defined'
   c.option '-f', '--file [File]', String, 'File to be attached'
-  c.option '-l', '--location [PATH]', String, 'Directory containing file to be attached'
+  c.option '-p', '--path [PATH]', String, 'Directory containing file to be attached'
   c.option '-a', '--attachment [boolean]', 'Attach to the email the HTML generated'
   c.option '-e', '--email_attributes [KEY=VALUE,KEY=VALUE]', String, 'Email attributes used to configure smtp server, port number, user password, authentication mode, sender, recipient, subject'
 
@@ -154,6 +163,7 @@ command :sendmail do |c|
 
   c.action do |args, options|
 
+    $options = options.__hash__
     options.default :attachment => false
 
     config = Hyla::Configuration.parse(options.__hash__)

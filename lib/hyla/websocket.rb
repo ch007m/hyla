@@ -23,7 +23,7 @@ module Hyla
     private
 
     def _serve_file(path)
-      Hyla.logger.info "Serving file #{path}"
+      Hyla.logger2.info "Serving file #{path}"
       send_data "HTTP/1.1 200 OK\r\nContent-Type: #{_content_type(path)}\r\nContent-Length: #{File.size path}\r\n\r\n"
       stream_file_data(path).callback { close_connection_after_writing }
     end

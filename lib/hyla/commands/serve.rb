@@ -29,12 +29,12 @@ module Hyla
 
         s.mount(my_opts[:baseurl],HTTPServlet::FileHandler, destination, fh_option)
 
-        Hyla.logger.info "Server address:", "http://#{s.config[:BindAddress]}:#{s.config[:Port]}"
+        Hyla.logger2.info "Server address:", "http://#{s.config[:BindAddress]}:#{s.config[:Port]}"
 
         if options[:detach] # detach the server
           pid = Process.fork { s.start }
           Process.detach(pid)
-          Hyla.logger.info "Server detached with pid '#{pid}'.", "Run `kill -9 #{pid}' to stop the server."
+          Hyla.logger2.info "Server detached with pid '#{pid}'.", "Run `kill -9 #{pid}' to stop the server."
         else # create a new server thread, then join it with current terminal
           t = Thread.new { s.start }
           trap("INT") { s.shutdown }
@@ -45,7 +45,7 @@ module Hyla
 
       def self.start_callback(detached)
         unless detached
-          Proc.new { Hyla.logger.info "Server running...", "press ctrl-c to stop." }
+          Proc.new { Hyla.logger2.info "Server running...", "press ctrl-c to stop." }
         end
       end
 

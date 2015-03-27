@@ -49,18 +49,6 @@ module Hyla
 
     SNIPPET_TAG = 'snippet'
 
-
-    #    OLD HEADER_TXT used with hyla < 1.0.7
-    #    HEADER_TXT = ":data-uri:\n" +
-    #        ":icons: font\n" +
-    #        ":last-update-label!:\n" +
-    #        ":source-highlighter: coderay\n"
-    #
-    #    HEADER_TXT = "ifndef::local[]\n" +
-    #                 ":imagesdir: ../image/\n" +
-    #                 "endif::[]\n"
-
-
     HEADER_TXT = "// Asciidoctor attributes\n"
 
     LEVEL_1 = '= '
@@ -168,11 +156,11 @@ module Hyla
 
       # Stringify keys of the hash that we receive from Hyla
       override = Configuration[override].stringify_keys
-      Hyla::logger.debug("OVERRIDE Keys: #{override.inspect}")
+      Hyla::logger2.debug("OVERRIDE Keys: #{override.inspect}")
 
       # Clone DEFAULTS
       config = DEFAULTS
-      Hyla::logger.debug("DEFAULTS Keys: #{config.inspect}")
+      Hyla::logger2.debug("DEFAULTS Keys: #{config.inspect}")
 
       #
       # Read the config file passed as parameter if it exists
@@ -184,7 +172,7 @@ module Hyla
         config = config.deep_merge(alt_config)
       else
         new_config = read_config_file(YAML_CONFIG_FILE_NAME)
-        Hyla::logger.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
+        Hyla::logger2.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
         config = config.deep_merge(new_config) if !new_config.nil?
       end
 
@@ -192,7 +180,7 @@ module Hyla
       config = config.deep_merge(override)
       # Convert String Keys to Symbols Keys
       config = Configuration[].transform_keys_to_symbols(config)
-      Hyla::logger.debug("Merged Keys: #{config.inspect}")
+      Hyla::logger2.debug("Merged Keys: #{config.inspect}")
       return config
     end
 
@@ -201,11 +189,10 @@ module Hyla
     #
     def self.read_config_file(filename)
       f = File.expand_path(filename)
-      Hyla::logger.info("Config file to be parsed : #{f}")
-      config = safe_load_file(f)
-      config
+      Hyla::logger2.info("Config file to be parsed : #{f}")
+      safe_load_file(f)
     rescue SystemCallError
-      Hyla::logger.warn "No configuration file retrieved for the name : #{filename}"
+      Hyla::logger2.error "No configuration file retrieved for the name : #{filename}"
     end
 
     #

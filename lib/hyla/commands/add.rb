@@ -23,7 +23,7 @@ module Hyla
 
         FileUtils.cp(source, destination)
 
-        Hyla::logger.info ">>   Artefact #{artefact_file_name} added to project #{destination}"
+        Hyla::logger2.info ">>   Artefact #{artefact_file_name} added to project #{destination}"
 
         case artefact_type
           when 'image','audio','video','source'
@@ -43,7 +43,7 @@ module Hyla
         FileUtils.mkdir_p(destination) unless File.exists?(destination)
         FileUtils.cp_r source, destination
 
-        Hyla::logger.info ">>   Fonts #{type} added to project #{destination}"
+        Hyla::logger2.info ">>   Fonts #{type} added to project #{destination}"
       end
 
     end # class Create

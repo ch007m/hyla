@@ -9,8 +9,33 @@ module Hyla
     
     attr_reader :log, :levels
 
-    def initialize(name, log_yml_file, dirname = nil, logname = nil, level = nil)
-      log4r_f = load_file(log_yml_file)
+    def initialize(name, log_yml_file, dirname = nil, logname = nil, level = nil, tracer = nil)
+
+      #
+      # Change logging level within the YAML config file
+      # ! Log4r::YamlConfigurator does not allow to change key/val for the level but only for formatter/outputter
+      #
+      if level.nil?
+        new_level = 'INFO'
+      else
+        new_level = level
+      end
+
+      if tracer.nil?
+        new_tracer = 'false'
+      else
+        new_tracer = tracer
+      end
+
+      log4r_hash = load_file(log_yml_file)
+
+      #
+      # TODO - improve it to avoid to hard code path
+      #
+      log4r_hash['log4r_config']['loggers'].each_with_index do |x, index|
+        log4r_hash['log4r_config']['loggers'][index]['level'] = new_level
+        log4r_hash['log4r_config']['loggers'][index]['tracer'] = new_tracer
+      end
 
       cfg = Log4r::YamlConfigurator
 
@@ -28,14 +53,7 @@ module Hyla
         cfg['LOGNAME'] = logname
       end
 
-      if level.nil?
-        cfg['LOGGING_LEVEL'] = 'INFO'
-      else
-        cfg['LOGGING_LEVEL'] = levels[level]
-      end
-
-      cfg.decode_yaml log4r_f['log4r_config']
-      cfg['hyla'] = 'Hyla Logger'
+      cfg.decode_yaml log4r_hash['log4r_config']
 
       @log = Log4r::Logger[name]
     end
@@ -45,13 +63,52 @@ module Hyla
       levels = {"ALL" => 0, "DEBUG" => 1, "INFO" => 2, "WARN" => 3, "ERROR" => 4, "FATAL" => 5, "OFF" => 6}
     end
 
+    def iterate(h, level)
+      h.each do |k,v|
+        value = v || k
+        if value.is_a?(Hash) || value.is_a?(Array)
+          puts "evaluating: #{value} recursively..."
+          iterate(value, level)
+        else
+          if k == "level"
+            v = level
+          end
+        end
+      end
+    end
+
+    def nested_hash_value(obj,key)
+      if obj.respond_to?(:key?) && obj.key?(key)
+        obj[key]
+      elsif obj.respond_to?(:each)
+        r = nil
+        obj.find{ |*a| r=nested_hash_value(a.last,key) }
+        r
+      end
+    end
+
     def load_file(cfg_file)
       SafeYAML::OPTIONS[:default_mode] = :safe
+
       if cfg_file.nil?
-        YAML.load_file([Configuration.configs,'log4r.yaml' ] * '/')
+        f = [Configuration.configs,'log4r.yaml' ] * '/'
       else
-        YAML.load_file(cfg_file)
+        f = cfg_file
       end
+
+      #
+      # Find/Replace the logging level
+      #
+      #content = File.read(f)
+      #new_contents = content.gsub(/LOGGING_LEVEL/, level)
+
+      # To merely print the contents of the file, use:
+      # puts new_contents
+
+      # To write changes to the file, use:
+      #File.open(f, "w") {|file| file.puts new_contents }
+
+      YAML.load_file(f)
     end
 
     def debug(msg)

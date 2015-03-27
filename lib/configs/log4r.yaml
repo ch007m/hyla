@@ -2,16 +2,16 @@ log4r_config:
   # define all loggers ...
   loggers:
     - name      : production
-      level     : INFO #"#{LOGGING_LEVEL}"
-      trace     : 'false'
+      level     : "LOGGING_LEVEL"
+      trace     : "TRACER"
       outputters:
         - logfile
     - name      : development
-      level     : INFO # "#{LOGGING_LEVEL}"
-      trace     : 'true'
-      outputters :
+      level     : "LOGGING_LEVEL"
+      trace     : "TRACER"
+      outputters:
         - stdout
-        # - logfile
+        - logfile
 
   # define all outputters (incl. formatters)
   outputters:

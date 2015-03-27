@@ -64,8 +64,9 @@ module Hyla
     dirname ||= hyla_cfg['dirname']
     logname ||= hyla_cfg['logname']
     level ||= hyla_cfg['level']
+    tracer ||= hyla_cfg['tracer']
 
-    $logger2 ||= Logger2.new(mode, log_cfg, dirname, logname, level)
+    $logger2 ||= Logger2.new(mode, log_cfg, dirname, logname, level, tracer)
   end
 
   def self.safe_load_file(filename)

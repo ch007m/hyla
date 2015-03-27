@@ -9,8 +9,9 @@ destination: generated_content # or . or ~/Hyla or generated_content
 # Logging
 #
 mode: production # Default value = production. Available : 'production', 'development"
-# level: 'INFO' # Values available : DEBUG, INFO, WARN, ERROR, FATAL. Default for production : 'WARN' and development 'DEBUG'
-dirname: /User/chmoulli/log # Directory to save the files
+tracer: 'false' #Default value is false. Can be true or false
+level: 'INFO' # Values available : DEBUG, INFO, WARN, ERROR, FATAL. Default for production : 'WARN' and development 'DEBUG'
+dirname:  # Directory where the log files will be saved
 logname: hyla.log # Name of the log file
 
 #

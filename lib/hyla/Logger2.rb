@@ -15,17 +15,8 @@ module Hyla
       # Change logging level within the YAML config file
       # ! Log4r::YamlConfigurator does not allow to change key/val for the level but only for formatter/outputter
       #
-      if level.nil?
-        new_level = 'INFO'
-      else
-        new_level = level
-      end
-
-      if tracer.nil?
-        new_tracer = 'false'
-      else
-        new_tracer = tracer
-      end
+      if level.nil? then new_level = 'INFO' else new_level = level
+      if tracer.nil? then new_tracer = 'false' else new_tracer = tracer
 
       log4r_hash = load_file(log_yml_file)
 
@@ -47,11 +38,7 @@ module Hyla
         cfg['DIRNAME'] = dirname
       end
 
-      if logname.nil?
-        cfg['LOGNAME'] = 'hyla.log'
-      else
-        cfg['LOGNAME'] = logname
-      end
+      if logname.nil? then cfg['LOGNAME'] = 'hyla.log' else cfg['LOGNAME'] = logname
 
       cfg.decode_yaml log4r_hash['log4r_config']
 

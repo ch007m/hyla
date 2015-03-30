@@ -9,14 +9,15 @@ module Hyla
     
     attr_reader :log, :levels
 
-    def initialize(name, log_yml_file, dirname = nil, logname = nil, level = nil, tracer = nil)
+    def initialize(mode, log_yml_file, dirname = nil, logname = nil, level = nil, tracer = nil)
 
       #
       # Change logging level within the YAML config file
       # ! Log4r::YamlConfigurator does not allow to change key/val for the level but only for formatter/outputter
       #
-      if level.nil? then new_level = 'INFO' else new_level = level
-      if tracer.nil? then new_tracer = 'false' else new_tracer = tracer
+      if level.nil? then new_level = 'INFO' else new_level = level end
+      if tracer.nil? then new_tracer = 'false' else new_tracer = tracer end
+      if mode.nil? then new_mode = 'production' else new_mode = mode end
 
       log4r_hash = load_file(log_yml_file)
 
@@ -38,11 +39,11 @@ module Hyla
         cfg['DIRNAME'] = dirname
       end
 
-      if logname.nil? then cfg['LOGNAME'] = 'hyla.log' else cfg['LOGNAME'] = logname
+      if logname.nil? then cfg['LOGNAME'] = 'hyla.log' else cfg['LOGNAME'] = logname end
 
       cfg.decode_yaml log4r_hash['log4r_config']
 
-      @log = Log4r::Logger[name]
+      @log = Log4r::Logger[new_mode]
     end
 
     def levels

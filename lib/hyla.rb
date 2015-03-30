@@ -56,15 +56,15 @@ module Hyla
   end
 
   def self.logger2
+
+    hyla_cfg ||= safe_load_file($options[:config]) if $options[:config]
+    
     log_cfg ||=  $options[:log]
-
-    hyla_cfg = safe_load_file($options[:config]) if $options[:config]
-
-    mode ||= hyla_cfg['mode']
-    dirname ||= hyla_cfg['dirname']
-    logname ||= hyla_cfg['logname']
-    level ||= hyla_cfg['level']
-    tracer ||= hyla_cfg['tracer']
+    mode ||= hyla_cfg['mode'] if hyla_cfg
+    dirname ||= hyla_cfg['dirname'] if hyla_cfg
+    logname ||= hyla_cfg['logname'] if hyla_cfg
+    level ||= hyla_cfg['level'] if hyla_cfg
+    tracer ||= hyla_cfg['tracer'] if hyla_cfg
 
     $logger2 ||= Logger2.new(mode, log_cfg, dirname, logname, level, tracer)
   end

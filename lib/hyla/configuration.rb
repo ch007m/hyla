@@ -154,30 +154,35 @@ module Hyla
       extracted_email_attributes = self.extract_attributes(override[:email_attributes]) if override[:email_attributes]
       override[:email_attributes] = extracted_email_attributes if extracted_email_attributes
 
-      # Stringify keys of the hash that we receive from Hyla
+      # Stringify keys of the hash
       override = Configuration[override].stringify_keys
       Hyla::logger2.debug("OVERRIDE Keys: #{override.inspect}")
-
-      # Clone DEFAULTS
-      config = DEFAULTS
-      Hyla::logger2.debug("DEFAULTS Keys: #{config.inspect}")
+      
+      # Config 
+      config = Hash.new
 
       #
-      # Read the config file passed as parameter if it exists
-      # otherwise read default _config.yaml file if it exists and
-      # merge content with DEFAULT config
+      # Check if config parameter was passed and split content which is a list of files
+      # Read each config file and merge content with DEFAULTS
+      # Otherwise, check if there is a _config.yaml
       #
-      alt_config = read_config_file(override['config']) if override['config']
-      if !alt_config.nil?
-        config = config.deep_merge(alt_config)
+      #
+      configs = override['config'].split(",").map(&:strip) if override['config']
+      if !configs.empty?
+        configs.each do |cfg_file|
+          cfg = read_config_file(cfg_file)
+          config = config.deep_merge(cfg)
+        end
       else
         new_config = read_config_file(YAML_CONFIG_FILE_NAME)
         Hyla::logger2.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
         config = config.deep_merge(new_config) if !new_config.nil?
       end
 
-      # Merge DEFAULTS < _config.yaml or your_config.yaml file < override
+      # Merge files with parameters  coming from the cmd line
       config = config.deep_merge(override)
+      # config = config.deep_merge(DEFAULTS)
+      Hyla::logger2.debug("DEFAULTS Keys: #{config.inspect}")
       # Convert String Keys to Symbols Keys
       config = Configuration[].transform_keys_to_symbols(config)
       Hyla::logger2.debug("Merged Keys: #{config.inspect}")
@@ -250,7 +255,7 @@ module Hyla
         result
       }
     end
-    
+
     ASSETS = '../../lib/resources/assets'
 
     FONTS = '../../lib/resources/assets/fonts'
@@ -270,26 +275,26 @@ module Hyla
     BACKENDS = '../../lib/resources/backends'
 
     COVER_TEMPLATE = '../../lib/resources/assets/cover/cover.slim'
-    
+
     NEW_COVER_TEMPLATE = '../../lib/resources/assets/cover/new_cover.slim'
 
-    ASSESSMENT_TXT = File.open(self.templates + '/course/assessment.txt','r').read
+    ASSESSMENT_TXT = File.open(self.templates + '/course/assessment.txt', 'r').read
 
-    LABS_TXT = File.open(self.templates + '/course/labinstructions.txt','r').read
+    LABS_TXT = File.open(self.templates + '/course/labinstructions.txt', 'r').read
 
-    INDEX = File.open(self.templates + '/course/index.txt','r').read
+    INDEX = File.open(self.templates + '/course/index.txt', 'r').read
 
-    HEADER_INDEX = File.open(self.templates + '/course/header_index.txt','r').read
+    HEADER_INDEX = File.open(self.templates + '/course/header_index.txt', 'r').read
 
-    FOOTER_TXT = File.open(self.templates + '/course/footer.txt','r').read
+    FOOTER_TXT = File.open(self.templates + '/course/footer.txt', 'r').read
 
-    COVER_TXT = File.open(self.templates + '/course/cover.txt','r').read
+    COVER_TXT = File.open(self.templates + '/course/cover.txt', 'r').read
 
-    OBJECTIVES_TXT = File.open(self.templates + '/course/objectives.txt','r').read
+    OBJECTIVES_TXT = File.open(self.templates + '/course/objectives.txt', 'r').read
 
-    SUMMARY_TXT = File.open(self.templates + '/course/summary.txt','r').read
+    SUMMARY_TXT = File.open(self.templates + '/course/summary.txt', 'r').read
 
-    AUDIO_TXT = File.open(self.templates + '/course/audio.txt','r').read
+    AUDIO_TXT = File.open(self.templates + '/course/audio.txt', 'r').read
 
   end # Class Configuration
 end # module Hyla

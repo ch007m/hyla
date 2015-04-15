@@ -57,9 +57,18 @@ module Hyla
 
   def self.logger2
 
-    hyla_cfg ||= safe_load_file($options[:config]) if $options[:config]
-    
-    log_cfg ||=  $options[:log]
+    configs = $options[:config].split(",").map(&:strip) if $options[:config]
+    if !configs.empty?
+      @yaml_cfg = nil
+      configs.each do |config|
+        cfg = safe_load_file(config)
+        @yaml_cfg = cfg if @yaml_cfg.nil?
+        @yaml_cfg = @yaml_cfg.deep_merge(cfg)
+      end
+    end
+    hyla_cfg ||= @yaml_cfg if @yaml_cfg
+
+    log_cfg ||= $options[:log]
     mode ||= hyla_cfg['mode'] if hyla_cfg
     dirname ||= hyla_cfg['dirname'] if hyla_cfg
     logname ||= hyla_cfg['logname'] if hyla_cfg

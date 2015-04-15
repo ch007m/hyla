@@ -56,15 +56,18 @@ module Hyla
   end
 
   def self.logger2
-
     configs = $options[:config].split(",").map(&:strip) if $options[:config]
-    if !configs.empty?
+    if !configs.nil? && !configs.empty?
       @yaml_cfg = nil
       configs.each do |config|
         cfg = safe_load_file(config)
         @yaml_cfg = cfg if @yaml_cfg.nil?
         @yaml_cfg = @yaml_cfg.deep_merge(cfg)
       end
+    else
+      # We will try to read the _config.yaml file if it exists within the project
+      cfg = safe_load_file(Configuration::YAML_CONFIG_FILE_NAME)
+      @yaml_cfg = cfg if !cfg.nil? && !cfg.empty?
     end
     hyla_cfg ||= @yaml_cfg if @yaml_cfg
 
@@ -81,5 +84,7 @@ module Hyla
   def self.safe_load_file(filename)
     f = File.expand_path(filename, $cmd_directory)
     YAML.safe_load_file(f)
+  rescue SystemCallError
+    puts "No configuration file retrieved for the name : #{filename}"
   end
 end

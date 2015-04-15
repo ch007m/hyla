@@ -166,9 +166,8 @@ module Hyla
       # Read each config file and merge content with DEFAULTS
       # Otherwise, check if there is a _config.yaml
       #
-      #
       configs = override['config'].split(",").map(&:strip) if override['config']
-      if !configs.empty?
+      if !configs.nil? && !configs.empty?
         configs.each do |cfg_file|
           cfg = read_config_file(cfg_file)
           config = config.deep_merge(cfg)
@@ -176,7 +175,7 @@ module Hyla
       else
         new_config = read_config_file(YAML_CONFIG_FILE_NAME)
         Hyla::logger2.debug("OVERRIDE Keys: #{new_config.inspect}") if !new_config.nil?
-        config = config.deep_merge(new_config) if !new_config.nil?
+        config = config.deep_merge(new_config) if !new_config.nil? && !new_config.empty?
       end
 
       # Merge files with parameters  coming from the cmd line
@@ -197,7 +196,8 @@ module Hyla
       Hyla::logger2.info("Config file to be parsed : #{f}")
       safe_load_file(f)
     rescue SystemCallError
-      Hyla::logger2.error "No configuration file retrieved for the name : #{filename}"
+      Hyla::logger2.error "No configuration file retrieved for : #{filename}"
+      exit
     end
 
     #

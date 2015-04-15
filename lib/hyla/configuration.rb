@@ -13,7 +13,6 @@ module Hyla
 
         # Asciidoctor
         'backend' => 'html5',
-        'eruby' => 'erb',
         'doctype' => 'article',
         'compact' => false,
         'to_dir' => '.',
@@ -159,7 +158,8 @@ module Hyla
       Hyla::logger2.debug("OVERRIDE Keys: #{override.inspect}")
       
       # Config 
-      config = Hash.new
+      config = DEFAULTS
+      Hyla::logger2.debug("DEFAULTS Keys: #{config.inspect}")
 
       #
       # Check if config parameter was passed and split content which is a list of files
@@ -180,7 +180,6 @@ module Hyla
 
       # Merge files with parameters  coming from the cmd line
       config = config.deep_merge(override)
-      # config = config.deep_merge(DEFAULTS)
       Hyla::logger2.debug("DEFAULTS Keys: #{config.inspect}")
       # Convert String Keys to Symbols Keys
       config = Configuration[].transform_keys_to_symbols(config)

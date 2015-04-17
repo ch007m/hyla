@@ -78,7 +78,7 @@ end
 desc "Run tests"
 task :default => :test
 
-# Generate CSS files
+desc "Generate CSS files"
 task :compass, [:mode] do |t, args|
   mode = args.mode || 'development'
   

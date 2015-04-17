@@ -105,7 +105,7 @@ table.tableblock, table.tableblock td { border-style: solid; border-color: #b7bc
 
 table.tableblock > caption { line-height: 1.4; color: #333333; margin-top: 0.2em; margin-bottom: 0.5em; overflow: visible; max-width: 0; white-space: nowrap; display: table-caption; }
 
-table.tableblock:not(.noredheader) tr:first-child td { background-color: #a70000; text-align: left; padding: 10px; color: white; font-size: 24px; }
+table.tableblock:not(.noredheader) thead tr, table.tableblock:not(.noredheader) :not(thead) + tbody tr:first-child td { background-color: #a70000; text-align: left; padding: 10px; color: white; font-size: 24px; }
 
 table.tableblock.noredheader tr:first-child td { background-color: #EEEEEE; }
 

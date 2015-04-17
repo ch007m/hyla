@@ -83,12 +83,39 @@ Issue tracker (GitHub):: {issues}
 
 == Changelog
 
-=== v1.0.7 (2015-03-xx) - @cmoulliard
+=== v1.0.7 (2015-04-17) - @cmoulliard
 
 Enhancements / Improvements::
 
 * Remove the prefix (which is the name of the folder) before text AllSlides of the file (link:{issues}75[#75])
+* Implement log4r (link:{issues}126[#126])
+* Add new properties for Revealjs - marginTop and marginLeft (link:{issues}125[#125])
+* Support revealjs min/max scale, weight, height & margin (link:{issues}124[#124])
+* Add jquery and gpe.js script to move audio tag of the slides show (link:{issues}123[#123])
+* Adapt the slim backend to support generation of script tags using a list (link:{issues}122[#122])
+* Add missing asciidoctor script & scriptdir attributes (link:{issues}121[#121])
+* Add missing attributes : data-background-image, data-background-color & data-background-position enhancement (link:{issues}117[#117])
+* Generate as HTML the Hyla documentation using gh-pages (link:{issues}115[#115])
+* Refactor assets, fonts & decksjs, revealjs (link:{issues}111[#111])
+* Support compass and sass (link:{issues}109[#109])
+* Support scrollbar or revealjs_scrollbar attribute for revealjs (link:{issues}106[#106])
+* Icon displayed using a block is not aligned vertically (middle) (link:{issues}105[#105])
+* Change color of the progress bar (revealjs) (link:{issues}100[#100]) 
+* Highlighted Source is not aligned on the left, box is too big (link:{issues}xx[#99])
+* Add a cover style for revealjs slideshow to center picture (link:{issues}96[#96])
+* Support asciidoctor table & update stylesheet to be compliant with RedHat CSS enhancement (link:{issues}95[#95])
+* Admonition Style is missing from revealjs (link:{issues}94[#94])
+* Apparently audioscript is not required within the notescript section invalid (link:{issues}93[#93])
+* Generate summary page from TOC (link:{issues}92[#92])
+* Trick to include the Font Awesome icons - 4.x (link:{issues}90[#90])
 
+Bug fixes::
+
+* List is not displayed in grey & red bullets appear for admonition block bug (link:{issues}102[#102])
+* Upgrade to highlightjs 8.4 bug (link:{issues}98[#98])
+* Embedded video does not work for vimeo (link:{issues}xx[#xx]) (link:{issues}103[#103])
+* Refactor notescript section of cover, index, labinstruction & file created (link:{issues}89[#89])
+* revealjs folder is created under the wrong path (2nd time) bug (link:{issues}101[#101])
 
 === v1.0.6 - @cmoulliard
 

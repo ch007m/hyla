@@ -148,7 +148,7 @@ html lang=(attr :lang, 'en' unless attr? :nolang)
          theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 
          // Transition style
-         transition: Reveal.getQueryHash().transition || '#{transition}', // default/cube/page/concave/zoom/linear/fade/none
+         transition: Reveal.getQueryHash().transition || '#{attr 'revealjs_transition', 'default'}', // default/cube/page/concave/zoom/linear/fade/none
 
         // Optional libraries used to extend on reveal.js
          dependencies: [

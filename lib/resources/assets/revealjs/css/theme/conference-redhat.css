@@ -375,6 +375,13 @@ li strong {
     font-weight: bold;
 }
 
+/*************************************************************
+ * Increase Font size for Text displayed within the Cover page
+ * as title
+ *************************************************************/
+section .paragraph p strong {
+    font-size: 50px;
+}
 /*********************************************************************************
  * Trick to avoid to define [square] or [circle] for each item of an unordered list
  * and solve issue that we have here as we have nested lists

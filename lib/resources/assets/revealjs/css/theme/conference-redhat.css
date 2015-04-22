@@ -9,28 +9,28 @@
  *********************************************/
 @font-face {
     font-family: 'liberation';
-    src: url("../../lib/font/liberation_sans-regular.ttf") format('truetype');
+    src: url("../../lib/font/liberation/LiberationSans-Regular-webfont.ttf") format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'liberation';
-    src: url("../../lib/font/liberation_sans-bold.ttf") format('truetype');
+    src: url("../../lib/font/liberation/LiberationSans-Bold-webfont.ttf") format('truetype');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'liberation';
-    src: url("../../lib/font/liberation_sans-bolditalic.ttf") format('truetype');
+    src: url("../../lib/font/liberation/LiberationSans-BoldItalic-webfont.ttf") format('truetype');
     font-weight: bold;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'liberation';
-    src: url("../../lib/font/liberation_sans-italic.ttf") format('truetype');
+    src: url("../../lib/font/liberation/LiberationSans-Italic-webfont.ttf") format('truetype');
     font-weight: normal;
     font-style: italic;
 }
@@ -303,7 +303,8 @@ body {
  ******************************************************/
 table.tableblock, table.tableblock td {
     border-style: solid;
-    border-color: rgb(183, 188, 190);
+    /*border-color: rgb(183, 188, 190);*/
+    border-color: white;
     border-width: 0.99px;
     border-collapse: collapse;
     border-spacing: 0px;
@@ -330,7 +331,7 @@ table.tableblock:not(.noredheader) tr:first-child td {
 }
 
 table.tableblock.noredheader tr:first-child td {
-    background-color: #EEEEEE;
+    background-color: white;
 }
 
 table.tableblock tr:nth-child(even) {

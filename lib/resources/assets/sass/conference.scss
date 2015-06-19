@@ -349,9 +349,9 @@ body {
  * Mar 06, CHM: Add a noredheader class to avoid to display the first line in red of a table containing images, ..
  ******************************************************/
 table.tableblock, table.tableblock td {
-  border-style: solid;
-  border-color: rgb(183, 188, 190);
-  border-width: 0.99px;
+  border-style: none;
+  border-color: #F3F4F4;;
+  border-width: 0px;
   border-collapse: collapse;
   border-spacing: 0px;
   padding: 5px;
@@ -365,7 +365,7 @@ table.tableblock > caption {
   overflow: visible;
   max-width: 0;
   white-space: nowrap;
-  display: table-caption
+  display: table-caption;
 }
 
 table.tableblock:not(.noredheader) thead tr, table.tableblock:not(.noredheader) :not(thead) + tbody tr:first-child td {
@@ -377,15 +377,15 @@ table.tableblock:not(.noredheader) thead tr, table.tableblock:not(.noredheader) 
 }
 
 table.tableblock.noredheader tr:first-child td {
-  background-color: #EEEEEE;
+  /*  background-color: #EEEEEE;*/
 }
 
 table.tableblock tr:nth-child(even) {
-  background: white;
+  /*  background: white;*/
 }
 
 table.tableblock tr:nth-child(odd) {
-  background: rgb(238, 238, 238);
+  /*  background-color: #F3F4F4;*/
 }
 
 th.tableblock.halign-left, td.tableblock.halign-left {

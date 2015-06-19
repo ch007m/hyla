@@ -382,9 +382,9 @@ body {
  ******************************************************/
 /* line 351, ../conference.scss */
 table.tableblock, table.tableblock td {
-  border-style: solid;
-  border-color: #b7bcbe;
-  border-width: 0.99px;
+  border-style: none;
+  border-color: #F3F4F4;
+  border-width: 0px;
   border-collapse: collapse;
   border-spacing: 0px;
   padding: 5px;
@@ -413,17 +413,17 @@ table.tableblock:not(.noredheader) thead tr, table.tableblock:not(.noredheader) 
 
 /* line 379, ../conference.scss */
 table.tableblock.noredheader tr:first-child td {
-  background-color: #EEEEEE;
+  /*  background-color: #EEEEEE;*/
 }
 
 /* line 383, ../conference.scss */
 table.tableblock tr:nth-child(even) {
-  background: white;
+  /*  background: white;*/
 }
 
 /* line 387, ../conference.scss */
 table.tableblock tr:nth-child(odd) {
-  background: #eeeeee;
+  /*  background-color: #F3F4F4;*/
 }
 
 /* line 391, ../conference.scss */

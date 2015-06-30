@@ -10,16 +10,32 @@
       / could use &#9745 (checked ballot) and &#9744 (ballot) w/o font instead
       - marker_checked = '<input type="checkbox" data-item-complete="1" checked disabled>'
       - marker_unchecked = '<input type="checkbox" data-item-complete="0" disabled>'
-.ulist id=@id class=[checklist,@style,role]
-  - if title?
-    .title=title
-  ul class=(checklist || @style)
-    - items.each do |item|
-      li
-        p
+- if "#{@id}".start_with?("expandlist")
+  .ulist class=[checklist,@style,role]
+    - if title?
+      .title=title
+    // the id has been moved as the jquery script will search about it to collapse/elapse the list
+    ul id=@id class=(checklist || @style)
+      - items.each do |item|
+        li
+          // We have also removed the <p> tag element
           - if checklist && (item.attr? :checkbox)
             =%(#{(item.attr? :checked) ? marker_checked : marker_unchecked}#{item.text})
           - else
             =item.text
-        - if item.blocks?
-          =item.content
+          - if item.blocks?
+            =item.content
+- else
+  .ulist id=@id class=[checklist,@style,role]
+    - if title?
+      .title=title
+    ul class=(checklist || @style)
+      - items.each do |item|
+        li
+          p
+            - if checklist && (item.attr? :checkbox)
+              =%(#{(item.attr? :checked) ? marker_checked : marker_unchecked}#{item.text})
+            - else
+              =item.text
+          - if item.blocks?
+            =item.content

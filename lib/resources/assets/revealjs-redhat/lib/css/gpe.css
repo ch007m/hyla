@@ -672,7 +672,7 @@ ol.lowergreek {
 /* EXPANDABLE LIST  */
 /********************/
 /* line 602, ../new-gpe.scss */
-#expandlist ul, li {
+.reveal #expandlist {
   list-style: none;
   margin: 0;
   padding: 0;

@@ -22,7 +22,7 @@
     .sl-block data-block-type="text" style=[("min-width: #{blockwidth}"),("min-height: #{blockheight}"),("left: #{blockleft}"),("top: #{blocktop}"),("bottom: #{blockbottom}")].compact.join('; ') class=role
       p=content
   - else
-    .paragraph id=@id claass=role
+    .paragraph id=@id class=role
     - if title?
       .title=title
-      p=content
+    p=content

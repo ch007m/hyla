@@ -39,7 +39,7 @@ command :new do |c|
   c.description = 'Creates a new Hyla project using a template or blank to the PATH specified'
   c.description = 'Example : hyla new -b /path/to/myProject'
   c.option '-f', '--force', 'Force creation even if PATH already exists'
-  c.option '-b', '--blank', 'Creates project directory containing the YAML config file and a simple readme.ad file'
+  c.option '-b', '--blank', 'Creates project directory containing the YAML config file and a simple readme.adoc file'
   c.option '--t', '--template_type [TEMPLATE_TYPE]', String, 'Template Type to be used (documentation, book, training, training-exercises, blog, web, ...)'
 
   add_build_options(c)

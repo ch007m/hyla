@@ -206,8 +206,11 @@ task :publish do
 end
 
 Rake::Minify.new(:minifyjs) do
-  dir("lib/resources/assets/revealjs-redhat/lib/js/debug") do 
-    add("lib/resources/assets/revealjs-redhat/lib/js/reveal.min.js", "reveal.js") 
+  dir("lib/resources/assets/revealjs/js/debug") do
+    add("lib/resources/assets/revealjs/js/reveal.min.js", "reveal.js")
+  end
+  dir("lib/resources/assets/revealjs-redhat/lib/js/debug") do
+    add("lib/resources/assets/revealjs-redhat/lib/js/reveal.min.js", "reveal.js")
     add("lib/resources/assets/revealjs-redhat/lib/js/head.min.js", "head.js")
     add("lib/resources/assets/revealjs-redhat/lib/js/gpe.min.js", "gpe.js")
   end

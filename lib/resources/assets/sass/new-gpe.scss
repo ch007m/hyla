@@ -629,3 +629,48 @@ ol.lowergreek {
 #expandlist .expanded {
   background-image: url(../../image/expanded.png);
 }
+
+/**************************/
+/* Show / Hide Text block */
+/**************************/
+#showhide {
+  background: #a0100c;
+  display: block;
+  padding: 1.75em;
+  border: 1px solid darkgray;
+}
+
+#showhide:before {
+  display: block;
+  content: 'Click to view audio transcript   ';
+  font-family: 'Liberation Sans', arial;
+  font-size: 1em;
+  font-weight: 900;
+  max-height: 0;
+  color: #f4f4f4;
+}
+
+.acontent {
+  background: #b7bcbe;
+  overflow: hidden;
+  clear: both;
+  max-height: 0;
+  font-family: 'Liberation Sans', arial;
+}
+
+/* We don't want to show the check box */
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"]:checked ~ .acontent {
+  padding: 0.75rem 0.75rem 1.5rem;
+  border-bottom: 1px solid #ccc;
+  max-height: 2000px;
+}
+
+/* Content displayed after clicking on the virtual checkbox */
+input[type="checkbox"]:checked ~ #showhide:before {
+  content: 'Audio Transcript';
+  margin-top: 0em;
+}

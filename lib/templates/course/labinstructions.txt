@@ -19,8 +19,6 @@ The lab exercises and solutions are available in the following zip archives:
 ifdef::showscript[]
 [.notes]
 ****
-//tag::snippet[]
 
-//end::snippet[]
 ****
-endif::[]
+endif::showscript[]

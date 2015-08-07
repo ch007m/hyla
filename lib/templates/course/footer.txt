@@ -1,10 +1,8 @@
 ifdef::showscript[]
 [.notes]
 ****
-//tag::snippet[]
 
 == TITLE
 
-//end::snippet[]
 ****
-endif::[]
+endif::showscript[]

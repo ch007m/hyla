@@ -1,4 +1,3 @@
-
 == Module Topics
 
 By completing this module you will learn about the following topics:

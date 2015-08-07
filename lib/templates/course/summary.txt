@@ -1,4 +1,3 @@
-
 == Summary
 
 This module introduced you to the following topics:

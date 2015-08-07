@@ -380,7 +380,7 @@ module Hyla
             @counter+=1
 
             #
-            # Add the summary.adoc file
+            # Create the summary.adoc file and add it to the index
             #
             if @counter > 1
               self.generate_summary_page()
@@ -625,15 +625,20 @@ module Hyla
         @index += 1
         file_index = sprintf('%02d', @index)
         f_name = 'm' + @module_key + 'p' + file_index + '_summary'
-
-        rep_txt = Configuration::SUMMARY_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
-
         f_name = f_name + Configuration::ADOC_EXT
+
+        # rep_txt = Configuration::SUMMARY_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
 
         summary_f = File.new(f_name, 'w')
         summary_f.puts Configuration::HEADER_TXT
-        summary_f.puts rep_txt
+        summary_f.puts Configuration::SUMMARY_TXT
         summary_f.close
+
+        #
+        # Include summary file to index
+        #
+        @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
+        @index_file.puts "\n"
       end
 
       def self.html_to_pdf(file_name, source, destination, footer_text, header_html_path, cover_path)

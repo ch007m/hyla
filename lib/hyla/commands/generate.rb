@@ -402,8 +402,8 @@ module Hyla
             Dir.chdir(new_dir)
 
             # Add image, audio, video directory
-            # self.create_asset_directory(['image', 'audio', 'video'])
-            self.create_asset_directory(['image'])
+            # self.create_asset_directory(['images', 'audio', 'video'])
+            self.create_asset_directory(['images'])
 
             #
             # Create an index file

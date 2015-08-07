@@ -1,13 +1,25 @@
-:noheader: true
+:noaudio:
 
-// No title should be displayed for Slideshow presentation as the cover picture already content the text
-ifdef::slideshow[]
+ifdef::revealjs_slideshow[]
+[#cover,data-background-image="revealjs-redhat/image/1156524-bg_redhat.png" data-background-color="#cc0000"]
 == &nbsp;
+
+[#cover-h1]
+COURSE_TITLE
+
+[#cover-h2]
+MODULE_TITLE
+
+[#cover-logo]
+image::{revealjs_cover_image}[]
+
 endif::[]
 
-ifndef::slideshow[]
+ifndef::revealjs_slideshow[]
 == Cover
-endif::[]
 
-[.cover]
-image::image/xxx.png[]
+COURSE_TITLE
+
+MODULE_TITLE
+
+endif::[]

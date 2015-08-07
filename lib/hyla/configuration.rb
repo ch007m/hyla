@@ -48,7 +48,7 @@ module Hyla
 
     SNIPPET_TAG = 'snippet'
 
-    HEADER_TXT = "// Asciidoctor attributes\n"
+    HEADER_TXT = "\n"
 
     LEVEL_1 = '= '
 

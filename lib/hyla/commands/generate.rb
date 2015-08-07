@@ -349,9 +349,6 @@ module Hyla
         # Copy YAML Config file
         FileUtils.cp_r [Configuration::configs, Configuration::YAML_CONFIG_FILE_NAME] * '/', @out_dir
 
-        # Copy styles
-        # FileUtils.cp_r Configuration::styles, @out_dir
-
         #
         # Move to the directory as we will
         # create content relative to this directory
@@ -443,29 +440,32 @@ module Hyla
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_cover' + Configuration::ADOC_EXT
             Hyla.logger2.debug '>> Directory name : ' + dir_name.to_s.gsub('_', ' ')
-            rep_txt = Configuration::COVER_TXT.gsub(/xxx\.png/, dir_name + '.png')
-            Hyla.logger2.debug "Replaced by : " + rep_txt
+            # rep_txt = Configuration::COVER_TXT.gsub(/xxx\.png/, dir_name + '.png')
+            # Hyla.logger2.debug "Replaced by : " + rep_txt
             cover_f = File.new(f_name, 'w')
-            cover_f.puts rep_txt
+            cover_f.puts Configuration::COVER_TXT
             cover_f.close
 
             #
+            # WE DON'T HAVE TO GENERATE AN IMAGE AS THE IMAGE IS CREATED BY REVEALJS
+            #
             # Use the filename & generate the cover image
             #
-            out_dir = 'image'
-            file_name = dir_name + '.html'
-            image_name = dir_name + '.png'
-            course_name = @project_name
-            module_name= dir_name
-            bg_image_path = image_path
-            Hyla.logger2.debug '>> Out Directory : ' + out_dir.to_s
-            Hyla.logger2.debug '>> Image name : ' + image_name.to_s
-            Hyla.logger2.debug '>> Course Name  : ' + course_name.to_s
-            Hyla.logger2.debug '>> Module Name  : ' + module_name.to_s
-            Hyla.logger2.debug '>> Bg Image  : ' + bg_image_path.to_s
-
-            self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool = nil)
-
+            # out_dir = 'images'
+            # file_name = dir_name + '.html'
+            # image_name = dir_name + '.png'
+            # course_name = @project_name
+            # module_name= dir_name
+            # bg_image_path = image_path
+            # Hyla.logger2.debug '>> Out Directory : ' + out_dir.to_s
+            # Hyla.logger2.debug '>> Image name : ' + image_name.to_s
+            # Hyla.logger2.debug '>> Course Name  : ' + course_name.to_s
+            # Hyla.logger2.debug '>> Module Name  : ' + module_name.to_s
+            # Hyla.logger2.debug '>> Bg Image  : ' + bg_image_path.to_s
+            # 
+            # self.cover_img(out_dir, file_name, image_name, course_name, module_name, bg_image_path, tool = nil)
+            #
+            
             #
             # Include cover file to index
             #
@@ -478,18 +478,17 @@ module Hyla
             @index += 1
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_objectives'
-
-            rep_txt = Configuration::OBJECTIVES_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
-
             f_name = f_name + Configuration::ADOC_EXT
+            
+            # rep_txt = Configuration::OBJECTIVES_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
 
             objectives_f = File.new(f_name, 'w')
             objectives_f.puts Configuration::HEADER_TXT
-            objectives_f.puts rep_txt
+            objectives_f.puts Configuration::OBJECTIVES_TXT
             objectives_f.close
 
             #
-            # Include cover file to index
+            # Include objectives file to index
             #
             @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
             @index_file.puts "\n"
@@ -528,8 +527,8 @@ module Hyla
               #
               # Add Footer_text to the file created
               #
-              rep_txt = Configuration::FOOTER_TXT.gsub(/xxx\.mp3/, @previous_f.to_s + '.mp3')
-              @previous_f.puts rep_txt
+              # rep_txt = Configuration::FOOTER_TXT.gsub(/xxx\.mp3/, @previous_f.to_s + '.mp3')
+              @previous_f.puts Configuration::FOOTER_TXT
               @previous_f.close
             end
 
@@ -547,17 +546,15 @@ module Hyla
             @index += 1
             file_index = sprintf('%02d', @index)
             f_name = 'm' + @module_key + 'p' + file_index + '_' + f_name
-
-            rep_txt = Configuration::AUDIO_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
-
             f_asciidoc_name = f_name + Configuration::ADOC_EXT
+
+            # rep_txt = Configuration::AUDIO_TXT.gsub(/xxx\.mp3/, f_name + '.mp3')
 
             #
             # Create File and add configuration HEADER_TXT
             #
             @new_f = File.new(f_asciidoc_name, 'w')
             @new_f.puts Configuration::HEADER_TXT
-            @new_f.puts "\n"
 
             Hyla.logger2.info '   # File created : ' + f_asciidoc_name.to_s
 
@@ -575,14 +572,14 @@ module Hyla
             #
             # Add audio text after the name of the title
             #
-            #  ifdef::audioscript[]
+            #  ifdef::showscript[]
             #    audio::audio/m01p03_why_use_messaging[]
-            #  endif::[]
+            #  endif::showscript[]
             #
             if line.start_with?('==')
               @new_f.puts line
               @new_f.puts "\n"
-              @new_f.puts rep_txt
+              # @new_f.puts rep_txt
             else
               @new_f.puts line
             end

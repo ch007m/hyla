@@ -1,3 +1,3 @@
-ifdef::audioscript[]
+ifdef::showscript[]
 audio::audio/xxx.mp3[]
-endif::[]
+endif::showscript[]

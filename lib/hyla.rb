@@ -82,9 +82,11 @@ module Hyla
   end
 
   def self.safe_load_file(filename)
-    f = File.expand_path(filename, $cmd_directory)
-    YAML.safe_load_file(f)
-  rescue SystemCallError
-    puts "No configuration file retrieved for the name : #{filename}"
+    begin
+      f = File.expand_path(filename, $cmd_directory)
+      YAML.safe_load_file(f)
+    rescue SystemCallError
+      puts "No configuration file retrieved for the name : #{filename}"
+    end
   end
 end

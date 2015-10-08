@@ -31,15 +31,25 @@ module Hyla
 
             @destination = options[:destination]
             @source = options[:source]
-
+            
+            # Find and append to the value of the copyright header with the BUILD TAG EN Var if it exists   
+            attributes = options[:attributes] if options[:attributes]
+            attributes.each do | k, v |
+              if ((k.eql? "revealjs_footer_copyright") && (ENV['BUILD_TAG']))
+                attributes[k] = attributes[k] + " - " + ENV['BUILD_TAG']
+              end
+            end
+            
             # Check Style to be used
+            attributes.store('stylesheet',self.check_style(options[:style]))
+            
+
+            # New options
             new_asciidoctor_option = {
                 :template_dirs => [self.backend_dir(options[:backend])],
-                :attributes => {
-                    'stylesheet' => self.check_style(options[:style])
-                }
+                :attributes => attributes
             }
-
+            
             merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
 
             extensions = 'adoc,ad,asciidoc'
@@ -55,11 +65,22 @@ module Hyla
             @destination = options[:destination]
             @source = options[:source]
 
+            # Find and append to the value of the copyright header with the BUILD TAG EN Var if it exists
+            attributes = options[:attributes] if options[:attributes]
+            attributes.each do | k, v |
+              if ((k.eql? "revealjs_footer_copyright") && (ENV['BUILD_TAG']))
+                attributes[k] = attributes[k] + " - " + ENV['BUILD_TAG']
+              end
+            end
+
+            # Check Style to be used
+            attributes.store('stylesheet',self.check_style(options[:style]))
+
+
+            # New options
             new_asciidoctor_option = {
                 :template_dirs => [self.backend_dir(options[:backend])],
-                :attributes => {
-                    'stylesheet' => self.check_style(options[:style])
-                }
+                :attributes => attributes
             }
 
             merged_options = Configuration[options].deep_merge(new_asciidoctor_option)

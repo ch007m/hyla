@@ -196,7 +196,7 @@ module Hyla
       safe_load_file(f)
     rescue SystemCallError
       Hyla::logger2.error "No configuration file retrieved for : #{filename}"
-      exit
+      nil
     end
 
     #

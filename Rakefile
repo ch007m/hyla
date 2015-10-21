@@ -111,11 +111,6 @@ task :compass, [:mode] do |t, args|
     sh "cp styles/theme-v2-overpass.css #{revealjs_redhat_css_theme_assets}/theme-v2-overpass.css"
     sh "cp styles/theme-output.css #{revealjs_redhat_css_theme_assets}/theme-output.css"
     sh "cp styles/font-awesome.css #{revealjs_redhat_css_theme_assets}/font-awesome-4.3.0.css"
-
-    # sh "cp gpe.scss #{revealjs_css_theme_assets}"
-    # sh "cp styles/old-gpe.css.map #{revealjs_css_theme_assets}"
-    # sh "cp styles/font-awesome.css.map #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css.map"
-
   end
 
 end

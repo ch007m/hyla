@@ -54,7 +54,7 @@ body {
 .reveal .sl-block-content h4,
 .reveal .sl-block-content h5,
 .reveal .sl-block-content h6 {
-  color: #a70000;
+  color: #019AD7;
 }
 
 /***************************************************
@@ -167,7 +167,7 @@ body {
  *********************************************/
 /* line 162, ../conference.scss */
 .reveal a:not(.image) {
-  color: #a70000;
+  color: #019AD7;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -178,7 +178,7 @@ body {
 
 /* line 173, ../conference.scss */
 .reveal a:not(.image):hover {
-  color: #a70000;
+  color: #019AD7;
   text-shadow: none;
   border: none;
 }
@@ -186,7 +186,7 @@ body {
 /* line 179, ../conference.scss */
 .reveal .roll span:after {
   color: #fff;
-  background: #a70000;
+  background: #019AD7;
 }
 
 /*********************************************
@@ -206,7 +206,7 @@ body {
 /* line 197, ../conference.scss */
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: #a70000;
+  border-color: #019AD7;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
@@ -267,7 +267,7 @@ body {
 
 /* line 249, ../conference.scss */
 .reveal .progress span {
-  background: #a70000;
+  background: #019AD7;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -338,7 +338,7 @@ body {
 .reveal i.conum {
   display: inline-block;
   color: white !important;
-  background-color: #a70000;
+  background-color: #019AD7;
   -webkit-border-radius: 100px;
   border-radius: 100px;
   text-align: center;
@@ -463,7 +463,7 @@ th.tableblock.valign-middle, td.tableblock.valign-middle {
  **************************************************************/
 /* line 421, ../conference.scss */
 li strong {
-  color: #a70000;
+  color: #019AD7;
   font-weight: bold;
 }
 

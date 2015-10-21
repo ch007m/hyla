@@ -1,6 +1,7 @@
 /* $fonts: 'Overpass', 'Liberation Sans', 'Open Sans', sans-serif; */
 $fonts: 'Liberation Sans', 'Overpass', 'Open Sans', sans-serif;
 $red-color: #a70000;
+$header-block-color: white;
 $scrollbar-height: 600px;
 $footer-bottom: -25%;
 $slides-margin-top: 15px;
@@ -55,7 +56,7 @@ body {
 .reveal .sl-block-content h4,
 .reveal .sl-block-content h5,
 .reveal .sl-block-content h6 {
-  color: white;
+  color: $header-block-color;
 }
 
 /***************************************************

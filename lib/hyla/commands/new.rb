@@ -83,6 +83,7 @@ EOS
       #
       # Create Blank Project
       # with just a readme.adoc file and yaml config file
+      #
       def self.create_blank_project(path)
         Dir.chdir(path) do
           f = File.open('readme.adoc', 'w')

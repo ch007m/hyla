@@ -63,7 +63,6 @@ module Hyla
 
     YAML_CONFIG_FILE_NAME = '_config.yaml'
 
-
     #
     # Cover Slim Template
     #

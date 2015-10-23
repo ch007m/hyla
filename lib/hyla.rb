@@ -56,6 +56,18 @@ module Hyla
   end
 
   def self.logger2
+    params = self.check_config
+    @logger2 ||= Logger2.new(params[0],params[1],params[2],params[3],params[4],params[5])
+  end
+  
+  #
+  # Singleton var to allow to only check one time if the config_yaml is there
+  #
+  def self.check_config()
+    @params ||= self.config
+  end
+
+  def self.config()
     configs = $options[:config].split(",").map(&:strip) if $options[:config]
     if !configs.nil? && !configs.empty?
       @yaml_cfg = nil
@@ -77,10 +89,9 @@ module Hyla
     logname ||= hyla_cfg['logname'] if hyla_cfg
     level ||= hyla_cfg['level'] if hyla_cfg
     tracer ||= hyla_cfg['tracer'] if hyla_cfg
-
-    $logger2 ||= Logger2.new(mode, log_cfg, dirname, logname, level, tracer)
+    return mode, log_cfg, dirname, logname, level, tracer
   end
-
+  
   def self.safe_load_file(filename)
     begin
       f = File.expand_path(filename, $cmd_directory)

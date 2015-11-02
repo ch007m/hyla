@@ -11,6 +11,10 @@ Use `gem install` command to deploy Hyla :
 
 NOTE :  The option `-y` will tell to rubyGems to deploy the gem but also the dependencies required
 
+=== Uninstall the hyla gem
+
+Use `gem uninstall hyla -v version_number` to remove locally the hyla gem
+
 === Build the project from the code
 
 * Generate the gem

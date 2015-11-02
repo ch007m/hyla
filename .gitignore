@@ -1,7 +1,9 @@
 ## SASS/Compass
-**/lib/resources/assets/.sass-cache/
+.sass-cache/
 **/lib/resources/assets/sass/.sass-cache/
 **/lib/resources/assets/sass/styles
+
+
 
 gh-pages/
 

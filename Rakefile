@@ -7,6 +7,7 @@ require 'rake/testtask'
 require 'sass'
 require 'hyla/configuration'
 require 'rake/minify'
+require 'fileutils'
 
 #############################################################################
 #
@@ -54,6 +55,14 @@ def default_compilation_style
   'compressed'
 end
 
+def copy_sources()
+  source = [Hyla::Configuration.assets, 'sass'] * '/'
+  dest = [Hyla::Configuration.assets, 'revealjs-redhat', 'lib', 'sass'] * '/'
+  p source
+  p dest
+  FileUtils.cp_r source, dest
+end
+
 #
 # Compass Style Values to generate the CSS file : nested, expanded, compact, compressed
 #
@@ -96,8 +105,11 @@ task :compass, [:mode] do |t, args|
     puts "Sass dir : #{dir}"
     # -s #{style} -I #{path}
     # To generate the sourcemap --> --sourcemap
-    # puts "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -e #{mode} --output-style=#{output_style} --force"
+    p "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -e #{mode} --output-style=#{output_style} --force"
     system "compass compile --fonts-dir 'fonts' --css-dir 'styles' --sass-dir '.' -e #{mode} --output-style=#{output_style} --force"
+    
+    # Copy scss files to lib/sass dir
+    copy_sources()
 
     # Copy css to RevealJS theme
     # p revealjs_css_assets

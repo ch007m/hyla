@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Overpass';
+  src: local("Overpass"),
+  url('../../lib/font/overpass/overpass_regular-web.eot?#iefix') format('eot'),
+  url('../../lib/font/overpass/overpass_regular-web.woff') format('woff'),
+  url('../../lib/font/overpass/overpass_regular-web.ttf') format('truetype'),
+  url('../../lib/font/overpass/overpass_regular-web.svg#webfontLTZe4IYH') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Overpass';
+  src: local("Overpass Bold"), local("OverpassBold"),
+  url('../../lib/font/overpass/overpass_bold-web.eot?#iefix') format('eot'),
+  url('../../lib/font/overpass/overpass_bold-web.woff') format('woff'),
+  url('../../lib/font/overpass/overpass_bold-web.ttf') format('truetype'),
+  url('../../lib/font/overpass/overpass_bold-web.svg#webfontzAU82Ltw') format('svg');
+  font-weight: bold;
+  font-style: normal;
+}

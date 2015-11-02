@@ -1,0 +1,59 @@
+/*
+Error: Invalid CSS after "  position: ": expected expression (e.g. 1px, bold), was ";"
+        on line 5075 of /Users/chmoulli/MyProjects/hyla/lib/resources/assets/sass/./temp.scss
+
+5070: .reveal .slides > section blockquote {
+5071:   font-style: normal;
+5072:   box-shadow: none;
+5073: }
+5074: .reveal .progress {
+5075:   position: ;
+5076:   background-color: transparent;
+5077: }
+5078: .reveal .progress span {
+5079:   background-color: #5e6a71;
+5080:   opacity: .;
+
+Backtrace:
+/Users/chmoulli/MyProjects/hyla/lib/resources/assets/sass/./temp.scss:5075
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:1167:in `expected'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/lexer.rb:221:in `expected!'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/parser.rb:573:in `assert_expr'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/script/parser.rb:62:in `parse'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:1027:in `sass_script'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:880:in `value!'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:753:in `block in try_declaration'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:1141:in `call'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:1141:in `rethrow'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:766:in `try_declaration'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:696:in `declaration_or_ruleset'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:661:in `block_child'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:650:in `block_contents'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:642:in `block'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:636:in `ruleset'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:660:in `block_child'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:653:in `block_contents'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:117:in `stylesheet'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/scss/parser.rb:42:in `parse'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/engine.rb:393:in `_to_tree'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/engine.rb:268:in `render'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/sass-3.4.13/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/lib/compass/sass_compiler.rb:40:in `compile!'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/lib/compass/commands/update_project.rb:49:in `perform'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/lib/compass/commands/base.rb:18:in `execute'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/bin/compass:30:in `block in <top (required)>'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/bin/compass:44:in `call'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/lib/ruby/gems/1.9.1/gems/compass-1.0.3/bin/compass:44:in `<top (required)>'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/bin/compass:23:in `load'
+/Users/chmoulli/.rbenv/versions/1.9.3-p484/bin/compass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"  position: \": expected expression (e.g. 1px, bold), was \";\"\A         on line 5075 of /Users/chmoulli/MyProjects/hyla/lib/resources/assets/sass/./temp.scss\A \A 5070: .reveal .slides > section blockquote {\A 5071:   font-style: normal;\A 5072:   box-shadow: none;\A 5073: }\A 5074: .reveal .progress {\A 5075:   position: ;\A 5076:   background-color: transparent;\A 5077: }\A 5078: .reveal .progress span {\A 5079:   background-color: #5e6a71;\A 5080:   opacity: .;"; }

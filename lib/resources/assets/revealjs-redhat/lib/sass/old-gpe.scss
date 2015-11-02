@@ -1,0 +1,585 @@
+/*
+ * NOT USED ANYMORE - Using Compass Font-Face
+ * @import "compass/css3/font-face";
+ * @include font-face('Liberation Sans', font-files("liberationSans-Regular.ttf",
+        "liberationSans-Bold.ttf",
+        "liberationSans-Italic.ttf",
+        "liberationSans-BoldItalic.ttf"));
+
+   @include font-face('Overpass', font-files("Overpass_Regular.ttf",
+        "Overpass_Bold.ttf",
+        "Overpass_Light.ttf",
+        "Overpass_Regular.ttf"));
+*/
+ 
+/* 
+ * NOT USED ANYMORE -  Import font Awesome Fonts using the gem installed
+ * @import "font-awesome-compass";
+ * @import "font-awesome";
+*/
+
+/*
+ * @import url(http://red-hat-overpass-fonts.s3.amazonaws.com/overpass.css);
+ */
+
+/* $debug-configuration: true; */
+
+@import "overpass";
+@import "liberation";
+
+/* 
+ * We dont import the css content of font-awesome here
+ * as it will added to the HTML of the slideshow as a local/remote resource
+ *  @import "font-awesome"; 
+ */ 
+
+/*$var-family-name: 'Liberation Sans';*/
+$fonts: 'Liberation Sans', 'Overpass', 'Open Sans', sans-serif;
+$red-color: #a70000;
+
+body {
+  font-family: $fonts;
+}
+
+/*********************************************
+ * ScrollBar
+ * Feb 24, ART: Changed the height of the scrollbar from 450 600
+ * Feb 24, ART: Changed the padding from 10 20 20 20 to 5 10 10 10
+ * Feb 24, ART: Changed the margin from 20px 0 0 to 5px 0 0
+ * Mar 02, CHM: Increase height from 600 to 670px
+ * Mar 06, CHM: Change overflow from scroll to auto
+ *********************************************/
+.scrollbar {
+  border: 1px solid #eee;
+  height: 670px;
+  overflow: auto;
+  margin: 5px 0 0;
+  padding: 5px 10px 10px 10px;
+}
+
+/**************************************************************
+ * Style used to display the cover picture full screen
+ * Add this tag [.cover] before the picture of the cover page
+ * Mar 04 2015, CHM: Initial
+ **************************************************************/
+.cover {
+  position: absolute;
+  top: 20px;
+  text-align: center;
+}
+
+/*********************************************
+ * Corporate Logo Header Image
+ * Feb 26, CHM: Changed the height from 80px to 0px
+ *********************************************/
+.header {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 0px;
+  font-family: $fonts;
+  font-size: 20px;
+  text-align: center;
+}
+
+/*********************************************
+ * Copyright Footer
+ * Feb 24, ART: Changed to footer height from 80 to 40
+ *********************************************/
+.footer {
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  font-family: $fonts;
+  font-size: 20px;
+  text-align: center;
+}
+
+/*********************************************
+ * GLOBAL STYLES
+ * Feb 24, ART:  added a border to the body, attempting to see how the margin is being used.
+ * Feb 24, ART:  added a border to the reveal section, attempting to see how the margin is being used.
+ *********************************************/
+body {
+  background: white;
+  background-color: white;
+}
+
+.reveal {
+  font-family: $fonts;
+  font-size: 28px;
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  color: black;
+
+}
+
+::selection {
+  color: white;
+  background: rgba(0, 0, 0, 0.99);
+  text-shadow: none;
+}
+
+/*********************************************
+  * TODO - To be verified if we use it or not
+  *******************************************/
+.reveal section {
+  text-align: left;
+}
+
+/******************************************
+ * Fill screen to 100% & align text on left
+ * Feb 26, CHM : Add top: 370px to fill the screen to 100%
+ ******************************************/
+.reveal .slides {
+  text-align: left;
+  top: 370px;
+}
+
+/*********************************************
+ * HEADERS
+ *********************************************/
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  margin: 0 0 20px 0;
+  color: #3E4349;
+  font-family: $fonts;
+  line-height: 0.9em;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  text-shadow: none;
+}
+
+/***************************************************
+ * Feb 26, ART: Font Size 2em and width: 900px added
+ **************************************************/
+.reveal h1 {
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
+  font-size: 2em;
+  width: 900px;
+}
+
+.reveal h2 {
+  font-size: 2em;
+}
+
+/*********************************************
+ * LINKS
+ *********************************************/
+.reveal a:not(.image) {
+  color: $red-color;
+  text-decoration: none;
+  -webkit-transition: color .15s ease;
+  -moz-transition: color .15s ease;
+  -ms-transition: color .15s ease;
+  -o-transition: color .15s ease;
+  transition: color .15s ease;
+
+}
+
+.reveal a:not(.image):hover {
+  color: $red-color;
+  text-shadow: none;
+  border: none;
+}
+
+.reveal .roll span:after {
+  color: #fff;
+  background: $red-color;
+}
+
+/*********************************************
+ * IMAGES
+ *********************************************/
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  -webkit-transition: all .2s linear;
+  -moz-transition: all .2s linear;
+  -ms-transition: all .2s linear;
+  -o-transition: all .2s linear;
+  transition: all .2s linear;
+}
+
+.reveal a:hover img {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: $red-color;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
+}
+
+/*********************************************
+ * NAVIGATION CONTROLS
+ *********************************************/
+.reveal .controls div.navigate-left,
+.reveal .controls div.navigate-left.enabled {
+  border-right-color: #C1100C;
+}
+
+.reveal .controls div.navigate-right,
+.reveal .controls div.navigate-right.enabled {
+  border-left-color: #C1100C;
+}
+
+.reveal .controls div.navigate-up,
+.reveal .controls div.navigate-up.enabled {
+  border-bottom-color: #C1100C;
+}
+
+.reveal .controls div.navigate-down,
+.reveal .controls div.navigate-down.enabled {
+  border-top-color: #C1100C;
+}
+
+.reveal .controls div.navigate-left.enabled:hover {
+  border-right-color: #ef6f16;
+}
+
+.reveal .controls div.navigate-right.enabled:hover {
+  border-left-color: #ef6f16;
+}
+
+.reveal .controls div.navigate-up.enabled:hover {
+  border-bottom-color: #ef6f16;
+}
+
+.reveal .controls div.navigate-down.enabled:hover {
+  border-top-color: #ef6f16;
+}
+
+/*********************************************
+ * PROGRESS BAR
+ *********************************************/
+.reveal .progress {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.reveal .progress span {
+  background: $red-color;
+  -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  -o-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+}
+
+/*********************************************
+ * SLIDE NUMBER
+ *********************************************/
+.reveal .slide-number {
+  color: darkblue;
+}
+
+/*********************************************************************************
+ * Trick to avoid to define [square] or [circle] for each item of an unordered list
+ * and solve issue that we have here as we have nested lists
+ * Feb 27, CHM : Added
+ * Mar 04 2015, CHM: Add red colors & square, disc & circle
+ * Mar 13 2015, CHM: Change color to black and revert square, disc & circle
+ *********************************************************************************/
+/* line 287, ../gpe.scss */
+.reveal ul li p, ul li li p, ul li li p {
+  color: black;
+  list-style: none;
+}
+
+/* line 293, ../gpe.scss */
+.reveal ul li {
+  list-style-type: disc;
+  color: black;
+}
+
+/* line 298, ../gpe.scss */
+.reveal ul li li {
+  list-style-type: square;
+  color: black;
+}
+
+/* line 303, ../gpe.scss */
+.reveal ul li li li {
+  list-style-type: circle;
+  color: black;
+}
+
+/*******************************************************************
+ * .reveal i must be override in order to be able to use Asciidoctor and
+ * Font Awesome icons for NOTE, WARNING, REMARK, ....
+ * Feb, CHM: Added
+ *******************************************************************/
+.reveal i.fa {
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-size: 100%;
+}
+
+/*********************************************
+ * Support asciidoctor callout
+ * Feb 27, CHM: Added
+ *********************************************/
+.reveal i.conum {
+  display: inline-block;
+  color: white !important;
+  background-color: $red-color;
+  -webkit-border-radius: 100px;
+  border-radius: 100px;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 25px;
+  font-style: normal;
+  position: relative;
+  top: -2px;
+  letter-spacing: -2px;
+}
+
+.reveal i.conum * {
+  color: white !important;
+}
+
+.reveal i.conum + b {
+  display: none;
+}
+
+.reveal i.conum:after {
+  content: attr(data-value);
+}
+
+.reveal i.conum:not([data-value]):empty {
+  display: none;
+}
+
+/*******************************************************
+ * Asciidoctor Table style rendering
+ * Feb 27, CHM: Added & Refactor to display the borders
+ * Mar 02, CHM: Add caption to display the Table title with a different style, color
+ * Mar 03, CHM: Improve style to be compliant with Redhat styles
+ * Mar 06, CHM: Add a noredheader class to avoid to display the first line in red of a table containing images, ..
+ ******************************************************/
+table.tableblock, table.tableblock td {
+  border-style: solid;
+  border-color: rgb(183, 188, 190);
+  border-width: 0.99px;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  padding: 5px;
+}
+
+table.tableblock > caption {
+  line-height: 1.4;
+  color: #333333;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  overflow: visible;
+  max-width: 0;
+  white-space: nowrap;
+  display: table-caption
+}
+
+table.tableblock:not(.noredheader) tr:first-child td {
+  background-color: $red-color;
+  text-align: left;
+  padding: 10px;
+  color: white;
+  font-size: 24px;
+}
+
+table.tableblock.noredheader tr:first-child td {
+  background-color: #EEEEEE;
+}
+
+table.tableblock tr:nth-child(even) {
+  background: white;
+}
+
+table.tableblock tr:nth-child(odd) {
+  background: rgb(238, 238, 238);
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+
+/**************************************************************
+ * By default, it is not possible to display text in Bold, ... within <li> tag
+ * Here is a trick to support that <strong>text</strong> enclosed in <li> tag & color
+ * Feb 27, CHM: Added
+ **************************************************************/
+li strong {
+  color: $red-color;
+  font-weight: bold;
+}
+
+/**************************************************************
+ * Override Revealjs Pre class
+ * Mar 04 2015, CHM : Change width from 90% to 100% and margin to reduce size of the box hightlighted
+ *************************************************************/
+.reveal pre {
+  width: 100%;
+}
+
+.listingblock .content {
+  margin-right: 50px;
+  padding-right: 50px;
+}
+
+/****************
+ * Override Revealjs ordered list
+ * Mar 06 2016, CHM : Numbers displayed were cut
+ ****************/
+.reveal ol {
+  margin-left: 40px;
+}
+
+ol.arabic {
+  list-style-type: decimal;
+}
+
+ol.decimal {
+  list-style-type: decimal-leading-zero;
+}
+
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+ol.lowergreek {
+  list-style-type: lower-greek;
+}
+
+/**************************************************************
+ * Admonition Asciidoctor
+ *
+ * Mar 03, CHM: Added
+ **************************************************************/
+.admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .mathblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
+  text-align: left;
+  font-weight: bold;
+}
+
+.admonitionblock > table {
+  border: 0;
+  background: none;
+  width: 100%;
+  padding: 5px 0px;
+}
+
+.admonitionblock > table td.icon {
+  text-align: center;
+  width: 80px;
+}
+
+.admonitionblock > table td.icon img {
+  max-width: none;
+}
+
+.admonitionblock > table td.icon .title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.admonitionblock > table td.content {
+  padding-left: 1.125em;
+  padding-right: 1.25em;
+  border-left: 1px solid #dddddd;
+  color: #6f6f6f;
+  font-size: 20px;
+  font-style: normal;
+}
+
+/* Override the color for the list */
+.admonitionblock > table td.content ul li, .admonitionblock > table td.content ol li, .admonitionblock > table td.content ol p, .admonitionblock > table td.content ul p {
+  color: #6f6f6f;
+}
+
+.admonitionblock > table td.content > :last-child > :last-child {
+  margin-bottom: 0;
+}
+
+.admonitionblock > table td.icon {
+  vertical-align: middle;
+}
+
+.admonitionblock td.icon [class^="icon-"]:before {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  cursor: default;
+  font-style: normal;
+  font-weight: normal;
+  font-family: FontAwesome;
+  text-decoration: inherit;
+  font-size: 46px;
+  padding-right: 0.5em;
+  position: relative;
+  left: 0;
+  top: 5px;
+}
+
+.admonitionblock td.icon .icon-note:before {
+  content: "\f05a";
+  color: #005498;
+  color: #003f72;
+}
+
+.admonitionblock td.icon .icon-tip:before {
+  content: "\f0eb";
+  text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
+  color: #111;
+}
+
+/* Use a more yellow lighter color */
+.admonitionblock td.icon .icon-warning:before {
+  content: "\f071";
+  color: #EFEF0C;
+}
+
+.admonitionblock td.icon .icon-caution:before {
+  content: "\f06d";
+  color: #bf3400;
+}
+
+.admonitionblock td.icon .icon-important:before {
+  content: "\f06a";
+  color: #bf0000;
+}

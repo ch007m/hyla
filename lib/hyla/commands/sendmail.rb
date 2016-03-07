@@ -93,7 +93,7 @@ module Hyla
 
       #
       # Generate the Hash of the parameters
-      # used by mail compoent nto send email
+      # used by mail component nto send email
       #
       def self.parameters()
         parameters = {}

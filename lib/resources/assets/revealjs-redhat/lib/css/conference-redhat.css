@@ -1,15 +1,19 @@
 /* $fonts: 'Overpass', 'Liberation Sans', 'Open Sans', sans-serif; */
+/* JBCnfConf 2016 */
+/*$color: #019AD7;*/
+/* Snowcamp 2016 */
+/* Override variable */
 /*********************************************
  * GLOBAL STYLES
  * Feb 24, ART:  added a border to the body, attempting to see how the margin is being used.
  * Feb 24, ART:  added a border to the reveal section, attempting to see how the margin is being used.
  *********************************************/
-/* line 14, ../conference-redhat.scss */
+/* line 12, ../conference-redhat.scss */
 body {
   font-family: "Liberation Sans", "Overpass", "Open Sans", sans-serif;
 }
 
-/* line 18, ../conference-redhat.scss */
+/* line 16, ../conference-redhat.scss */
 .reveal {
   font-family: "Liberation Sans", "Overpass", "Open Sans", sans-serif;
   font-size: 28px;
@@ -18,7 +22,7 @@ body {
   color: black;
 }
 
-/* line 26, ../conference-redhat.scss */
+/* line 24, ../conference-redhat.scss */
 ::selection {
   color: white;
   background: rgba(0, 0, 0, 0.99);
@@ -28,7 +32,7 @@ body {
 /*********************************************
  * HEADERS
  *********************************************/
-/* line 35, ../conference-redhat.scss */
+/* line 33, ../conference-redhat.scss */
 .reveal h1,
 .reveal h2,
 .reveal h3,
@@ -47,7 +51,7 @@ body {
 /**************************************************************
  * Change color of the cover slide using class sl-block-content
  **************************************************************/
-/* line 53, ../conference-redhat.scss */
+/* line 51, ../conference-redhat.scss */
 .reveal .sl-block-content h1,
 .reveal .sl-block-content h2,
 .reveal .sl-block-content h3,
@@ -60,14 +64,14 @@ body {
 /***************************************************
  * Feb 26, ART: Font Size 2em and width: 900px added
  **************************************************/
-/* line 65, ../conference-redhat.scss */
+/* line 63, ../conference-redhat.scss */
 .reveal h1 {
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.2);
   font-size: 2em;
   width: 900px;
 }
 
-/* line 71, ../conference-redhat.scss */
+/* line 69, ../conference-redhat.scss */
 .reveal h2 {
   font-size: 2em;
 }
@@ -77,7 +81,7 @@ body {
  * Feb 26, CHM : Add top: 370px to fill the screen to 100%
  * Mar 24 3015, CHM : Remove top due to cutoff with safari, firefox & add margin-top
  ******************************************/
-/* line 80, ../conference-redhat.scss */
+/* line 78, ../conference-redhat.scss */
 .reveal .slides {
   text-align: left;
   /* margin-top: $slides-margin-top; WE don't use it as the value is assigned by Revealjs */
@@ -91,7 +95,7 @@ body {
  * Mar 02, CHM: Increase height from 600 to 670px
  * Mar 06, CHM: Change overflow from scroll to auto
  *********************************************/
-/* line 93, ../conference-redhat.scss */
+/* line 91, ../conference-redhat.scss */
 .scrollbar {
   border: 1px solid #eee;
   height: 600px;
@@ -105,7 +109,7 @@ body {
  * Add this tag [.cover] before the picture of the cover page
  * Mar 04 2015, CHM: Initial
  **************************************************************/
-/* line 106, ../conference-redhat.scss */
+/* line 104, ../conference-redhat.scss */
 .cover {
   position: absolute;
   top: 20px;
@@ -116,7 +120,7 @@ body {
  * Corporate Logo Header Image
  * Feb 26, CHM: Changed the height from 80px to 0px
  *********************************************/
-/* line 116, ../conference-redhat.scss */
+/* line 114, ../conference-redhat.scss */
 .header {
   position: absolute;
   margin: 0 auto;
@@ -135,7 +139,7 @@ body {
  * Mar 13 2015, CHM : Add footer-cover to override the color for cover slide
  * Mar 24 2015, CHM : Remove hard coded px and use percentages
  ******************************************************/
-/* line 134, ../conference-redhat.scss */
+/* line 132, ../conference-redhat.scss */
 .reveal .footer {
   position: absolute;
   margin: 0 auto;
@@ -148,7 +152,7 @@ body {
   text-align: center;
 }
 
-/* line 146, ../conference-redhat.scss */
+/* line 144, ../conference-redhat.scss */
 .reveal .footer-cover {
   position: absolute;
   margin: 0 auto;
@@ -165,7 +169,7 @@ body {
 /*********************************************
  * LINKS
  *********************************************/
-/* line 162, ../conference-redhat.scss */
+/* line 160, ../conference-redhat.scss */
 .reveal a:not(.image) {
   color: #a70000;
   text-decoration: none;
@@ -176,14 +180,14 @@ body {
   transition: color .15s ease;
 }
 
-/* line 173, ../conference-redhat.scss */
+/* line 171, ../conference-redhat.scss */
 .reveal a:not(.image):hover {
   color: #a70000;
   text-shadow: none;
   border: none;
 }
 
-/* line 179, ../conference-redhat.scss */
+/* line 177, ../conference-redhat.scss */
 .reveal .roll span:after {
   color: #fff;
   background: #a70000;
@@ -193,7 +197,7 @@ body {
  * IMAGES
  * Mar 13 2015, CHM : Remove the shadow box around the image
  *********************************************/
-/* line 188, ../conference-redhat.scss */
+/* line 186, ../conference-redhat.scss */
 .reveal section img {
   margin: 15px 0px;
   -webkit-transition: all .2s linear;
@@ -203,7 +207,7 @@ body {
   transition: all .2s linear;
 }
 
-/* line 197, ../conference-redhat.scss */
+/* line 195, ../conference-redhat.scss */
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
   border-color: #a70000;
@@ -213,46 +217,46 @@ body {
 /*********************************************
  * NAVIGATION CONTROLS
  *********************************************/
-/* line 206, ../conference-redhat.scss */
+/* line 204, ../conference-redhat.scss */
 .reveal .controls div.navigate-left,
 .reveal .controls div.navigate-left.enabled {
   border-right-color: #C1100C;
 }
 
-/* line 211, ../conference-redhat.scss */
+/* line 209, ../conference-redhat.scss */
 .reveal .controls div.navigate-right,
 .reveal .controls div.navigate-right.enabled {
   border-left-color: #C1100C;
 }
 
-/* line 216, ../conference-redhat.scss */
+/* line 214, ../conference-redhat.scss */
 .reveal .controls div.navigate-up,
 .reveal .controls div.navigate-up.enabled {
   border-bottom-color: #C1100C;
 }
 
-/* line 221, ../conference-redhat.scss */
+/* line 219, ../conference-redhat.scss */
 .reveal .controls div.navigate-down,
 .reveal .controls div.navigate-down.enabled {
   border-top-color: #C1100C;
 }
 
-/* line 226, ../conference-redhat.scss */
+/* line 224, ../conference-redhat.scss */
 .reveal .controls div.navigate-left.enabled:hover {
   border-right-color: #ef6f16;
 }
 
-/* line 230, ../conference-redhat.scss */
+/* line 228, ../conference-redhat.scss */
 .reveal .controls div.navigate-right.enabled:hover {
   border-left-color: #ef6f16;
 }
 
-/* line 234, ../conference-redhat.scss */
+/* line 232, ../conference-redhat.scss */
 .reveal .controls div.navigate-up.enabled:hover {
   border-bottom-color: #ef6f16;
 }
 
-/* line 238, ../conference-redhat.scss */
+/* line 236, ../conference-redhat.scss */
 .reveal .controls div.navigate-down.enabled:hover {
   border-top-color: #ef6f16;
 }
@@ -260,12 +264,12 @@ body {
 /*********************************************
  * PROGRESS BAR
  *********************************************/
-/* line 245, ../conference-redhat.scss */
+/* line 243, ../conference-redhat.scss */
 .reveal .progress {
   background: rgba(0, 0, 0, 0.2);
 }
 
-/* line 249, ../conference-redhat.scss */
+/* line 247, ../conference-redhat.scss */
 .reveal .progress span {
   background: #a70000;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -278,7 +282,7 @@ body {
 /*********************************************
  * SLIDE NUMBER
  *********************************************/
-/* line 261, ../conference-redhat.scss */
+/* line 259, ../conference-redhat.scss */
 .reveal .slide-number {
   color: darkblue;
 }
@@ -291,28 +295,28 @@ body {
  * Mar 13 2015, CHM: Change color to black and revert square, disc & circle
  *********************************************************************************/
 /* line 287, ../gpe.scss */
-/* line 273, ../conference-redhat.scss */
+/* line 271, ../conference-redhat.scss */
 .reveal ul li p, ul li li p, ul li li p {
   color: black;
   list-style: none;
 }
 
 /* line 293, ../gpe.scss */
-/* line 279, ../conference-redhat.scss */
+/* line 277, ../conference-redhat.scss */
 .reveal ul li {
   list-style-type: disc;
   color: black;
 }
 
 /* line 298, ../gpe.scss */
-/* line 285, ../conference-redhat.scss */
+/* line 283, ../conference-redhat.scss */
 .reveal ul li li {
   list-style-type: square;
   color: black;
 }
 
 /* line 303, ../gpe.scss */
-/* line 291, ../conference-redhat.scss */
+/* line 289, ../conference-redhat.scss */
 .reveal ul li li li {
   list-style-type: circle;
   color: black;
@@ -323,7 +327,7 @@ body {
  * Font Awesome icons for NOTE, WARNING, REMARK, ....
  * Feb, CHM: Added
  *******************************************************************/
-/* line 301, ../conference-redhat.scss */
+/* line 299, ../conference-redhat.scss */
 .reveal i.fa {
   font-family: 'FontAwesome';
   font-style: normal;
@@ -334,7 +338,7 @@ body {
  * Support asciidoctor callout
  * Feb 27, CHM: Added
  *********************************************/
-/* line 311, ../conference-redhat.scss */
+/* line 309, ../conference-redhat.scss */
 .reveal i.conum {
   display: inline-block;
   color: white !important;
@@ -353,22 +357,22 @@ body {
   letter-spacing: -2px;
 }
 
-/* line 329, ../conference-redhat.scss */
+/* line 327, ../conference-redhat.scss */
 .reveal i.conum * {
   color: white !important;
 }
 
-/* line 333, ../conference-redhat.scss */
+/* line 331, ../conference-redhat.scss */
 .reveal i.conum + b {
   display: none;
 }
 
-/* line 337, ../conference-redhat.scss */
+/* line 335, ../conference-redhat.scss */
 .reveal i.conum:after {
   content: attr(data-value);
 }
 
-/* line 341, ../conference-redhat.scss */
+/* line 339, ../conference-redhat.scss */
 .reveal i.conum:not([data-value]):empty {
   display: none;
 }
@@ -380,7 +384,7 @@ body {
  * Mar 03, CHM: Improve style to be compliant with Redhat styles
  * Mar 06, CHM: Add a noredheader class to avoid to display the first line in red of a table containing images, ..
  ******************************************************/
-/* line 352, ../conference-redhat.scss */
+/* line 350, ../conference-redhat.scss */
 table.tableblock, table.tableblock td {
   border-style: none;
   border-color: #F3F4F4;
@@ -390,7 +394,7 @@ table.tableblock, table.tableblock td {
   padding: 5px;
 }
 
-/* line 361, ../conference-redhat.scss */
+/* line 359, ../conference-redhat.scss */
 table.tableblock > caption {
   line-height: 1.4;
   color: #333333;
@@ -402,7 +406,7 @@ table.tableblock > caption {
   display: table-caption;
 }
 
-/* line 372, ../conference-redhat.scss */
+/* line 370, ../conference-redhat.scss */
 table.tableblock:not(.noredheader) thead tr, table.tableblock:not(.noredheader) :not(thead) + tbody tr:first-child td {
   background-color: #a70000;
   text-align: left;
@@ -411,47 +415,47 @@ table.tableblock:not(.noredheader) thead tr, table.tableblock:not(.noredheader) 
   font-size: 24px;
 }
 
-/* line 380, ../conference-redhat.scss */
+/* line 378, ../conference-redhat.scss */
 table.tableblock.noredheader tr:first-child td {
   /*  background-color: #EEEEEE;*/
 }
 
-/* line 384, ../conference-redhat.scss */
+/* line 382, ../conference-redhat.scss */
 table.tableblock tr:nth-child(even) {
   /*  background: white;*/
 }
 
-/* line 388, ../conference-redhat.scss */
+/* line 386, ../conference-redhat.scss */
 table.tableblock tr:nth-child(odd) {
   /*  background-color: #F3F4F4;*/
 }
 
-/* line 392, ../conference-redhat.scss */
+/* line 390, ../conference-redhat.scss */
 th.tableblock.halign-left, td.tableblock.halign-left {
   text-align: left;
 }
 
-/* line 396, ../conference-redhat.scss */
+/* line 394, ../conference-redhat.scss */
 th.tableblock.halign-right, td.tableblock.halign-right {
   text-align: right;
 }
 
-/* line 400, ../conference-redhat.scss */
+/* line 398, ../conference-redhat.scss */
 th.tableblock.halign-center, td.tableblock.halign-center {
   text-align: center;
 }
 
-/* line 404, ../conference-redhat.scss */
+/* line 402, ../conference-redhat.scss */
 th.tableblock.valign-top, td.tableblock.valign-top {
   vertical-align: top;
 }
 
-/* line 408, ../conference-redhat.scss */
+/* line 406, ../conference-redhat.scss */
 th.tableblock.valign-bottom, td.tableblock.valign-bottom {
   vertical-align: bottom;
 }
 
-/* line 412, ../conference-redhat.scss */
+/* line 410, ../conference-redhat.scss */
 th.tableblock.valign-middle, td.tableblock.valign-middle {
   vertical-align: middle;
 }
@@ -461,7 +465,7 @@ th.tableblock.valign-middle, td.tableblock.valign-middle {
  * Here is a trick to support that <strong>text</strong> enclosed in <li> tag & color
  * Feb 27, CHM: Added
  **************************************************************/
-/* line 421, ../conference-redhat.scss */
+/* line 419, ../conference-redhat.scss */
 li strong {
   color: #a70000;
   font-weight: bold;
@@ -471,12 +475,12 @@ li strong {
  * Override Revealjs Pre class
  * Mar 04 2015, CHM : Change width from 90% to 100% and margin to reduce size of the box hightlighted
  *************************************************************/
-/* line 430, ../conference-redhat.scss */
+/* line 428, ../conference-redhat.scss */
 .reveal pre {
   width: 100%;
 }
 
-/* line 434, ../conference-redhat.scss */
+/* line 432, ../conference-redhat.scss */
 .listingblock .content {
   margin-right: 50px;
   padding-right: 50px;
@@ -487,42 +491,42 @@ li strong {
  * Mar 06 2015, CHM : Numbers displayed were cut
  * Mar 16 2015, CHM : Change margin left for font overlap otherwise it is cut
  ****************/
-/* line 444, ../conference-redhat.scss */
+/* line 442, ../conference-redhat.scss */
 .reveal ol {
   margin-left: 50px;
 }
 
-/* line 448, ../conference-redhat.scss */
+/* line 446, ../conference-redhat.scss */
 ol.arabic {
   list-style-type: decimal;
 }
 
-/* line 452, ../conference-redhat.scss */
+/* line 450, ../conference-redhat.scss */
 ol.decimal {
   list-style-type: decimal-leading-zero;
 }
 
-/* line 456, ../conference-redhat.scss */
+/* line 454, ../conference-redhat.scss */
 ol.loweralpha {
   list-style-type: lower-alpha;
 }
 
-/* line 460, ../conference-redhat.scss */
+/* line 458, ../conference-redhat.scss */
 ol.upperalpha {
   list-style-type: upper-alpha;
 }
 
-/* line 464, ../conference-redhat.scss */
+/* line 462, ../conference-redhat.scss */
 ol.lowerroman {
   list-style-type: lower-roman;
 }
 
-/* line 468, ../conference-redhat.scss */
+/* line 466, ../conference-redhat.scss */
 ol.upperroman {
   list-style-type: upper-roman;
 }
 
-/* line 472, ../conference-redhat.scss */
+/* line 470, ../conference-redhat.scss */
 ol.lowergreek {
   list-style-type: lower-greek;
 }
@@ -532,13 +536,13 @@ ol.lowergreek {
  *
  * Mar 03, CHM: Added
  **************************************************************/
-/* line 481, ../conference-redhat.scss */
+/* line 479, ../conference-redhat.scss */
 .admonitionblock td.content > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .mathblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, .sidebarblock > .title, .tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title {
   text-align: left;
   font-weight: bold;
 }
 
-/* line 486, ../conference-redhat.scss */
+/* line 484, ../conference-redhat.scss */
 .admonitionblock > table {
   border: 0;
   background: none;
@@ -546,24 +550,24 @@ ol.lowergreek {
   padding: 5px 0px;
 }
 
-/* line 493, ../conference-redhat.scss */
+/* line 491, ../conference-redhat.scss */
 .admonitionblock > table td.icon {
   text-align: center;
   width: 80px;
 }
 
-/* line 498, ../conference-redhat.scss */
+/* line 496, ../conference-redhat.scss */
 .admonitionblock > table td.icon img {
   max-width: none;
 }
 
-/* line 502, ../conference-redhat.scss */
+/* line 500, ../conference-redhat.scss */
 .admonitionblock > table td.icon .title {
   font-weight: bold;
   text-transform: uppercase;
 }
 
-/* line 507, ../conference-redhat.scss */
+/* line 505, ../conference-redhat.scss */
 .admonitionblock > table td.content {
   padding-left: 1.125em;
   padding-right: 1.25em;
@@ -574,22 +578,22 @@ ol.lowergreek {
 }
 
 /* Override the color for the list */
-/* line 517, ../conference-redhat.scss */
+/* line 515, ../conference-redhat.scss */
 .admonitionblock > table td.content ul li, .admonitionblock > table td.content ol li, .admonitionblock > table td.content ol p, .admonitionblock > table td.content ul p {
   color: #6f6f6f;
 }
 
-/* line 521, ../conference-redhat.scss */
+/* line 519, ../conference-redhat.scss */
 .admonitionblock > table td.content > :last-child > :last-child {
   margin-bottom: 0;
 }
 
-/* line 525, ../conference-redhat.scss */
+/* line 523, ../conference-redhat.scss */
 .admonitionblock > table td.icon {
   vertical-align: middle;
 }
 
-/* line 529, ../conference-redhat.scss */
+/* line 527, ../conference-redhat.scss */
 .admonitionblock td.icon [class^="icon-"]:before {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   cursor: default;
@@ -604,14 +608,14 @@ ol.lowergreek {
   top: 5px;
 }
 
-/* line 543, ../conference-redhat.scss */
+/* line 541, ../conference-redhat.scss */
 .admonitionblock td.icon .icon-note:before {
   content: "\f05a";
   color: #005498;
   color: #003f72;
 }
 
-/* line 549, ../conference-redhat.scss */
+/* line 547, ../conference-redhat.scss */
 .admonitionblock td.icon .icon-tip:before {
   content: "\f0eb";
   text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
@@ -619,19 +623,19 @@ ol.lowergreek {
 }
 
 /* Use a more yellow lighter color */
-/* line 556, ../conference-redhat.scss */
+/* line 554, ../conference-redhat.scss */
 .admonitionblock td.icon .icon-warning:before {
   content: "\f071";
   color: #EFEF0C;
 }
 
-/* line 561, ../conference-redhat.scss */
+/* line 559, ../conference-redhat.scss */
 .admonitionblock td.icon .icon-caution:before {
   content: "\f06d";
   color: #bf3400;
 }
 
-/* line 566, ../conference-redhat.scss */
+/* line 564, ../conference-redhat.scss */
 .admonitionblock td.icon .icon-important:before {
   content: "\f06a";
   color: #bf0000;
@@ -642,22 +646,22 @@ ol.lowergreek {
  * Mar 23 2015, CHM: Added
  * Mar 25 2015, CHM: Change font size to 28px;
  **************************************************************/
-/* line 576, ../conference-redhat.scss */
+/* line 574, ../conference-redhat.scss */
 .reveal .audioblock {
   padding: 15px 0px;
 }
 
-/* line 580, ../conference-redhat.scss */
+/* line 578, ../conference-redhat.scss */
 .reveal p, .reveal ol, .reveal ul, .reveal table, .reveal .colist td {
   font-size: 28px;
 }
 
-/* line 584, ../conference-redhat.scss */
+/* line 582, ../conference-redhat.scss */
 .reveal pre {
   font-size: 0.55em;
 }
 
-/* line 588, ../conference-redhat.scss */
+/* line 586, ../conference-redhat.scss */
 .reveal .listingblock {
   padding-bottom: 10px;
 }

@@ -1,5 +1,7 @@
+@import "variable";
+
 .reveal .slide-background {
-    background: #f3f4f4;
+    background: $revealjs-all-slides-background-color;
     background-size: cover;
     background-position: 50% 50%;
     background-repeat: no-repeat;

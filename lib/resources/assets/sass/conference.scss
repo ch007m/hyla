@@ -50,7 +50,7 @@ body {
 .reveal .sl-block-content h4,
 .reveal .sl-block-content h5,
 .reveal .sl-block-content h6 {
-  color: $header-block-color;
+  color: $header-sl-block-color;
 }
 
 /***************************************************
@@ -74,6 +74,16 @@ body {
 .reveal .slides {
   text-align: left;
   /* margin-top: $slides-margin-top; WE don't use it as the value is assigned by Revealjs */
+}
+
+/******************************************
+ * Reduce Font size
+ ******************************************/
+.reveal .slides > section h1 {
+  font-size: 2.4em;
+}
+.reveal .slides > section h2 {
+  font-size: 1.8em;
 }
 
 /*********************************************
@@ -154,7 +164,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: $red-color;
+  color: $color;
   text-decoration: none;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;
@@ -165,14 +175,14 @@ body {
 }
 
 .reveal a:not(.image):hover {
-  color: $red-color;
+  color: $color;
   text-shadow: none;
   border: none;
 }
 
 .reveal .roll span:after {
   color: #fff;
-  background: $red-color;
+  background: $color;
 }
 
 /*********************************************
@@ -190,7 +200,7 @@ body {
 
 .reveal a:hover img {
   background: rgba(255, 255, 255, 0.2);
-  border-color: $red-color;
+  border-color: $color;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.55);
 }
 
@@ -241,7 +251,7 @@ body {
 }
 
 .reveal .progress span {
-  background: $red-color;
+  background: $color;
   -webkit-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -moz-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
   -ms-transition: width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
@@ -305,7 +315,7 @@ body {
 .reveal i.conum {
   display: inline-block;
   color: white !important;
-  background-color: $red-color;
+  background-color: $color;
   -webkit-border-radius: 100px;
   border-radius: 100px;
   text-align: center;
@@ -413,16 +423,8 @@ th.tableblock.valign-middle, td.tableblock.valign-middle {
  * Feb 27, CHM: Added
  **************************************************************/
 li strong {
-  color: $red-color;
+  color: $color;
   font-weight: bold;
-}
-
-/**************************************************************
- * Override Revealjs Pre class
- * Mar 04 2015, CHM : Change width from 90% to 100% and margin to reduce size of the box hightlighted
- *************************************************************/
-.reveal pre {
-  width: 100%;
 }
 
 .listingblock .content {
@@ -575,8 +577,15 @@ ol.lowergreek {
   font-size: 28px;
 }
 
+/**************************************************************
+ * Override Revealjs Pre class
+ * Mar 04 2015, CHM : Change width from 90% to 100% and margin to reduce size of the box hightlighted
+ * June 2016, CHM : Increase width, height of the block displaying the code source
+ *************************************************************/
 .reveal pre {
-  font-size: 0.55em;
+  font-size: $revealjs-pre-font-size;
+  width: 115%;
+  height: 115%;
 }
 
 .reveal .listingblock {

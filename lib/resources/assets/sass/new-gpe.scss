@@ -1,17 +1,6 @@
 /* $debug-configuration: true; */
 
-/* 
- * We dont import the css content of font-awesome hre
- * as it will added to the HTML of the slideshow as a local/remote resource
- *  @import "font-awesome"; 
- */
-
-/* $fonts: 'Overpass', 'Liberation Sans', 'Open Sans', sans-serif; */
-$fonts: 'Liberation Sans', 'Overpass', 'Open Sans', sans-serif;
-$red-color: #a70000;
-$scrollbar-height: 600px;
-$footer-bottom: -25%;
-$slides-margin-top: 15px;
+@import "variable";
 
 /*********************************************
  * GLOBAL STYLES

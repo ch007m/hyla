@@ -1,10 +1,7 @@
-/* $fonts: 'Overpass', 'Liberation Sans', 'Open Sans', sans-serif; */
-$fonts: 'Liberation Sans', 'Overpass', 'Open Sans', sans-serif;
+@import "variable";
+
+// Override color defined within the common file
 $color: #019AD7;
-$header-sl-block-color: #222222;
-$scrollbar-height: 600px;
-$footer-bottom: -25%;
-$slides-margin-top: 15px;
 
 /*********************************************
  * GLOBAL STYLES

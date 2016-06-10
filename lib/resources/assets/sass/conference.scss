@@ -1,5 +1,12 @@
 @import "variable";
 
+/* Override global variable */
+$revealjs-all-slides-background-color: white; /* This color is defined within the theme_output.scss file */
+
+.reveal .slide-background {
+  background: $revealjs-all-slides-background-color;
+}
+
 /*********************************************
  * GLOBAL STYLES
  * Feb 24, ART:  added a border to the body, attempting to see how the margin is being used.
@@ -355,7 +362,7 @@ body {
  ******************************************************/
 table.tableblock, table.tableblock td {
   border-style: none;
-  border-color: #F3F4F4;;
+  border-color: #F3F4F4;
   border-width: 0px;
   border-collapse: collapse;
   border-spacing: 0px;

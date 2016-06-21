@@ -603,9 +603,37 @@ ol.lowergreek {
 #expandlist li {
   line-height: 130%;
   text-indent: 0px;
-  background-position: 1px 8px;
+  background-position: 1px 13px;
   padding-left: 30px;
   background-repeat: no-repeat;
+  /* Use a relative position in order to place more space between the decimal/bullet symbol and the text */
+  position: relative;
+  left:35px;
+}
+
+/* Enable the decimal style for a list defined under the <ol id='expandlist'/> selector */
+ol[id=expandlist] > li {
+  list-style-type: decimal;
+}
+
+/* Remove the margin to align the text of the items ol with the parent */
+/* First Level */
+ol[id=expandlist] > li > div.olist > ol {
+  margin-left: 0px;
+}
+/* Second Level */
+ol[id=expandlist] .olist > ol > li ol {
+  margin-left: 0px;
+}
+
+/* Remove the margin to align the text of the items ul with the parent */
+/* First Level */
+ul[id=expandlist] > li > div.ulist > ul {
+  margin-left: 0px;
+}
+/* Second Level */
+ul[id=expandlist] .ulist > ul > li ul {
+  margin-left: 0px;
 }
 
 /* Collapsed state for list element */

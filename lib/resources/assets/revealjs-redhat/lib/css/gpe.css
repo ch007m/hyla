@@ -687,20 +687,29 @@ ol.lowergreek {
 #expandlist li {
   line-height: 130%;
   text-indent: 0px;
-  background-position: 1px 8px;
+  background-position: 1px 13px;
   padding-left: 30px;
   background-repeat: no-repeat;
+  /* Use a relative position in order to place more space between the decimal/bullet symbol and the text */
+  position: relative;
+  left: 35px;
+}
+
+/* Exnable the decimal style for a list defined under the <ol id='expandlist'/> selector */
+/* line 615, ../new-gpe.scss */
+ol[id=expandlist] > li {
+  list-style-type: decimal;
 }
 
 /* Collapsed state for list element */
-/* line 612, ../new-gpe.scss */
+/* line 620, ../new-gpe.scss */
 #expandlist .collapsed {
   background-image: url(../../image/collapsed.png);
 }
 
 /* Expanded state for list element
 /* NOTE: This class must be located UNDER the collapsed one */
-/* line 618, ../new-gpe.scss */
+/* line 626, ../new-gpe.scss */
 #expandlist .expanded {
   background-image: url(../../image/expanded.png);
 }
@@ -708,7 +717,7 @@ ol.lowergreek {
 /**************************/
 /* Show / Hide Text block */
 /**************************/
-/* line 625, ../new-gpe.scss */
+/* line 633, ../new-gpe.scss */
 #showhide {
   background: #a0100c;
   display: block;
@@ -716,7 +725,7 @@ ol.lowergreek {
   border: 1px solid darkgray;
 }
 
-/* line 632, ../new-gpe.scss */
+/* line 640, ../new-gpe.scss */
 #showhide:before {
   display: block;
   content: 'Click to view audio transcript   ';
@@ -727,7 +736,7 @@ ol.lowergreek {
   color: #f4f4f4;
 }
 
-/* line 642, ../new-gpe.scss */
+/* line 650, ../new-gpe.scss */
 .acontent {
   background: #b7bcbe;
   overflow: hidden;
@@ -737,12 +746,12 @@ ol.lowergreek {
 }
 
 /* We don't want to show the check box */
-/* line 651, ../new-gpe.scss */
+/* line 659, ../new-gpe.scss */
 input[type="checkbox"] {
   display: none;
 }
 
-/* line 655, ../new-gpe.scss */
+/* line 663, ../new-gpe.scss */
 input[type="checkbox"]:checked ~ .acontent {
   padding: 0.75rem 0.75rem 1.5rem;
   border-bottom: 1px solid #ccc;
@@ -750,7 +759,7 @@ input[type="checkbox"]:checked ~ .acontent {
 }
 
 /* Content displayed after clicking on the virtual checkbox */
-/* line 662, ../new-gpe.scss */
+/* line 670, ../new-gpe.scss */
 input[type="checkbox"]:checked ~ #showhide:before {
   content: 'Audio Transcript';
   margin-top: 0em;

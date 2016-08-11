@@ -4,7 +4,7 @@ echo "Generate HTML Content of MyBlank project - Style Foundation"
 
 echo "Create Project"
 rm -rf ~hyla/MyBlankProject
-hyla new -b -d ~/hyla/MyBlankProject --force
+hyla new -b ~/hyla/MyBlankProject --force
 
 cd ~/hyla/MyBlankProject
 

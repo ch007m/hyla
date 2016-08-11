@@ -2,7 +2,7 @@
 
 echo "Create Project"
 rm -rf ~hyla/MyBlankProject
-hyla new -b -d ~/hyla/MyBlankProject --force
+hyla new -b ~/hyla/MyBlankProject --force
 
 echo "Generate HTML Content of MyBlank project"
 cd ~/hyla/MyBlankProject

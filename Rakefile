@@ -43,14 +43,6 @@ def revealjs_redhat_css_theme_assets
   [Hyla::Configuration.assets, 'revealjs-redhat', 'lib', 'css'] * '/'
 end
 
-def revealjs_css_theme_assets
-  [Hyla::Configuration.assets, 'revealjs', 'css', 'theme'] * '/'
-end
-
-def revealjs_css_vendor_assets
-  [Hyla::Configuration.assets, 'revealjs', 'lib', 'css'] * '/'
-end
-
 def default_compilation_style
   'compressed'
 end
@@ -113,11 +105,7 @@ task :compass, [:mode] do |t, args|
 
     # Copy css to RevealJS theme
     # p revealjs_css_assets
-    sh "cp styles/old-gpe.css #{revealjs_css_theme_assets}"
-    sh "cp styles/font-awesome.css #{revealjs_css_vendor_assets}/font-awesome-4.3.0.css"
     sh "cp styles/new-gpe.css #{revealjs_redhat_css_theme_assets}/gpe.css"
-    sh "cp styles/conference.css #{revealjs_redhat_css_theme_assets}/conference.css"
-    sh "cp styles/conference-blue.css #{revealjs_redhat_css_theme_assets}/conference-blue.css"
     sh "cp styles/conference-redhat.css #{revealjs_redhat_css_theme_assets}/conference-redhat.css"
     sh "cp styles/theme-v2-liberation.css #{revealjs_redhat_css_theme_assets}/theme-v2-liberation.css"
     sh "cp styles/theme-v2-overpass.css #{revealjs_redhat_css_theme_assets}/theme-v2-overpass.css"
@@ -213,9 +201,6 @@ task :publish do
 end
 
 Rake::Minify.new(:minifyjs) do
-  dir("lib/resources/assets/revealjs/js/debug") do
-    add("lib/resources/assets/revealjs/js/reveal.min.js", "reveal.js")
-  end
   dir("lib/resources/assets/revealjs-redhat/lib/js/debug") do
     add("lib/resources/assets/revealjs-redhat/lib/js/reveal.min.js", "reveal.js")
     add("lib/resources/assets/revealjs-redhat/lib/js/head.min.js", "head.js")

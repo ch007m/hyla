@@ -5,7 +5,7 @@ rm -rf ~/hyla/MyRevealSlideShow
 cd ~/hyla
 
 echo "Create a blank project"
-hyla new --blank -d MyRevealSlideShow
+hyla new -b MyRevealSlideShow
 
 echo "Create from slideshow template a RevealJS  file"
 hyla add --t slideshow -a revealjs -d MyRevealSlideShow

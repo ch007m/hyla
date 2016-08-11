@@ -5,7 +5,6 @@ The following scenario describes how we can can setup a project using one of the
 
     rm -rf ~/hyla/MyBlankProject/
     rm -rf ~/hyla/MyBookProject
-    rm -rf ~/hyla/MyPdfProject/
     rm -rf ~/hyla/MyTocProject/
     rm -rf ~/hyla/MyTrainingProject/
     rm -rf ~/hyla/MyTrainingExercisesProject/
@@ -231,46 +230,6 @@ Hyla command in another Terminal
     cd MyRevealSlideShow
 
     hyla generate --backend revealjs -s . -d generated_content -r adoc2html
-
-
-=== Generate a PDF
-
-A PDF document can be created using the rendering option `html2pdf`. To render the HTML file, Hyla uses the following Ruby
-libraries https://github.com/pdfkit/pdfkit[pdfkit] and https://github.com/wkhtmltopdf/wkhtmltopdf[wkhtmltopdf].
-
-- Clean and create a MyPdfProject (= directory)
-
-    cd ~/hyla
-    rm -rf MyPdfroject/
-    hyla new -b MyPdfProject --force
-    cd MyPdfProject
-
-- Create Asciidoc file from sample (book)
-
-    hyla add -a book --t asciidoc -d .
-
-- Generate HTML content using foundation stylesheet
-
-    hyla generate --style foundation
-
-- We change the rendering from adoc2html to html2pdf
-
-    ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: html2pdf")' _config.yaml
-
-- Source directory & Destination directory
-
-    ruby -i.bak -pe 'sub(%r{source: .},"source: ./generated_content")' _config.yaml
-    ruby -i.bak -pe 'sub(%r{destination: generated_content},"destination: ./generated_content/pdf")' _config.yaml
-
-- We will generate the PDF file for the image and book
-
-    hyla generate -f asciidoc_book.html
-    hyla generate -f asciidoc_image.html
-
-- Result can be opened and viewed
-
-    open generated_content/pdf/asciidoc_book.pdf
-    open generated_content/pdf/asciidoc_image.pdf
 
 === Send Email
 

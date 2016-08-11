@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'eventmachine', '~> 1.0'
   s.add_runtime_dependency 'ffi', '~> 1.9'
   s.add_runtime_dependency 'guard', '~> 1.8'
-  s.add_runtime_dependency 'imgkit', '~> 1.4'
   s.add_runtime_dependency 'haml', '~> 4.0'
   s.add_runtime_dependency 'highline', '~> 1.6'
   s.add_runtime_dependency 'listen', '~> 1.3'
@@ -50,9 +49,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'temple', '~> 0.6'
   s.add_runtime_dependency 'tilt', '~> 1.4'
   s.add_runtime_dependency 'thor', '~> 0.18'
-  s.add_runtime_dependency 'wkhtmltopdf-binary', '~> 0.9'
   s.add_runtime_dependency 'log4r', '~> 1.1'
-  
 
   # Colorize Text Terminal
   s.add_runtime_dependency 'colorator', '~> 0.1'

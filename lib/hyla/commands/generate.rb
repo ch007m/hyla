@@ -53,7 +53,7 @@ module Hyla
             merged_options = Configuration[options].deep_merge(new_asciidoctor_option)
 
             extensions = 'adoc,ad,asciidoc'
-            excludes = 'lab_assets|lab_assets_solution|code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
+            excludes = 'lab_assets|lab_assets_solution|code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_students'
 
             self.asciidoc_to_html(@source, @destination, extensions, excludes, merged_options)
 
@@ -89,23 +89,9 @@ module Hyla
             # Extension(s) of the files containing include directives
             #
             extensions = 'txt'
-            excludes = 'lab_assets|lab_assets_solution|code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_pdf|generated_content_students'
+            excludes = 'lab_assets|lab_assets_solution|code|snippets|templates|generated_content|generated_content_instructor|generated_content_snippet|generated_slideshow|generated_content_students'
 
             self.asciidoc_to_html(@source, @destination, extensions, excludes, merged_options)
-
-          when 'html2pdf'
-
-            Hyla.logger2.info "Rendering : Generate PDF from HTML file"
-
-            source_dir = options[:source] if self.check_mandatory_option?('-s / --source', options[:source])
-            out_dir = options[:destination] if self.check_mandatory_option?('-d / --destination', options[:destination])
-
-            file_name = options[:file]
-            cover_path ||= options[:cover_path]
-            header_html_path = options[:header_html_path]
-            footer_text = options[:footer_text]
-
-            self.html_to_pdf(file_name, source_dir, out_dir, footer_text, header_html_path, cover_path)
 
           when 'cover2png'
 
@@ -190,8 +176,6 @@ module Hyla
               kit.to_img(:png)
               kit.to_file(image_name)
             end
-            
-          when 'wkhtmltopdf'  
             
         end
 
@@ -617,31 +601,6 @@ module Hyla
         
       end
 
-=begin
-      #
-      # Generate PDF
-      #
-      def self.html_to_pdf(source, destination, html_file_name)
-        file_path = [source, html_file_name] * '/'
-        html_file = File.new(file_path)
-        kit = PDFKit.new(html_file,
-                         :page_size => 'A4',
-                         :toc => true,
-                         :page_offset => 1,
-                         :footer_center => 'Page [page]')
-
-        # Create destination directory if it does not exist
-        unless File.directory?(destination)
-          FileUtils.mkdir_p(destination)
-        end
-
-        # Save PDF to a file
-        pdf_file_name = [destination, html_file_name.sub(/html|htm/, 'pdf')] * '/'
-        kit.to_file(pdf_file_name)
-        Hyla.logger2.info ">> PDF file generated and saved : #{pdf_file_name} "
-      end
-=end
-
       def self.generate_summary_page()
         @index += 1
         file_index = sprintf('%02d', @index)
@@ -660,72 +619,6 @@ module Hyla
         #
         @index_file.puts Configuration::INCLUDE_PREFIX + f_name + Configuration::INCLUDE_SUFFIX
         @index_file.puts "\n"
-      end
-
-      def self.html_to_pdf(file_name, source, destination, footer_text, header_html_path, cover_path)
-
-        @cover_path = cover_path
-        destination= File.expand_path destination
-        pdf_file = [destination, "result.pdf"] * '/'
-        wkhtml_cmd = "wkhtmltopdf"
-        size = 'A4'
-
-        # pdf_file_name = [destination, html_file_name.sub(/html|htm/, 'pdf')] * '/'
-
-        list_of_files = ""
-
-        unless File.directory?(destination)
-          FileUtils.mkdir_p(destination)
-        end
-
-        if file_name.nil? || file_name.empty?
-          filter = [source] * '/' + "*.html"
-          files = Dir[filter]
-
-          files.each do |file|
-            file_name = File.basename file
-            next if file_name.downcase.include?('assessments')
-            next if file_name.downcase.include?('labinstructions')
-            next if file_name.downcase.include?('title')
-            next if file_name.downcase.include?('cover')
-            file = File.expand_path file
-            list_of_files = list_of_files + " " + file
-          end
-        else
-          #
-          # If the file passed as parameter has extension name equal to txt, then we will extract the file names
-          # whenever we have a include:: directive in the file
-          #
-          extension_name = File.extname file_name
-
-          case extension_name
-            when '.txt'
-              file_to_processed = [File.expand_path(Dir.getwd), file_name] * '/'
-              result = self.extract_file_names(file_to_processed, source)
-
-              result.each do |file_path|
-                if file_path.downcase.include?('title') || file_path.downcase.include?('cover')
-                  @cover_path = file_path
-                  next
-                end
-                list_of_files = list_of_files + " " + file_path
-              end
-
-            else
-              list_of_files = [File.expand_path(source), file_name] * '/'
-          end
-        end
-
-        wkhtml_cmd.concat " #{list_of_files} #{pdf_file}"
-        wkhtml_cmd.concat " --margin-top '18mm' --header-html '#{header_html_path}'" if header_html_path
-        wkhtml_cmd.concat " --margin-bottom '10mm'  --footer-center '#{footer_text}'" if footer_text
-        wkhtml_cmd.concat " --cover '#@cover_path'" if @cover_path
-        wkhtml_cmd.concat " --page-size #{size}"
-        Hyla.logger2.debug "c #{wkhtml_cmd}"
-
-        Dir.chdir(source) do
-          system "#{wkhtml_cmd}"
-        end
       end
 
       #

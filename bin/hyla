@@ -83,7 +83,7 @@ command :generate do |c|
   c.option '-b', '--backend [BACKEND]', String, 'Backend to be used : HTML5, deckjs, revealjs, ...'
   c.option '-f', '--file [HTML FILE]', String, 'HTML File name'
   c.option '-p', '--project_name [PROJECT_NAME]', String, 'Project Name'
-  c.option '-r', '--rendering [RENDERING]', String, 'Code of the rendering : adoc2html, index2html, html2pdf, toc2adoc'
+  c.option '-r', '--rendering [RENDERING]', String, 'Code of the rendering : adoc2html, index2html, toc2adoc'
   c.option '--t', '--toc [PATH]', String, 'File Path of the asciidoc file containing the Table of Content'
   c.option '-y', '--style [STYLE]', String, 'Stylesheet theme to be applied : asciidoctor, liberation, github, colony, foundation, ...'
   c.option '-a', '--attributes [KEY=VALUE,KEY=VALUE]', String, 'Asciidoctor attributes'

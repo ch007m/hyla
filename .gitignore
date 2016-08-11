@@ -3,7 +3,8 @@
 **/lib/resources/assets/sass/.sass-cache/
 **/lib/resources/assets/sass/styles
 
-
+.ruby-version
+test_sendmail.rb
 
 gh-pages/
 

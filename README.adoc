@@ -83,6 +83,23 @@ Issue tracker (GitHub):: {issues}
 
 == Changelog
 
+=== v1.0.8-9 (2016-08-11) - @cmoulliard
+
+Enhancements / Improvements::
+
+* Display decimal number and bullet before the +/- sign enhancement (link:{issues}144[#144])
+* Move variables of sass/scss files (link:{issues}143[#143])
+* Support to collapse/elaspe ordered list (link:{issues}142[#142])
+* Include update_labs style of GPTE enhancement (link:{issues}141[#141])
+* Add new var to data-block to change the size enhancement (link:{issues}140[#140])
+* Add scss within the revealjs-redhat folder to support local build of the css file using compass enhancement (link:{issues}139[#139])
+* Add new conference-blue theme feature (link:{issues}138[#138])
+* Add print-pdf javascript file to hyla distribution enhancement (link:{issues}137[#137])
+* Optionally include BUILD_TAG in footer of course content enhancement (link:{issues}136[#136])
+* Remove audio tags & snippets (link:{issues}135[#135])
+* Slidesnumber is interrupted (link:{issues}132[#132])
+* Migrate hyla to revealjs 3.1 (link:{issues}133[#133])
+
 === v1.0.7 (2015-04-17) - @cmoulliard
 
 Enhancements / Improvements::

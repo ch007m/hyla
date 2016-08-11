@@ -6,7 +6,7 @@ echo "Create a MyBlankProject and add artefacts"
 cd ~/hyla
 
 echo "Create a new Blank project"
-hyla new -b -d MyBlankProject --force
+hyla new -b MyBlankProject --force
 
 echo "Add asciidoc files using artefacts and template"
 hyla add --t asciidoc --a article --d ~/hyla/MyBlankProject

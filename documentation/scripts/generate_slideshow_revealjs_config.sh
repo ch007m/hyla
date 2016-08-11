@@ -20,9 +20,6 @@ ruby -i.bak -pe 'sub(%r{rendering: adoc2html},"rendering: adoc2html")' _config.y
 
 hyla generate
 
-echo "Copy logo"
-cp -r /Users/chmoulli/hyla/RevealCreatedContent/image ./generated_content/image
-
 echo "Open the slideshow using your web browser"
 open http://localhost:4000/hyla/readme.html &
 
